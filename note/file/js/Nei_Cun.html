@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>kangcafe.GitHub.io by KANGCAFE</title>
-    <link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
-    <link rel="stylesheet" href="../../../templates/css/base.css">
-    <link rel="stylesheet" href="../../../templates/css/mark.css">
-    <link rel="stylesheet" href="../../../font/iconfont.css">
+    <link href="../../../favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" href="../../templates/css/base.css">
+    <link rel="stylesheet" href="../../templates/css/mark.css">
+    <link rel="stylesheet" href="../../../static/font/iconfont.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta property="wb:webmaster" content="7e72a191affb5721"/>
     <!--[if lt IE 9]>
@@ -15,30 +15,20 @@
     <![endif]-->
 </head>
 <body>
-<header class="header-content">
-    <h1>
-        <a class="thistitle" href="https://github.com/kangcafe" target="_blank">kang`s cafe<span
-                class="spanFont mr10px iconfont icon-github"></span>
-        </a>
-    </h1>
-    <small>
-        <a href="../../../note/index.html" target="_blank">BACK HOME</a>
-    </small>
-    <table>
-        <tbody>
-        <tr>
-            <td>创建时间：2016-08-04</td>
-        </tr>
-        <tr>
-            <td>修改时间：2016-08-04</td>
-        </tr>
-        </tbody>
-    </table>
+<header class="header">
+    <div class="header-content w-900">
+        <h1 class="display-inline">
+            <a class="thistitle" href="https://github.com/kangcafe" target="_blank">kang`s cafe<span
+                    class="spanFont mr10px iconfont icon-github"></span>
+            </a>
+        </h1>
+        <small>
+            <a href="../../index.html" target="_blank">BACK HOME</a>
+        </small>
+    </div>
 </header>
 
-
-<hr/>
-<div class="params" id="readme">
+<div class="params div-body w-900" id="readme">
     
     <h1><span class="header-link" id="内存">内存</span></h1><h2><span class="header-link" id="内存有效管理">内存有效管理</span></h2><p>相关问题：</p>
 <ul>
@@ -98,6 +88,30 @@ leafRef = <span class="hljs-literal">null</span>;    <span class="hljs-comment">
 
     
 </div>
-
+<footer class="footer w-900">
+    <a href="#" id="back-to-top" style="display: inline;"><i class="iconfont icon-chevronup"></i></a>
+    <div class="ds-thread" data-thread-key="TmVpX0N1bg==" data-title="内存" data-url="http://kangcafe.com/note/file/js/Nei_Cun.html"></div>
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:"kangcafe"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+</footer>
+<script type="application/javascript" src="../../../static/js/jquery.min.js"></script>
+<script type="text/javascript">
+    !function ($) {
+        $(window).scroll(function () {
+            $(this).scrollTop() > 100 ? $("#back-to-top").fadeIn() : $("#back-to-top").fadeOut()
+        }), $("#back-to-top").on("click", function (b) {
+            return b.preventDefault(), $("html, body").animate({scrollTop: 0}, 100), !1
+        });
+    }(jQuery);
+</script>
 </body>
 </html>

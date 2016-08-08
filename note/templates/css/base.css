@@ -1,7 +1,8 @@
 .thumb {
-    float:left;
-    margin: 10px;
+    float  : left;
+    margin : 10px;
 }
+
 /*
 
 Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
@@ -9,22 +10,21 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
 */
 
 .hljs {
-    display: block;
-    overflow-x: auto;
-    padding: 0.5em;
-    background: #F0F0F0;
+    display    : block;
+    overflow-x : auto;
+    padding    : 0.5em;
+    background : #F0F0F0;
 }
-
 
 /* Base color: saturation 0; */
 
 .hljs,
 .hljs-subst {
-    color: #444;
+    color : #444;
 }
 
 .hljs-comment {
-    color: #888888;
+    color : #888888;
 }
 
 .hljs-keyword,
@@ -33,9 +33,8 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
 .hljs-meta-keyword,
 .hljs-doctag,
 .hljs-name {
-    font-weight: bold;
+    font-weight : bold;
 }
-
 
 /* User color: hue: 0 */
 
@@ -47,13 +46,13 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
 .hljs-quote,
 .hljs-template-tag,
 .hljs-deletion {
-    color: #880000;
+    color : #880000;
 }
 
 .hljs-title,
 .hljs-section {
-    color: #880000;
-    font-weight: bold;
+    color       : #880000;
+    font-weight : bold;
 }
 
 .hljs-regexp,
@@ -63,44 +62,42 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
 .hljs-link,
 .hljs-selector-attr,
 .hljs-selector-pseudo {
-    color: #BC6060;
+    color : #BC6060;
 }
-
 
 /* Language color: hue: 90; */
 
 .hljs-literal {
-    color: #78A960;
+    color : #78A960;
 }
 
 .hljs-built_in,
 .hljs-bullet,
 .hljs-code,
 .hljs-addition {
-    color: #397300;
+    color : #397300;
 }
-
 
 /* Meta color: hue: 200 */
 
 .hljs-meta {
-    color: #1f7199;
+    color : #1f7199;
 }
 
 .hljs-meta-string {
-    color: #4d99bf;
+    color : #4d99bf;
 }
-
 
 /* Misc effects */
 
 .hljs-emphasis {
-    font-style: italic;
+    font-style : italic;
 }
 
 .hljs-strong {
-    font-weight: bold;
+    font-weight : bold;
 }
+
 .forkme {
     position              : fixed;
     right                 : -60px;
@@ -163,27 +160,97 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
     box-shadow         : 0 1px 3px rgba(54, 54, 68, 0.8), inset 0 -1px 3px rgba(246, 247, 248, 0.5);
     border-collapse    : separate
 }
+
+#back-to-top {
+    position      : fixed;
+    right         : 10px;
+    bottom        : 10px;
+    width         : 50px;
+    height        : 50px;
+    background    : #ddd;
+    color         : rgba(39, 174, 96, 0.6);
+    text-align    : center;
+    border-radius : 2px;
+    z-index       : 1;
+    display       : none;
+}
+
+#back-to-top i {
+    width                   : 30px;
+    height                  : 30px;
+    line-height             : 30px;
+    top                     : 10px;
+    left                    : 10px;
+    color                   : #fff;
+    position                : absolute;
+    font-size               : 24px;
+    cursor                  : pointer;
+    text-rendering          : auto;
+    display                 : inline-block;
+    font-style              : normal;
+    font-weight             : 400;
+    -webkit-font-smoothing  : antialiased;
+    -moz-osx-font-smoothing : grayscale;
+}
+
 pre {
-    background : #f5f5f5;
-    overflow: visible;
-    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    font-size: 12px;
-    color: #333;
-    word-wrap: normal;
-    white-space: pre;
+    background  : #f5f5f5;
+    font-family : Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size   : 12px;
+    color       : #333;
+    word-wrap   : normal;
+    white-space : pre;
+    overflow    : hidden;
 }
 
 p, ul, ol, dl, table, pre {
-    margin-bottom: 1em;
+    margin-bottom : 1em;
 }
-table{
-    color: #f6e6cc;
+
+table {
+    color : #f6e6cc;
 }
-table{border-collapse:collapse;border-spacing:0;border-left:1px solid #ccc;border-top:1px solid #ccc;}
-th,td{border-right:1px solid #ccc;border-bottom:1px solid #ccc;}
-.header-content{
-    margin: 20px 0;
-    padding: 10px;
-    background: #fff;
-    border-radius: 5px;
+
+table {
+    border-collapse : collapse;
+    border-spacing  : 0;
+    border-left     : 1px solid #ccc;
+    border-top      : 1px solid #ccc;
+}
+
+th, td {
+    border-right  : 1px solid #ccc;
+    border-bottom : 1px solid #ccc;
+}
+
+.header {
+    margin     : 0;
+    padding    : 0;
+    background : #fff;
+    box-shadow : rgba(0, 0, 0, .1) 0 1px 5px;
+}
+
+.header-content {
+    text-align   : center;
+    border-right : 1px solid #f3f3f3;
+    border-left  : 1px solid #f3f3f3;
+}
+
+.display-inline {
+    display : inline;
+}
+
+.w-900 {
+    width  : 900px;
+    margin : 0 auto;
+}
+
+.div-body {
+    line-height : 1.3;
+    margin      : 30px auto;
+    padding     : 20px;
+    box-sizing  : border-box;
+    /*border        : 1px solid #ccc;
+    background    : #92b3a2 url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAgAAZABkAAD/7AARRHVja3kAAQAEAAAAPAAA/+4AJkFkb2JlAGTAAAAAAQMAFQQDBgoNAAABvwAAAeAAAAJRAAADUf/bAIQABgQEBAUEBgUFBgkGBQYJCwgGBggLDAoKCwoKDBAMDAwMDAwQDA4PEA8ODBMTFBQTExwbGxscHx8fHx8fHx8fHwEHBwcNDA0YEBAYGhURFRofHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8f/8IAEQgAMQAxAwERAAIRAQMRAf/EAIgAAQEBAQAAAAAAAAAAAAAAAAEAAgUBAQEBAQAAAAAAAAAAAAAAAAABAgQQAQEBAAAAAAAAAAAAAAAAAFAwIREBAAAAAAAAAAAAAAAAAAAAUBIBAAAAAAAAAAAAAAAAAAAAUBMAAQQBAwMFAQEAAAAAAAAAAQARITFBEFFxYYGhUPCRsdHB4f/aAAwDAQACEQMRAAAB7WeaIhAhIBIhAiAiEBIAETImkFAISECIiIgNGRP/2gAIAQEAAQUCJ2H/2gAIAQIAAQUCR//aAAgBAwABBQJH/9oACAECAgY/Akf/2gAIAQMCBj8CR//aAAgBAQEGPwJH/9oACAEBAwE/IdPbKdOV20ZeV31nrr4X0dPrWdPYUaT0WITLlRerjfQv8aFtIXBC/lGkbKNhDOv/2gAIAQIDAT8h9R//2gAIAQMDAT8h9R//2gAMAwEAAhEDEQAAEBJAIBABgABJAJAJCAIIJBIBJJ//2gAIAQEDAT8QgCJBzT82jIIORPCBMgM4qh5wjQ4z/iojBoCkziXA3THb5TBpDgHNBQonoKVsXDCXZ7kR9Jy4yNC4wgSxZyDLBkWabvh1w80CSzXYRYZcw5No5dtmW+ERFocSAzU8QEIMO7dRv9/qFSe4CYfzogXIFg1N9US5eOrsqggQK5NoZMDfcr2N/qckmScbTcgKwlg82XVSxxD9O6dkIHJHJZSXc5IjIQcEuIJgAQPh3XsN+IE3jfJ3RMJHLL9EHg9KvygJnJeiZygwJ3NAosoO++U6q0+z+rwf5pa8f4sd/wA0/9oACAECAwE/EPUf/9oACAEDAwE/EPUf/9k=) repeat 0 0;
+    border-radius : 5px;*/
 }

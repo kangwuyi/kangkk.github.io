@@ -11,66 +11,31 @@ var fs              = require('fs'),
     moment          = require('moment'),
     toc             = require('marked-toc');
 
-var getTemplates = {
-    'markdown' : fs.readFileSync(path.join(__dirname, './templates/markdown.html'), 'utf8'),
-    'indexZero': fs.readFileSync(path.join(__dirname, './templates/indexZero.html'), 'utf8')
-};
-
-var mdToHtmlOutPath    = path.join(__dirname, 'note/file'),
-    mdToHtmlSourcePath = path.join(__dirname, 'note/filemd'),
-    fileObjContainer   = [];
+var folderMenu = ['note', 'mood'];
 
 
-if (verificationPath(mdToHtmlOutPath).status) deteleOutputGlobalPath(mdToHtmlOutPath);
+_.each(folderMenu, function (item) {
 
-queryMdFile({
-    sourcePath: mdToHtmlSourcePath,
-    outPath   : mdToHtmlOutPath
-});
-creatHtmlIndexFile()
-function queryMdFile(op) {
+    var fileObjContainer = [];
 
-    try {
-        iterator(op);
-        return true;
-    } catch (error) {
-        if (error.code === "ENOENT") throw error;
-        return false;
-    }
-    function iterator(param) {
-        var sourcePath = param.sourcePath,
-            outPath    = param.outPath,
-            fsStat     = fs.statSync(sourcePath);
+    if (verificationPath(mdToHtmlOutPath(item)).status) deteleOutputGlobalPath(mdToHtmlOutPath(item));
 
-        if (fsStat.isDirectory()) {
-
-            if (!verificationPath(outPath).status) mkdirp(outPath);
-            _.each(fs.readdirSync(sourcePath), function (item) {
-
-                iterator({
-                    sourcePath: path.join(sourcePath, item),
-                    outPath   : path.join(outPath, item)
-                });
-            });
-
-        } else if (fsStat.isFile()) {
-
-            if (_.indexOf(['.md', '.markdown', '.MARKDOWN', '.MD'], path.extname(sourcePath)) !== -1) {
-
-                creatMdToHtml(param);
-            }
+    queryMdFile(
+        {
+            sourcePath: mdToHtmlSourcePath(item),
+            outPath   : mdToHtmlOutPath(item)
+        },
+        item,
+        function (fileTitleObject) {
+            fileObjContainer.push(fileTitleObject);
         }
-    }
-}
-function verificationPath(path) {
-    // 判断路径是否存在
-    if (!fs.existsSync(path)) {
-        return {status: false};
-    } else {
-        return {status: true};
-    }
-}
-function creatMdToHtml(op) {
+    );
+    creatHtmlIndexFile(item, fileObjContainer);
+    fileObjContainer = null;
+
+
+});
+function creatMdToHtml(op, folder) {
 
     var renderer = new markdown.Renderer();
 
@@ -99,8 +64,10 @@ function creatMdToHtml(op) {
             lowercase: false,
             separator: '_'
         }),
+        fileName         = path.basename(outPath, '.md'),
+        FileNameBuffer   = new Buffer(englishToPinYin).toString('base64'),
         htmlFileName     = path.join(englishToPinYin + '.html'),
-        relativePath     = path.relative(outPath, path.join(__dirname, 'note')),
+        relativePath     = path.relative(outPath, path.join(__dirname, folder)),
         template         = '<%= depth %><%= bullet %>[<%= heading %>](#<%= url %>)\n',
         tocMd            = toc.insert(fileFs, {template: template}),
         mdToHtml         = markdown(tocMd),
@@ -109,9 +76,12 @@ function creatMdToHtml(op) {
     fs.writeFileSync(
         creatFilePath,
         swig.render(
-            getTemplates.markdown,
+            getTemplates(folder).pages,
             {
                 locals  : {
+                    fileName    : fileName,
+                    fileId      : FileNameBuffer,
+                    httpAddr    : 'http://kangcafe.com/'+path.relative(__dirname,creatFilePath),
                     content     : mdToHtml,
                     relativePath: relativePath,
                     birthtime   : birthtime,
@@ -123,15 +93,48 @@ function creatMdToHtml(op) {
         'utf8'
     );
     console.log('creat [' + creatFilePath + ']');
-    fileObjContainer.push({
+    return {
         path        : path.join(path.relative(path.join(__dirname, 'note'), path.dirname(outPath)), htmlFileName),
-        fileName    : path.basename(outPath, '.md'),
+        fileName    : fileName,
         birthtime   : birthtime,
         mtime       : mtime,
         mtimeGetTime: mtimeGetTime
-    });
+    };
 }
+function queryMdFile(op, folder, cb) {
 
+    try {
+        iterator(op);
+        return true;
+    } catch (error) {
+        if (error.code === "ENOENT") throw error;
+        return false;
+    }
+    function iterator(param) {
+        var sourcePath = param.sourcePath,
+            outPath    = param.outPath,
+            fsStat     = fs.statSync(sourcePath);
+
+        if (fsStat.isDirectory()) {
+
+            if (!verificationPath(outPath).status) mkdirp(outPath);
+            _.each(fs.readdirSync(sourcePath), function (item) {
+
+                iterator({
+                    sourcePath: path.join(sourcePath, item),
+                    outPath   : path.join(outPath, item)
+                });
+            });
+
+        } else if (fsStat.isFile()) {
+
+            if (_.indexOf(['.md', '.markdown', '.MARKDOWN', '.MD'], path.extname(sourcePath)) !== -1) {
+
+                cb(creatMdToHtml(param, folder));
+            }
+        }
+    }
+}
 function deteleOutputGlobalPath(outputGlobalPath) {
 
     try {
@@ -157,26 +160,48 @@ function deteleOutputGlobalPath(outputGlobalPath) {
         }
     }
 }
+function verificationPath(path) {
+    // 判断路径是否存在
+    if (!fs.existsSync(path)) {
+        return {status: false};
+    } else {
+        return {status: true};
+    }
+}
 /**
- * 生成主页索引，待修改
+ * 生成主页索引
  */
-function creatHtmlIndexFile() {
-    var generatePathFile = path.join(__dirname, 'note/index.html');
+function creatHtmlIndexFile(folder, fileTitleList) {
+    var generatePathFile = path.join(__dirname, folder + '/index.html');
 
     fs.writeFileSync(
         generatePathFile,
         swig.render(
-            getTemplates.indexZero,
+            getTemplates(folder).index,
             {
                 locals  : {
                     content: {
-                        linkList: _.sortBy(fileObjContainer, 'mtimeGetTime')
+                        linkList: _.sortBy(fileTitleList, 'mtimeGetTime')
                     }
                 },
-                filename: path.join('index.html') // 这里的 ‘/’ 不做 win 处理
+                filename: folder + '/index.html'
             }
         ),
         'utf8');
-    console.log('start creat index home`s page [' + generatePathFile + '] done');
+    console.log('creat index home`s page [' + generatePathFile + '] done');
 }
-process.exit(1);
+
+function getTemplates(folder) {
+    return {
+        'pages': fs.readFileSync(path.join(__dirname, './' + folder + '/templates/pages.html'), 'utf8'),
+        'index': fs.readFileSync(path.join(__dirname, './' + folder + '/templates/index.html'), 'utf8')
+    }
+}
+function mdToHtmlOutPath(folder) {
+    return path.join(__dirname, folder + '/file');
+}
+function mdToHtmlSourcePath(folder) {
+    return path.join(__dirname, folder + '/filemd');
+}
+
+process.exit(0);
