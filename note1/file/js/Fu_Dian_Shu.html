@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>kangcafe.GitHub.io by KANGCAFE</title>
+    <link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" href="../../../templates/css/base.css">
+    <link rel="stylesheet" href="../../../templates/css/mark.css">
+    <link rel="stylesheet" href="../../../font/iconfont.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta property="wb:webmaster" content="7e72a191affb5721"/>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+<header class="header-content">
+    <h1>
+        <a class="thistitle" href="https://github.com/kangcafe" target="_blank">kang`s cafe<span
+                class="spanFont mr10px iconfont icon-github"></span>
+        </a>
+    </h1>
+    <small>
+        <a href="../../../note/index.html" target="_blank">BACK HOME</a>
+    </small>
+    <table>
+        <tbody>
+        <tr>
+            <td>创建时间：2016-08-04</td>
+        </tr>
+        <tr>
+            <td>修改时间：2016-07-30</td>
+        </tr>
+        </tbody>
+    </table>
+</header>
+
+
+<hr/>
+<div class="params" id="readme">
+    
+    <h1><span class="header-link" id="浮点数">浮点数</span></h1><p>JavaScript中的小数采用的是双精度(64位)表示的，由三部分组成：</p>
+<blockquote>
+<p>符 + 阶码 + 尾数</p>
+</blockquote>
+<p>在二进制中，<code>0.1</code> == <code>0.0001100110011001100110011001100110011001100110011001…</code>（1001 循环）。因为浮点数只有52位有效数字，从第53位开始，就舍入了。这样就造成了“浮点数精度损失”问题。</p>
+<h2><span class="header-link" id="浮点数问题">浮点数问题</span></h2><p>举证：</p>
+<p><img src="data:image/png;base64,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" alt="浮点数计算误差"></p>
+<h3><span class="header-link" id="第一阶段">第一阶段</span></h3><p>收集的方法，仅可供参考思路，慎用</p>
+<pre><code class="lang-js"><span class="hljs-comment">/**
+ * 除法函数
+ * @param  {number} arg1
+ * @param  {number} arg2
+ * @return {number}
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">accDiv</span>(<span class="hljs-params">arg1,arg2</span>)</span>{
+  <span class="hljs-keyword">var</span> t1=<span class="hljs-number">0</span>,t2=<span class="hljs-number">0</span>,r1,r2;
+  <span class="hljs-keyword">try</span>{t1=arg1.toString().split(<span class="hljs-string">"."</span>)[<span class="hljs-number">1</span>].length}<span class="hljs-keyword">catch</span>(e){}
+  <span class="hljs-keyword">try</span>{t2=arg2.toString().split(<span class="hljs-string">"."</span>)[<span class="hljs-number">1</span>].length}<span class="hljs-keyword">catch</span>(e){}
+  <span class="hljs-keyword">with</span>(<span class="hljs-built_in">Math</span>){
+    r1=<span class="hljs-built_in">Number</span>(arg1.toString().replace(<span class="hljs-string">"."</span>,<span class="hljs-string">""</span>))
+    r2=<span class="hljs-built_in">Number</span>(arg2.toString().replace(<span class="hljs-string">"."</span>,<span class="hljs-string">""</span>))
+    <span class="hljs-keyword">return</span> (r1/r2)*pow(<span class="hljs-number">10</span>,t2-t1);
+  }
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">accDiv</span>(<span class="hljs-params">arg1,arg2</span>)</span>{
+    <span class="hljs-keyword">var</span> r1=<span class="hljs-number">0</span>,r2=<span class="hljs-number">0</span>,m,s1=arg1.toString(),s2=arg2.toString();
+    <span class="hljs-keyword">try</span>{
+        <span class="hljs-keyword">if</span>(s1.split(<span class="hljs-string">"."</span>)[<span class="hljs-number">1</span>] != <span class="hljs-literal">undefined</span> )
+            r1=s1.split(<span class="hljs-string">"."</span>)[<span class="hljs-number">1</span>].length;
+    }<span class="hljs-keyword">catch</span>(e){}
+    <span class="hljs-keyword">try</span>{
+        <span class="hljs-keyword">if</span>(s2.split(<span class="hljs-string">"."</span>)[<span class="hljs-number">1</span>] != <span class="hljs-literal">undefined</span> )
+            r2=s2.split(<span class="hljs-string">"."</span>)[<span class="hljs-number">1</span>].length;
+    }<span class="hljs-keyword">catch</span>(e){}
+    m=<span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">10</span>,<span class="hljs-built_in">Math</span>.max(r1,r2)); 
+    <span class="hljs-keyword">return</span> (accMul(arg1,m))/(accMul(arg2,m)); 
+}
+<span class="hljs-comment">/**
+ * 乘法函数
+ * @param  {number} arg1
+ * @param  {number} arg2
+ * @return {number}
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">accMul</span>(<span class="hljs-params">arg1,arg2</span>) </span>{
+  <span class="hljs-keyword">var</span> m=<span class="hljs-number">0</span>,s1=arg1.toString(),s2=arg2.toString();
+  <span class="hljs-keyword">try</span>{m+=s1.split(<span class="hljs-string">"."</span>)[<span class="hljs-number">1</span>].length}<span class="hljs-keyword">catch</span>(e){}
+  <span class="hljs-keyword">try</span>{m+=s2.split(<span class="hljs-string">"."</span>)[<span class="hljs-number">1</span>].length}<span class="hljs-keyword">catch</span>(e){}
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Number</span>(s1.replace(<span class="hljs-string">"."</span>,<span class="hljs-string">""</span>))*<span class="hljs-built_in">Number</span>(s2.replace(<span class="hljs-string">"."</span>,<span class="hljs-string">""</span>))/<span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">10</span>,m)
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">accMul</span>(<span class="hljs-params">arg1,arg2</span>)</span>{
+    <span class="hljs-keyword">var</span> m=<span class="hljs-number">0</span>,s1=arg1.toString(),s2=arg2.toString();
+    <span class="hljs-keyword">try</span>{
+        <span class="hljs-keyword">if</span>(s1.split(<span class="hljs-string">"."</span>)[<span class="hljs-number">1</span>] != <span class="hljs-literal">undefined</span> )
+            m+=s1.split(<span class="hljs-string">"."</span>)[<span class="hljs-number">1</span>].length
+    }<span class="hljs-keyword">catch</span>(e){}
+    <span class="hljs-keyword">try</span>{
+        <span class="hljs-keyword">if</span>(s2.split(<span class="hljs-string">"."</span>)[<span class="hljs-number">1</span>] != <span class="hljs-literal">undefined</span> )
+            m+=s2.split(<span class="hljs-string">"."</span>)[<span class="hljs-number">1</span>].length
+    }<span class="hljs-keyword">catch</span>(e){}
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Number</span>(s1.replace(<span class="hljs-string">"."</span>,<span class="hljs-string">""</span>))*<span class="hljs-built_in">Number</span>(s2.replace(<span class="hljs-string">"."</span>,<span class="hljs-string">""</span>))/<span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">10</span>,m)
+}
+<span class="hljs-comment">/**
+ * 加法函数
+ * @param  {number} arg1
+ * @param  {number} arg2
+ * @return {number}
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">accAdd</span>(<span class="hljs-params">arg1,arg2</span>)</span>{
+  <span class="hljs-keyword">var</span> r1,r2,m;
+  <span class="hljs-keyword">try</span>{r1=arg1.toString().split(<span class="hljs-string">"."</span>)[<span class="hljs-number">1</span>].length}<span class="hljs-keyword">catch</span>(e){r1=<span class="hljs-number">0</span>}
+  <span class="hljs-keyword">try</span>{r2=arg2.toString().split(<span class="hljs-string">"."</span>)[<span class="hljs-number">1</span>].length}<span class="hljs-keyword">catch</span>(e){r2=<span class="hljs-number">0</span>}
+  m=<span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">10</span>,<span class="hljs-built_in">Math</span>.max(r1,r2))
+  <span class="hljs-keyword">return</span> (arg1*m+arg2*m)/m
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">accAdd</span>(<span class="hljs-params">arg1,arg2</span>)</span>{
+    <span class="hljs-keyword">var</span> r1=<span class="hljs-number">0</span>,r2=<span class="hljs-number">0</span>,m,s1=arg1.toString(),s2=arg2.toString(); 
+    <span class="hljs-keyword">try</span>{
+        <span class="hljs-keyword">if</span>(s1.split(<span class="hljs-string">"."</span>)[<span class="hljs-number">1</span>] != <span class="hljs-literal">undefined</span> )
+            r1=s1.split(<span class="hljs-string">"."</span>)[<span class="hljs-number">1</span>].length;
+    }<span class="hljs-keyword">catch</span>(e){}
+    <span class="hljs-keyword">try</span>{
+        <span class="hljs-keyword">if</span>(s2.split(<span class="hljs-string">"."</span>)[<span class="hljs-number">1</span>] != <span class="hljs-literal">undefined</span> )
+            r2=s2.split(<span class="hljs-string">"."</span>)[<span class="hljs-number">1</span>].length;
+    }<span class="hljs-keyword">catch</span>(e){}
+    m=<span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">10</span>,<span class="hljs-built_in">Math</span>.max(r1,r2));
+    <span class="hljs-keyword">return</span> (accMul(arg1,m)+accMul(arg2,m))/m;
+}
+<span class="hljs-comment">/**
+ * 减法函数
+ * @param  {number} arg1
+ * @param  {number} arg2
+ * @return {number}
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Subtr</span>(<span class="hljs-params">arg1,arg2</span>)</span>{
+    <span class="hljs-keyword">var</span> r1,r2,m,n;
+    <span class="hljs-keyword">try</span>{r1=arg1.toString().split(<span class="hljs-string">"."</span>)[<span class="hljs-number">1</span>].length}<span class="hljs-keyword">catch</span>(e){r1=<span class="hljs-number">0</span>}
+    <span class="hljs-keyword">try</span>{r2=arg2.toString().split(<span class="hljs-string">"."</span>)[<span class="hljs-number">1</span>].length}<span class="hljs-keyword">catch</span>(e){r2=<span class="hljs-number">0</span>}
+    m=<span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">10</span>,<span class="hljs-built_in">Math</span>.max(r1,r2));
+    <span class="hljs-comment">//last modify by deeka</span>
+    <span class="hljs-comment">//动态控制精度长度</span>
+    n=(r1&gt;=r2)?r1:r2;
+    <span class="hljs-keyword">return</span> ((arg1*m-arg2*m)/m).toFixed(n);
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Subtr</span>(<span class="hljs-params">arg1,arg2</span>)</span>{
+    <span class="hljs-keyword">var</span> r1=<span class="hljs-number">0</span>,r2=<span class="hljs-number">0</span>,m,n,s1=arg1.toString(),s2=arg2.toString();
+    <span class="hljs-keyword">try</span>{
+        <span class="hljs-keyword">if</span>(s1.split(<span class="hljs-string">"."</span>)[<span class="hljs-number">1</span>] != <span class="hljs-literal">undefined</span> )
+            r1=s1.split(<span class="hljs-string">"."</span>)[<span class="hljs-number">1</span>].length;
+    }<span class="hljs-keyword">catch</span>(e){}
+    <span class="hljs-keyword">try</span>{
+        <span class="hljs-keyword">if</span>(s2.split(<span class="hljs-string">"."</span>)[<span class="hljs-number">1</span>] != <span class="hljs-literal">undefined</span> )
+            r2=s2.split(<span class="hljs-string">"."</span>)[<span class="hljs-number">1</span>].length;
+    }<span class="hljs-keyword">catch</span>(e){}
+    m=<span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">10</span>,<span class="hljs-built_in">Math</span>.max(r1,r2));
+    <span class="hljs-comment">//last modify by deeka</span>
+    <span class="hljs-comment">//动态控制精度长度</span>
+    n=(r1&gt;=r2)?r1:r2;
+    <span class="hljs-keyword">return</span> (accMul(arg1,m)-accMul(arg2,m))/m;
+}
+</code></pre>
+<h3><span class="header-link" id="第二阶段">第二阶段</span></h3><blockquote>
+<p>取float型小数点后两位，例22.127456取成22.13</p>
+</blockquote>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get</span>(<span class="hljs-params">num</span>)</span>{
+    <span class="hljs-keyword">var</span> str = s.toString();
+    <span class="hljs-keyword">return</span> s.substring(<span class="hljs-number">0</span>,s.indexOf(<span class="hljs-string">"."</span>)+<span class="hljs-number">3</span>);
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get</span>(<span class="hljs-params">num</span>)</span>{
+    <span class="hljs-keyword">return</span> s.toString().replace(<span class="hljs-regexp">/([0-9]\.[0-9]{2})[0-9]*/</span>,<span class="hljs-string">"$1"</span>);
+}
+<span class="hljs-comment">// 好风凭借力，送我上青云</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get</span>(<span class="hljs-params">num</span>)</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.round(num*<span class="hljs-number">100</span>)/<span class="hljs-number">100</span>;
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get</span>(<span class="hljs-params">num</span>)</span>{
+    <span class="hljs-keyword">return</span> num.toFixed(<span class="hljs-number">2</span>);
+}
+</code></pre>
+<p>这里还是不可取的，仍需要具体</p>
+<h4><span class="header-link" id="toFixed">toFixed</span></h4><ul>
+<li>numObj.toFixed([fractionDigits])</li>
+</ul>
+<p>toFixed 方法返回一个以定点表示法表示的数字的字符串形式。该字符串中小数点之前有一位有效数字，而且其后必须包含 fractionDigits 数字。如果没有 fractionDigits 参数，或者该参数为 undefined，toFixed 方法假定该值为 0。</p>
+<p>弊端：</p>
+<pre><code class="lang-js">0<span class="hljs-selector-class">.009</span><span class="hljs-selector-class">.toFixed</span>(2)
+</code></pre>
+<p>在ie7下四舍五入是不稳定的，有些参数运算会显示0.00，而ff会是0.01。</p>
+<p>替代方案:</p>
+<pre><code class="lang-js"><span class="hljs-built_in">Number</span>.prototype.toFixed = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">num</span>)</span>{
+    <span class="hljs-keyword">return</span> (<span class="hljs-built_in">parseInt</span>(<span class="hljs-keyword">this</span>*<span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">10</span>,num)+<span class="hljs-number">0.5</span>)/<span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">10</span>,num)).toString();
+}
+</code></pre>
+<h4><span class="header-link" id="with">with</span></h4><pre><code class="lang-js"><span class="hljs-keyword">with</span> (<span class="hljs-class"><span class="hljs-keyword">object</span>)</span>
+   statements
+</code></pre>
+<p>with 语句通常用来缩短特定情形下必须写的代码量。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">with</span> (Math){
+   x = <span class="hljs-built_in">cos</span>(<span class="hljs-number">3</span> * <span class="hljs-built_in">PI</span>) + <span class="hljs-built_in">sin</span> (LN10)
+   y = <span class="hljs-built_in">tan</span>(<span class="hljs-number">14</span> * E)
+}
+</code></pre>
+<h2><span class="header-link" id="第三阶段">第三阶段</span></h2><h3><span class="header-link" id="精确范围判定">精确范围判定</span></h3><pre><code class="lang-js"><span class="hljs-built_in">var</span> x = <span class="hljs-number">0.2</span>;
+<span class="hljs-built_in">var</span> y = <span class="hljs-number">0.3</span>;
+<span class="hljs-built_in">var</span> <span class="hljs-built_in">equal</span> = (Math.<span class="hljs-built_in">abs</span>(x - y) &lt; <span class="hljs-number">0.000001</span>)
+</code></pre>
+<h3><span class="header-link" id="保留精度">保留精度</span></h3><p>函数toPrecision或toFixed来保留一定的精度</p>
+<pre><code class="lang-js">(<span class="hljs-number">0.1</span> + <span class="hljs-number">0.2</span>).toPrecision(<span class="hljs-number">10</span>) == <span class="hljs-number">0.3</span>
+<span class="hljs-comment">// or</span>
+(<span class="hljs-number">0.1</span> + <span class="hljs-number">0.2</span>).toFixed(<span class="hljs-number">10</span>) == <span class="hljs-number">0.3</span>
+</code></pre>
+<h2><span class="header-link" id="浮点数!=小数">浮点数!=小数</span></h2><p>整数和小数是数学里面的概念，在计算机中，只有定点数和浮点数，没有整数和小数。</p>
+<p>计算机可精确的数字：</p>
+<ul>
+<li>一个奇数 0.5</li>
+<li>一个偶数 0.0。</li>
+</ul>
+<blockquote>
+<p>人为的在数据最后一位补 5， 也就是 0.15，这样牺牲一位，但是可以保证数据精度，还原再把那个尾巴 5 去掉。</p>
+</blockquote>
+<pre><code class="lang-js">JSON.parse('{<span class="hljs-string">"status"</span>:<span class="hljs-number">1</span>,<span class="hljs-string">"id"</span>:<span class="hljs-number">9986705337161735</span>,<span class="hljs-string">"name"</span>:<span class="hljs-string">"test"</span>}').id;
+==&gt; <span class="hljs-number">9986705337161736</span>
+</code></pre>
+
+    
+</div>
+
+</body>
+</html>

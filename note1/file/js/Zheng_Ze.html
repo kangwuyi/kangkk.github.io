@@ -1,0 +1,380 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>kangcafe.GitHub.io by KANGCAFE</title>
+    <link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" href="../../../templates/css/base.css">
+    <link rel="stylesheet" href="../../../templates/css/mark.css">
+    <link rel="stylesheet" href="../../../font/iconfont.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta property="wb:webmaster" content="7e72a191affb5721"/>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+<header class="header-content">
+    <h1>
+        <a class="thistitle" href="https://github.com/kangcafe" target="_blank">kang`s cafe<span
+                class="spanFont mr10px iconfont icon-github"></span>
+        </a>
+    </h1>
+    <small>
+        <a href="../../../note/index.html" target="_blank">BACK HOME</a>
+    </small>
+    <table>
+        <tbody>
+        <tr>
+            <td>创建时间：2016-08-04</td>
+        </tr>
+        <tr>
+            <td>修改时间：2016-08-04</td>
+        </tr>
+        </tbody>
+    </table>
+</header>
+
+
+<hr/>
+<div class="params" id="readme">
+    
+    <h1><span class="header-link" id="正则">正则</span></h1><h2><span class="header-link" id="内置函数">内置函数</span></h2><h3><span class="header-link" id="正则表达式对象">正则表达式对象</span></h3><ul>
+<li>regexp = new RegExp(patern[, flag])</li>
+</ul>
+<p>生成正则表达式对象。正则表达式对象用在字符串的匹配上。下面的例子里，使用 match() 检查字符串 str 里有没有 &quot;DEF&quot; 。</p>
+<pre><code class="lang-js"><span class="hljs-built_in">str</span> = <span class="hljs-string">"ABCDEFG"</span>;
+re = <span class="hljs-keyword">new</span> RegExp(<span class="hljs-string">"DEF"</span>, <span class="hljs-string">"i"</span>);
+<span class="hljs-keyword">if</span> (<span class="hljs-built_in">str</span>.<span class="hljs-built_in">match</span>(re)) {
+    alert(<span class="hljs-string">"找到了DEF。"</span>);
+}
+</code></pre>
+<p>为了符合面向对象中“数据类型都可以生成对象”的思想，JavaScript准备了new RegExp()，不过基本没什么人用。一般像下面这样写。</p>
+<pre><code class="lang-js"><span class="hljs-built_in">str</span> = <span class="hljs-string">"ABCDEF"</span>;
+<span class="hljs-keyword">if</span> (<span class="hljs-built_in">str</span>.<span class="hljs-built_in">match</span>(/DEF/i)) {
+    alert(<span class="hljs-string">"找到了DEF。"</span>);
+}
+</code></pre>
+<p>如果只是要判断“是否含有DEF”的话，用 index() 更加简单。不过如果想搜索“12:34:56”这样的时间单位，用正则表达式就方便得多。</p>
+<pre><code class="lang-js">str = "12:34:56";
+if (str.match(/^[<span class="hljs-string">0-9</span>][<span class="hljs-symbol">0-9</span>]:[<span class="hljs-string">0-9</span>][<span class="hljs-symbol">0-9</span>]:[<span class="hljs-string">0-9</span>][<span class="hljs-symbol">0-9</span>]$/) {
+<span class="hljs-code">    alert("匹配");</span>
+}
+</code></pre>
+<p>RegExp() 的 flag 部分可以指定 &quot;i&quot;、&quot;g&quot;、&quot;m&quot; 。也可以像 &quot;ig&quot; 这样一起指定。详细内容请看下一节。</p>
+<ul>
+<li>regexp.ignoreCase</li>
+<li>regexp.global</li>
+<li>regexp.source</li>
+</ul>
+<p>ignoreCase 返回有没有指定 i选项 的布尔值（就是上面match括号里 /.../ 的后面有没有加 i）。global 返回有没有指定 g选项 的布尔值。source 则返回正则表达式部分的字符串（就是上面match括号里 /.../ 的内容）。</p>
+<pre><code class="lang-js">re = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">"DEF"</span>, <span class="hljs-string">"ig"</span>);
+<span class="hljs-built_in">document</span>.write(re.ignoreCase + <span class="hljs-string">"&lt;br&gt;"</span>);   <span class="hljs-comment">// → true</span>
+<span class="hljs-built_in">document</span>.write(re.global + <span class="hljs-string">"&lt;br&gt;"</span>);       <span class="hljs-comment">// → true</span>
+<span class="hljs-built_in">document</span>.write(re.source + <span class="hljs-string">"&lt;br&gt;"</span>);       <span class="hljs-comment">// → DEF</span>
+</code></pre>
+<ul>
+<li>RegExp.$</li>
+</ul>
+<p>RegExp.$ 的形式与意义如下。</p>
+<table>
+<thead>
+<tr>
+<th>形式</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RegExp.$n</td>
+<td>第 n 个括号里的字符串。详细内容见后文。</td>
+</tr>
+<tr>
+<td>RegExp.$&amp;</td>
+<td>等同于 RegExp.lastMatch 。</td>
+</tr>
+<tr>
+<td>RegExp.$`</td>
+<td>等同于 RegExp.leftContext 。</td>
+</tr>
+<tr>
+<td>RegExp.$&quot;</td>
+<td>等同于 RegExp.rightContext 。</td>
+</tr>
+<tr>
+<td>RegExp.$+</td>
+<td>等同于 RegExp.lastParen 。</td>
+</tr>
+<tr>
+<td>RegExp.$_</td>
+<td>等同于 RegExp.input 。</td>
+</tr>
+<tr>
+<td>RegExp.$*</td>
+<td>等同于 RegExp.multiline 。</td>
+</tr>
+</tbody>
+</table>
+<h3><span class="header-link" id="正则表达式语法">正则表达式语法</span></h3><p>正则表达式可以用下面的形式来进行匹配。</p>
+<table>
+<thead>
+<tr>
+<th>正则表达式</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>字符A</td>
+</tr>
+<tr>
+<td>ABC</td>
+<td>字符串ABC</td>
+</tr>
+<tr>
+<td>[ABC]</td>
+<td>A、B、C其中一个字符</td>
+</tr>
+<tr>
+<td>[A-C]</td>
+<td>从A到C的其中一个字符</td>
+</tr>
+<tr>
+<td>[^ABC]</td>
+<td>不是A、B、C的任意一个字符</td>
+</tr>
+<tr>
+<td>.</td>
+<td>任意一个字符</td>
+</tr>
+<tr>
+<td>A</td>
+<td>匹配前面的子表达式零次或多次。例如，&quot;AP&quot; 能匹配 &quot;A&quot; 以及 &quot;APP&quot;。 * 等价于{0,}。</td>
+</tr>
+<tr>
+<td>A+</td>
+<td>匹配前面的子表达式一次或多次。例如，&quot;AP+&quot; 能匹配 &quot;AP&quot; 以及 &quot;APP&quot;，但不能匹配 &quot;A&quot;。+ 等价于 {1,}。</td>
+</tr>
+<tr>
+<td>A?</td>
+<td>匹配前面的子表达式零次或一次。例如，&quot;do(es)?&quot; 可以匹配 &quot;do&quot; 或 &quot;does&quot; 中的&quot;do&quot; 。? 等价于 {0,1}。</td>
+</tr>
+<tr>
+<td>^A</td>
+<td>以A开始的字符串</td>
+</tr>
+<tr>
+<td>A$</td>
+<td>以A结束的字符串</td>
+</tr>
+<tr>
+<td>`ABC</td>
+<td>DEF</td>
+<td>GHI`</td>
+<td>ABC或DEF或GHI</td>
+</tr>
+<tr>
+<td>A{2}</td>
+<td>2个A（AA）</td>
+</tr>
+<tr>
+<td>A{2,}</td>
+<td>2个以上A（AA、AAA、AAAA、...）</td>
+</tr>
+<tr>
+<td>A{2,3}</td>
+<td>2个～3个A（AA、AAA）</td>
+</tr>
+<tr>
+<td>[\b]</td>
+<td>退格</td>
+</tr>
+</tbody>
+</table>
+<p>反斜杠（\）后面的字符有特殊的意思。</p>
+<table>
+<thead>
+<tr>
+<th>形式</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\b</td>
+<td>空格等单词的分隔</td>
+</tr>
+<tr>
+<td>\B</td>
+<td>\b以外的字符</td>
+</tr>
+<tr>
+<td>\cA</td>
+<td>Ctrl-A</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>任意数值（等同于 [0-9]）</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>数值以外的字符（等同于[^0-9]）</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页符</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行符</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>一个字符的分隔符（[ \f\n\r\t\v]）</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>\s以外的一个字符</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>制表符（TAB符）</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>垂直制表符</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>英文字母和数字（等同于 [A-Za-z0-9_]）</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>\w以外的字符</td>
+</tr>
+<tr>
+<td>\2</td>
+<td>匹配第2个 (...) 的字符串</td>
+</tr>
+<tr>
+<td>\o033</td>
+<td>8进制数033的字符</td>
+</tr>
+<tr>
+<td>\x1b</td>
+<td>16进制数1b的字符</td>
+</tr>
+<tr>
+<td>\其他</td>
+<td>其他字符自身</td>
+</tr>
+</tbody>
+</table>
+<p>RegExp() 的第2个参数，或是写在 /.../ 后面的 i、g、m 的意义如下。</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>i</td>
+<td>不区分大小写</td>
+</tr>
+<tr>
+<td>g</td>
+<td>全文匹配（不光匹配第一个）</td>
+</tr>
+<tr>
+<td>m</td>
+<td>搜索复数行</td>
+</tr>
+</tbody>
+</table>
+<h3><span class="header-link" id="匹配">匹配</span></h3><ul>
+<li>regexp.exec([str])</li>
+<li>str.match(regexp)</li>
+</ul>
+<p>执行匹配，返回匹配部分的字符串（指定 g 选项时返回数组）。exec() 里省略 str 的时候，会用在 RegExp.input 里指定的字符串进行匹配。</p>
+<pre><code class="lang-js">re = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">"[0-9]+"</span>);
+<span class="hljs-built_in">document</span>.write(re.exec(<span class="hljs-string">"abc123"</span>) + <span class="hljs-string">"&lt;br&gt;"</span>);         <span class="hljs-comment">// → 123</span>
+<span class="hljs-built_in">document</span>.write(<span class="hljs-string">"abc123"</span>.match(re) + <span class="hljs-string">"&lt;br&gt;"</span>);        <span class="hljs-comment">// → 123</span>
+<span class="hljs-built_in">document</span>.write(<span class="hljs-string">"abc123"</span>.match(<span class="hljs-regexp">/[0-9]+/</span>) + <span class="hljs-string">"&lt;br&gt;"</span>);  <span class="hljs-comment">// → 123</span>
+</code></pre>
+<ul>
+<li>regexp.compile(patern[, flag])</li>
+</ul>
+<p>把正则表达式预先编译为内部表达式以提高匹配的速度。（个人感觉没什么区别）</p>
+<pre><code class="lang-js">re = <span class="hljs-keyword">new</span> RegExp(<span class="hljs-string">""</span>);
+re.compile(<span class="hljs-string">"[0-9]+"</span>);
+<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1000</span>; i++) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">str</span>.<span class="hljs-built_in">match</span>(re)) {
+        :
+    }
+}
+</code></pre>
+<ul>
+<li>RegExp.input</li>
+</ul>
+<p>把匹配字符串传递给 exec() 。等同与 $_ 。</p>
+<pre><code class="lang-js">re = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">"[0-9]+"</span>);
+<span class="hljs-built_in">RegExp</span>.input = <span class="hljs-string">"abc123"</span>;
+<span class="hljs-built_in">document</span>.write(<span class="hljs-built_in">RegExp</span>.exec() + <span class="hljs-string">"&lt;br&gt;"</span>);
+<span class="hljs-built_in">RegExp</span>.input = <span class="hljs-string">"xyz456"</span>;
+<span class="hljs-built_in">document</span>.write(<span class="hljs-built_in">RegExp</span>.exec() + <span class="hljs-string">"&lt;br&gt;"</span>);
+</code></pre>
+<ul>
+<li>RegExp.multiline</li>
+</ul>
+<p>设定为 true 的话效果跟 m 选项一样执行复数行匹配。等同与 $* 。</p>
+<pre><code class="lang-js"><span class="hljs-built_in">RegExp</span>.multiline = <span class="hljs-literal">false</span>;
+<span class="hljs-built_in">document</span>.write(<span class="hljs-string">"123\n456\n789"</span>.match(<span class="hljs-regexp">/^456/</span>) + <span class="hljs-string">"&lt;br&gt;"</span>);
+<span class="hljs-built_in">RegExp</span>.multiline = <span class="hljs-literal">true</span>;
+<span class="hljs-built_in">document</span>.write(<span class="hljs-string">"123\n456\n789"</span>.match(<span class="hljs-regexp">/^456/</span>) + <span class="hljs-string">"&lt;br&gt;"</span>);
+</code></pre>
+<h3><span class="header-link" id="匹配结果">匹配结果</span></h3><ul>
+<li>RegExp.$n</li>
+</ul>
+<p>返回之前执行的正则表达式匹配中的第 n 个 (...) 对应的字符串。</p>
+<pre><code class="lang-js"><span class="hljs-string">"12:34:56"</span>.match(<span class="hljs-regexp">/(\d+):(\d+):(\d+)/</span>);
+<span class="hljs-built_in">document</span>.write(<span class="hljs-built_in">RegExp</span>.$<span class="hljs-number">1</span> + <span class="hljs-string">"&lt;br&gt;"</span>);   <span class="hljs-comment">// → 12</span>
+<span class="hljs-built_in">document</span>.write(<span class="hljs-built_in">RegExp</span>.$<span class="hljs-number">2</span> + <span class="hljs-string">"&lt;br&gt;"</span>);   <span class="hljs-comment">// → 34</span>
+<span class="hljs-built_in">document</span>.write(<span class="hljs-built_in">RegExp</span>.$<span class="hljs-number">3</span> + <span class="hljs-string">"&lt;br&gt;"</span>);   <span class="hljs-comment">// → 56</span>
+</code></pre>
+<ul>
+<li>RegExp.index</li>
+<li>RegExp.lastIndex</li>
+</ul>
+<p>index 是匹配到的字符串的起始位置，lastIndex 是匹配到的字符串的后面一个字符的位置。开始的字符的位置为 0 。</p>
+<pre><code class="lang-js">re = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">"123"</span>);
+<span class="hljs-string">"abc123def"</span>.match(re);
+<span class="hljs-built_in">document</span>.write(<span class="hljs-built_in">RegExp</span>.index);     <span class="hljs-comment">// → 3</span>
+<span class="hljs-built_in">document</span>.write(<span class="hljs-built_in">RegExp</span>.lastIndex); <span class="hljs-comment">// → 6</span>
+</code></pre>
+<ul>
+<li>RegExp.lastMatch</li>
+<li>RegExp.leftContext</li>
+<li>RegExp.rightContext</li>
+<li>RegExp.lastParen</li>
+</ul>
+<p>返回之前执行的字符串匹配中的，最后匹配到的字符串（lastMatch）、匹配到的字符串的左边的字符串（leftContext）、匹配到的字符串的右边的字符串（rightContext），以及最后的 (...) 所对应的字符串（lastParen）。它们分别等同于 $&amp;、$`、$&#39;、$+ 。</p>
+<pre><code class="lang-js"><span class="hljs-string">"abc123def"</span>.match(<span class="hljs-regexp">/(123)/</span>);
+<span class="hljs-built_in">document</span>.write(<span class="hljs-built_in">RegExp</span>.lastMatch + <span class="hljs-string">"&lt;br&gt;"</span>);    <span class="hljs-comment">// → 123</span>
+<span class="hljs-built_in">document</span>.write(<span class="hljs-built_in">RegExp</span>.leftContext + <span class="hljs-string">"&lt;br&gt;"</span>);  <span class="hljs-comment">// → abc</span>
+<span class="hljs-built_in">document</span>.write(<span class="hljs-built_in">RegExp</span>.rightContext + <span class="hljs-string">"&lt;br&gt;"</span>); <span class="hljs-comment">// → def</span>
+<span class="hljs-built_in">document</span>.write(<span class="hljs-built_in">RegExp</span>.lastParen + <span class="hljs-string">"&lt;br&gt;"</span>);    <span class="hljs-comment">// → 123</span>
+</code></pre>
+
+    
+</div>
+
+</body>
+</html>

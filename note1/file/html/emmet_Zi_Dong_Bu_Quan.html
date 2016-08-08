@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>kangcafe.GitHub.io by KANGCAFE</title>
+    <link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" href="../../../templates/css/base.css">
+    <link rel="stylesheet" href="../../../templates/css/mark.css">
+    <link rel="stylesheet" href="../../../font/iconfont.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta property="wb:webmaster" content="7e72a191affb5721"/>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+<header class="header-content">
+    <h1>
+        <a class="thistitle" href="https://github.com/kangcafe" target="_blank">kang`s cafe<span
+                class="spanFont mr10px iconfont icon-github"></span>
+        </a>
+    </h1>
+    <small>
+        <a href="../../../note/index.html" target="_blank">BACK HOME</a>
+    </small>
+    <table>
+        <tbody>
+        <tr>
+            <td>创建时间：2016-08-05</td>
+        </tr>
+        <tr>
+            <td>修改时间：2016-08-05</td>
+        </tr>
+        </tbody>
+    </table>
+</header>
+
+
+<hr/>
+<div class="params" id="readme">
+    
+    <h1><span class="header-link" id="Emmet">Emmet</span></h1><p>Emmet的前身是大名鼎鼎的Zen coding。</p>
+<h2><span class="header-link" id="html">html</span></h2><h3><span class="header-link" id="初始化">初始化</span></h3><table>
+<thead>
+<tr>
+<th>输入</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>html:5 或!</td>
+<td>用于HTML5文档类型</td>
+</tr>
+<tr>
+<td>html:xt</td>
+<td>用于XHTML过渡文档类型</td>
+</tr>
+<tr>
+<td>html:4s</td>
+<td>用于HTML4严格文档类型</td>
+</tr>
+</tbody>
+</table>
+<h3><span class="header-link" id="添加类、id、文本和属性">添加类、id、文本和属性</span></h3><table>
+<thead>
+<tr>
+<th>输入</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p#foo</td>
+<td><code>&lt;p id=&quot;foo&quot;&gt;&lt;/p&gt;</code></td>
+</tr>
+<tr>
+<td>p.bar</td>
+<td><code>&lt;p class=&quot;bar&quot;&gt;&lt;/p&gt;</code></td>
+</tr>
+<tr>
+<td>h1{foo}</td>
+<td><code>&lt;h1&gt;foo&lt;/h1&gt;</code></td>
+</tr>
+<tr>
+<td>a[href=#]</td>
+<td><code>&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h3><span class="header-link" id="嵌套">嵌套</span></h3><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>用途</th>
+<th>输入</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&gt;</td>
+<td>子元素符号，表示嵌套的元素</td>
+<td>p&gt;span</td>
+<td><code>&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;</code></td>
+</tr>
+<tr>
+<td>+</td>
+<td>同级标签符号</td>
+<td>p+span</td>
+<td><code>&lt;p&gt;&lt;/p&gt;&lt;span&gt;&lt;/span&gt;</code></td>
+</tr>
+<tr>
+<td>^</td>
+<td>可以使该符号前的标签提升一行</td>
+<td>p&gt;span^div</td>
+<td><code>&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;div&gt;&lt;/div&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h3><span class="header-link" id="分组">分组</span></h3><p>通过嵌套和括号快速生成代码块</p>
+<pre><code class="lang-html">(.foo&gt;h1)+(.bar&gt;h2)
+==&gt;
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"foo"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"bar"</span>&gt;
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span>
+&lt;<span class="hljs-regexp">/div&gt;</span>
+</code></pre>
+<h3><span class="header-link" id="隐式标签">隐式标签</span></h3><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>li</td>
+<td>用于ul和ol中</td>
+</tr>
+<tr>
+<td>tr</td>
+<td>用于table、tbody、thead和tfoot中</td>
+</tr>
+<tr>
+<td>td</td>
+<td>用于tr中</td>
+</tr>
+<tr>
+<td>option</td>
+<td>用于select和optgroup中</td>
+</tr>
+</tbody>
+</table>
+<h3><span class="header-link" id="定义多个元素">定义多个元素</span></h3><pre><code class="lang-html">ul&gt;li*<span class="hljs-number">3</span>
+==&gt;
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span>
+</code></pre>
+<h3><span class="header-link" id="定义多个带属性的元素">定义多个带属性的元素</span></h3><pre><code class="lang-html">ul&gt;<span class="hljs-keyword">li</span>.item$*3
+==&gt;
+&lt;ul&gt;
+  &lt;<span class="hljs-keyword">li</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">"item1"</span>&gt;&lt;/<span class="hljs-keyword">li</span>&gt;
+  &lt;<span class="hljs-keyword">li</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">"item2"</span>&gt;&lt;/<span class="hljs-keyword">li</span>&gt;
+  &lt;<span class="hljs-keyword">li</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">"item3"</span>&gt;&lt;/<span class="hljs-keyword">li</span>&gt;
+&lt;/ul&gt;
+</code></pre>
+<h2><span class="header-link" id="CSS缩写">CSS缩写</span></h2><h3><span class="header-link" id="值">值</span></h3><p>比如要定义元素的宽度，只需输入w100，即可生成 </p>
+<p>Css代码 
+width: 100px;  </p>
+<p>除了px，也可以生成其他单位，比如输入h10p+m5e，结果如下： </p>
+<p>Css代码 
+height: 10%;<br>margin: 5em;  </p>
+<p>单位别名列表： </p>
+<p>p 表示%
+e 表示 em
+x 表示 ex</p>
+<ol>
+<li>附加属性 </li>
+</ol>
+<p>可能你之前已经了解了一些缩写，比如 @f，可以生成： </p>
+<p>Css代码 
+@font-face {<br>  font-family:;<br>  src:url();<br>}  </p>
+<p>一些其他的属性，比如background-image、border-radius、font、@font-face,text-outline、text-shadow等额外的选项，可以通过“+”符号来生成，比如输入@f+，将生成： </p>
+<p>Css代码 
+@font-face {<br>  font-family: &#39;FontName&#39;;<br>  src: url(&#39;FileName.eot&#39;);<br>  src: url(&#39;FileName.eot?#iefix&#39;) format(&#39;embedded-opentype&#39;),<br>     url(&#39;FileName.woff&#39;) format(&#39;woff&#39;),<br>     url(&#39;FileName.ttf&#39;) format(&#39;truetype&#39;),<br>     url(&#39;FileName.svg#FontName&#39;) format(&#39;svg&#39;);<br>  font-style: normal;<br>  font-weight: normal;<br>}  </p>
+<ol>
+<li>模糊匹配 </li>
+</ol>
+<p>如果有些缩写你拿不准，Emmet会根据你的输入内容匹配最接近的语法，比如输入ov:h、ov-h、ovh和oh，生成的代码是相同的： </p>
+<p>Css代码 
+overflow: hidden;  </p>
+<ol>
+<li>供应商前缀 </li>
+</ol>
+<p>如果输入非W3C标准的CSS属性，Emmet会自动加上供应商前缀，比如输入trs，则会生成： </p>
+<p>Css代码 
+-webkit-transform: ;<br>-moz-transform: ;<br>-ms-transform: ;<br>-o-transform: ;<br>transform: ;  </p>
+<p>你也可以在任意属性前加上“-”符号，也可以为该属性加上前缀。比如输入-super-foo： </p>
+<p>Css代码 
+-webkit-super-foo: ;<br>-moz-super-foo: ;<br>-ms-super-foo: ;<br>-o-super-foo: ;<br>super-foo: ;  </p>
+<p>如果不希望加上所有前缀，可以使用缩写来指定，比如-wm-trf表示只加上-webkit和-moz前缀： </p>
+<p>Css代码 
+-webkit-transform: ;<br>-moz-transform: ;<br>transform: ;  </p>
+<p>前缀缩写如下： </p>
+<p>w 表示 -webkit-
+m 表示 -moz-
+s 表示 -ms-
+o 表示 -o-</p>
+<ol>
+<li>渐变 </li>
+</ol>
+<p>输入lg(left, #fff 50%, #000)，会生成如下代码： </p>
+<p>Css代码 
+background-image: -webkit-gradient(linear, 0 0, 100% 0, color-stop(0.5, #fff), to(#000));<br>background-image: -webkit-linear-gradient(left, #fff 50%, #000);<br>background-image: -moz-linear-gradient(left, #fff 50%, #000);<br>background-image: -o-linear-gradient(left, #fff 50%, #000);<br>background-image: linear-gradient(left, #fff 50%, #000);  </p>
+<ul>
+<li><a href="http://docs.emmet.io/">http://docs.emmet.io/</a></li>
+</ul>
+
+    
+</div>
+
+</body>
+</html>
