@@ -9,6 +9,7 @@ var fs              = require('fs'),
     highlight       = require('highlight.js'),
     transliteration = require('transliteration'),
     moment          = require('moment'),
+    crypto          = require('crypto'),
     toc             = require('marked-toc');
 
 var folderMenu = ['note', 'mood'];
@@ -65,13 +66,15 @@ function creatMdToHtml(op, folder) {
             separator: '_'
         }),
         fileName         = path.basename(outPath, '.md'),
-        FileNameBuffer   = new Buffer(englishToPinYin).toString('base64'),
+        createHasher     = crypto.createHash("md5"),
         htmlFileName     = path.join(englishToPinYin + '.html'),
         relativePath     = path.relative(outPath, path.join(__dirname, folder)),
         template         = '<%= depth %><%= bullet %>[<%= heading %>](#<%= url %>)\n',
         tocMd            = toc.insert(fileFs, {template: template}),
         mdToHtml         = markdown(tocMd),
         creatFilePath    = path.join(path.dirname(outPath), htmlFileName);
+
+    createHasher.update(path.basename(outPath, path.extname(outPath)));
 
     fs.writeFileSync(
         creatFilePath,
@@ -80,8 +83,8 @@ function creatMdToHtml(op, folder) {
             {
                 locals  : {
                     fileName    : fileName,
-                    fileId      : FileNameBuffer,
-                    httpAddr    : 'http://kangcafe.com/'+path.relative(__dirname,creatFilePath),
+                    fileId      : createHasher.digest('hex'),
+                    httpAddr    : 'http://kangcafe.com/' + path.relative(__dirname, creatFilePath),
                     content     : mdToHtml,
                     relativePath: relativePath,
                     birthtime   : birthtime,

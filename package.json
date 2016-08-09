@@ -12,6 +12,7 @@
     "highlight.js": "^9.5.0",
     "marked-toc": "^0.3.0",
     "moment": "^2.14.1",
-    "transliteration": "^1.1.6"
+    "transliteration": "^1.1.6",
+    "uuid": "^2.0.2"
   }
 }

@@ -161,14 +161,36 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
     border-collapse    : separate
 }
 
-pre {
-    background  : #f5f5f5;
-    overflow    : visible;
-    font-family : Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    font-size   : 12px;
-    color       : #333;
-    word-wrap   : normal;
-    white-space : pre;
+#back-to-top {
+    position      : fixed;
+    right         : 10px;
+    bottom        : 10px;
+    width         : 50px;
+    height        : 50px;
+    background    : #ddd;
+    color         : rgba(39, 174, 96, 0.6);
+    text-align    : center;
+    border-radius : 2px;
+    z-index       : 1;
+    display       : none;
+}
+
+#back-to-top i {
+    width                   : 30px;
+    height                  : 30px;
+    line-height             : 30px;
+    top                     : 10px;
+    left                    : 10px;
+    color                   : #fff;
+    position                : absolute;
+    font-size               : 24px;
+    cursor                  : pointer;
+    text-rendering          : auto;
+    display                 : inline-block;
+    font-style              : normal;
+    font-weight             : 400;
+    -webkit-font-smoothing  : antialiased;
+    -moz-osx-font-smoothing : grayscale;
 }
 
 p, ul, ol, dl, table, pre {
@@ -192,16 +214,92 @@ th, td {
 }
 
 .header {
-    margin     : 0 0 20px 0;
-    padding    : 5px;
-    background : #fff;
+    margin         : 0;
+    padding        : 0;
+    background     : rgba(255, 255, 255, 0.6);
+    text-transform : uppercase;
+    box-shadow     : rgba(0, 0, 0, .1) 0 1px 5px;
 }
 
 .header-content {
-    width  : 700px;
-    margin : auto;
+    text-align   : center;
+    border-right : 1px solid #f3f3f3;
+    border-left  : 1px solid #f3f3f3;
 }
 
 .display-inline {
     display : inline;
+}
+
+.w-900 {
+    width  : 900px;
+    margin : 0 auto;
+}
+
+.div-body {
+    line-height : 1.3;
+    margin      : 30px auto;
+    padding     : 20px;
+    box-sizing  : border-box;
+    /*border        : 1px solid #ccc;
+    background    : #92b3a2 url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAgAAZABkAAD/7AARRHVja3kAAQAEAAAAPAAA/+4AJkFkb2JlAGTAAAAAAQMAFQQDBgoNAAABvwAAAeAAAAJRAAADUf/bAIQABgQEBAUEBgUFBgkGBQYJCwgGBggLDAoKCwoKDBAMDAwMDAwQDA4PEA8ODBMTFBQTExwbGxscHx8fHx8fHx8fHwEHBwcNDA0YEBAYGhURFRofHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8f/8IAEQgAMQAxAwERAAIRAQMRAf/EAIgAAQEBAQAAAAAAAAAAAAAAAAEAAgUBAQEBAQAAAAAAAAAAAAAAAAABAgQQAQEBAAAAAAAAAAAAAAAAAFAwIREBAAAAAAAAAAAAAAAAAAAAUBIBAAAAAAAAAAAAAAAAAAAAUBMAAQQBAwMFAQEAAAAAAAAAAQARITFBEFFxYYGhUPCRsdHB4f/aAAwDAQACEQMRAAAB7WeaIhAhIBIhAiAiEBIAETImkFAISECIiIgNGRP/2gAIAQEAAQUCJ2H/2gAIAQIAAQUCR//aAAgBAwABBQJH/9oACAECAgY/Akf/2gAIAQMCBj8CR//aAAgBAQEGPwJH/9oACAEBAwE/IdPbKdOV20ZeV31nrr4X0dPrWdPYUaT0WITLlRerjfQv8aFtIXBC/lGkbKNhDOv/2gAIAQIDAT8h9R//2gAIAQMDAT8h9R//2gAMAwEAAhEDEQAAEBJAIBABgABJAJAJCAIIJBIBJJ//2gAIAQEDAT8QgCJBzT82jIIORPCBMgM4qh5wjQ4z/iojBoCkziXA3THb5TBpDgHNBQonoKVsXDCXZ7kR9Jy4yNC4wgSxZyDLBkWabvh1w80CSzXYRYZcw5No5dtmW+ERFocSAzU8QEIMO7dRv9/qFSe4CYfzogXIFg1N9US5eOrsqggQK5NoZMDfcr2N/qckmScbTcgKwlg82XVSxxD9O6dkIHJHJZSXc5IjIQcEuIJgAQPh3XsN+IE3jfJ3RMJHLL9EHg9KvygJnJeiZygwJ3NAosoO++U6q0+z+rwf5pa8f4sd/wA0/9oACAECAwE/EPUf/9oACAEDAwE/EPUf/9k=) repeat 0 0;
+    border-radius : 5px;*/
+}
+
+*, *:after, *:before {
+    -webkit-box-sizing : border-box;
+    -moz-box-sizing    : border-box;
+    box-sizing         : border-box;
+}
+
+.div-page {
+    padding       : 50px 20px 50px 20px;
+    background    : #fff;
+    position      : relative;
+    box-sizing    : content-box;
+    margin-bottom : 20px;
+    box-shadow    : 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.div-page:before,
+.div-page:after {
+    content           : '';
+    position          : absolute;
+    z-index           : -2;
+    bottom            : 15px;
+    left              : 10px;
+    width             : 50%;
+    height            : 20%;
+    box-shadow        : 0 15px 10px rgba(0, 0, 0, 0.7);
+    -webkit-transform : rotate(-3deg);
+    -moz-transform    : rotate(-3deg);
+    -ms-transform     : rotate(-3deg);
+    -o-transform      : rotate(-3deg);
+    transform         : rotate(-3deg);
+}
+
+.div-page:after {
+    right             : 10px;
+    left              : auto;
+    -webkit-transform : rotate(3deg);
+    transform         : rotate(3deg);
+}
+
+.div-page a {
+    display : block;
+}
+
+.div-page h3 {
+    color          : #9a9b92;
+    margin         : 0;
+    padding        : 0;
+    text-transform : uppercase;
+    font-weight    : 700;
+    font-size      : 14px;
+    line-height    : 35px;
+    letter-spacing : 1px;
+}
+
+body{
+    background: #fffbd6 !important;
 }

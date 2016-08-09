@@ -3,10 +3,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>kangcafe.GitHub.io by KANGCAFE</title>
-    <link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
-    <link rel="stylesheet" href="../stylesheets/styles.css">
-    <link rel="stylesheet" href="../font/iconfont.css">
-    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <link href="../favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/font/iconfont.css">
+    <link rel="stylesheet" href="../static/css/github-light.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta property="wb:webmaster" content="7e72a191affb5721"/>
     <!--[if lt IE 9]>
@@ -14,18 +14,22 @@
     <![endif]-->
 </head>
 <body>
-<h1><a class="thistitle" href="https://github.com/kangcafe" target="_blank">kang`s cafe<span
-        class="spanFont mr10px iconfont icon-github"></span></a><small><a href="../index.html" target="_blank">BACK HOME</a></small></h1>
+<div class="w-900">
+    <h1><a class="thistitle" href="https://github.com/kangcafe" target="_blank">kang`s cafe<span
+            class="spanFont mr10px iconfont icon-github"></span></a>
+        <small><a href="../index.html" target="_blank">BACK HOME</a></small>
+    </h1>
 
-<ul>
-    {% for key, val in content.linkList|reverse %}
-    <li>
-        <a href="./{{val.path}}" class="col-xs-12 link -download">
-            {{ val.fileName }}
-        </a>
-    </li>
-    {% endfor %}
-</ul>
+    <ul>
+        {% for key, val in content.linkList|reverse %}
+        <li>
+            <a href="./{{val.path}}" class="col-xs-12 link -download">
+                {{ val.fileName }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 <footer>
     <a class="forkme" href="https://github.com/kangcafe" target="_blank">Kang`s Cafe on GitHub</a>
 </footer>
