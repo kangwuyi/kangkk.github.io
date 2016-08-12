@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>kangcafe.GitHub.io by KANGCAFE</title>
+    <link href="../../../favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" href="../../templates/css/base.css">
+    <link rel="stylesheet" href="../../templates/css/mark.css">
+    <link rel="stylesheet" href="../../../static/font/iconfont.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta property="wb:webmaster" content="7e72a191affb5721"/>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+<header class="header">
+    <div class="header-content w-900">
+        <h1 class="display-inline">
+            <a class="thistitle" href="https://github.com/kangcafe" target="_blank">kang`s cafe<span
+                    class="spanFont mr10px iconfont icon-github"></span>
+            </a>
+        </h1>
+        <small>
+            <a href="../../index.html">BACK HOME</a>
+        </small>
+    </div>
+</header>
+
+<div class="params div-body w-900" id="readme">
+    
+    <h1><span class="header-link" id="内存">内存</span></h1><h2><span class="header-link" id="内存有效管理">内存有效管理</span></h2><p>相关问题：</p>
+<ul>
+<li>内存泄漏</li>
+<li>频繁的垃圾收集暂停</li>
+<li>整体内存膨胀</li>
+</ul>
+<h2><span class="header-link" id="内存泄漏">内存泄漏</span></h2><blockquote>
+<p>Delete一个Object的属性会让此对象变慢（多耗费15倍的内存）</p>
+</blockquote>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> o = { x: <span class="hljs-string">'y'</span> };
+<span class="hljs-keyword">delete</span> o.x; <span class="hljs-comment">// 此时o会成一个慢对象</span>
+o.x;
+<span class="hljs-comment">//解决方法:</span>
+<span class="hljs-keyword">var</span> o = { x: <span class="hljs-string">'y'</span> };
+o = <span class="hljs-literal">null</span>;
+</code></pre>
+<blockquote>
+<p>在闭包中引入闭包外部的变量时，当闭包结束时此对象无法被垃圾回收（GC）。</p>
+</blockquote>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> a = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">var</span> largeStr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">1000000</span>).join(<span class="hljs-string">'x'</span>);
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> largeStr;
+  }
+}();
+</code></pre>
+<blockquote>
+<p>当原有的COM被移除时，子结点引用没有被移除则无法回收（DOM泄露）</p>
+</blockquote>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> <span class="hljs-keyword">select</span> = document.querySelector;
+<span class="hljs-keyword">var</span> treeRef = <span class="hljs-keyword">select</span>(<span class="hljs-string">'#tree'</span>);
+<span class="hljs-comment">//在COM树中leafRef是treeFre的一个子结点</span>
+<span class="hljs-keyword">var</span> leafRef = <span class="hljs-keyword">select</span>(<span class="hljs-string">'#leaf'</span>);
+<span class="hljs-keyword">var</span> body = <span class="hljs-keyword">select</span>(<span class="hljs-string">'body'</span>);
+body.removeChild(treeRef);    <span class="hljs-comment">// #tree不能被回收入，因为treeRef还在</span>
+<span class="hljs-comment">//解决方法:</span>
+treeRef = <span class="hljs-literal">null</span>;    <span class="hljs-comment">// tree还不能被回收，因为叶子结果leafRef还在</span>
+leafRef = <span class="hljs-literal">null</span>;    <span class="hljs-comment">// 现在#tree可以被释放了。</span>
+</code></pre>
+<blockquote>
+<p>定时器也是常见产生内存泄露的地方（Timers计（定）时器泄露）</p>
+</blockquote>
+<pre><code class="lang-js"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">90000</span>; i++) {
+  <span class="hljs-keyword">var</span> buggyObject = {
+    callAgain: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">var</span> ref = <span class="hljs-keyword">this</span>;
+      <span class="hljs-keyword">var</span> val = setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+        ref.callAgain();
+      }, <span class="hljs-number">90000</span>);
+    }
+  }
+  buggyObject.callAgain();    <span class="hljs-comment">// 虽然你想回收但是timer还在</span>
+  buggyObject = <span class="hljs-literal">null</span>;
+}
+</code></pre>
+<h2><span class="header-link" id="references">References</span></h2><section class="footnote-box"><ul></ul></section>
+
+
+    
+</div>
+<footer class="footer w-900">
+    <a href="#" id="back-to-top" style="display: inline;"><i class="iconfont icon-chevronup"></i></a>
+    <a class="forkme" href="https://github.com/kangcafe" target="_blank">Kang`s Cafe on GitHub</a>
+    <div class="ds-thread" data-thread-key="26e70e1a-1ecb-4e58-a436-dd03a005b50e" data-title="内存" data-url="http://kangcafe.com/note/file/js/26e70e1a-1ecb-4e58-a436-dd03a005b50e.html"></div>
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:"kangcafe"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <section class="internationalLicense">
+      <a class="imgLicense" rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+        <img alt="Creative Commons License" style="border-width:0" src="../../img/licensebuttons.png" />
+      </a>
+        <p class="wordsLicense">This work is licensed under a<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+          Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+        </a>. Reprint the 《<a href="内存">内存</a>》need signature
+          '<a href="http://kangcafe.com/">kc</a>', and the url is <a href="http://kangcafe.com/note/file/js/26e70e1a-1ecb-4e58-a436-dd03a005b50e.html">http://kangcafe.com/note/file/js/26e70e1a-1ecb-4e58-a436-dd03a005b50e.html</a>.</p>
+        <p class="stmt">
+          <em>这里的大多数文章都写于很多年以前，十年历程，多于怀旧（@2006-2016）。</em>
+          <br>Copyright (C) 2016 KangCafe.com, All Rights Reserved <br>Made in China.		<span class="flinks">
+            ✎
+            <a href="../../../index.html">Home</a> –
+            <a href="../../../mood/index.html">Mood</a> –
+            <a href="../../../note/index.html">Note</a>.
+          </span>
+        </p>
+    </section>
+</footer>
+<script type="application/javascript" src="../../../static/js/jquery.min.js"></script>
+<script type="text/javascript">
+    !function ($) {
+        $(window).scroll(function () {
+            $(this).scrollTop() > 100 ? $("#back-to-top").fadeIn() : $("#back-to-top").fadeOut()
+        }), $("#back-to-top").on("click", function (b) {
+            return b.preventDefault(), $("html, body").animate({scrollTop: 0}, 100), !1
+        });
+    }(jQuery);
+</script>
+</body>
+</html>

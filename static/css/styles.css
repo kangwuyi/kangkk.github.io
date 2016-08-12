@@ -199,7 +199,13 @@ hr {
   height:1px;
   margin:0 0 20px;
 }
-
+.hr-link{
+  background-color: #bbb;
+  background-image: -webkit-linear-gradient(0deg, #fff, #bbb, #fff);
+}
+td.no-border{
+  border: none;
+}
 footer {
   width:270px;
   float:left;
@@ -341,4 +347,8 @@ footer {
   -o-box-shadow: 0 1px 3px rgba(54, 54, 68, 0.8), inset 0 -1px 3px rgba(246, 247, 248, 0.5);
   box-shadow: 0 1px 3px rgba(54, 54, 68, 0.8), inset 0 -1px 3px rgba(246, 247, 248, 0.5);
   border-collapse: separate
+}
+.w-900 {
+  width: 900px;
+  margin: 0 auto;
 }

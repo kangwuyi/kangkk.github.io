@@ -1,0 +1,293 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>kangcafe.GitHub.io by KANGCAFE</title>
+    <link href="../../../favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" href="../../templates/css/base.css">
+    <link rel="stylesheet" href="../../templates/css/mark.css">
+    <link rel="stylesheet" href="../../../static/font/iconfont.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta property="wb:webmaster" content="7e72a191affb5721"/>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+<header class="header">
+    <div class="header-content w-900">
+        <h1 class="display-inline">
+            <a class="thistitle" href="https://github.com/kangcafe" target="_blank">kang`s cafe<span
+                    class="spanFont mr10px iconfont icon-github"></span>
+            </a>
+        </h1>
+        <small>
+            <a href="../../index.html">BACK HOME</a>
+        </small>
+    </div>
+</header>
+
+<div class="params div-body w-900" id="readme">
+    
+    <h1><span class="header-link" id="bem">BEM</span></h1><!-- toc -->
+<section><div class="mdToc"><ul>
+<li><a href="#block">Block</a></li>
+<li><a href="#element">Element</a></li>
+<li><a href="#modifier">Modifier</a></li>
+<li><a href="#约定">约定</a></li>
+<li><a href="#实践">实践</a></li>
+<li><a href="#构建bem">构建BEM</a></li>
+<li><a href="#cssreset">CssReset</a></li>
+<li><a href="#参考">参考</a></li>
+</ul>
+</div></section>
+
+<!-- toc stop -->
+<p> 当我们构建一个小的web应用的时候，怎样合理的组织页面样式并不是一个大的问题，而一但web应用体量逐渐增大的时候，就需要一定的规范和技巧来减少大的应用开发过程中<code>front-end developers</code>和<code>back-end developers</code>的联调消耗，应对这种场景由此产生了SMACSS<sup id="footnoteUp_1" data-desc="smacss_desc" class="reference"><a class="footnoteUp" href="#footnoteDo_1">[1]</a></sup>、OOCSS<sup id="footnoteUp_2" data-desc="oocss_desc" class="reference"><a class="footnoteUp" href="#footnoteDo_2">[2]</a></sup>以及BEM<sup id="footnoteUp_3" data-desc="bem_web_desc" class="reference"><a class="footnoteUp" href="#footnoteDo_3">[3]</a></sup>等技术。</p>
+<blockquote>
+<p>BEM Methodology will massively improve code maintainability and speed up the development process<sup id="footnoteUp_4" data-desc="BEM_Methodology_desc" class="reference"><a class="footnoteUp" href="#footnoteDo_4">[4]</a></sup>.</p>
+</blockquote>
+<p><code>BEM</code>是<code>Block</code>、<code>Element</code>和<code>Modifier</code>的缩写，其思想是通过模块化命名dom元素进行css样式的管理，以增强css和类名的可读性和易用性（所以这种命名方式只能用于classes而不能用于IDs）。</p>
+<h2><span class="header-link" id="block">Block</span></h2><p>这里的<code>Block</code>是抽象的产物，按照<a href="http://joshmedeski.com/">Josh Medeski</a>的说法：‘The block is the container or context where the element finds itself. <sup id="footnoteUp_5" data-desc="block_desc" class="reference"><a class="footnoteUp" href="#footnoteDo_5">[5]</a></sup>’，<a href="https://en.bem.info/">BEM</a>解释在整体web应用中任何一个模块都是一个对象，即<code>Block</code>（模块对象），每一个模块一一对应相应的css样式，比如一个简洁的<a href="https://www.baidu.com/">百度</a>页面：</p>
+<p><img src="../../img/bem/1.png" alt="百度"></p>
+<p>将它的每一部分都进行边框线划分：</p>
+<p><img src="../../img/bem/2.png" alt="百度"></p>
+<p>此时按照<a href="https://en.bem.info/">BEM</a>的思想，每一个边框内的元素都是一个<code>Block</code>对象，彼此之间相互独立又存在相互嵌套。假设其中的某个<code>div</code>存在<code>.content</code>类名，中间嵌套<code>input</code>。</p>
+<pre><code class="lang-html">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"content"</span>&gt;
+  &lt;input <span class="hljs-class"><span class="hljs-keyword">type</span></span>=<span class="hljs-string">"text"</span> <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"search"</span>&gt;
+&lt;/div&gt;
+</code></pre>
+<p>其css样式：</p>
+<pre><code class="lang-css"><span class="hljs-selector-class">.content</span> {<span class="hljs-comment">/* Styles */</span>}
+<span class="hljs-selector-class">.search</span> {<span class="hljs-comment">/* Styles */</span>}
+</code></pre>
+<p>看上去和我们平常组织的css样式写法并无区别，其中差异更多的是思想上的不同，也就是为下面<code>Element</code>和<code>Modifier</code>概念的引申进行铺垫。</p>
+<h2><span class="header-link" id="element">Element</span></h2><p>这里我们期望<code>Element</code>代表一个功能性的事件元素，比如：</p>
+<pre><code class="lang-html">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"content__section"</span>&gt;
+  &lt;input <span class="hljs-class"><span class="hljs-keyword">type</span></span>=<span class="hljs-string">"text"</span> <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"search__input"</span>&gt;
+&lt;/div&gt;
+</code></pre>
+<p>其css样式：</p>
+<pre><code class="lang-css"><span class="hljs-selector-class">.content__section</span> {<span class="hljs-comment">/* Styles */</span>}
+<span class="hljs-selector-class">.search__input</span> {<span class="hljs-comment">/* Styles */</span>}
+</code></pre>
+<h2><span class="header-link" id="modifier">Modifier</span></h2><p><code>Modifier</code>用于修饰，</p>
+<pre><code class="lang-html">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"content__section--featured"</span>&gt;
+  &lt;input <span class="hljs-class"><span class="hljs-keyword">type</span></span>=<span class="hljs-string">"text"</span> <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"search__input--icon"</span>&gt;
+&lt;/div&gt;
+</code></pre>
+<p>其css样式：</p>
+<pre><code class="lang-css"><span class="hljs-selector-class">.content__section--featured</span> {<span class="hljs-comment">/* Styles */</span>}
+<span class="hljs-selector-class">.search__input--icon</span> {<span class="hljs-comment">/* Styles */</span>}
+</code></pre>
+<h2><span class="header-link" id="约定">约定</span></h2><p><code>Block</code>命名通常应用常见的<code>.content</code>、<code>.header</code>、<code>.footer</code>、<code>.sidebar</code>、<code>.area</code>等，有时可能我们期望<code>Block</code>的命名能够更长且详尽一些，如<code>.content</code>变为<code>.content-box</code>，即约定可以用<code>-</code>来延长<code>Block</code>。</p>
+<pre><code class="lang-css"><span class="hljs-selector-class">.content-box</span> {<span class="hljs-comment">/* Styles */</span>}
+</code></pre>
+<p><code>Block</code>与<code>Element</code>之间连接用<code>__</code>，或者说每一个<code>Element</code>都是由<code>__</code>开始的。</p>
+<pre><code class="lang-css"><span class="hljs-selector-class">.content__section</span> {<span class="hljs-comment">/* Styles */</span>}
+</code></pre>
+<p><code>Block</code>与<code>Modifier</code>之间连接用<code>--</code>，如<code>section--featured</code>。另一个约定的规范是用<code>_</code>进行连接，如<code>section_featured</code>。</p>
+<pre><code class="lang-css"><span class="hljs-selector-class">.section--featured</span> {<span class="hljs-comment">/* Styles */</span>}
+</code></pre>
+<p>通常我们在一个div的<code>.header</code>标签里可能添加了需要修饰的<code>.header--fix</code>，但是不是所有的<code>.header</code>功能性类模块都要进行<code>.header--fix</code>处理，所以最好如下：</p>
+<pre><code class="lang-html">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"header header--fix"</span>&gt;
+  <span class="xml"><span class="hljs-comment">&lt;!-- html --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+</code></pre>
+<p><a href="https://en.bem.info/">BEM</a>的命名替换方案有<a href="http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/">Harry Roberts style</a>和<a href="http://csswizardry.com/2010/12/css-camel-case-seriously-sucks/">CamelCase style</a></p>
+<p>Harry Roberts style示例：</p>
+<pre><code class="lang-css">.<span class="hljs-keyword">block</span>-name__element-<span class="hljs-keyword">name</span>--modifier-<span class="hljs-keyword">name</span> {<span class="hljs-comment">/* Styles */</span>}
+</code></pre>
+<p>约定规范的原文如下：</p>
+<blockquote>
+<ul>
+<li>Names are written in lowercase</li>
+<li>Words within the names of BEM entities are separated by a hyphen -</li>
+<li>An element name is separated from a block name by a double underscore __</li>
+<li>Boolean modifiers are delimited by double hyphens --</li>
+<li>Key-value type modifiers are not used</li>
+</ul>
+</blockquote>
+<p>CamelCase style示例：</p>
+<pre><code class="lang-css"><span class="hljs-selector-class">.BlockName__ElementName_ModifierName</span> {<span class="hljs-comment">/* Styles */</span>}
+</code></pre>
+<h2><span class="header-link" id="实践">实践</span></h2><p>在我所阅读的<code>《How to Use BEM Methodology》</code>一文中有张图片形象的展示了如何应用<code>BEM</code>技术构建合理规范的UI，并列举了<code>XML</code>→<code>JSON</code>→<code>HTML</code>之间的对应关系。</p>
+<p><img src="../../img/bem/3.jpg" alt="BEM Example in Different Formats"></p>
+<p>XML：</p>
+<pre><code class="lang-xml">&lt;block:header&gt;
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">block:logo</span>/&gt;</span></span>
+  &lt;block:search-<span class="hljs-keyword">from</span>&gt;
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">block:input</span>/&gt;</span></span>
+    &lt;block:button/&gt;
+  <span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">block</span>&gt;</span></span>
+  &lt;block:lang-switcher/&gt;
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">block</span>&gt;</span></span>
+</code></pre>
+<p>JSON：</p>
+<pre><code class="lang-json">{
+  <span class="hljs-attribute">block</span>: <span class="hljs-string">'header'</span>,
+  content: [
+    { block: <span class="hljs-string">'logo'</span> },
+    {
+      <span class="hljs-attribute">block</span>: <span class="hljs-string">'search-form'</span>,
+      content: [
+        { block: <span class="hljs-string">'input'</span> },
+        { <span class="hljs-attribute">block</span>: <span class="hljs-string">'button'</span> }
+      ]
+    },
+    { <span class="hljs-attribute">block</span>: <span class="hljs-string">'lang-switcher'</span> }
+  ]
+}
+</code></pre>
+<p>HTML：</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">”header”</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">”header__logo”</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">class</span>=<span class="hljs-string">”header__search-from”</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">”header__search-from__input”</span> <span class="hljs-attr">type</span>=<span class="hljs-string">”input”</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">”header__search-from__button”</span> <span class="hljs-attr">type</span>=<span class="hljs-string">”button”</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">”header__lang-switcher”</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+</code></pre>
+<p>从图中我们可以看出BEM更倾向于<code>模块对象（Block）</code>和<code>语义化</code>，但这里其实也是有争议的，比如<code>Thierry Koblentz</code>就提出：&#39;If you check the W3C&#39;s &quot;<a href="https://www.w3.org/QA/Tips/goodclassnames">Tips for Webmasters</a>&quot; ,where it says &quot;Good names don&#39;t change,&quot; you&#39;ll see that the argument is about maintenance, not semantics per se<sup id="footnoteUp_6" data-desc="challenging_css_best_practices_atomic_approach" class="reference"><a class="footnoteUp" href="#footnoteDo_6">[6]</a></sup>&#39;的论证观点用于阐述HTML标签的类名不应该过分强调语义化。</p>
+<p><code>TOMISLAV MATIJEVIĆ</code>对于BEM有一个形象的比喻，他将一个<code>Block</code>看作是一个人（person）。</p>
+<p><img src="../../img/bem/4.jpg" alt="female"></p>
+<p>人具有身体部位和不同性别，这里假定描述一个女生（female）的手部（hand）、腿部（leg）和左手（hand-left）。</p>
+<p><img src="../../img/bem/5.jpg" alt="female"></p>
+<p>用SASS描述CSS：</p>
+<pre><code class="lang-scss">.<span class="hljs-class">person </span>{
+  <span class="hljs-variable">&amp;__hand</span> {<span class="hljs-comment">/* Styles */</span>}
+  <span class="hljs-variable">&amp;__leg</span> {<span class="hljs-comment">/* Styles */</span>}
+  &amp;--<span class="hljs-class">female </span>{
+    <span class="hljs-comment">/* Styles */</span>
+    <span class="hljs-variable">&amp;__hand</span> {
+      <span class="hljs-comment">/* Styles */</span>
+      &amp;--<span class="hljs-class">left </span>{<span class="hljs-comment">/* Styles */</span>}
+    }
+    <span class="hljs-variable">&amp;__leg</span> {<span class="hljs-comment">/* Styles */</span>}
+  }
+}
+</code></pre>
+<p>如果想更快速的书写样式，<code>TOMISLAV MATIJEVIĆ</code>集成了SASS书写BEM的方法：</p>
+<pre><code class="lang-scss"><span class="hljs-comment">// Block Element</span>
+<span class="hljs-comment">// @param {String} $element - Element's name</span>
+<span class="hljs-variable">@mixin</span> element($element) {
+    <span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">__</span>#{$<span class="hljs-selector-tag">element</span>} {
+        <span class="hljs-variable">@content</span>;
+    }
+}
+<span class="hljs-comment">// Block Modifier</span>
+<span class="hljs-comment">// @param {String} $modifier - Modifier's name</span>
+<span class="hljs-variable">@mixin</span> modifier($modifier) {
+    <span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-tag">--</span>#{$<span class="hljs-selector-tag">modifier</span>} {
+        <span class="hljs-variable">@content</span>;
+    }
+}
+<span class="hljs-selector-class">.person</span> {
+  <span class="hljs-variable">@include</span> element(<span class="hljs-string">'hand'</span>) {<span class="hljs-comment">/* Person hand */</span>}
+  <span class="hljs-variable">@include</span> element(<span class="hljs-string">'leg'</span>) {<span class="hljs-comment">/* Person leg */</span>}
+  <span class="hljs-variable">@include</span> modifier(<span class="hljs-string">'female'</span>) {
+    <span class="hljs-comment">/* Person female */</span>
+    <span class="hljs-variable">@include</span> element(<span class="hljs-string">'hand'</span>) {
+      <span class="hljs-comment">/* Person female hand */</span>
+      <span class="hljs-variable">@include</span> modifier(<span class="hljs-string">'left'</span>) {
+        <span class="hljs-comment">/* Person female left hand */</span>
+      }
+    }
+  }
+}
+</code></pre>
+<p>输出效果：</p>
+<pre><code class="lang-css"><span class="hljs-selector-class">.person__hand</span> {
+  <span class="hljs-comment">/* Person hand */</span>
+}
+<span class="hljs-selector-class">.person__leg</span> {
+  <span class="hljs-comment">/* Person leg */</span>
+}
+<span class="hljs-selector-class">.person--female</span> {
+  <span class="hljs-comment">/* Person female */</span>
+}
+<span class="hljs-selector-class">.person--female__hand</span> {
+  <span class="hljs-comment">/* Person female hand */</span>
+}
+<span class="hljs-selector-class">.person--female__hand--left</span> {
+  <span class="hljs-comment">/* Person female left hand */</span>
+}
+</code></pre>
+<h2><span class="header-link" id="构建bem">构建BEM</span></h2><p>构建需要使用<a href="https://en.bem.info/toolbox/enb/">ENB</a>，具体方法官网上也有详尽描述：<a href="https://en.bem.info/platform/tutorials/start-with-project-stub/">Starting your own BEM project</a>。</p>
+<h2><span class="header-link" id="cssreset">CssReset</span></h2><table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Normalize.css<sup id="footnoteUp_7" data-desc="normalize_css_desc" class="reference"><a class="footnoteUp" href="#footnoteDo_7">[7]</a></sup></td>
+<td style="text-align:left">CSS Tools<sup id="footnoteUp_8" data-desc="css_tools_desc" class="reference"><a class="footnoteUp" href="#footnoteDo_8">[8]</a></sup></td>
+<td style="text-align:left">aliceui<sup id="footnoteUp_10" data-desc="aliceui_desc" class="reference"><a class="footnoteUp" href="#footnoteDo_10">[10]</a></sup></td>
+</tr>
+</tbody>
+</table>
+<p>具体的css reset选择可以阅读<a href="http://wiseheartdesign.com/">John W. Long</a>的Modular CSS typography<sup id="footnoteUp_9" data-desc="modular_css_tyog_desc" class="reference"><a class="footnoteUp" href="#footnoteDo_9">[9]</a></sup>，也许可以提供一些灵感。</p>
+<h2><span class="header-link" id="参考">参考</span></h2><ul>
+<li><a href="https://www.smashingmagazine.com/2012/04/a-new-front-end-methodology-bem/">A New Front-End Methodology: BEM</a></li>
+<li><a href="https://github.com/veged/xjst">xjst</a></li>
+<li><a href="http://montagestudio.com/blog/2013/10/24/BEM-syntax-with-ux-in-mind/">A BEM syntax with UX in mind</a></li>
+<li><a href="http://docs.emmet.io/filters/bem/">Yandex BEM/OOCSS</a></li>
+<li><a href="http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/">MindBEMding – getting your head ’round BEM syntax</a></li>
+</ul>
+<h2><span class="header-link" id="references">References</span></h2><section class="footnote-box"><ul><li id="footnoteDo_1" class="footnoteUp"><span class="backlink" data-desc="smacss_desc"><b><a  href="#footnoteUp_1">^</a></b></span><span class="reference-text"><a href="http://smacss.com/">smacss</a>:SMACSS (pronounced “smacks”) is more style guide than rigid framework. There is no library within here for you to download or install. SMACSS is a way to examine your design process and as a way to fit those rigid frameworks into a flexible thought process. It is an attempt to document a consistent approach to site development when using CSS.</span></li><li id="footnoteDo_2" class="footnoteUp"><span class="backlink" data-desc="oocss_desc"><b><a  href="#footnoteUp_2">^</a></b></span><span class="reference-text"><a href="http://oocss.org/">oocss</a>:In the OOCSS framework the media object describes a content block containing a fixed-size media element (e.g. image or video) along with other variable-size content (e.g. text). Another example is the module object, which describes a generic content block with a required body area and optional header and footer areas.The wiki is <a href="https://github.com/stubbornella/oocss/wiki">Object Oriented CSS</a>.</span></li><li id="footnoteDo_3" class="footnoteUp"><span class="backlink" data-desc="bem_web_desc"><b><a  href="#footnoteUp_3">^</a></b></span><span class="reference-text"><a href="https://en.bem.info/">bem</a>:Frontend Development Methodology</span></li><li id="footnoteDo_4" class="footnoteUp"><span class="backlink" data-desc="BEM_Methodology_desc"><b><a  href="#footnoteUp_4">^</a></b></span><span class="reference-text"><a href="https://www.toptal.com/css/introduction-to-bem-methodology">Introduction To BEM Methodology</a>:What is BEM Methodology?</span></li><li id="footnoteDo_5" class="footnoteUp"><span class="backlink" data-desc="block_desc"><b><a  href="#footnoteUp_5">^</a></b></span><span class="reference-text"><a href="http://webdesign.tutsplus.com/articles/an-introduction-to-the-bem-methodology--cms-19403">An Introduction to the BEM Methodology</a>:Block、Element、Modifiers.</span></li><li id="footnoteDo_6" class="footnoteUp"><span class="backlink" data-desc="challenging_css_best_practices_atomic_approach"><b><a  href="#footnoteUp_6">^</a></b></span><span class="reference-text"><a href="https://www.smashingmagazine.com/2013/10/challenging-css-best-practices-atomic-approach/#regarding-unsemantic-class-names">Challenging CSS Best Practices</a>:REGARDING UNSEMANTIC CLASS NAMES.</span></li><li id="footnoteDo_7" class="footnoteUp"><span class="backlink" data-desc="normalize_css_desc"><b><a  href="#footnoteUp_7">^</a></b></span><span class="reference-text"><a href="http://necolas.github.io/normalize.css/">Normalize.css</a></span></li><li id="footnoteDo_8" class="footnoteUp"><span class="backlink" data-desc="css_tools_desc"><b><a  href="#footnoteUp_8">^</a></b></span><span class="reference-text"><a href="http://meyerweb.com/eric/tools/css/reset/">CSS Tools</a></span></li><li id="footnoteDo_9" class="footnoteUp"><span class="backlink" data-desc="modular_css_tyog_desc"><b><a  href="#footnoteUp_9">^</a></b></span><span class="reference-text"><a href="http://thesassway.com/advanced/modular-css-typography">Modular CSS typography</a></span></li><li id="footnoteDo_10" class="footnoteUp"><span class="backlink" data-desc="aliceui_desc"><b><a  href="#footnoteUp_10">^</a></b></span><span class="reference-text"><a href="https://github.com/aliceui/aliceui.github.io">Alice</a>:支付宝前端样式。</span></li></ul></section>
+
+
+    
+</div>
+<footer class="footer w-900">
+    <a href="#" id="back-to-top" style="display: inline;"><i class="iconfont icon-chevronup"></i></a>
+    <a class="forkme" href="https://github.com/kangcafe" target="_blank">Kang`s Cafe on GitHub</a>
+    <div class="ds-thread" data-thread-key="da82757d-a1cc-4e90-890a-a7a60ee814eb" data-title="BEM命名方式" data-url="http://kangcafe.com/note/file/css/da82757d-a1cc-4e90-890a-a7a60ee814eb.html"></div>
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:"kangcafe"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <section class="internationalLicense">
+      <a class="imgLicense" rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+        <img alt="Creative Commons License" style="border-width:0" src="../../img/licensebuttons.png" />
+      </a>
+        <p class="wordsLicense">This work is licensed under a<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+          Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+        </a>. Reprint the 《<a href="BEM命名方式">BEM命名方式</a>》need signature
+          '<a href="http://kangcafe.com/">kc</a>', and the url is <a href="http://kangcafe.com/note/file/css/da82757d-a1cc-4e90-890a-a7a60ee814eb.html">http://kangcafe.com/note/file/css/da82757d-a1cc-4e90-890a-a7a60ee814eb.html</a>.</p>
+        <p class="stmt">
+          <em>这里的大多数文章都写于很多年以前，十年历程，多于怀旧（@2006-2016）。</em>
+          <br>Copyright (C) 2016 KangCafe.com, All Rights Reserved <br>Made in China.		<span class="flinks">
+            ✎
+            <a href="../../../index.html">Home</a> –
+            <a href="../../../mood/index.html">Mood</a> –
+            <a href="../../../note/index.html">Note</a>.
+          </span>
+        </p>
+    </section>
+</footer>
+<script type="application/javascript" src="../../../static/js/jquery.min.js"></script>
+<script type="text/javascript">
+    !function ($) {
+        $(window).scroll(function () {
+            $(this).scrollTop() > 100 ? $("#back-to-top").fadeIn() : $("#back-to-top").fadeOut()
+        }), $("#back-to-top").on("click", function (b) {
+            return b.preventDefault(), $("html, body").animate({scrollTop: 0}, 100), !1
+        });
+    }(jQuery);
+</script>
+</body>
+</html>

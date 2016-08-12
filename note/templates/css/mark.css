@@ -23,7 +23,9 @@ p, ul, ol, dl, table, pre {
 ul {
     margin-left : 20px;
 }
-
+table td a{
+  color: #009688;
+}
 a {
     text-decoration : none;
     cursor          : pointer;
@@ -148,7 +150,6 @@ h1 a,
 h1 a:hover {
     color           : #d7af72;
     font-weight     : normal;
-    text-decoration : none;
 }
 
 pre {
@@ -163,6 +164,7 @@ pre {
     word-wrap             : break-word;
     background-color      : #f5f5f5;
     border                : 1px solid #ccc;
+    border-left           : 5px solid #558abb;
     border-radius         : 0.4em;
     -moz-border-radius    : 0.4em;
     -webkit-border-radius : 0.4em;

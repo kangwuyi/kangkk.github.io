@@ -1,0 +1,281 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>kangcafe.GitHub.io by KANGCAFE</title>
+    <link href="../../../favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" href="../../templates/css/base.css">
+    <link rel="stylesheet" href="../../templates/css/mark.css">
+    <link rel="stylesheet" href="../../../static/font/iconfont.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta property="wb:webmaster" content="7e72a191affb5721"/>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+<header class="header">
+    <div class="header-content w-900">
+        <h1 class="display-inline">
+            <a class="thistitle" href="https://github.com/kangcafe" target="_blank">kang`s cafe<span
+                    class="spanFont mr10px iconfont icon-github"></span>
+            </a>
+        </h1>
+        <small>
+            <a href="../../index.html">BACK HOME</a>
+        </small>
+    </div>
+</header>
+
+<div class="params div-body w-900" id="readme">
+    
+    <p>#日期</p>
+<p>##日期对象</p>
+<ul>
+<li>newDate(year,month,day...)</li>
+</ul>
+<p>生成指定日期和时间的日期对象。表示月份的参数介于0到11之间。</p>
+<p>###日期的取得与设定</p>
+<ul>
+<li>date.getFullYear()</li>
+<li>date.setFullYear(year)</li>
+<li>date.getYear()</li>
+<li>date.setYear(year)</li>
+<li>date.getMonth()</li>
+<li>date.setMonth(mon)</li>
+<li>date.getDate()</li>
+<li>date.setDate(date)</li>
+<li>date.getDay()</li>
+<li>date.getHours()</li>
+<li>date.setHours(hour)</li>
+<li>date.getMinutes()</li>
+<li>date.setMinutes(min)</li>
+<li>date.getSeconds()</li>
+<li>date.setSeconds(sec)</li>
+<li>date.getMilliseconds()</li>
+<li>date.setMilliseconds(msec)</li>
+</ul>
+<p>取得与设定年、月、日、星期几、时、分、秒、毫秒。星期几的值为0（星期天）～6（星期六），月份的值为0～11(1月为0)。</p>
+<p>getFullYear()和setFullYear()总是取得或设定像2000这样四位数的年份。</p>
+<p>getYear()返回的值不总是四位的数字。对于介于1900与1999之间的年份，getYear()方法仅返回两位数字。对于1900之前或1999之后的年份，则返回四位数字。使用setYear()时，如果year参数是两位的数字，比如setYear(91)，则该方法会理解为1991。如果要规定1990年之前或1999年之后的年份，请使用四位数字。注意，从ECMAScriptv3起，JavaScript实现不再要求使用这两个函数，请使用getFullYear()和setFullYear()代替它们。</p>
+<ul>
+<li>date.getUTCFullYear()</li>
+<li>date.setUTCFullYear(year)</li>
+<li>date.getUTCYear()</li>
+<li>date.setUTCYear(year)</li>
+<li>date.getUTCMonth()</li>
+<li>date.setUTCMonth(month)</li>
+<li>date.getUTCDate()</li>
+<li>date.setUTCDate(date)</li>
+<li>date.getUTCDay()</li>
+<li>date.getUTCHours()</li>
+<li>date.setUTCHours(hour)</li>
+<li>date.getUTCMinutes()</li>
+<li>date.setUTCMinutes(min)</li>
+<li>date.getUTCSeconds()</li>
+<li>date.setUTCSeconds(sec)</li>
+<li>date.getUTCMilliseconds()</li>
+<li>date.setUTCMilliseconds(msec)</li>
+</ul>
+<p>取得与设定协调世界时（UTC，又称世界统一时间，世界标准时间，国际协调时间）的年、月、日、星期几、时、分、秒、毫秒。</p>
+<ul>
+<li>date.getTimezoneOffset()</li>
+</ul>
+<p>取得时区信息，以分钟为单位。中国的东八区为-480(-8小时)。</p>
+<p>###转换为字符串</p>
+<ul>
+<li>date.toString()</li>
+<li>date.toLocaleString()</li>
+<li>date.toGMTString()</li>
+<li>date.toUTCString()</li>
+<li>date.toVarDate()</li>
+</ul>
+<p>把日期转换为字符串。toString()、toLocaleString()、toVarDate()转换为当地时间，toGMTString()和toUTCString()转换为设定协调世界时（UTC）。</p>
+<p>dd=newDate();
+document.write(dd.toLocaleString());</p>
+<p>###转换为数值</p>
+<ul>
+<li>date.getTime()</li>
+<li>date.setTime(time)</li>
+</ul>
+<p>取得与设定距1970年1月1日0时0分0秒（UTC）之间的毫秒数。下面的例子取得一个星期后的日期。</p>
+<pre><code class="lang-js"><span class="hljs-built_in">dd</span>=newDate()<span class="hljs-comment">;</span>
+<span class="hljs-built_in">dd</span>.setTime(<span class="hljs-built_in">dd</span>.getTime()+(<span class="hljs-number">7243600</span>*<span class="hljs-number">1000</span>))<span class="hljs-comment">;</span>
+</code></pre>
+<ul>
+<li>date.UTC(year,mon,day,hour,min,sec)</li>
+</ul>
+<p>返回1970年1月1日0时0分0秒（UTC）到指定日期的毫秒数。JavaScript1.3开始，可以指定毫秒。</p>
+<ul>
+<li>date.parse(string)</li>
+</ul>
+<p>解析一个日期时间字符串string，并返回1970年1月1日0时0分0秒（UTC）到指定日期的毫秒数。string的形式与dd=newDate(string)的时候相同。</p>
+<p>##format</p>
+<p>###方案一</p>
+<pre><code class="lang-js"><span class="hljs-comment">/**
+*对Date的扩展，将Date转化为指定格式的String
+*月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q)可以用1-2个占位符
+*年(y)可以用1-4个占位符，毫秒(S)只能用1个占位符(是1-3位的数字)
+*eg:
+*(newDate()).Format("yyyy-MM- ddhh:mm:ss.S")==&gt;2006-07-0208:09:04.423
+*(newDate()).Format("yyyy-M- dh:m:s.S")==&gt;2006-7-28:9:4.18
+*/</span>
+<span class="hljs-built_in">Date</span>.prototype.Format=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">fmt</span>)</span>{
+    <span class="hljs-keyword">var</span> o={
+        <span class="hljs-string">"M+"</span>:<span class="hljs-keyword">this</span>.getMonth()+<span class="hljs-number">1</span>,<span class="hljs-comment">//月份</span>
+        <span class="hljs-string">"d+"</span>:<span class="hljs-keyword">this</span>.getDate(),<span class="hljs-comment">//日</span>
+        <span class="hljs-string">"h+"</span>:<span class="hljs-keyword">this</span>.getHours(),<span class="hljs-comment">//小时</span>
+        <span class="hljs-string">"m+"</span>:<span class="hljs-keyword">this</span>.getMinutes(),<span class="hljs-comment">//分</span>
+        <span class="hljs-string">"s+"</span>:<span class="hljs-keyword">this</span>.getSeconds(),<span class="hljs-comment">//秒</span>
+        <span class="hljs-string">"q+"</span>:<span class="hljs-built_in">Math</span>.floor((<span class="hljs-keyword">this</span>.getMonth()+<span class="hljs-number">3</span>)/<span class="hljs-number">3</span>),<span class="hljs-comment">//季度</span>
+        <span class="hljs-string">"S"</span>:<span class="hljs-keyword">this</span>.getMilliseconds()<span class="hljs-comment">//毫秒</span>
+    };
+    <span class="hljs-keyword">if</span>(<span class="hljs-regexp">/(y+)/</span>.test(fmt))
+        fmt=fmt.replace(<span class="hljs-built_in">RegExp</span>.$<span class="hljs-number">1</span>,(<span class="hljs-keyword">this</span>.getFullYear()+<span class="hljs-string">""</span>).substr(<span class="hljs-number">4</span>-<span class="hljs-built_in">RegExp</span>.$<span class="hljs-number">1.</span>length));
+    <span class="hljs-keyword">for</span>(varkino)
+        <span class="hljs-keyword">if</span>(newRegExp(<span class="hljs-string">"("</span>+k+<span class="hljs-string">")"</span>).test(fmt))
+    fmt=fmt.replace(<span class="hljs-built_in">RegExp</span>.$<span class="hljs-number">1</span>,(<span class="hljs-built_in">RegExp</span>.$<span class="hljs-number">1.</span>length==<span class="hljs-number">1</span>)?(o[k]):((<span class="hljs-string">"00"</span>+o[k]).substr((<span class="hljs-string">""</span>+o[k]).length)));
+    <span class="hljs-keyword">return</span> fmt;
+}
+</code></pre>
+<p>###方案二</p>
+<pre><code class="lang-js"><span class="hljs-comment">/**
+*对Date的扩展，将Date转化为指定格式的String
+*月(M)、日(d)、12小时(h)、24小时(H)、分(m)、秒(s)、周(E)、季度(q)可以用1-2个占位符
+*年(y)可以用1-4个占位符，毫秒(S)只能用1个占位符(是1-3位的数字)
+*eg:
+*(newDate()).pattern("yyyy-MM- ddhh:mm:ss.S")==&gt;2006-07-0208:09:04.423
+*(newDate()).pattern("yyyy-MM- ddEHH:mm:ss")==&gt;2009-03-10二20:09:04
+*(newDate()).pattern("yyyy-MM- ddEEhh:mm:ss")==&gt;2009-03-10周二08:09:04
+*(newDate()).pattern("yyyy-MM- ddEEEhh:mm:ss")==&gt;2009-03-10星期二08:09:04
+*(newDate()).pattern("yyyy-M- dh:m:s.S")==&gt;2006-7-28:9:4.18
+*/</span>
+<span class="hljs-built_in">Date</span>.prototype.pattern=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">fmt</span>)</span>{
+    <span class="hljs-keyword">var</span> o={
+        <span class="hljs-string">"M+"</span>:<span class="hljs-keyword">this</span>.getMonth()+<span class="hljs-number">1</span>,<span class="hljs-comment">//月份</span>
+        <span class="hljs-string">"d+"</span>:<span class="hljs-keyword">this</span>.getDate(),<span class="hljs-comment">//日</span>
+        <span class="hljs-string">"h+"</span>:<span class="hljs-keyword">this</span>.getHours()%<span class="hljs-number">12</span>==<span class="hljs-number">0</span>?<span class="hljs-number">12</span>:<span class="hljs-keyword">this</span>.getHours()%<span class="hljs-number">12</span>,<span class="hljs-comment">//小时</span>
+        <span class="hljs-string">"H+"</span>:<span class="hljs-keyword">this</span>.getHours(),<span class="hljs-comment">//小时</span>
+        <span class="hljs-string">"m+"</span>:<span class="hljs-keyword">this</span>.getMinutes(),<span class="hljs-comment">//分</span>
+        <span class="hljs-string">"s+"</span>:<span class="hljs-keyword">this</span>.getSeconds(),<span class="hljs-comment">//秒</span>
+        <span class="hljs-string">"q+"</span>:<span class="hljs-built_in">Math</span>.floor((<span class="hljs-keyword">this</span>.getMonth()+<span class="hljs-number">3</span>)/<span class="hljs-number">3</span>),<span class="hljs-comment">//季度</span>
+        <span class="hljs-string">"S"</span>:<span class="hljs-keyword">this</span>.getMilliseconds()<span class="hljs-comment">//毫秒</span>
+    };
+    varweek={
+        <span class="hljs-string">"0"</span>:<span class="hljs-string">"/u65e5"</span>,
+        <span class="hljs-string">"1"</span>:<span class="hljs-string">"/u4e00"</span>,
+        <span class="hljs-string">"2"</span>:<span class="hljs-string">"/u4e8c"</span>,
+        <span class="hljs-string">"3"</span>:<span class="hljs-string">"/u4e09"</span>,
+        <span class="hljs-string">"4"</span>:<span class="hljs-string">"/u56db"</span>,
+        <span class="hljs-string">"5"</span>:<span class="hljs-string">"/u4e94"</span>,
+        <span class="hljs-string">"6"</span>:<span class="hljs-string">"/u516d"</span>
+    };
+    <span class="hljs-keyword">if</span>(<span class="hljs-regexp">/(y+)/</span>.test(fmt)){
+        fmt=fmt.replace(<span class="hljs-built_in">RegExp</span>.$<span class="hljs-number">1</span>,(<span class="hljs-keyword">this</span>.getFullYear()+<span class="hljs-string">""</span>).substr(<span class="hljs-number">4</span>-<span class="hljs-built_in">RegExp</span>.$<span class="hljs-number">1.</span>length));
+    }
+    <span class="hljs-keyword">if</span>(<span class="hljs-regexp">/(E+)/</span>.test(fmt)){
+        fmt=fmt.replace(<span class="hljs-built_in">RegExp</span>.$<span class="hljs-number">1</span>,((<span class="hljs-built_in">RegExp</span>.$<span class="hljs-number">1.</span>length&gt;<span class="hljs-number">1</span>)?(<span class="hljs-built_in">RegExp</span>.$<span class="hljs-number">1.</span>length&gt;<span class="hljs-number">2</span>?<span class="hljs-string">"/u661f/u671f"</span>:<span class="hljs-string">"/u5468"</span>):<span class="hljs-string">""</span>)+week[<span class="hljs-keyword">this</span>.getDay()+<span class="hljs-string">""</span>]);
+    }
+    <span class="hljs-keyword">for</span>(varkino){
+        <span class="hljs-keyword">if</span>(newRegExp(<span class="hljs-string">"("</span>+k+<span class="hljs-string">")"</span>).test(fmt)){
+            fmt=fmt.replace(<span class="hljs-built_in">RegExp</span>.$<span class="hljs-number">1</span>,(<span class="hljs-built_in">RegExp</span>.$<span class="hljs-number">1.</span>length==<span class="hljs-number">1</span>)?(o[k]):((<span class="hljs-string">"00"</span>+o[k]).substr((<span class="hljs-string">""</span>+o[k]).length)));
+        }
+    }
+    <span class="hljs-keyword">return</span> fmt;
+}
+</code></pre>
+<p>###方案三</p>
+<pre><code class="lang-js"><span class="hljs-built_in">Date</span>.prototype.format=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">mask</span>)</span>{
+    <span class="hljs-keyword">var</span> d=<span class="hljs-keyword">this</span>;
+    <span class="hljs-keyword">var</span> zeroize = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value,length</span>)</span>{
+        <span class="hljs-keyword">if</span>(!length) length=<span class="hljs-number">2</span>;
+        value = <span class="hljs-built_in">String</span>(value);
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>,zeros=<span class="hljs-string">''</span>;i&lt;(length-value.length);i++){
+            zeros+=<span class="hljs-string">'0'</span>;
+        }
+        <span class="hljs-keyword">return</span> zeros+value;
+    };
+    <span class="hljs-keyword">return</span> mask.replace(<span class="hljs-regexp">/"[^"]*"|'[^']*'|/</span>b(?:d{<span class="hljs-number">1</span>,<span class="hljs-number">4</span>}|m{<span class="hljs-number">1</span>,<span class="hljs-number">4</span>}|yy(?:yy)?|([hHMstT])/<span class="hljs-number">1</span>?|[lLZ])/b/g,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">$0</span>)</span>{
+        <span class="hljs-keyword">switch</span>($<span class="hljs-number">0</span>){
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'d'</span>:<span class="hljs-keyword">return</span> d.getDate();
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'dd'</span>:<span class="hljs-keyword">return</span> zeroize(d.getDate());
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'ddd'</span>:<span class="hljs-keyword">return</span> [<span class="hljs-string">'Sun'</span>,<span class="hljs-string">'Mon'</span>,<span class="hljs-string">'Tue'</span>,<span class="hljs-string">'Wed'</span>,<span class="hljs-string">'Thr'</span>,<span class="hljs-string">'Fri'</span>,<span class="hljs-string">'Sat'</span>][d.getDay()];
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'dddd'</span>:<span class="hljs-keyword">return</span> [<span class="hljs-string">'Sunday'</span>,<span class="hljs-string">'Monday'</span>,<span class="hljs-string">'Tuesday'</span>,<span class="hljs-string">'Wednesday'</span>,<span class="hljs-string">'Thursday'</span>,<span class="hljs-string">'Friday'</span>,<span class="hljs-string">'Saturday'</span>][d.getDay()];
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'M'</span>:<span class="hljs-keyword">return</span> d.getMonth()+<span class="hljs-number">1</span>;
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'MM'</span>:<span class="hljs-keyword">return</span> zeroize(d.getMonth()+<span class="hljs-number">1</span>);
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'MMM'</span>:<span class="hljs-keyword">return</span> [<span class="hljs-string">'Jan'</span>,<span class="hljs-string">'Feb'</span>,<span class="hljs-string">'Mar'</span>,<span class="hljs-string">'Apr'</span>,<span class="hljs-string">'May'</span>,<span class="hljs-string">'Jun'</span>,<span class="hljs-string">'Jul'</span>,<span class="hljs-string">'Aug'</span>,<span class="hljs-string">'Sep'</span>,<span class="hljs-string">'Oct'</span>,<span class="hljs-string">'Nov'</span>,<span class="hljs-string">'Dec'</span>][d.getMonth()];
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'MMMM'</span>:<span class="hljs-keyword">return</span> [<span class="hljs-string">'January'</span>,<span class="hljs-string">'February'</span>,<span class="hljs-string">'March'</span>,<span class="hljs-string">'April'</span>,<span class="hljs-string">'May'</span>,<span class="hljs-string">'June'</span>,<span class="hljs-string">'July'</span>,<span class="hljs-string">'August'</span>,<span class="hljs-string">'September'</span>,<span class="hljs-string">'October'</span>,<span class="hljs-string">'November'</span>,<span class="hljs-string">'December'</span>][d.getMonth()];
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'yy'</span>:<span class="hljs-keyword">return</span> <span class="hljs-built_in">String</span>(d.getFullYear()).substr(<span class="hljs-number">2</span>);
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'yyyy'</span>:<span class="hljs-keyword">return</span> d.getFullYear();
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'h'</span>:<span class="hljs-keyword">return</span> d.getHours()%<span class="hljs-number">12</span>||<span class="hljs-number">12</span>;
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'hh'</span>:<span class="hljs-keyword">return</span> zeroize(d.getHours()%<span class="hljs-number">12</span>||<span class="hljs-number">12</span>);
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'H'</span>:<span class="hljs-keyword">return</span> d.getHours();
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'HH'</span>:<span class="hljs-keyword">return</span> zeroize(d.getHours());
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'m'</span>:<span class="hljs-keyword">return</span> d.getMinutes();
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'mm'</span>:<span class="hljs-keyword">return</span> zeroize(d.getMinutes());
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'s'</span>:<span class="hljs-keyword">return</span> d.getSeconds();
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'ss'</span>:<span class="hljs-keyword">return</span> zeroize(d.getSeconds());
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'l'</span>:<span class="hljs-keyword">return</span> zeroize(d.getMilliseconds(),<span class="hljs-number">3</span>);
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'L'</span>:<span class="hljs-keyword">var</span> m=d.getMilliseconds();
+                <span class="hljs-keyword">if</span>(m&gt;<span class="hljs-number">99</span>) m=<span class="hljs-built_in">Math</span>.round(m/<span class="hljs-number">10</span>);
+                <span class="hljs-keyword">return</span> zeroize(m);
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'tt'</span>:<span class="hljs-keyword">return</span> d.getHours()&lt;<span class="hljs-number">12</span>?<span class="hljs-string">'am'</span>:<span class="hljs-string">'pm'</span>;
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'TT'</span>:<span class="hljs-keyword">return</span> d.getHours()&lt;<span class="hljs-number">12</span>?<span class="hljs-string">'AM'</span>:<span class="hljs-string">'PM'</span>;
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'Z'</span>:<span class="hljs-keyword">return</span> d.toUTCString().match(<span class="hljs-regexp">/[A-Z]+$/</span>);
+            <span class="hljs-keyword">default</span>:<span class="hljs-keyword">return</span> $<span class="hljs-number">0.</span>substr(<span class="hljs-number">1</span>,$<span class="hljs-number">0.</span>length<span class="hljs-number">-2</span>);
+        }
+    });
+};
+</code></pre>
+<h2><span class="header-link" id="references">References</span></h2><section class="footnote-box"><ul></ul></section>
+
+
+    
+</div>
+<footer class="footer w-900">
+    <a href="#" id="back-to-top" style="display: inline;"><i class="iconfont icon-chevronup"></i></a>
+    <a class="forkme" href="https://github.com/kangcafe" target="_blank">Kang`s Cafe on GitHub</a>
+    <div class="ds-thread" data-thread-key="7be58989-f1c6-48b2-b545-e1d6cb6cc8d1" data-title="日期" data-url="http://kangcafe.com/note/file/js/7be58989-f1c6-48b2-b545-e1d6cb6cc8d1.html"></div>
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:"kangcafe"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <section class="internationalLicense">
+      <a class="imgLicense" rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+        <img alt="Creative Commons License" style="border-width:0" src="../../img/licensebuttons.png" />
+      </a>
+        <p class="wordsLicense">This work is licensed under a<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+          Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+        </a>. Reprint the 《<a href="日期">日期</a>》need signature
+          '<a href="http://kangcafe.com/">kc</a>', and the url is <a href="http://kangcafe.com/note/file/js/7be58989-f1c6-48b2-b545-e1d6cb6cc8d1.html">http://kangcafe.com/note/file/js/7be58989-f1c6-48b2-b545-e1d6cb6cc8d1.html</a>.</p>
+        <p class="stmt">
+          <em>这里的大多数文章都写于很多年以前，十年历程，多于怀旧（@2006-2016）。</em>
+          <br>Copyright (C) 2016 KangCafe.com, All Rights Reserved <br>Made in China.		<span class="flinks">
+            ✎
+            <a href="../../../index.html">Home</a> –
+            <a href="../../../mood/index.html">Mood</a> –
+            <a href="../../../note/index.html">Note</a>.
+          </span>
+        </p>
+    </section>
+</footer>
+<script type="application/javascript" src="../../../static/js/jquery.min.js"></script>
+<script type="text/javascript">
+    !function ($) {
+        $(window).scroll(function () {
+            $(this).scrollTop() > 100 ? $("#back-to-top").fadeIn() : $("#back-to-top").fadeOut()
+        }), $("#back-to-top").on("click", function (b) {
+            return b.preventDefault(), $("html, body").animate({scrollTop: 0}, 100), !1
+        });
+    }(jQuery);
+</script>
+</body>
+</html>
