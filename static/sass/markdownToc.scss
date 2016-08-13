@@ -1,0 +1,55 @@
+@import "func";
+/* folder markdown-toc style start */
+.content {
+    @include element ('section') {
+        .content {
+            &-box {
+                @include element ('markdown') {
+                    @include modifier ('toc') {
+                        margin: 15px 0 20px 50px;
+                        display: table;
+                        zoom: 1;
+                        padding: 7px 30px;
+                        border: 1px solid #aaa;
+                        background-color: #f9f9f9;
+                        font-size: 95%;
+                        direction: ltr;
+                        line-height: 1.6;
+                        font-family: sans-serif;
+                        box-sizing: border-box;
+                        overflow: hidden;
+                        ul {
+                            list-style-type: decimal;
+                            list-style-image: none;
+                            padding: 0;
+                            margin: 0.3em 0;
+                            text-align: left;
+                            color: #ba832c;
+                            counter-reset: xxx 0;
+                            li {
+                                list-style: decimal;
+                                transition: none;
+                                padding: 0;
+                                margin: 0 0 0.1em;
+                                position: initial;
+                                color: #ba832c;
+                                &::before {
+                                    content: none;
+                                }
+                                a {
+                                    text-decoration: none;
+                                    background: none;
+                                    font-weight: 100;
+                                }
+                                ul {
+                                    margin-left: 20px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+/* folder markdown-toc style end */

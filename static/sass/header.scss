@@ -1,0 +1,29 @@
+@import "func";
+/* folder header style start */
+.header {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, .1) 0 1px 5px;
+    @include element ('content') {
+        text-align: center;
+        border-right: 1px solid #f3f3f3;
+        border-left: 1px solid #f3f3f3;
+    }
+    .content {
+        @include element ('title') {
+            display: inline;
+        }
+        .title {
+            @include element ('link-a') {}
+            @include element ('link-span') {
+                @include modifier ('icon') {}
+            }
+        }
+        @include element ('btn') {
+            font-size: 90%;
+            &-a {}
+        }
+    }
+}
+/* folder header style end */

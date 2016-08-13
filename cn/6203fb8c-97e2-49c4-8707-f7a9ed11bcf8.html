@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta property="wb:webmaster" content="7e72a191affb5721" />
+    <title>kangcafe</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/mark.css">
+    <link rel="stylesheet" href="../static/font/iconfont.css">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body class="body__note">
+    <header class="header">
+        <div class="header__content w-900">
+            <h1 class="content__title">
+                <a class="title__link-a" href="https://github.com/kangcafe" target="_blank">kang`s cafe<span class="title__link-span--icon iconfont icon-github"></span></a>
+            </h1>
+            <small class="content__btn">
+                <a class="content__btn-a" href="./note.html">BACK HOME</a>
+            </small>
+        </div>
+    </header>
+
+
+<div class="container w-900">
+    <h1><span class="header-link" id="数学函数">数学函数</span></h1><!-- toc -->
+<section class="content__section"><div class="content-box__markdown--toc"><ul>
+<li><a href="#内置函数">内置函数</a><ul>
+<li><a href="#随机数">随机数</a></li>
+<li><a href="#进位舍位四舍五入绝对值">进位/舍位/四舍五入/绝对值</a></li>
+<li><a href="#三角函数">三角函数</a></li>
+<li><a href="#其他">其他</a></li>
+</ul>
+</li>
+</ul>
+</div></section>
+
+<!-- toc stop -->
+<h2><span class="header-link" id="内置函数">内置函数</span></h2><h3><span class="header-link" id="随机数">随机数</span></h3><ul>
+<li>Math.random()</li>
+</ul>
+<p>生成大于 0 小于 1 的随机数。下面的代码可以生成 0～100 的随机数。</p>
+<pre><code class="lang-js">Math.<span class="hljs-built_in">floor</span>(Math.<span class="hljs-built_in">random</span>() * <span class="hljs-number">101</span>)<span class="hljs-comment">;</span>
+</code></pre>
+<h3><span class="header-link" id="进位/舍位/四舍五入/绝对值">进位/舍位/四舍五入/绝对值</span></h3><ul>
+<li>Math.ceil(n)</li>
+<li>Math.floor(n)</li>
+<li>Math.round(n)</li>
+</ul>
+<p>ceil() 可以把小数点以下部分舍去并使整数部分加 1 。举例来说，3.6 会进位到 4 ，-3.6 会进位到 -3 。floor() 可以把小数点以下部分舍去，即取整。举例来说，3.6 会取整为 3 ，-3.6 会取整为 -4 。round() 可以把整数四舍五入。举例来说，3.6 会四舍五入为 4 ，-3.6 会四舍五入为 -4 。</p>
+<ul>
+<li>Math.abs(n)</li>
+</ul>
+<p>取 n 的绝对值。</p>
+<h3><span class="header-link" id="三角函数">三角函数</span></h3><ul>
+<li>Math.sin(x)</li>
+<li>Math.cos(x)</li>
+<li>Math.tan(x)</li>
+</ul>
+<p>正弦函数（-1～1）、余弦函数（-1～1）、正切函数（-∞～∞）。x 是一个以弧度表示的角。将角度乘以 0.017453293 （2PI/360）即可转换为弧度。</p>
+<pre><code class="lang-js">r = <span class="hljs-number">10.0</span>; <span class="hljs-comment"> // 半径</span>
+<span class="hljs-keyword">a</span> = <span class="hljs-number">30.0</span>; <span class="hljs-comment"> // 角度</span>
+x = r  Math.<span class="hljs-built_in">cos</span>(<span class="hljs-keyword">a</span> / <span class="hljs-number">180</span>  Math.<span class="hljs-literal">PI</span>); <span class="hljs-comment"> // X坐标</span>
+y = r  Math.<span class="hljs-built_in">sin</span>(<span class="hljs-keyword">a</span> / <span class="hljs-number">180</span>  Math.<span class="hljs-literal">PI</span>); <span class="hljs-comment"> // Y坐标</span>
+</code></pre>
+<ul>
+<li>Math.asin(x)</li>
+<li>Math.acos(x)</li>
+<li>Math.atan(x)</li>
+</ul>
+<p>值 x 的反正弦函数（-π/2～π/2）、反余弦函数（0～π）、反正切函数（-π/2～π/2）。</p>
+<ul>
+<li><p>Math.atan2(y, x)
+坐标 x, y 的角度(-π～π)。</p>
+</li>
+<li><p>Math.PI</p>
+</li>
+</ul>
+<p>圆周率π。</p>
+<h3><span class="header-link" id="其他">其他</span></h3><ul>
+<li>Math.max(x, y)</li>
+<li>Math.min(x, y)</li>
+</ul>
+<p>max() 取 x 与 y 中大的那个，min() 取 x 与 y 中小的那个。</p>
+<ul>
+<li>Math.pow(n, m)</li>
+</ul>
+<p>n 的 m 次幂。</p>
+<ul>
+<li>Math.sqrt(n)</li>
+</ul>
+<p>n 的平方根。</p>
+<ul>
+<li>Math.SQRT2</li>
+<li>Math.SQRT1_2</li>
+</ul>
+<p>SQRT2 是 2 的平方根（约1.414）。SQRT1_2 是 1/2 的平方根(约0.707)。</p>
+<ul>
+<li>Math.E</li>
+</ul>
+<p>自然对数 e 的值（约2.718281828）。</p>
+<ul>
+<li>Math.LN2</li>
+<li>Math.LN10</li>
+<li>Math.LOG2E</li>
+<li>Math.LOG10E</li>
+</ul>
+<p>LN2 是 loge2，即 2 的自然对数（约0.69314718055994528623）。 LN10 是 loge10，即 10 的自然对数（约2.3025850929940459011）。LOG2E 是 log2e,即以 2 为底 e 的对数（约1.442695040888963387）。LOG10E 是 log10e,即以 10 为底 e 的对数（约0.43429448190325181667）。</p>
+<ul>
+<li>Math.exp(n)</li>
+</ul>
+<p>e 的 n 次幂。</p>
+<ul>
+<li>Math.log(n)</li>
+</ul>
+<p>n 的自然对数。</p>
+
+</div>
+
+<footer class="footer w-900">
+    <a class="footer__backToTop-btn" href="#" id="back-to-top">
+        <i class="footer__backToTop-btn--icon iconfont icon-chevronup"></i>
+    </a>
+    <a class="footer__github-btn" href="https://github.com/kangcafe" target="_blank">Kang`s Cafe on GitHub</a>
+    <div class="ds-thread" data-thread-key="6203fb8c-97e2-49c4-8707-f7a9ed11bcf8" data-title="数学函数" data-url="http://kangcafe.com/cn/6203fb8c-97e2-49c4-8707-f7a9ed11bcf8.html"></div>
+    <script type="text/javascript">
+        var duoshuoQuery = {
+            short_name: "kangcafe"
+        };
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';
+            ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] ||
+                document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <section class="content__section">
+        <p class="content__a-btn">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="../static/bgimg/licensebuttons.png" />
+            </a>
+        </p>
+        <p class="content__p--word">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+        </a>. Reprint the 《<sub>数学函数</sub>》 need signature "<sub>kc</sub>", and the url is <sub>http://kangcafe.com/cn/6203fb8c-97e2-49c4-8707-f7a9ed11bcf8.html</sub>.
+        </p>
+        <p class="content__text-p--desc">
+            <em>这里的大多数文章都写于很多年以前，十年历程，多于怀旧（@2006-2016）</em>
+            <br>Copyright (C) 2016 KangCafe.com, All Rights Reserved
+            <br>Made in China.
+            <span class="text__span--link">
+            ✎
+            <a href="../index.html">Home</a> –
+            <a href="./mood.html">Mood</a> –
+            <a href="./note.html">Note</a>.
+          </span>
+        </p>
+    </section>
+</footer>
+<script type="application/javascript" src="../static/js/jquery.min.js"></script>
+<script type="text/javascript">
+    ! function($) {
+        $(window).scroll(function() {
+            $(this).scrollTop() > 100 ? $("#back-to-top").fadeIn() : $("#back-to-top").fadeOut()
+        }), $("#back-to-top").on("click", function(b) {
+            return b.preventDefault(), $("html, body").animate({
+                scrollTop: 0
+            }, 100), !1
+        });
+    }(jQuery);
+</script>
+</body>
+
+</html>
+

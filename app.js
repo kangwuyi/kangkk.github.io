@@ -2,12 +2,12 @@
 
 var fs = require('fs'),
     path = require('path'),
-    swig = require('swig'),
     _ = require('underscore'),
     mkdirp = require('mkdirp'),
     markdown = require('marked'),
     highlight = require('highlight.js'),
     transliteration = require('transliteration'),
+    ejs = require('ejs'),
     moment = require('moment'),
     matter = require('gray-matter'),
     uuid = require('uuid'),
@@ -15,16 +15,17 @@ var fs = require('fs'),
 
 var folderMenu = ['note', 'mood'];
 
+var mdToHtmlOutPath = path.join(__dirname, 'cn');
+
+if (verificationPath(mdToHtmlOutPath).status) deteleOutputGlobalPath(mdToHtmlOutPath);
 
 _.each(folderMenu, function(item) {
 
     var fileObjContainer = [];
 
-    if (verificationPath(mdToHtmlOutPath(item)).status) deteleOutputGlobalPath(mdToHtmlOutPath(item));
-
     queryMdFile({
             sourcePath: mdToHtmlSourcePath(item),
-            outPath: mdToHtmlOutPath(item)
+            outPath: mdToHtmlOutPath
         },
         item,
         function(fileTitleObject) {
@@ -48,6 +49,17 @@ function creatMdToHtml(op, folder) {
             text.toLowerCase().replace(/^\s+|\s+$/g, '').replace(/\s+/g, '-') + '">' +
             text + '</span></h' + level + '>';
     };
+
+    renderer.image = function(href, title, text) {
+        var xhtml = false;
+        var hrefReplace = href.replace(/^\.\.\/\.\.\/\.\.\//g, '');
+        var out = '<img src="../' + hrefReplace + '" alt="' + text + '"';
+        if (title) {
+            out += ' title="' + title + '"';
+        }
+        out += xhtml ? '/>' : '>';
+        return out;
+    };
     markdown.setOptions({
         renderer: renderer,
         highlight: function(code) {
@@ -61,14 +73,14 @@ function creatMdToHtml(op, folder) {
         birthtime = moment(fileFsTimeObject.birthtime).format("YYYY-MM-DD"),
         mtime = moment(fileFsTimeObject.mtime).format("YYYY-MM-DD"),
         mtimeGetTime = moment(fileFsTimeObject.mtime).unix(),
-        fileNameContent = path.basename(outPath, path.extname(outPath)),
+        fileNameContent = path.basename(sourcePath, path.extname(sourcePath)),
         fileNameArray = fileNameContent.split(/\./g),
         fileName = fileNameArray[0],
         englishToPinYin = transliteration.slugify(fileName, {
             lowercase: false,
             separator: '_'
         }),
-        relativePath = path.relative(outPath, path.join(__dirname, folder)),
+        relativePath = path.relative(outPath, __dirname),
         template = '<%= depth %><%= bullet %>[<%= heading %>](#<%= url %>)\n',
         tocMd = toc(fileFs, {
             template: template
@@ -84,30 +96,29 @@ function creatMdToHtml(op, folder) {
     }
 
     var htmlFileName = path.join(fileNameUuid + '.html'),
-        creatFilePath = path.join(path.dirname(outPath), htmlFileName);
+        creatFilePath = path.join(outPath, htmlFileName);
 
     fs.writeFileSync(
         creatFilePath,
-        swig.render(
+        ejs.render(
             getTemplates(folder).pages, {
-                locals: {
-                    fileName: fileName,
-                    englishToPinYin:englishToPinYin,
-                    fileId: fileNameUuid,
-                    httpAddr: 'http://kangcafe.com/' + path.relative(__dirname, creatFilePath),
-                    content: mdToHtml,
-                    relativePath: relativePath,
-                    birthtime: birthtime,
-                    mtime: mtime
-                },
-                filename: htmlFileName
+                filename: path.join(__dirname, 'static/templates/' + folder + '.html'),
+                folder: folder,
+                kcFileId: fileNameUuid,
+                kcFileName: fileName,
+                kcFileAddr: 'http://kangcafe.com/' + path.relative(__dirname, creatFilePath),
+                englishToPinYin: englishToPinYin,
+                content: mdToHtml,
+                relativePath: relativePath,
+                birthtime: birthtime,
+                mtime: mtime
             }
         ),
         'utf8'
     );
     console.log('creat [' + htmlFileName + ']');
     return {
-        path: path.join(path.relative(path.join(__dirname, 'note'), path.dirname(outPath)), htmlFileName),
+        path: path.join(path.relative(path.join(__dirname), path.dirname(outPath)), htmlFileName),
         fileName: fileName,
         birthtime: birthtime,
         mtime: mtime,
@@ -137,7 +148,7 @@ function queryMdFile(op, folder, cb) {
 
                 iterator({
                     sourcePath: path.join(sourcePath, item),
-                    outPath: path.join(outPath, item)
+                    outPath: path.join(outPath)
                 });
             });
 
@@ -194,18 +205,16 @@ function verificationPath(path) {
  * 生成主页索引
  */
 function creatHtmlIndexFile(folder, fileTitleList) {
-    var generatePathFile = path.join(__dirname, folder + '/index.html');
+    var generatePathFile = path.join(__dirname, 'cn/' + folder + '.html');
 
     fs.writeFileSync(
         generatePathFile,
-        swig.render(
+        ejs.render(
             getTemplates(folder).index, {
-                locals: {
-                    content: {
-                        linkList: _.sortBy(fileTitleList, 'mtimeGetTime')
-                    }
+                content: {
+                    linkList: _.sortBy(fileTitleList, 'mtimeGetTime').reverse()
                 },
-                filename: folder + '/index.html'
+                folder: folder
             }
         ),
         'utf8');
@@ -214,22 +223,18 @@ function creatHtmlIndexFile(folder, fileTitleList) {
 
 function getTemplates(folder) {
     return {
-        'pages': fs.readFileSync(path.join(__dirname, './' + folder + '/templates/pages.html'), 'utf8'),
-        'index': fs.readFileSync(path.join(__dirname, './' + folder + '/templates/index.html'), 'utf8')
+        'pages': fs.readFileSync(path.join(__dirname, 'static/templates/' + folder + '.html'), 'utf8'),
+        'index': fs.readFileSync(path.join(__dirname, 'static/templates/folder.html'), 'utf8')
     }
 }
 
-function mdToHtmlOutPath(folder) {
-    return path.join(__dirname, folder + '/file');
-}
-
 function mdToHtmlSourcePath(folder) {
-    return path.join(__dirname, folder + '/filemd');
+    return path.join(__dirname, 'markdown/' + folder);
 }
 
 function tocReplace(mdFile, mdFileToc) {
-    var footnoteStart = new RegExp("\\[\\^\\^+[a-zA-Z0-9_\u4e00-\u9fa5]+\\](?!:)", "igm");
-    var footnoteEnd = new RegExp("\\[\\^\\^+[a-zA-Z0-9_\u4e00-\u9fa5]+\\]:.+", "ig");
+    var footnoteStart = new RegExp("\\[\\^+[a-zA-Z0-9_\u4e00-\u9fa5]+\\](?!:)", "igm");
+    var footnoteEnd = new RegExp("\\[\\^+[a-zA-Z0-9_\u4e00-\u9fa5]+\\]:.+", "ig");
 
     var start = '<!-- toc -->';
     var stop = '<!-- toc stop -->';
@@ -245,20 +250,20 @@ function tocReplace(mdFile, mdFileToc) {
     content = content.replace(strip, start);
 
     // Generate the new TOC
-    var table = '\n\n' + start + '\n\n<section><div class="mdToc">' + markdown(mdFileToc) + '</div></section>\n\n' + stop + '\n\n';
+    var table = '\n\n' + start + '\n\n<section class="content__section"><div class="content-box__markdown--toc">' + markdown(mdFileToc) + '</div></section>\n\n' + stop + '\n\n';
 
     var footnoteMap = _.map(content.match(footnoteEnd), function(item, index) {
-        var itemNoBrackets = item.match(/\[\^\^(.+?)\]:/g)[0].replace(/\[\^\^(.+?)\]:/g, '$1');
+        var itemNoBrackets = item.match(/\[\^(.+?)\]:/g)[0].replace(/\[\^(.+?)\]:/g, '$1');
         footnoteLink[itemNoBrackets] = (index + 1);
         return '<li id="footnoteDo_' + (index + 1) + '" class="footnoteUp">' +
             '<span class="backlink" data-desc="' + itemNoBrackets + '">' +
             '<b><a  href="#footnoteUp_' + (index + 1) + '">^</a></b>' +
             '</span>' +
-            '<span class="reference-text">' + item.replace(/\[\^\^(.+?)\]:/g, "") + '</span>' +
+            '<span class="reference-text">' + item.replace(/\[\^(.+?)\]:/g, "") + '</span>' +
             '</li>';
     });
     content = content.replace(footnoteStart, function(item) {
-        item = item.replace(/\[\^\^(.+?)\]/g, '$1');
+        item = item.replace(/\[\^(.+?)\]/g, '$1');
 
         return '<sup id="footnoteUp_' + footnoteLink[item] + '" data-desc="' + item + '" class="reference"><a class="footnoteUp" href="#footnoteDo_' + footnoteLink[item] + '">[' + footnoteLink[item] + ']</a></sup>';
     });
@@ -266,6 +271,7 @@ function tocReplace(mdFile, mdFileToc) {
     content = content.replace(footnoteEnd, '');
     content = content.replace(start, table);
 
-    return content + '\n\n## References\n\n<section class="footnote-box"><ul>' + footnoteMap.join('') + '</ul></section>\n\n';
+    var footnoteBox = '\n\n## References\n\n<section class="footnote-box"><ul>' + footnoteMap.join('') + '</ul></section>\n\n';
+    return content + ((footnoteMap.length > 1) ? footnoteBox : '\n\n');
 };
 process.exit(0);

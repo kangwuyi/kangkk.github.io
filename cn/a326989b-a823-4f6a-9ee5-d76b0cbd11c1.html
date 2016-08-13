@@ -1,0 +1,1009 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta property="wb:webmaster" content="7e72a191affb5721" />
+    <title>kangcafe</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/mark.css">
+    <link rel="stylesheet" href="../static/font/iconfont.css">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body class="body__note">
+    <header class="header">
+        <div class="header__content w-900">
+            <h1 class="content__title">
+                <a class="title__link-a" href="https://github.com/kangcafe" target="_blank">kang`s cafe<span class="title__link-span--icon iconfont icon-github"></span></a>
+            </h1>
+            <small class="content__btn">
+                <a class="content__btn-a" href="./note.html">BACK HOME</a>
+            </small>
+        </div>
+    </header>
+
+
+<div class="container w-900">
+    <h1><span class="header-link" id="javascript-浏览器对象">JavaScript 浏览器对象</span></h1><h2><span class="header-link" id="window-对象">Window 对象</span></h2><ul>
+<li>window.self</li>
+<li>window.top</li>
+<li>window.parent</li>
+</ul>
+<p>self 代表窗体自己，top 代表窗体被框架分割时的最顶层，parent 代表当前框架的上一层的父窗体</p>
+<ul>
+<li>window.opener</li>
+</ul>
+<p>代表打开此窗体的父窗体对象，如果父窗体里有 &lt;form name=&quot;FORM1&quot;&gt; 表单的 &lt;input type=&quot;text&quot; name=&quot;TEXT1&quot;&gt; 元素的话，用下面的代码可以设定此元素的值。</p>
+<pre><code class="lang-js"><span class="hljs-built_in">window</span>.opener.<span class="hljs-built_in">document</span>.FORM1.TEXT1.value = <span class="hljs-string">"ABCDEFG"</span>;
+</code></pre>
+<ul>
+<li>window.name</li>
+</ul>
+<p>用 &lt;frame&gt; 的 name 属性指定窗体对象。比如下面的例子里，窗体被分割成两个框架，分别可以用 top.sub、top.main 指向它们。</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">frameset</span> <span class="hljs-attr">cols</span>=<span class="hljs-string">"100,*"</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">frame</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"sub"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"sub.html"</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">frame</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"main"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"main.html"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">frameset</span>&gt;</span>
+</code></pre>
+<ul>
+<li>window.alert(message)</li>
+</ul>
+<pre><code class="lang-js">window<span class="hljs-selector-class">.alert</span>(<span class="hljs-string">"发生了XX错误！"</span>);
+</code></pre>
+<ul>
+<li>window.confirm(message)</li>
+</ul>
+<p>弹出内容为 message 的确认对话框。按下 [OK] 按钮返回true，按下取消按钮返回false。</p>
+<pre><code class="lang-js"><span class="hljs-selector-tag">if</span> (window.confirm(<span class="hljs-string">"确定吗？"</span>)) {
+   document<span class="hljs-selector-class">.F1</span><span class="hljs-selector-class">.submit</span>();
+}
+</code></pre>
+<ul>
+<li>window.prompt(message [, default])</li>
+</ul>
+<p>弹出可输入文字的对话框。message 为对话框的说明内容，default 为输入框的初期值。返回值为输入的内容，按下取消按钮时返回 null。</p>
+<ul>
+<li>window.showModalDialog(url [, arg [, opt]])</li>
+<li>window.showModelessDialog(url [, arg [, opt]])</li>
+<li>window.dialogArguments</li>
+<li>window.dialogHeight</li>
+<li>window.dialogWidth</li>
+<li>window.dialogLeft</li>
+<li>window.dialogTop</li>
+<li>window.returnValue</li>
+</ul>
+<p>显示以 url 为内容的对话框。参数 arg 可以为数值、字符串、数组等。opt 可以指定 dialogWidth:px（对话框宽度）, dialogHeight:px（对话框高度，不小于100px）, dialogTop:px（离屏幕上的距离）, dialogLeft:px（离屏幕左的距离）, center:(yes|no)（是否居中，默认yes，但仍可以指定高度和宽度）, dialogHide:(yes|no)（在打印或者打印预览时对话框是否隐藏，默认为no）, edge:(sunken|raised)（指明对话框的边框样式，默认为raised）, resizable:(yes|no)（是否可被改变大小，默认no）, scroll:(yes|no)（是否显示滚动条，默认为yes）, status:(yes|no)（是否显示状态栏，默认为yes[ Modeless]或no[Modal]）, unadorned:(yes|no)（默认为no）。用 dialogArguments 可以取得对话框传递的参数。关闭对话框时 returnValue 中设定的值会成为 showModalDialog() 的返回值。</p>
+<pre><code class="lang-js"><span class="hljs-built_in">var</span> <span class="hljs-built_in">args</span> = <span class="hljs-built_in">new</span> Array();
+<span class="hljs-built_in">args</span>[<span class="hljs-number">0</span>] = <span class="hljs-string">"AAA"</span>;
+<span class="hljs-built_in">args</span>[<span class="hljs-number">1</span>] = <span class="hljs-string">"BBB"</span>;
+<span class="hljs-built_in">var</span> val = showModalDialog(<span class="hljs-string">"dlg.html"</span>, <span class="hljs-built_in">args</span>,<span class="hljs-string">"dialogHeight:100px;dialogWidth:300px"</span>);
+</code></pre>
+<pre><code class="lang-html"><span class="hljs-comment">&lt;!-- parent.html--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+    <span class="hljs-keyword">var</span> obj = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>();
+    obj.name=<span class="hljs-string">'jsobj1'</span>;
+    <span class="hljs-built_in">window</span>.showModalDialog(<span class="hljs-string">'model.html'</span>,obj,<span class="hljs-string">'dialogWidth=200px;dialogHeight=100px'</span>);
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+model.html
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+    <span class="hljs-keyword">var</span> obj = <span class="hljs-built_in">window</span>.dialogArguments
+    alert(<span class="hljs-string">'您传递的参数为：'</span> + obj.name)
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+    str =<span class="hljs-built_in">window</span>.showModalDialog(<span class="hljs-string">'model.html'</span>,,<span class="hljs-string">'dialogWidth=200px;dialogHeight=100px'</span>);
+    alert(str);
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+model.html
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+    <span class="hljs-built_in">window</span>.returnValue=<span class="hljs-string">'http://www.monmonkey.com/'</span>;
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<h2><span class="header-link" id="窗体控制">窗体控制</span></h2><ul>
+<li>window.focus()</li>
+<li>window.blur()</li>
+</ul>
+<p>focus() 可以使此窗体获得焦点。blur() 可以使此窗体失去焦点。</p>
+<ul>
+<li>window.scroll(x, y)</li>
+<li>window.scrollTo(x, y)</li>
+<li>window.scrollBy(x, y)</li>
+</ul>
+<p>使画面跳转到坐标 x，y 的位置。scroll() 和 scrollTo() 是绝对坐标，scrollBy() 是从现在位置开始的相对坐标。scroll() 是以前的东西，为了兼容性才保留下来。</p>
+<ul>
+<li>window.resizeTo(x, y)</li>
+<li>window.resizeBy(x, y)</li>
+</ul>
+<p>改变窗体的大小为 x，y。resizeTo() 是绝对坐标，resizeBy() 是从现在位置开始的相对坐标。一般无法小于100×100。</p>
+<ul>
+<li>window.moveTo(x, y)</li>
+<li>window.moveBy(x, y)</li>
+</ul>
+<p>把窗体移动到 x，y 的位置。moveTo() 是绝对坐标、moveBy() 是从现在位置开始的相对坐标。</p>
+<ul>
+<li>window.print()</li>
+</ul>
+<h2><span class="header-link" id="窗体信息">窗体信息</span></h2><ul>
+<li>window.name</li>
+</ul>
+<p>返回窗体名字的字符串。（&lt;frame&gt;标签的 name 属性或 window.open()函数的第二个参数指定的名字）</p>
+<h3><span class="header-link" id="定时">定时</span></h3><ul>
+<li>window.setTimeout(script, msec)</li>
+<li>window.setTimeout(script, msec, lang)</li>
+<li>window.clearTimeout(timeoutID)</li>
+</ul>
+<p>setTimeout() 是在 msec 毫秒后执行指定的程序。script 的部分为 JavaScript 代码。lang 的部分为语言种类（&quot;JScript&quot;、&quot;JavaScript&quot;、&quot;VBScript&quot;）。clearTimeout() 用来解除 setTimeout() 设定的定时处理。</p>
+<ul>
+<li>window.setInterval(script, msec)</li>
+<li>window.setInterval(script, msec, lang)</li>
+<li>window.clearInterval(intervalID)</li>
+</ul>
+<p>类似 setTimeout()、clearTimeout()，以 msec 毫秒为间隔，定期重复执行指定的程序。</p>
+<ul>
+<li>window.open(url, name [, style])</li>
+</ul>
+<pre><code class="lang-js">w = <span class="hljs-built_in">window</span>.<span class="hljs-keyword">open</span>(<span class="hljs-string">"test.html"</span>, <span class="hljs-string">"Test"</span>, <span class="hljs-string">"width=200,height=200"</span>);
+</code></pre>
+<table border="1" cellspacing="0" cellpadding="2" width="85%">
+<tbody><tr class="h">
+<th>名字</th>
+<th>意义</th>
+</tr>
+<tr>
+<td>_top</td>
+<td>窗体被框架分割时，最顶层的框架（窗体）。</td>
+</tr>
+<tr>
+<td>_blank</td>
+<td>没名字的新窗体。</td>
+</tr>
+<tr>
+<td>_self</td>
+<td>框架（窗体）本身。</td>
+</tr>
+<tr>
+<td>_parent</td>
+<td>窗体被框架分割时，上一层的框架（窗体）。</td>
+</tr>
+</tbody></table>
+
+<p>style 用来指定窗体的样式。n 是像素值，yes | no 是 yes 和 no 二选一。指定复数样式的时候，可以像 width=100,height=50,menubar=no 这样用逗号隔开。</p>
+<table border="1" cellspacing="0" cellpadding="2" width="85%">
+<tbody><tr class="h">
+<th>样式</th>
+<th>意义</th>
+</tr>
+<tr>
+<td>channelmode=yes|no</td>
+<td>是否启用通道模式。默认为no。</td>
+</tr>
+<tr>
+<td>directories=yes|no</td>
+<td>是否显示链接栏。默认为yes。</td>
+</tr>
+<tr>
+<td>fullscreen=yes|no</td>
+<td>是否以全屏模式打开。默认为no。此属性可能会隐藏浏览器的标题栏和菜单，ALT+F4可以关闭窗口。</td>
+</tr>
+<tr>
+<td>height=n</td>
+<td>指定窗体的高度。</td>
+</tr>
+<tr>
+<td>left=n</td>
+<td>指定窗口距画面左边的距离。值必须大于或者等于0。。</td>
+</tr>
+<tr>
+<td>location=yes|no</td>
+<td>是否显示地址栏。默认为yes。</td>
+</tr>
+<tr>
+<td>menubar=yes|no</td>
+<td>是否显示菜单栏。默认为yes。</td>
+</tr>
+<tr>
+</tr><tr>
+<td>resizable=yes|no</td>
+<td>可否改变窗体大小。默认为yes。</td>
+</tr>
+<tr>
+<td>scrollbars=yes|no</td>
+<td>是否显示横向或者纵向滚动条。默认为yes。</td>
+</tr>
+<tr>
+<td>status=yes|no</td>
+<td>是否显示状态栏。默认为yes。</td>
+</tr>
+<tr>
+<td>titlebar=yes|no</td>
+<td>是否显示标题栏。默认为yes。</td>
+</tr>
+<tr>
+<td>toolbar=yes|no</td>
+<td>是否显示工具栏，包括如前进、后退、停止等按钮。默认为yes。</td>
+</tr>
+<tr>
+<td>top=n</td>
+<td>指定窗口距画面顶部的距离。值必须大于或者等于0。</td>
+</tr>
+<tr>
+<td>width=n</td>
+<td>指定窗体的宽度。</td>
+</tr>
+</tbody></table>
+
+<p>各浏览器的支持程度如下。</p>
+<table border="1" cellspacing="0" cellpadding="2" width="65%">
+    <tbody><tr class="h">
+      <th>&nbsp;</th>
+      <th>IE6</th>
+      <th>IE7</th>
+      <th>IE8</th>
+      <th>Firefox</th>
+      <th>Safari</th>
+      <th>Chrome</th>
+      <th>Opera</th>
+    </tr>
+        <tr>
+          <th>channelmode</th>
+          <td class="hl_4">不支持</td>
+          <td class="hl_4">不支持</td>
+          <td class="hl_4">不支持</td>
+          <td class="hl_4">不支持</td>
+          <td class="hl_4">不支持</td>
+          <td class="hl_4">不支持</td>
+          <td class="hl_4">不支持</td>
+        </tr>
+        <tr>
+          <th>directories</th>
+          <td class="hl_4">不支持</td>
+          <td class="hl_4">不支持</td>
+          <td class="hl_4">不支持</td>
+          <td class="hl_4">不支持</td>
+          <td class="hl_4">不支持</td>
+          <td class="hl_4">不支持</td>
+          <td class="hl_4">不支持</td>
+        </tr>
+        <tr>
+          <th>fullscreen</th>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持</td>
+          <td class="hl_4">不支持</td>
+          <td class="hl_4">不支持</td>
+          <td class="hl_4">不支持</td>
+          <td class="hl_4">不支持</td>
+        </tr>
+        <tr>
+          <th>location</th>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持</td>
+          <td class="hl_4">不支持 7</td>
+          <td class="hl_2">支持 2</td>
+          <td class="hl_4">不支持 7</td>
+          <td class="hl_2">支持 8</td>
+        </tr>
+        <tr>
+          <th>menubar</th>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持 1</td>
+          <td class="hl_2">支持 1</td>
+          <td class="hl_2">支持 1</td>
+          <td class="hl_2">支持 1</td>
+          <td class="hl_4">不支持 9</td>
+          <td class="hl_4">不支持 9</td>
+        </tr>
+        <tr>
+          <th>resizable</th>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持</td>
+          <td class="hl_4">不支持 10</td>
+          <td class="hl_4">不支持 10</td>
+          <td class="hl_4">不支持 10</td>
+          <td class="hl_4">不支持 10</td>
+        </tr>
+        <tr>
+          <th>scrollbars</th>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持</td>
+          <td class="hl_4">不支持 11</td>
+          <td class="hl_4">不支持 11</td>
+          <td class="hl_2">支持</td>
+        </tr>
+        <tr>
+          <th>status</th>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持 12</td>
+          <td class="hl_2">支持</td>
+          <td class="hl_4">不支持 13</td>
+          <td class="hl_2">支持</td>
+          <td class="hl_4">不支持 13</td>
+          <td class="hl_4">不支持 13</td>
+        </tr>
+        <tr>
+          <th>titlebar</th>
+          <td class="hl_4">不支持</td>
+          <td class="hl_4">不支持</td>
+          <td class="hl_4">不支持</td>
+          <td class="hl_4">不支持</td>
+          <td class="hl_4">不支持</td>
+          <td class="hl_4">不支持</td>
+          <td class="hl_4">不支持</td>
+        </tr>
+        <tr>
+          <th>toolbar</th>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持 2</td>
+          <td class="hl_4">不支持 14</td>
+          <td class="hl_4">不支持 14</td>
+        </tr>
+        <tr>
+          <th>top</th>
+          <td class="hl_2">支持 3</td>
+          <td class="hl_2">支持 1</td>
+          <td class="hl_2">支持 3</td>
+          <td class="hl_2">支持 4</td>
+          <td class="hl_2">支持 4</td>
+          <td class="hl_4">不支持 5</td>
+          <td class="hl_4">不支持 5</td>
+        </tr>
+        <tr>
+          <th>left</th>
+          <td class="hl_2">支持 3</td>
+          <td class="hl_2">支持 1</td>
+          <td class="hl_2">支持 3</td>
+          <td class="hl_2">支持 4</td>
+          <td class="hl_2">支持 4</td>
+          <td class="hl_4">不支持 5</td>
+          <td class="hl_4">不支持 5</td>
+        </tr>
+        <tr>
+          <th>width</th>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持</td>
+          <td class="hl_4">不支持 6</td>
+          <td class="hl_2">支持</td>
+        </tr>
+        <tr>
+          <th>height</th>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持</td>
+          <td class="hl_4">不支持 6</td>
+          <td class="hl_2">支持</td>
+        </tr>
+        <tr>
+          <th>top  left</th>
+          <td class="hl_2">支持 3</td>
+          <td class="hl_2">支持 4</td>
+          <td class="hl_2">支持 3</td>
+          <td class="hl_2">支持 4</td>
+          <td class="hl_2">支持 4</td>
+          <td class="hl_4">不支持 5</td>
+          <td class="hl_4">不支持 5</td>
+        </tr>
+        <tr>
+          <th>width  height</th>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持 4</td>
+          <td class="hl_2">支持 1</td>
+          <td class="hl_2">支持</td>
+        </tr>
+        <tr>
+          <th>top  left  width  height</th>
+          <td class="hl_2">支持</td>
+          <td class="hl_2">支持 4</td>
+          <td class="hl_2">支持 3</td>
+          <td class="hl_2">支持 4</td>
+          <td class="hl_2">支持 4</td>
+          <td class="hl_2">支持 3</td>
+          <td class="hl_2">支持 ^4]</td>
+        </tr>
+</tbody>
+</table>
+
+<ol>
+<li>【标注1】：IE7 IE8 Firefox Chrome Safari 中，当 &quot;menubar&quot; 选项为 &quot;yes&quot; 时，默认不显示菜单栏，需要按 ALT 键后菜单栏才可显示；相反当 &quot;menubar&quot; 选项为 &quot;no&quot; 时，即使按了 ALT 键也不会显示菜单栏。</li>
+<li>【标注2】：Safari 中，开启 &quot;location&quot; 选项与开启 &quot;toolbar&quot; 选项时显示效果一致。</li>
+<li>【标注3】：IE6 IE8 Chrome 中，使用 &quot;top&quot; 和 &quot;left&quot; 定位，如果出现设定的的坐标值过大，弹出窗口将可能显示在屏幕可视范围外。</li>
+<li>【标注4】：IE7 Firefox Safari Opera 中，使用 &quot;top&quot; 和 &quot;left&quot; 定位，如果出现设定的的坐标值过大，窗口会自动调整 &quot;top&quot; 与 &quot;left&quot; 值，确保窗口正常显示在屏幕可视区域内。</li>
+<li>【标注5】：Chrome Opera 中，不支持在没有设定 &quot;width&quot; 与 &quot;height&quot; 值的情况下独立使用 &quot;left&quot; 和 &quot;top&quot;，此时 &quot;left&quot; &quot;top&quot; 设定值均不生效。</li>
+<li>【标注6】：Chrome 中，不支持在没有设定 &quot;left&quot; 和 &quot;height&quot; 值的情况下独立使用 &quot;width&quot; 与 &quot;height&quot;，此时 &quot;width&quot; &quot;height&quot; 设定值均不生效。结合【标注5】说明可知，在 Chrome 中弹出窗口不论想要设定宽高或位置中的一个或几个值，都必须将他们全部赋值，否则都将不起作用。</li>
+<li>【标注7】：Firefox Chrome 中，地址栏会始终显示。</li>
+<li>【标注8】：Opera 中，地址栏默认不显示，但可以点击页面最上方横条使他显示出来，设置 &quot;location=yes&quot; 后地址栏会自动显示出来。</li>
+<li>【标注9】：Chrome Opera 中，不论 &quot;menubar&quot; 值如何设置，永远不显示菜单栏。</li>
+<li>【标注10】：Firefox Safari Chrome Opera 中，无论 &quot;resizable&quot;值如何设置，窗口永远可由用户调整大小。</li>
+<li>【标注11】：Safari Chrome 中，在页面存在滚动条的情况下，无论 &quot;scrollbars&quot;值如何设置，滚动条始终可见。</li>
+<li>【标注12】：IE7 在 Windows XP SP3 系统中默认可以支持  &quot;status &quot; 参数隐藏状态栏；而在 Windows Vista 系统默认环境下不支持  &quot;status &quot; 参数，状态栏始终可见。这与两个系统中默认的 IE7 小版本号不同有关，前者版本号较低，后者版本号较高。</li>
+<li>【标注13】：Firefox 中，无论 &quot;status&quot; 值如何设置，状态栏始终可见，而 Chrome Opera 中，则与前者相反，状态栏始终不可见。</li>
+<li><p>【标注14】： Chrome Opera 中，无论 &quot;toolbar&quot; 值如何设置，始终不显示工具栏。</p>
+</li>
+<li><p>window.close()</p>
+</li>
+</ol>
+<p>关闭窗体。为了保证安全，关闭由自身窗口打开的子窗口时没有确认对话框，但是要关闭其他窗口时会弹出请求确认的对话框。</p>
+<ul>
+<li>window.closed</li>
+</ul>
+<p>检查窗体是否已被关闭，返回 True 或 False。</p>
+<ul>
+<li>window.status</li>
+<li>window.defaultStatus</li>
+</ul>
+<p>status 是显示在状态栏上的内容。defaultStatus 是状态栏上没其他需要显示的内容的时候，显示的默认内容。要在 onMouseOver 等事件里改写状态栏的内容时，需要在此句柄的处理中返回 true。</p>
+<ul>
+<li>window.clientInformation</li>
+</ul>
+<p>与 window.navigator 相同。</p>
+<ul>
+<li>window.execScript(code [, lang])</li>
+</ul>
+<p>把 code 中的内容当作 JScript 代码来执行。要当作 JavaScript 执行需要在 lang 中指定 &quot;JavaScript&quot;。window.execScript 方法不是所有浏览器都支持，需谨慎使用。若需要在其他不支持 window.execScript 方法的浏览器中达到类似的效果，可以使用 window.eval 方法。</p>
+<ul>
+<li>window.showHelp(url [, id [, opt]])</li>
+</ul>
+<p>显示 HTML 帮助文档。</p>
+<h2><span class="header-link" id="navigator">Navigator</span></h2><ul>
+<li>window.navigator</li>
+</ul>
+<p>代表正在使用的浏览器的对象。</p>
+<ul>
+<li>window.navigator.appCodeName</li>
+</ul>
+<p>返回浏览器的代码名。&quot;Mozilla&quot; 本来是 Netscape Navigator 的开发代码（语源是怪兽哥斯拉），考虑到为 Mozilla 制作的网页的兼容性，Internet Explorer 的返回值也是 &quot;Mozilla&quot;。</p>
+<ul>
+<li>window.navigator.appName</li>
+</ul>
+<p>返回代表浏览器名的字符串。</p>
+<ul>
+<li>window.navigator.userAgent</li>
+</ul>
+<p>userAgent 返回代表浏览器名和版本号的字符串。</p>
+<table border="1" cellspacing="0" cellpadding="2" class="p" width="85%">
+<tbody><tr class="h"><th>浏览器</th><th>值</th></tr>
+<tr><td>IE7.0(Win)</td><td>Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.3) </td></tr>
+<tr><td>Chrome16.0(Win)</td><td>Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.75 Safari/535.7</td></tr>
+</tbody></table>
+
+<ul>
+<li>window.navigator.platform</li>
+</ul>
+<p>返回浏览器平台的字符串（&quot;Win32&quot;, &quot;Win16&quot;, &quot;WinCE&quot;, &quot;Mac68k&quot;, &quot;MacPPC&quot;, &quot;HP-UX&quot;, &quot;SunOS&quot; 等）。</p>
+<ul>
+<li>window.navigator.cpuClass</li>
+</ul>
+<p>返回CPU的信息（&quot;x86&quot;, &quot;68K&quot;, &quot;Alpha&quot;, &quot;PPC&quot; 等）。仅IE有效。</p>
+<ul>
+<li><p>window.navigator.browserLanguage</p>
+</li>
+<li><p>window.navigator.systemLanguage</p>
+</li>
+<li><p>window.navigator.userLanguage</p>
+</li>
+</ul>
+<p>language、browserLanguage 返回浏览器的语言种类，systemLanguage 返回系统的语言种类，userLanguage 返回用户环境的语言种类。仅IE有效。</p>
+<ul>
+<li>window.navigator.cookieEnabled</li>
+</ul>
+<p>返回 cookie 是否可用的真伪值。</p>
+<ul>
+<li>window.navigator.onLine</li>
+</ul>
+<p>返回是否能连上网络的真伪值。</p>
+<ul>
+<li>window.navigator.javaEnabled()</li>
+</ul>
+<p>返回 Java 是否可用的真伪值。</p>
+<ul>
+<li>window.navigator.userProfile</li>
+</ul>
+<p>保存着用户信息的对象。拥有 addReadRequest() doReadRequest() getAttribute() clearRequest() 等方法。</p>
+<ul>
+<li>window.navigator.taintEnabled()</li>
+</ul>
+<p>是否可以加密数据的真伪值。仅IE有效。</p>
+<h2><span class="header-link" id="element">Element</span></h2><ul>
+<li>window.document.all.id（IE专用）</li>
+<li>window.document.all(n)（IE专用）</li>
+<li>window.document.all.length（IE专用）</li>
+</ul>
+<p>文档中元素的数组。id 为各元素的 ID 属性所指定的ID。</p>
+<pre><code class="lang-js">obj = document.<span class="hljs-built_in">all</span>.ABC;
+<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; document.<span class="hljs-built_in">all</span>.<span class="hljs-built_in">length</span>; i++) {
+    obj = document.<span class="hljs-built_in">all</span>(i);
+}
+</code></pre>
+<ul>
+<li>window.document.all.item(id)（IE专用）</li>
+<li>window.document.all.item(id, n)（IE专用）</li>
+<li>window.document.all.item(id).length（IE专用）</li>
+</ul>
+<p>文档中的元素或元素的数组。id 为各元素的 ID 属性所指定的ID。请注意，对象元素可为复数或单数，调用的方法也不同。</p>
+<pre><code class="lang-js">obj = document.all.<span class="hljs-built_in">item</span>(<span class="hljs-string">"ABC"</span>);
+<span class="hljs-keyword">if</span> (document.all.<span class="hljs-built_in">item</span>(<span class="hljs-built_in">id</span>).<span class="hljs-built_in">length</span>) {
+   <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; document.all.<span class="hljs-built_in">item</span>(<span class="hljs-built_in">id</span>).<span class="hljs-built_in">length</span>; i++) {
+      obj = document.all.<span class="hljs-built_in">item</span>(<span class="hljs-built_in">id</span>, i);
+   }
+} <span class="hljs-keyword">else</span> {
+   obj = document.all.<span class="hljs-built_in">item</span>(<span class="hljs-built_in">id</span>);
+}
+</code></pre>
+<ul>
+<li>window.document.all.tags(tag)（IE专用）</li>
+<li>window.document.all.tags(tag)(n)（IE专用）</li>
+<li>window.document.all.tags(tag).length（IE专用）</li>
+</ul>
+<p>文档中元素的数组。tag 为标签名。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; document.<span class="hljs-keyword">all</span>.tags(<span class="hljs-string">"IMG"</span>).length; i++) {
+    obj = document.<span class="hljs-keyword">all</span>.tags(<span class="hljs-string">"IMG"</span>)(i);
+}
+</code></pre>
+<ul>
+<li>element.style（IE专用）</li>
+</ul>
+<p>代表 style 对象。下面的例子改变文档中所有 H1 元素的颜色。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">document</span>.all.tags(<span class="hljs-string">"H1"</span>).length; i++) {
+   elm = <span class="hljs-built_in">document</span>.all.tags(<span class="hljs-string">"H1"</span>)(i);
+   elm.style.color = <span class="hljs-string">"<span class="hljs-subst">#FF0000</span>"</span>;
+}
+</code></pre>
+<ul>
+<li>element.innerHTML（IE专用）</li>
+<li>element.innerText（IE专用）</li>
+</ul>
+<p>此元素中的字符串或HTML代码。把值代入的话，可以动态改变元素的内容。</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span><span class="handlebars"><span class="xml">
+<span class="hljs-comment">&lt;!--
+function func() {
+    document.all.ABC.innerHTML = "&lt;b&gt;欢迎光临猴子web入门。&lt;/b&gt;";
+}
+// --&gt;</span>
+</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"ABC"</span>&gt;</span>再见。<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"func()"</span>&gt;</span>OK<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre>
+<ul>
+<li>element.tagName（IE专用）</li>
+<li>element.title（IE专用）</li>
+<li>element.className（IE专用）</li>
+<li>element.id（IE专用）</li>
+<li>element.lang（IE专用）</li>
+<li>element.language（IE专用）</li>
+</ul>
+<p>tagName 为标签名，title、className、id、lang、language 各自对应 title、class、id、lang、language 属性的值。</p>
+<ul>
+<li>element.parentElement（IE专用）</li>
+</ul>
+<p>代表上一层的父元素。</p>
+<ul>
+<li>element.click()（IE专用）</li>
+</ul>
+<p>代表鼠标点击了元素。</p>
+<h2><span class="header-link" id="文档对象模型（dom）">文档对象模型（DOM）</span></h2><p>DOM 是 Document Object Model 的缩写。是一组 W3C 在 1998 年推荐的用来控制 HTML 和 XML 中各元素的接口。核心层并没有依存特定的语言，比较流行的是与 JavaScript 等语言互通。DOM 从 IE5.0 开始被支持。这里主要介绍一些 JavaScript DOM的基本操作。</p>
+<h3><span class="header-link" id="访问某一元素">访问某一元素</span></h3><ul>
+<li>document.getElementById(id)</li>
+<li>document.getElementsByTagName(tagName)</li>
+<li>document.getElementsByName(name)</li>
+<li>element.childNodes</li>
+<li>element.parentNode</li>
+<li>element.firstChild</li>
+<li>element.lastChild</li>
+<li>element.previousSibling</li>
+<li>element.nextSibling</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-attr">oElements</span> = oElement.childNodes;         // 子元素数组
+<span class="hljs-attr">oElement</span> = oElement.parentNode;          // 父元素
+<span class="hljs-attr">oElement</span> = oElement.firstChild;          // 第一个子元素
+<span class="hljs-attr">oElement</span> = oElement.lastChild;           // 最后一个子元素
+<span class="hljs-attr">oElement</span> = oElement.previousSibling;     // 上一个同级元素
+<span class="hljs-attr">oElement</span> = oElement.nextSibling;         // 下一个同级元素
+</code></pre>
+<h3><span class="header-link" id="从元素数组中取出元素">从元素数组中取出元素</span></h3><pre><code class="lang-js"><span class="hljs-attr">languagen</span> = oElements.length;
+<span class="hljs-attr">oElement</span> = oElements[<span class="hljs-number">0</span>];
+<span class="hljs-attr">oElement</span> = oElements(<span class="hljs-number">0</span>);
+<span class="hljs-attr">oElement</span> = oElements.id1;
+<span class="hljs-attr">oElement</span> = oElements.item(<span class="hljs-number">0</span>);
+<span class="hljs-attr">oElement</span> = oElements.item(<span class="hljs-string">"id1"</span>);
+<span class="hljs-attr">oElement</span> = oElements.namedItem(<span class="hljs-string">"id1"</span>);
+<span class="hljs-attr">oElements</span> = oElements.tags(<span class="hljs-string">"span"</span>);
+</code></pre>
+<h3><span class="header-link" id="访问元素内的文字">访问元素内的文字</span></h3><pre><code class="lang-js"><span class="hljs-attr">sStr</span> = oElement.firstChild.nodeValue;
+<span class="hljs-attr">sStr</span> = oElement.innerText;
+<span class="hljs-attr">sStr</span> = oElement.innerHTML;
+</code></pre>
+<h3><span class="header-link" id="访问与设定属性">访问与设定属性</span></h3><pre><code class="lang-js"><span class="hljs-attr">value</span> = oElement.id;
+<span class="hljs-attr">value</span> = oElement.getAttribute(<span class="hljs-string">"ID"</span>);
+<span class="hljs-attr">value</span> = oElement.getAttributeNode(<span class="hljs-string">"ID"</span>).value;
+<span class="hljs-attr">value</span> = oElement.getAttributeNode(<span class="hljs-string">"ID"</span>).nodeValue;
+<span class="hljs-attr">value</span> = oElement.attributes.getNamedItem(<span class="hljs-string">"ID"</span>).value;
+<span class="hljs-attr">value</span> = oElement.attributes.getNamedItem(<span class="hljs-string">"ID"</span>).nodeValue;
+</code></pre>
+<h3><span class="header-link" id="设定元素的属性值">设定元素的属性值</span></h3><pre><code class="lang-js">oElement.id = <span class="hljs-keyword">value</span>;
+oElement.setAttribute(<span class="hljs-string">"ID"</span>, <span class="hljs-keyword">value</span>);
+oElement.getAttributeNode(<span class="hljs-string">"ID"</span>).<span class="hljs-keyword">value</span> = <span class="hljs-keyword">value</span>;
+oElement.getAttributeNode(<span class="hljs-string">"ID"</span>).nodeValue = <span class="hljs-keyword">value</span>;
+oElement.attributes.getNamedItem(<span class="hljs-string">"ID"</span>).<span class="hljs-keyword">value</span> = <span class="hljs-keyword">value</span>;
+oElement.attributes.getNamedItem(<span class="hljs-string">"ID"</span>).nodeValue = <span class="hljs-keyword">value</span>;
+oElement.setAttributeNode(oAttr);
+</code></pre>
+<h3><span class="header-link" id="生成新元素">生成新元素</span></h3><ul>
+<li>createElement(tagName)</li>
+<li>appendChild(element)</li>
+</ul>
+<h2><span class="header-link" id="表单（form）">表单（Form）</span></h2><ul>
+<li>window.document.forms</li>
+<li>window.document.forms.length</li>
+<li>window.document.form</li>
+<li>window.document.form.action</li>
+<li>window.document.form.encoding</li>
+<li>window.document.form.method</li>
+<li>window.document.form.name</li>
+<li>window.document.form.target</li>
+<li>window.document.form.submit()</li>
+<li>window.document.form.reset()</li>
+<li>window.document.form.elements</li>
+<li>window.document.form.elements.length</li>
+<li>window.document.form.element</li>
+<li>window.document.form.element.name</li>
+<li>window.document.form.element.type</li>
+<li>window.document.form.element.form</li>
+<li>window.document.form.element.value</li>
+<li>window.document.form.element.focus()</li>
+<li>window.document.form.element.blur()</li>
+<li>window.document.form.text.defaultValue</li>
+<li>window.document.form.text.select()</li>
+<li>window.document.form.checkbox.defaultChecked</li>
+<li>window.document.form.checkbox.checked</li>
+<li>window.document.form.checkbox.click()</li>
+<li>window.document.form.select.selectedIndex</li>
+<li>window.document.form.select.length</li>
+<li>window.document.form.select.options</li>
+<li>window.document.form.select.options[n]</li>
+<li>window.document.form.select.options.length</li>
+<li>window.document.form.select.option.defaultSelected</li>
+<li>window.document.form.select.option.selected</li>
+<li>window.document.form.select.option.text</li>
+<li>window.document.form.select.option.value</li>
+</ul>
+<h2><span class="header-link" id="文档对象（document）">文档对象（Document）</span></h2><ul>
+<li>window.document</li>
+<li>document.bgColor</li>
+<li>document.fgColor</li>
+<li>document.linkColor</li>
+<li>document.alinkColor</li>
+<li>document.vlinkColor</li>
+</ul>
+<p>标签里指定的背景色（bgcolor）、文字的颜色（text）、链接文字的颜色（link）、正被点击的链接文字的颜色（alink）、已经浏览过的链接文字的颜色（vlink）等相对应的字符串。代入值就可以动态改变各种颜色。</p>
+<ul>
+<li>document.open([mimeType [, replace]])</li>
+</ul>
+<p>可打开文档并写入内容。和 window.open() 不是一个东西。</p>
+<pre><code class="lang-js">top<span class="hljs-selector-class">.main</span><span class="hljs-selector-class">.document</span><span class="hljs-selector-class">.open</span>();
+top<span class="hljs-selector-class">.main</span><span class="hljs-selector-class">.document</span><span class="hljs-selector-class">.write</span>(<span class="hljs-string">"&lt;html&gt;\n"</span>);
+top<span class="hljs-selector-class">.main</span><span class="hljs-selector-class">.document</span><span class="hljs-selector-class">.write</span>(<span class="hljs-string">"&lt;head&gt;&lt;title&gt;测试&lt;/title&gt;&lt;/head&gt;\n"</span>);
+top<span class="hljs-selector-class">.main</span><span class="hljs-selector-class">.document</span><span class="hljs-selector-class">.write</span>(<span class="hljs-string">"&lt;body&gt;测试文本&lt;/body&gt;\n"</span>);
+top<span class="hljs-selector-class">.main</span><span class="hljs-selector-class">.document</span><span class="hljs-selector-class">.write</span>(<span class="hljs-string">"&lt;/html&gt;\n"</span>);
+top<span class="hljs-selector-class">.main</span><span class="hljs-selector-class">.document</span><span class="hljs-selector-class">.close</span>();
+</code></pre>
+<ul>
+<li>document.write(msg [, msg...])</li>
+<li>document.writeln(msg [, msg...])</li>
+</ul>
+<p>在指定的文档中写入字符串等值。写入完毕后如果不使用 document.close() 关闭的话，有可能最后一行不会显示。writeln() 和 write() 的区别是，writeln()会在最后输入换行符。在一般的 HTML 里，换行符会变成一个空格，但是在 <code>&lt;pre&gt;～&lt;/pre&gt;</code> 等标签里则能换行。</p>
+<pre><code class="lang-js">document<span class="hljs-selector-class">.writeln</span>(<span class="hljs-string">"&lt;pre&gt;"</span>);
+document<span class="hljs-selector-class">.writeln</span>(<span class="hljs-string">"AAA"</span>);
+document<span class="hljs-selector-class">.writeln</span>(<span class="hljs-string">"BBB"</span>);
+document<span class="hljs-selector-class">.writeln</span>(<span class="hljs-string">"&lt;/pre&gt;"</span>);
+</code></pre>
+<ul>
+<li>document.close()</li>
+</ul>
+<p>关闭向文档的写入。忘了使用这个的话，用 write() 和 writeln() 写入文档的内容有可能不会显示。</p>
+<ul>
+<li>document.clear()（IE专用）</li>
+</ul>
+<p>清空文档的内容。</p>
+<ul>
+<li>document.lastModified</li>
+</ul>
+<p>返回此文档的最后更新时间。不同浏览器以及不同版本间，返回的字符串都各不相同，使用的时候要当心。</p>
+<ul>
+<li>document.referrer</li>
+</ul>
+<p>返回一个URL，表示是哪个页面跳转到当前页面的。有可能因浏览器的安全性而无法表示。</p>
+<pre><code class="lang-js"><span class="hljs-selector-tag">if</span> (document.referrer) {
+    document<span class="hljs-selector-class">.write</span>(<span class="hljs-string">"您是由"</span>);
+    document<span class="hljs-selector-class">.write</span>(document.referrer);
+    document<span class="hljs-selector-class">.write</span>(<span class="hljs-string">"跳转过来的。"</span>);
+}
+</code></pre>
+<ul>
+<li>document.URL</li>
+<li>document.domain</li>
+</ul>
+<p>返回当前文档的地址（URL）和域名（domain）部分。</p>
+<ul>
+<li>document.title</li>
+</ul>
+<p>返回由 <code>&lt;title&gt;</code> 指定的文档标题的字符串。</p>
+<ul>
+<li>document.charset（IE专用）</li>
+<li>document.defaultCharset（IE专用）</li>
+</ul>
+<p>返回此文档的charset。</p>
+<ul>
+<li>document.readyState（IE专用）</li>
+</ul>
+<p>返回 &quot;uninitialized&quot;, &quot;loading&quot;, &quot;interactive&quot;, &quot;complete&quot; 这四个字符串中的一个来表示当前的下载状态。</p>
+<ul>
+<li>document.all（IE专用）</li>
+</ul>
+<p>代表此文档中的所有元素。</p>
+<ul>
+<li>document.activeElement（IE专用）</li>
+</ul>
+<p>返回现在获得焦点的元素。</p>
+<ul>
+<li>document.elementFromPoint(x, y)（IE专用）</li>
+</ul>
+<p>返回 x, y 坐标的元素。</p>
+<ul>
+<li>document.createElement(tag)（IE专用）</li>
+</ul>
+<p>新建一个元素对象。新建的对象可用 add() 或 appendChild() 显示到画面上。</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span><span class="javascript">
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params"></span>) </span>{
+  elm = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"OPTION"</span>);
+  elm.text = <span class="hljs-string">"CCC"</span>;
+  <span class="hljs-built_in">document</span>.F1.S1.add(elm);
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"F1"</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"#"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"S1"</span> <span class="hljs-attr">size</span>=<span class="hljs-string">5</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>AAA
+<span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>BBB
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"func()"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Add"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+<ul>
+<li>document.cookie</li>
+</ul>
+<p>此文档的cookie。</p>
+<ul>
+<li>document.parentWindow（IE专用）</li>
+</ul>
+<p>此文档的父窗口的对象。</p>
+<ul>
+<li>document.embeds</li>
+</ul>
+<p><code>&lt;embed&gt;</code>对应的嵌入对象的数组。</p>
+<ul>
+<li>document.selection（IE专用）</li>
+<li>document.selection.type（IE专用）</li>
+<li>document.selection.clear()（IE专用）</li>
+<li>document.selection.empty()（IE专用）</li>
+<li>document.selection.createRange()（IE专用）</li>
+</ul>
+<p>表示现在选中的字符串的对象。</p>
+<pre><code class="lang-js">xx = document.selection.createRange()<span class="hljs-comment">;</span>
+alert(xx<span class="hljs-meta">.text</span>)<span class="hljs-comment">;</span>
+</code></pre>
+<ul>
+<li>document.createStyleSheet([URL [, index]])（IE专用）</li>
+</ul>
+<p>在此文档中使用其他文件里记述的样式表代码。URL 指定外部样式表文件的地址（URL），index 指定 styleSheets 对象列表上的索引。</p>
+<pre><code class="lang-html">&lt;input <span class="hljs-built_in">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-built_in">value</span>=<span class="hljs-string">"夏天的样式"</span>
+ onclick=<span class="hljs-string">"document.createStyleSheet('summer.css')"</span>&gt;
+</code></pre>
+<ul>
+<li>document.showHelp(URL [, content])（IE专用）</li>
+</ul>
+<p>显示帮助文档。只有 Microsoft HTML Help 能使用。</p>
+<ul>
+<li>window.location</li>
+</ul>
+<p>保持着关于当前地址（URL）的信息的对象。</p>
+<ul>
+<li>window.location.protocol</li>
+<li>window.location.host</li>
+<li>window.location.hostname</li>
+<li>window.location.port</li>
+<li>window.location.pathname</li>
+<li>window.location.search</li>
+<li>window.location.hash</li>
+<li>window.location.href</li>
+<li>window.location.assign(url)（仅限IE）</li>
+<li>window.location.replace(url)</li>
+<li>window.location.reload([force])</li>
+</ul>
+<p>重新显示页面。force 设置为 true 时，强制性重新显示页面。</p>
+<ul>
+<li>window.history</li>
+</ul>
+<p>上一页、上上一页等，保存和控制窗体历史记录的对象。</p>
+<ul>
+<li>window.history.length</li>
+</ul>
+<p>返回历史记录的个数。</p>
+<ul>
+<li>window.history.back()</li>
+<li>window.history.forward()</li>
+<li>window.history.go(n)</li>
+</ul>
+<p>back() 返回上一页，forward() 前进到后一页，go(n) 跳转到第 n 个网页。n 可以指定负数。</p>
+<h3><span class="header-link" id="language属性">language属性</span></h3><p>以前可以使用language属性指定所用JavaScript的版本。下面的代码可以指定只有支持JavaScript 1.2的浏览器才能运行JavaScript代码。</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tbody><tr class="h">
+<th rowspan="2"><br></th>
+<th colspan="4">IE</th>
+<th colspan="5">Netscape</th>
+</tr>
+<tr class="h">
+<th>2.<em></th><th>3.</em></th><th>4.<em></th><th>5.</em></th>
+<th>2.<em></th><th>3.</em></th><th>4.0<div>～</div>4.05</th><th>4.06<div>～</div>4.7</th><th>6.0</th>
+</tr>
+<tr align="center">
+<th class="h">JavaScript</th>
+<td>×</td><td>○</td><td>○</td><td>○</td>
+<td>○</td><td>○</td><td>○</td><td>○</td><td>○</td>
+</tr>
+<tr align="center">
+<th class="h">JavaScript1.0</th>
+<td>×</td><td>×</td><td>×</td><td>×</td>
+<td>×</td><td>×</td><td>×</td><td>×</td><td>×</td>
+</tr>
+<tr align="center">
+<th class="h">JavaScript1.1</th>
+<td>×</td><td>×</td><td>○</td><td>○</td>
+<td>×</td><td>○</td><td>○</td><td>○</td><td>○</td>
+</tr>
+<tr align="center">
+<th class="h">JavaScript1.2</th>
+<td>×</td><td>×</td><td>○</td><td>○</td>
+<td>×</td><td>×</td><td>○</td><td>○</td><td>○</td>
+</tr>
+<tr align="center">
+<th class="h">JavaScript1.3</th>
+<td>×</td><td>×</td><td>×</td><td>○</td>
+<td>×</td><td>×</td><td>×</td><td>○</td><td>○</td>
+</tr>
+<tr align="center">
+<th class="h">JavaScript1.4</th>
+<td>×</td><td>×</td><td>×</td><td>×</td>
+<td>×</td><td>×</td><td>×</td><td>×</td><td>○</td>
+</tr>
+<tr align="center">
+<th class="h">JavaScript1.5</th>
+<td>×</td><td>×</td><td>×</td><td>×</td>
+<td>×</td><td>×</td><td>×</td><td>×</td><td>○</td>
+</tr>
+<tr align="center">
+<th class="h">JScript</th>
+<td>×</td><td>○</td><td>○</td><td>○</td>
+<td>×</td><td>×</td><td>×</td><td>×</td><td>×</td>
+</tr>
+</tbody></table>
+
+<p>language属性在HTML4.01里已经被废弃，HTML4.01使用type属性。</p>
+<h2><span class="header-link" id="对象">对象</span></h2><pre><code class="lang-html">□ 对象（Object）
+├□ 数值（<span class="hljs-keyword">Number</span>）
+├□ 字符串（<span class="hljs-keyword">String</span>）
+├□ 布尔值（Boolean）
+├□ 数组（<span class="hljs-keyword">Array</span>）
+├□ 数学函数（Math）
+├□ 日期（<span class="hljs-keyword">Date</span>）
+├□ 函数（<span class="hljs-keyword">Function</span>）
+├□ 正则表达式（RegExp）
+└□ 窗口（Window）
+　├□ 浏览器（Navigator）
+　│├□ 插件（Plugin）
+　│└□ MIME类型（MimeType）
+　├□ 框架（<span class="hljs-keyword">Frame</span>）
+　├□ 事件（Event）
+　├□ 履历（History）
+　├□ 本地化（Location）
+　├□ 屏幕信息（Screen）
+　└□ 文档（Document）
+　　├□ 层（Layer）
+　　├□ 图像（<span class="hljs-keyword">Image</span>）
+　　├□ 链接（Link）
+　　├□ 锚（Anchor）
+　　├□ 小程序（Applet）
+　　├□ 表单（Form）
+　　│├□ 文本（<span class="hljs-keyword">Text</span>）
+　　│├□ 密码（Password）
+　　│├□ 文件上传（<span class="hljs-keyword">File</span>）
+　　│├□ 隐藏元素（Hidden）
+　　│├□ 文本领域（Textarea）
+　　│├□ 复选框（<span class="hljs-keyword">Checkbox</span>）
+　　│├□ 单选框（Radio）
+　　│├□ 按钮（<span class="hljs-keyword">Button</span>）
+　　│├□ 提交按钮（Submit）
+　　│├□ 重置按钮（Reset）
+　　│└□ 下拉列表（<span class="hljs-keyword">Select</span>）
+　　│　└□ 条目（Option）
+　　└□ 元素（Elements）
+　　　└□ 样式（<span class="hljs-keyword">Style</span>）
+</code></pre>
+
+</div>
+
+<footer class="footer w-900">
+    <a class="footer__backToTop-btn" href="#" id="back-to-top">
+        <i class="footer__backToTop-btn--icon iconfont icon-chevronup"></i>
+    </a>
+    <a class="footer__github-btn" href="https://github.com/kangcafe" target="_blank">Kang`s Cafe on GitHub</a>
+    <div class="ds-thread" data-thread-key="a326989b-a823-4f6a-9ee5-d76b0cbd11c1" data-title="js_windows" data-url="http://kangcafe.com/cn/a326989b-a823-4f6a-9ee5-d76b0cbd11c1.html"></div>
+    <script type="text/javascript">
+        var duoshuoQuery = {
+            short_name: "kangcafe"
+        };
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';
+            ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] ||
+                document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <section class="content__section">
+        <p class="content__a-btn">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="../static/bgimg/licensebuttons.png" />
+            </a>
+        </p>
+        <p class="content__p--word">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+        </a>. Reprint the 《<sub>js_windows</sub>》 need signature "<sub>kc</sub>", and the url is <sub>http://kangcafe.com/cn/a326989b-a823-4f6a-9ee5-d76b0cbd11c1.html</sub>.
+        </p>
+        <p class="content__text-p--desc">
+            <em>这里的大多数文章都写于很多年以前，十年历程，多于怀旧（@2006-2016）</em>
+            <br>Copyright (C) 2016 KangCafe.com, All Rights Reserved
+            <br>Made in China.
+            <span class="text__span--link">
+            ✎
+            <a href="../index.html">Home</a> –
+            <a href="./mood.html">Mood</a> –
+            <a href="./note.html">Note</a>.
+          </span>
+        </p>
+    </section>
+</footer>
+<script type="application/javascript" src="../static/js/jquery.min.js"></script>
+<script type="text/javascript">
+    ! function($) {
+        $(window).scroll(function() {
+            $(this).scrollTop() > 100 ? $("#back-to-top").fadeIn() : $("#back-to-top").fadeOut()
+        }), $("#back-to-top").on("click", function(b) {
+            return b.preventDefault(), $("html, body").animate({
+                scrollTop: 0
+            }, 100), !1
+        });
+    }(jQuery);
+</script>
+</body>
+
+</html>
+

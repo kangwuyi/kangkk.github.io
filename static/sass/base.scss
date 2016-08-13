@@ -1,0 +1,87 @@
+@import "header";
+@import "footer";
+@import "container";
+@import "highlight";
+.w-900 {
+    width: 900px;
+    margin: 0 auto;
+}
+.body {
+    @include element ('mood') {
+        background: #fffbd6;
+        .header {
+            margin: 0;
+            padding: 0;
+            background: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            box-shadow: rgba(0, 0, 0, .1) 0 1px 5px;
+            .content__title {
+                font-size: 320%;
+                font-family: Baskerville, "Goudy Old Style", "Palatino", "Book Antiqua", serif;
+            }
+        }
+        .container {
+            padding: 50px;
+            background: #fff;
+            position: relative;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            &:after,
+            &:before {
+                content: '';
+                position: absolute;
+                z-index: -2;
+                bottom: 15px;
+                left: 10px;
+                width: 50%;
+                height: 20%;
+                box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+                -webkit-transform: rotate(-3deg);
+                -moz-transform: rotate(-3deg);
+                -ms-transform: rotate(-3deg);
+                -o-transform: rotate(-3deg);
+                transform: rotate(-3deg);
+            }
+            &:after {
+                right: 10px;
+                left: auto;
+                -webkit-transform: rotate(3deg);
+                transform: rotate(3deg);
+            }
+            h1 {
+                font-family: Baskerville, "Goudy Old Style", "Palatino", "Book Antiqua", serif;
+                text-align: center;
+            }
+            pre {
+                padding: 20px;
+                position: relative;
+                box-sizing: content-box;
+                display: block;
+                line-height: 1.42857143;
+                word-break: break-all;
+                word-wrap: break-word;
+                border-radius: 0.4em;
+                -moz-border-radius: 0.4em;
+                -webkit-border-radius: 0.4em;
+                overflow-x: hidden;
+                font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+                font-size: 12px;
+                white-space: pre;
+                box-shadow: 0 12px 20px -10px rgba(81, 64, 49, 0.6);
+                color: #87968e;
+                background: #fff2e3;
+                text-align: center;
+                width: 700px;
+                margin: 50px auto;
+                z-index: 100;
+                -webkit-perspective: 700px;
+                perspective: 700px;
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+                border: none;
+            }
+        }
+    }
+    @include element ('note') {
+        background: #fff;
+    }
+}

@@ -1,0 +1,41 @@
+/* folder markdown-toc style start */
+.content__section .content-box__markdown--toc {
+  margin: 15px 0 20px 50px;
+  display: table;
+  zoom: 1;
+  padding: 7px 30px;
+  border: 1px solid #aaa;
+  background-color: #f9f9f9;
+  font-size: 95%;
+  direction: ltr;
+  line-height: 1.6;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  overflow: hidden; }
+  .content__section .content-box__markdown--toc ul {
+    list-style-type: decimal;
+    list-style-image: none;
+    padding: 0;
+    margin: 0.3em 0;
+    text-align: left;
+    color: #ba832c;
+    counter-reset: xxx 0; }
+    .content__section .content-box__markdown--toc ul li {
+      list-style: decimal;
+      transition: none;
+      padding: 0;
+      margin: 0 0 0.1em;
+      position: initial;
+      color: #ba832c; }
+      .content__section .content-box__markdown--toc ul li::before {
+        content: none; }
+      .content__section .content-box__markdown--toc ul li a {
+        text-decoration: none;
+        background: none;
+        font-weight: 100; }
+      .content__section .content-box__markdown--toc ul li ul {
+        margin-left: 20px; }
+
+/* folder markdown-toc style end */
+
+/*# sourceMappingURL=markdownToc.css.map */

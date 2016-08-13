@@ -1,0 +1,58 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>KC.</title>
+    <link href="../favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/font/iconfont.css">
+    <link rel="stylesheet" href="../static/css/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta property="wb:webmaster" content="7e72a191affb5721" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        .div-content {
+            background: url(../static/bgimg/bg-<%= folder %>.jpg);
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        ul {
+            display: inline-block;
+            padding: 20px 50px;
+            background: #fff;
+            border-radius: 5px;
+            -webkit-box-shadow: 0 0 10px rgba(0, 204, 204, .5);
+            -moz-box-shadow: 0 0 10px rgba(0, 204, 204, .5);
+            box-shadow: 0 0 10px rgba(0, 204, 204, .5);
+        }
+    </style>
+</head>
+
+<body class="div-content">
+    <div class="w-900">
+        <h1><a class="thistitle" href="https://github.com/kangcafe" target="_blank">kang`s cafe<span
+            class="spanFont mr10px iconfont icon-github"></span></a>
+        <small><a href="../index.html" target="_blank">BACK HOME</a></small>
+    </h1>
+
+        <ul>
+            <% content.linkList.forEach(function(item){ %>
+                <li>
+                    <a href="./<%= item.path %>" class="col-xs-12 link -download">
+                        <%= item.fileName %>
+                    </a>
+                </li>
+                <% }) %>
+        </ul>
+    </div>
+    <footer>
+        <a class="forkme" href="https://github.com/kangcafe" target="_blank">Kang`s Cafe on GitHub</a>
+    </footer>
+</body>
+
+</html>
