@@ -2,25 +2,25 @@
 
 <!-- toc -->
 
- 当我们构建一个小的web应用的时候，怎样合理的组织页面样式并不是一个大的问题，而一但web应用体量逐渐增大的时候，就需要一定的规范和技巧来减少大的应用开发过程中`front-end developers`和`back-end developers`的联调消耗，应对这种场景由此产生了SMACSS[^smacss_desc]、OOCSS[^oocss_desc]以及BEM[^bem_web_desc]等技术。
+ 当我们构建一个小的web应用的时候，怎样合理的组织页面样式并不是一个大的问题，而一但web应用体量逐渐增大的时候，就需要一定的规范和技巧来减少大的应用开发过程中`front-end developers`和`back-end developers`的联调消耗，应对这种场景由此产生了SMACSS[^^smacss_desc]、OOCSS[^^oocss_desc]以及BEM[^^bem_web_desc]等技术。
 
-[^smacss_desc]:[smacss](http://smacss.com/):SMACSS (pronounced “smacks”) is more style guide than rigid framework. There is no library within here for you to download or install. SMACSS is a way to examine your design process and as a way to fit those rigid frameworks into a flexible thought process. It is an attempt to document a consistent approach to site development when using CSS.
+[^^smacss_desc]:[smacss](http://smacss.com/):SMACSS (pronounced “smacks”) is more style guide than rigid framework. There is no library within here for you to download or install. SMACSS is a way to examine your design process and as a way to fit those rigid frameworks into a flexible thought process. It is an attempt to document a consistent approach to site development when using CSS.
 
-[^oocss_desc]:[oocss](http://oocss.org/):In the OOCSS framework the media object describes a content block containing a fixed-size media element (e.g. image or video) along with other variable-size content (e.g. text). Another example is the module object, which describes a generic content block with a required body area and optional header and footer areas.The wiki is [Object Oriented CSS](https://github.com/stubbornella/oocss/wiki).
+[^^oocss_desc]:[oocss](http://oocss.org/):In the OOCSS framework the media object describes a content block containing a fixed-size media element (e.g. image or video) along with other variable-size content (e.g. text). Another example is the module object, which describes a generic content block with a required body area and optional header and footer areas.The wiki is [Object Oriented CSS](https://github.com/stubbornella/oocss/wiki).
 
-[^bem_web_desc]:[bem](https://en.bem.info/):Frontend Development Methodology
+[^^bem_web_desc]:[bem](https://en.bem.info/):Frontend Development Methodology
 
-> BEM Methodology will massively improve code maintainability and speed up the development process[^BEM_Methodology_desc].
+> BEM Methodology will massively improve code maintainability and speed up the development process[^^BEM_Methodology_desc].
 
-[^BEM_Methodology_desc]:[Introduction To BEM Methodology](https://www.toptal.com/css/introduction-to-bem-methodology):What is BEM Methodology?
+[^^BEM_Methodology_desc]:[Introduction To BEM Methodology](https://www.toptal.com/css/introduction-to-bem-methodology):What is BEM Methodology?
 
 `BEM`是`Block`、`Element`和`Modifier`的缩写，其思想是通过模块化命名dom元素进行css样式的管理，以增强css和类名的可读性和易用性（所以这种命名方式只能用于classes而不能用于IDs）。
 
 ## Block
 
-这里的`Block`是抽象的产物，按照[Josh Medeski](http://joshmedeski.com/)的说法：‘The block is the container or context where the element finds itself. [^block_desc]’，[BEM](https://en.bem.info/)解释在整体web应用中任何一个模块都是一个对象，即`Block`（模块对象），每一个模块一一对应相应的css样式，比如一个简洁的[百度](https://www.baidu.com/)页面：
+这里的`Block`是抽象的产物，按照[Josh Medeski](http://joshmedeski.com/)的说法：‘The block is the container or context where the element finds itself. [^^block_desc]’，[BEM](https://en.bem.info/)解释在整体web应用中任何一个模块都是一个对象，即`Block`（模块对象），每一个模块一一对应相应的css样式，比如一个简洁的[百度](https://www.baidu.com/)页面：
 
-[^block_desc]:[An Introduction to the BEM Methodology](http://webdesign.tutsplus.com/articles/an-introduction-to-the-bem-methodology--cms-19403):Block、Element、Modifiers.
+[^^block_desc]:[An Introduction to the BEM Methodology](http://webdesign.tutsplus.com/articles/an-introduction-to-the-bem-methodology--cms-19403):Block、Element、Modifiers.
 
 ![百度](../../../static/img/bem/1.png)
 
@@ -180,9 +180,9 @@ HTML：
 </header>
 ```
 
-从图中我们可以看出BEM更倾向于`模块对象（Block）`和`语义化`，但这里其实也是有争议的，比如`Thierry Koblentz`就提出：'If you check the W3C's "[Tips for Webmasters](https://www.w3.org/QA/Tips/goodclassnames)" ,where it says "Good names don't change," you'll see that the argument is about maintenance, not semantics per se[^challenging_css_best_practices_atomic_approach]'的论证观点用于阐述HTML标签的类名不应该过分强调语义化。
+从图中我们可以看出BEM更倾向于`模块对象（Block）`和`语义化`，但这里其实也是有争议的，比如`Thierry Koblentz`就提出：'If you check the W3C's "[Tips for Webmasters](https://www.w3.org/QA/Tips/goodclassnames)" ,where it says "Good names don't change," you'll see that the argument is about maintenance, not semantics per se[^^challenging_css_best_practices_atomic_approach]'的论证观点用于阐述HTML标签的类名不应该过分强调语义化。
 
-[^challenging_css_best_practices_atomic_approach]:[Challenging CSS Best Practices](https://www.smashingmagazine.com/2013/10/challenging-css-best-practices-atomic-approach/#regarding-unsemantic-class-names):REGARDING UNSEMANTIC CLASS NAMES.
+[^^challenging_css_best_practices_atomic_approach]:[Challenging CSS Best Practices](https://www.smashingmagazine.com/2013/10/challenging-css-best-practices-atomic-approach/#regarding-unsemantic-class-names):REGARDING UNSEMANTIC CLASS NAMES.
 
 `TOMISLAV MATIJEVIĆ`对于BEM有一个形象的比喻，他将一个`Block`看作是一个人（person）。
 
@@ -259,17 +259,17 @@ HTML：
 
 |         |       |      |
 | :------------- |:------------- |:------------- |
-| Normalize.css[^normalize_css_desc] | CSS Tools[^css_tools_desc]| aliceui[^aliceui_desc]|
+| Normalize.css[^^normalize_css_desc] | CSS Tools[^^css_tools_desc]| aliceui[^^aliceui_desc]|
 
-具体的css reset选择可以阅读[John W. Long](http://wiseheartdesign.com/)的Modular CSS typography[^modular_css_tyog_desc]，也许可以提供一些灵感。
+具体的css reset选择可以阅读[John W. Long](http://wiseheartdesign.com/)的Modular CSS typography[^^modular_css_tyog_desc]，也许可以提供一些灵感。
 
-[^normalize_css_desc]:[Normalize.css](http://necolas.github.io/normalize.css/)
+[^^normalize_css_desc]:[Normalize.css](http://necolas.github.io/normalize.css/)
 
-[^css_tools_desc]:[CSS Tools](http://meyerweb.com/eric/tools/css/reset/)
+[^^css_tools_desc]:[CSS Tools](http://meyerweb.com/eric/tools/css/reset/)
 
-[^modular_css_tyog_desc]:[Modular CSS typography](http://thesassway.com/advanced/modular-css-typography)
+[^^modular_css_tyog_desc]:[Modular CSS typography](http://thesassway.com/advanced/modular-css-typography)
 
-[^aliceui_desc]:[Alice](https://github.com/aliceui/aliceui.github.io):支付宝前端样式。
+[^^aliceui_desc]:[Alice](https://github.com/aliceui/aliceui.github.io):支付宝前端样式。
 
 ## 参考
 

@@ -233,8 +233,8 @@ function mdToHtmlSourcePath(folder) {
 }
 
 function tocReplace(mdFile, mdFileToc) {
-    var footnoteStart = new RegExp("\\[\\^+[a-zA-Z0-9_\u4e00-\u9fa5]+\\](?!:)", "igm");
-    var footnoteEnd = new RegExp("\\[\\^+[a-zA-Z0-9_\u4e00-\u9fa5]+\\]:.+", "ig");
+    var footnoteStart = new RegExp("\\[\\^\\^+[a-zA-Z0-9_\u4e00-\u9fa5]+\\](?!:)", "igm");
+    var footnoteEnd = new RegExp("\\[\\^\\^+[a-zA-Z0-9_\u4e00-\u9fa5]+\\]:.+", "ig");
 
     var start = '<!-- toc -->';
     var stop = '<!-- toc stop -->';
@@ -253,17 +253,17 @@ function tocReplace(mdFile, mdFileToc) {
     var table = '\n\n' + start + '\n\n<section class="content__section"><div class="content-box__markdown--toc">' + markdown(mdFileToc) + '</div></section>\n\n' + stop + '\n\n';
 
     var footnoteMap = _.map(content.match(footnoteEnd), function(item, index) {
-        var itemNoBrackets = item.match(/\[\^(.+?)\]:/g)[0].replace(/\[\^(.+?)\]:/g, '$1');
+        var itemNoBrackets = item.match(/\[\^\^(.+?)\]:/g)[0].replace(/\[\^\^(.+?)\]:/g, '$1');
         footnoteLink[itemNoBrackets] = (index + 1);
         return '<li id="footnoteDo_' + (index + 1) + '" class="footnoteUp">' +
             '<span class="backlink" data-desc="' + itemNoBrackets + '">' +
             '<b><a  href="#footnoteUp_' + (index + 1) + '">^</a></b>' +
             '</span>' +
-            '<span class="reference-text">' + item.replace(/\[\^(.+?)\]:/g, "") + '</span>' +
+            '<span class="reference-text">' + item.replace(/\[\^\^(.+?)\]:/g, "") + '</span>' +
             '</li>';
     });
     content = content.replace(footnoteStart, function(item) {
-        item = item.replace(/\[\^(.+?)\]/g, '$1');
+        item = item.replace(/\[\^\^(.+?)\]/g, '$1');
 
         return '<sup id="footnoteUp_' + footnoteLink[item] + '" data-desc="' + item + '" class="reference"><a class="footnoteUp" href="#footnoteDo_' + footnoteLink[item] + '">[' + footnoteLink[item] + ']</a></sup>';
     });
@@ -272,6 +272,7 @@ function tocReplace(mdFile, mdFileToc) {
     content = content.replace(start, table);
 
     var footnoteBox = '\n\n## References\n\n<section class="footnote-box"><ul>' + footnoteMap.join('') + '</ul></section>\n\n';
-    return content + ((footnoteMap.length > 1) ? footnoteBox : '\n\n');
+
+    return content + ((footnoteMap.length > 0) ? footnoteBox : '\n\n');
 };
 process.exit(0);

@@ -85,3 +85,48 @@
         background: #fff;
     }
 }
+#ds-thread.ds-thread {
+    #ds-reset {
+        .ds-comments-info {
+            .ds-comments-tabs {
+                li.ds-tab {
+                    .ds-comments-tab-weibo {
+                        display: none;
+                    }
+                    .ds-comments-tab-duoshuo {
+                        border: none;
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+        .ds-powered-by {
+            display: none;
+        }
+    }
+}
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 6px;
+    height:6px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-border-top-right-radius: 3px;
+    border-top-right-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-top-right-radius: 3px;
+  border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+    background: rgba(230,230,230,0.8);
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(255,0,0,0.4);
+}

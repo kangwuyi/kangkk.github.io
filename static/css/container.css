@@ -187,7 +187,7 @@ div.container {
     color: #333;
     word-wrap: normal;
     white-space: pre;
-    overflow: hidden; }
+    overflow-x: auto; }
   div.container dl,
   div.container ol,
   div.container p,
