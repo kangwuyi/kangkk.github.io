@@ -9,9 +9,15 @@ var fs = require('fs'),
     transliteration = require('transliteration'),
     ejs = require('ejs'),
     moment = require('moment'),
+    youdao = require('youdao'),
     matter = require('gray-matter'),
     uuid = require('uuid'),
     toc = require('marked-toc');
+
+youdao.set({
+    keyfrom: 'kangcafe',
+    key: '938031020',
+});
 
 var folderMenu = ['note', 'mood'];
 
@@ -78,7 +84,7 @@ function creatMdToHtml(op, folder) {
         fileName = fileNameArray[0],
         englishToPinYin = transliteration.slugify(fileName, {
             lowercase: false,
-            separator: '_'
+            separator: ' '
         }),
         relativePath = path.relative(outPath, __dirname),
         template = '<%= depth %><%= bullet %>[<%= heading %>](#<%= url %>)\n',
@@ -97,26 +103,43 @@ function creatMdToHtml(op, folder) {
 
     var htmlFileName = path.join(fileNameUuid + '.html'),
         creatFilePath = path.join(outPath, htmlFileName);
+    youdao.translate(fileName, function(e, result) {
+        var englishToPinYin_keyWolds = englishToPinYin.split(' ').join(','),
+            result_keyWolds = '',
+            keyWorlds = '',
+            description = '';
 
-    fs.writeFileSync(
-        creatFilePath,
-        ejs.render(
-            getTemplates(folder).pages, {
-                filename: path.join(__dirname, 'static/templates/' + folder + '.html'),
-                folder: folder,
-                kcFileId: fileNameUuid,
-                kcFileName: fileName,
-                kcFileAddr: 'http://kangcafe.com/' + path.relative(__dirname, creatFilePath),
-                englishToPinYin: englishToPinYin,
-                content: mdToHtml,
-                relativePath: relativePath,
-                birthtime: birthtime,
-                mtime: mtime
-            }
-        ),
-        'utf8'
-    );
-    console.log('creat [' + htmlFileName + ']');
+        englishToPinYin_keyWolds = englishToPinYin_keyWolds + ',' + englishToPinYin;
+        if (_.isArray(result)) {
+            result_keyWolds = result.join(',');
+        } else {
+            result_keyWolds = result.split(' ').join(',');
+            result_keyWolds = result_keyWolds + ',' + result;
+        }
+        keyWorlds = englishToPinYin_keyWolds + ',' + result_keyWolds + ',' + fileName + ',' + (_.isArray(result) ? result.join(',') : result);
+        description = fileName + ',' + (_.isArray(result) ? result.join(',') : result);
+
+        fs.writeFileSync(
+            creatFilePath,
+            ejs.render(
+                getTemplates(folder).pages, {
+                    filename: path.join(__dirname, 'static/templates/' + folder + '.html'),
+                    folder: folder,
+                    kcFileId: fileNameUuid,
+                    kcFileName: fileName,
+                    kcFileAddr: 'http://kangcafe.com/' + path.relative(__dirname, creatFilePath),
+                    keyWorlds: keyWorlds,
+                    description: description,
+                    content: mdToHtml,
+                    relativePath: relativePath,
+                    birthtime: birthtime,
+                    mtime: mtime
+                }
+            ),
+            'utf8'
+        );
+        console.log('creat [' + htmlFileName + ']');
+    });
     return {
         path: path.join(path.relative(path.join(__dirname), path.dirname(outPath)), htmlFileName),
         fileName: fileName,
@@ -275,4 +298,4 @@ function tocReplace(mdFile, mdFileToc) {
 
     return content + ((footnoteMap.length > 0) ? footnoteBox : '\n\n');
 };
-process.exit(0);
+//process.exit(0);
