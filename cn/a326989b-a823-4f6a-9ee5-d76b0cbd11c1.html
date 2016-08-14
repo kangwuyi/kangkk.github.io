@@ -147,7 +147,7 @@ model.html
 <ul>
 <li>window.open(url, name [, style])</li>
 </ul>
-<pre><code class="lang-js">w = <span class="hljs-built_in">window</span>.<span class="hljs-keyword">open</span>(<span class="hljs-string">"test.html"</span>, <span class="hljs-string">"Test"</span>, <span class="hljs-string">"width=200,height=200"</span>);
+<pre><code class="lang-js"><span class="hljs-attribute">w</span> = window.open(<span class="hljs-string">"test.html"</span>, <span class="hljs-string">"Test"</span>, <span class="hljs-string">"width=200,height=200"</span>);
 </code></pre>
 <table border="1" cellspacing="0" cellpadding="2" width="85%">
 <tbody><tr class="h">
@@ -611,32 +611,32 @@ function func() {
 <li>element.previousSibling</li>
 <li>element.nextSibling</li>
 </ul>
-<pre><code class="lang-js"><span class="hljs-attr">oElements</span> = oElement.childNodes;         // 子元素数组
-<span class="hljs-attr">oElement</span> = oElement.parentNode;          // 父元素
-<span class="hljs-attr">oElement</span> = oElement.firstChild;          // 第一个子元素
-<span class="hljs-attr">oElement</span> = oElement.lastChild;           // 最后一个子元素
-<span class="hljs-attr">oElement</span> = oElement.previousSibling;     // 上一个同级元素
-<span class="hljs-attr">oElement</span> = oElement.nextSibling;         // 下一个同级元素
+<pre><code class="lang-js"><span class="hljs-attribute">oElements</span> = oElement.childNodes<span class="hljs-comment">;         // 子元素数组</span>
+<span class="hljs-attribute">oElement</span> = oElement.parentNode<span class="hljs-comment">;          // 父元素</span>
+<span class="hljs-attribute">oElement</span> = oElement.firstChild<span class="hljs-comment">;          // 第一个子元素</span>
+<span class="hljs-attribute">oElement</span> = oElement.lastChild<span class="hljs-comment">;           // 最后一个子元素</span>
+<span class="hljs-attribute">oElement</span> = oElement.previousSibling<span class="hljs-comment">;     // 上一个同级元素</span>
+<span class="hljs-attribute">oElement</span> = oElement.nextSibling<span class="hljs-comment">;         // 下一个同级元素</span>
 </code></pre>
-<h3><span class="header-link" id="从元素数组中取出元素">从元素数组中取出元素</span></h3><pre><code class="lang-js"><span class="hljs-attr">languagen</span> = oElements.length;
-<span class="hljs-attr">oElement</span> = oElements[<span class="hljs-number">0</span>];
-<span class="hljs-attr">oElement</span> = oElements(<span class="hljs-number">0</span>);
-<span class="hljs-attr">oElement</span> = oElements.id1;
-<span class="hljs-attr">oElement</span> = oElements.item(<span class="hljs-number">0</span>);
-<span class="hljs-attr">oElement</span> = oElements.item(<span class="hljs-string">"id1"</span>);
-<span class="hljs-attr">oElement</span> = oElements.namedItem(<span class="hljs-string">"id1"</span>);
-<span class="hljs-attr">oElements</span> = oElements.tags(<span class="hljs-string">"span"</span>);
+<h3><span class="header-link" id="从元素数组中取出元素">从元素数组中取出元素</span></h3><pre><code class="lang-js"><span class="hljs-attribute">languagen</span> = oElements.length<span class="hljs-comment">;</span>
+<span class="hljs-attribute">oElement</span> = oElements[<span class="hljs-number">0</span>]<span class="hljs-comment">;</span>
+<span class="hljs-attribute">oElement</span> = oElements(<span class="hljs-number">0</span>)<span class="hljs-comment">;</span>
+<span class="hljs-attribute">oElement</span> = oElements.id1<span class="hljs-comment">;</span>
+<span class="hljs-attribute">oElement</span> = oElements.item(<span class="hljs-number">0</span>)<span class="hljs-comment">;</span>
+<span class="hljs-attribute">oElement</span> = oElements.item(<span class="hljs-string">"id1"</span>)<span class="hljs-comment">;</span>
+<span class="hljs-attribute">oElement</span> = oElements.namedItem(<span class="hljs-string">"id1"</span>)<span class="hljs-comment">;</span>
+<span class="hljs-attribute">oElements</span> = oElements.tags(<span class="hljs-string">"span"</span>)<span class="hljs-comment">;</span>
 </code></pre>
-<h3><span class="header-link" id="访问元素内的文字">访问元素内的文字</span></h3><pre><code class="lang-js"><span class="hljs-attr">sStr</span> = oElement.firstChild.nodeValue;
-<span class="hljs-attr">sStr</span> = oElement.innerText;
-<span class="hljs-attr">sStr</span> = oElement.innerHTML;
+<h3><span class="header-link" id="访问元素内的文字">访问元素内的文字</span></h3><pre><code class="lang-js"><span class="hljs-attribute">sStr</span> = oElement.firstChild.nodeValue<span class="hljs-comment">;</span>
+<span class="hljs-attribute">sStr</span> = oElement.innerText<span class="hljs-comment">;</span>
+<span class="hljs-attribute">sStr</span> = oElement.innerHTML<span class="hljs-comment">;</span>
 </code></pre>
-<h3><span class="header-link" id="访问与设定属性">访问与设定属性</span></h3><pre><code class="lang-js"><span class="hljs-attr">value</span> = oElement.id;
-<span class="hljs-attr">value</span> = oElement.getAttribute(<span class="hljs-string">"ID"</span>);
-<span class="hljs-attr">value</span> = oElement.getAttributeNode(<span class="hljs-string">"ID"</span>).value;
-<span class="hljs-attr">value</span> = oElement.getAttributeNode(<span class="hljs-string">"ID"</span>).nodeValue;
-<span class="hljs-attr">value</span> = oElement.attributes.getNamedItem(<span class="hljs-string">"ID"</span>).value;
-<span class="hljs-attr">value</span> = oElement.attributes.getNamedItem(<span class="hljs-string">"ID"</span>).nodeValue;
+<h3><span class="header-link" id="访问与设定属性">访问与设定属性</span></h3><pre><code class="lang-js"><span class="hljs-attribute">value</span> = oElement.id<span class="hljs-comment">;</span>
+<span class="hljs-attribute">value</span> = oElement.getAttribute(<span class="hljs-string">"ID"</span>)<span class="hljs-comment">;</span>
+<span class="hljs-attribute">value</span> = oElement.getAttributeNode(<span class="hljs-string">"ID"</span>).value<span class="hljs-comment">;</span>
+<span class="hljs-attribute">value</span> = oElement.getAttributeNode(<span class="hljs-string">"ID"</span>).nodeValue<span class="hljs-comment">;</span>
+<span class="hljs-attribute">value</span> = oElement.attributes.getNamedItem(<span class="hljs-string">"ID"</span>).value<span class="hljs-comment">;</span>
+<span class="hljs-attribute">value</span> = oElement.attributes.getNamedItem(<span class="hljs-string">"ID"</span>).nodeValue<span class="hljs-comment">;</span>
 </code></pre>
 <h3><span class="header-link" id="设定元素的属性值">设定元素的属性值</span></h3><pre><code class="lang-js">oElement.id = <span class="hljs-keyword">value</span>;
 oElement.setAttribute(<span class="hljs-string">"ID"</span>, <span class="hljs-keyword">value</span>);
@@ -806,8 +806,8 @@ document<span class="hljs-selector-class">.writeln</span>(<span class="hljs-stri
 <li>document.selection.createRange()（IE专用）</li>
 </ul>
 <p>表示现在选中的字符串的对象。</p>
-<pre><code class="lang-js">xx = document.selection.createRange()<span class="hljs-comment">;</span>
-alert(xx<span class="hljs-meta">.text</span>)<span class="hljs-comment">;</span>
+<pre><code class="lang-js"><span class="hljs-attribute">xx</span> = document.selection.createRange()<span class="hljs-comment">;</span>
+alert(xx.text)<span class="hljs-comment">;</span>
 </code></pre>
 <ul>
 <li>document.createStyleSheet([URL [, index]])（IE专用）</li>
@@ -954,7 +954,7 @@ alert(xx<span class="hljs-meta">.text</span>)<span class="hljs-comment">;</span>
         <i class="footer__backToTop-btn--icon iconfont icon-chevronup"></i>
     </a>
     <a class="footer__github-btn" href="https://github.com/kangcafe" target="_blank">Kang`s Cafe on GitHub</a>
-    <div class="ds-thread" data-thread-key="a326989b-a823-4f6a-9ee5-d76b0cbd11c1" data-title="js_windows" data-url="http://kangcafe.com/cn/a326989b-a823-4f6a-9ee5-d76b0cbd11c1.html"></div>
+    <div class="ds-thread" data-thread-key="a326989b-a823-4f6a-9ee5-d76b0cbd11c1" data-title="js_windows" data-url="http://kangcafe.com/cn\a326989b-a823-4f6a-9ee5-d76b0cbd11c1.html"></div>
     <script type="text/javascript">
         var duoshuoQuery = {
             short_name: "kangcafe"
@@ -976,7 +976,7 @@ alert(xx<span class="hljs-meta">.text</span>)<span class="hljs-comment">;</span>
             </a>
         </p>
         <p class="content__p--word">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
-        </a>. Reprint the 《<sub>js_windows</sub>》 need signature "<sub>kc</sub>", and the url is <sub>http://kangcafe.com/cn/a326989b-a823-4f6a-9ee5-d76b0cbd11c1.html</sub>.
+        </a>. Reprint the 《<sub>js_windows</sub>》 need signature "<sub>kc</sub>", and the url is <sub>http://kangcafe.com/cn\a326989b-a823-4f6a-9ee5-d76b0cbd11c1.html</sub>.
         </p>
         <p class="content__text-p--desc">
             <em>这里的大多数文章都写于很多年以前，十年历程，多于怀旧（@2006-2016）</em>
