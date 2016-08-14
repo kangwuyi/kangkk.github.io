@@ -65,7 +65,7 @@
             typeof <span class="hljs-built_in">global</span> == <span class="hljs-string">'object'</span> &amp;&amp; <span class="hljs-built_in">global</span>.<span class="hljs-built_in">global</span> === <span class="hljs-built_in">global</span> &amp;&amp; <span class="hljs-built_in">global</span> ||
             this;
 </code></pre><p>这里首先判断的是存在 self 或者 node 环境下的全局变量 global，然后复制给 root，作为根对象。</p>
-<pre><code><span class="hljs-attribute">  var previousUnderscore</span> = root._;
+<pre><code>  <span class="hljs-built_in">var</span> previousUnderscore = root.<span class="hljs-symbol">_</span>;
 </code></pre><p>previousUnderscore，从字面上理解就是“以前的 underscore”，说实话我并没理解这个赋值的用意，最开始以为是用来做判断全局 window是否已经存在 window.<em> 这个对象，然后通过判断 previousUnderscore 用来避免 window.</em> 污染 underscore 引起命名冲突，但是从头到尾只有一个地方用到了 previousUnderscore，即（1352行）：</p>
 <blockquote>
 <pre><code>  _.noConflict = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
@@ -157,7 +157,7 @@
     };
   };
 </code></pre><p>optimizeCb 翻译成汉语就是优化回调（optimize callback），那么 optimizeCb 是如何优化的呢，我们可以首先看到它传入了三个参数，分别为：func、context、argCount，语义化可知一个是将要优化的 callback function，一个是 context 上下文函数，最后 argCount 是一个 number 类型的数字。<code>void 0</code> 的用法很巧妙，这里用 <code>context === void 0</code> 判断是否存在上下文环境，也就是第二个参数，其他的一些关于 void 的用法详见 <a href="https://segmentfault.com/a/1190000000474941">谈谈Javascript中的void操作符</a>。接下来判断 argCount 数字进行相应的操作，其中有 call 和 apply 两个方法，详见 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply">Function.prototype.apply()</a> 和 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call">Function.prototype.call()</a>。</p>
-<pre><code>  var builtinIteratee<span class="hljs-comment">;</span>
+<pre><code>  <span class="hljs-keyword">var</span> builtinIteratee;
 </code></pre><p>builtinIteratee，内置的 Iteratee （迭代器）。</p>
 <pre><code>  <span class="hljs-built_in">var</span> cb = function(value, <span class="hljs-built_in">context</span>, argCount) {
     <span class="hljs-keyword">if</span> (<span class="hljs-symbol">_</span>.iteratee !== builtinIteratee) <span class="hljs-built_in">return</span> <span class="hljs-symbol">_</span>.iteratee(value, <span class="hljs-built_in">context</span>);
@@ -829,7 +829,7 @@
     };
   };
 </code></pre><p>createPredicateIndexFinder 这个函数适用于生成 <code>_.findIndex</code> 之类的函数，当我们看到 <code>return index;</code> 的是后就已经可以知道，其核心是与数组下标有关。</p>
-<pre><code>  _.findIndex = createPredicateIndexFinder(<span class="hljs-number">1</span>)<span class="hljs-comment">;</span>
+<pre><code>  <span class="hljs-keyword">_</span>.findIndex = createPredicateIndexFinder(<span class="hljs-number">1</span>);
 </code></pre><p><code>_.findIndex</code> 函数由 createPredicateIndexFinder 包装而成，我们可以看到它的默认传值是 <code>1</code>，也就是：</p>
 <blockquote>
 <pre><code>    _.findIndex = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(array, predicate, context)</span></span> {
@@ -841,7 +841,7 @@
    };
 </code></pre></blockquote>
 <p>其中 predicate 是回调函数接收 <code>array[index], index, array</code> 三个值用于 Boolean 判断，最终结果是返回符合规则的数组中的第一条数据的数组下标。</p>
-<pre><code>  _.findLastIndex = createPredicateIndexFinder(-<span class="hljs-number">1</span>)<span class="hljs-comment">;</span>
+<pre><code>  <span class="hljs-keyword">_</span>.findLastIndex = createPredicateIndexFinder(<span class="hljs-number">-1</span>);
 </code></pre><p><code>_.findLastIndex</code> 顾名思义就是返回数组中符合规则的最后一条数据的下标，说直白了就是遍历数组的时候从右往左而已。</p>
 <pre><code>  <span class="hljs-symbol">_</span>.sortedIndex = function(<span class="hljs-built_in">array</span>, obj, iteratee, <span class="hljs-built_in">context</span>) {
     iteratee = cb(iteratee, <span class="hljs-built_in">context</span>, <span class="hljs-number">1</span>);
@@ -1242,7 +1242,7 @@ obj.<span class="hljs-keyword">func</span>()<span class="hljs-comment">;</span>
 </code></pre><p><code>_.before</code>，与 <code>_.after</code> 相反，只在规定 Number 参数的次数内以此执行 <code>_.before</code>，超过之后结束。</p>
 <pre><code>  <span class="hljs-keyword">_</span>.<span class="hljs-built_in">once</span> = <span class="hljs-keyword">_</span>.partial(<span class="hljs-keyword">_</span>.<span class="hljs-built_in">before</span>, <span class="hljs-number">2</span>);
 </code></pre><p><code>_.once</code> 创建一个只能调用一次的函数。到这里关于函数相关的源码就结束了，说心里话很多地方看得懂不一定说的懂，说的懂也不一定用的懂，就拿这个 <code>_.once</code> 来讲，它只用了 <code>_.partial</code> 和 <code>_.before</code> 来做文章，用 <code>_.before</code> 限定只能执行一次还好理解，那么为什么一定要用 <code>_.partial</code> 坐下处理呢，其目的真的只是为了让 <code>2</code> 作为 <code>_.before</code> 的第一个参数进行传递过去并将 <code>_.once</code> 的传参作为 <code>arguments[1+]</code> 传入么，更深一层考虑，<code>_.partial</code> 函数是不是有处理过 <code>_.once</code> 传递过来的函数的作用域链和 this 相关的情况呢。</p>
-<pre><code>  _.restArgs = restArgs<span class="hljs-comment">;</span>
+<pre><code>  <span class="hljs-keyword">_</span>.restArgs = restArgs;
 </code></pre><p><code>_.restArgs</code> 将 restArgs 函数绑定到 <code>_</code> 对象上。</p>
 <pre><code>  <span class="hljs-keyword">var</span> hasEnumBug = !{toString: <span class="hljs-literal">null</span>}.propertyIsEnumerable(<span class="hljs-string">'toString'</span>);
 
@@ -1783,7 +1783,7 @@ obj.<span class="hljs-keyword">func</span>()<span class="hljs-comment">;</span>
         <i class="footer__backToTop-btn--icon iconfont icon-chevronup"></i>
     </a>
     <a class="footer__github-btn" href="https://github.com/kangcafe" target="_blank">Kang`s Cafe on GitHub</a>
-    <div class="ds-thread" data-thread-key="d1a6dbbf-cda8-4c4e-8fff-5d6ab148b40e" data-title="Underscore源码解析" data-url="http://kangcafe.com/cn\d1a6dbbf-cda8-4c4e-8fff-5d6ab148b40e.html"></div>
+    <div class="ds-thread" data-thread-key="d1a6dbbf-cda8-4c4e-8fff-5d6ab148b40e" data-title="Underscore源码解析" data-url="http://kangcafe.com/cn/d1a6dbbf-cda8-4c4e-8fff-5d6ab148b40e.html"></div>
     <script type="text/javascript">
         var duoshuoQuery = {
             short_name: "kangcafe"
@@ -1805,7 +1805,7 @@ obj.<span class="hljs-keyword">func</span>()<span class="hljs-comment">;</span>
             </a>
         </p>
         <p class="content__p--word">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
-        </a>. Reprint the 《<sub>Underscore源码解析</sub>》 need signature "<sub>kc</sub>", and the url is <sub>http://kangcafe.com/cn\d1a6dbbf-cda8-4c4e-8fff-5d6ab148b40e.html</sub>.
+        </a>. Reprint the 《<sub>Underscore源码解析</sub>》 need signature "<sub>kc</sub>", and the url is <sub>http://kangcafe.com/cn/d1a6dbbf-cda8-4c4e-8fff-5d6ab148b40e.html</sub>.
         </p>
         <p class="content__text-p--desc">
             <em>这里的大多数文章都写于很多年以前，十年历程，多于怀旧（@2006-2016）</em>
