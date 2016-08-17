@@ -9,7 +9,7 @@ div.container {
     font-size: 1em;
     @import "markdownToc";
     @import "reference";
-    h1 {
+    & > h1 {
         margin: 0 0 0.1em;
         background: none;
         font-size: 3em;
@@ -28,6 +28,14 @@ div.container {
         padding: 0;
         direction: ltr;
         border-bottom: 1px solid #aaa;
+    }
+    & > p > strong > em {
+        font-size: 14px;
+        font-weight: 100;
+        zoom: 1;
+        vertical-align: middle;
+        text-overflow: ellipsis;
+        line-height: 20px;
     }
     ol,
     ul {
@@ -100,29 +108,45 @@ div.container {
     table {
         border-collapse: collapse;
         border-spacing: 0;
-        border-left: 1px solid #ccc;
-        border-top: 1px solid #ccc;
+        border-left: 1px solid #3B5F9B;
+        border-top: 1px solid #3B5F9B;
     }
     td,
     th {
         max-width: 700px;
-        border-left: 1px solid #ccc;
-        border-right: 1px solid #ccc;
-        border-bottom: 1px solid #ccc;
-        border-top: 1px solid #000;
+        border-left: 1px dotted #ccc;
+        border-right: 1px dotted #ccc;
+        border-bottom: 1px dotted #ccc;
+        border-top: 1px dotted #ccc;
         padding: 3px 5px;
     }
     th {
-        background: #87968e;
+        background: #3B5F9B;
         color: #fff;
     }
+    tbody,
+    thead {
+        border: 3px solid #3B5F9B;
+    }
     td {
-        background: #fff2e3;
+        background: #fff;
         color: #777;
     }
     img {
+        display: inline-block;
+        /*border: 5px solid rgba(246, 247, 248, 0.5);
+        -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.08);
+        -moz-box-shadow: 1px 1px 1px rgba(0,0,0,0.08);
+        box-shadow: 1px 1px 1px rgba(0,0,0,0.08);*/
         width: auto;
         max-width: 100%;
+    }
+    iframe {
+        width: 100%;
+        min-height: 150px;
+        max-height: 400px;
+        /*border: 3px dotted #627680;*/
+        overflow: hidden;
     }
     a {
         background-position: center right;

@@ -1,0 +1,80 @@
+### 其它技巧和经验列表
+
+
+#### 如何让层在flash上显示？
+
+```css
+&lt;param name="wmode" value="transparent" /&gt;
+```
+设置flash的wmode值为transparent或opaque
+
+
+#### 如何使用标准的方法在页面上插入flash？
+
+```css
+&lt;object id="flash-show" type="application/x-shockwave-flash" data="*.swf"&gt;
+&lt;param name="movie" value="*.swf" /&gt;
+&lt;param name="wmode" value="transparent" /&gt;
+&lt;img src="*.jpg" alt="用于不支持flash或屏蔽flash时显示" /&gt;
+&lt;/object&gt;
+```
+至于flash的宽高可以在css里设置
+
+
+#### 如何在点文字时也选中复选框或单选框？
+
+
+```css
+&lt;input type="checkbox" id="chk1" name="chk" /&gt;&lt;label for="chk1"&gt;选项一&lt;/label&gt;
+&lt;input type="checkbox" id="chk2" name="chk" /&gt;&lt;label for="chk2"&gt;选项二&lt;/label&gt;
+
+&lt;input type="radio" id="rad1" name="rad" /&gt;&lt;label for="rad1"&gt;选项一&lt;/label&gt;
+&lt;input type="radio" id="rad2" name="rad" /&gt;&lt;label for="rad2"&gt;选项二&lt;/label&gt;
+```
+该方式所有主流浏览器都支持
+
+
+```css
+&lt;label&gt;&lt;input type="checkbox" name="chk" /&gt;选项一&lt;/label&gt;
+&lt;label&gt;&lt;input type="checkbox" name="chk" /&gt;选项二&lt;/label&gt;
+
+&lt;label&gt;&lt;input type="radio" name="rad" /&gt;选项一&lt;/label&gt;
+&lt;label&gt;&lt;input type="radio" name="rad" /&gt;选项二&lt;/label&gt;
+```
+该方式相比方法1更简洁，但IE6及更早浏览器不支持
+
+
+#### IE下如何对Standard Mode与Quirks Mode进行切换？</h3>
+
+--IE6的触发（在DTD申明前加上XML申明）--
+
+```css
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;!DOCTYPE html&gt;
+```
+IE5.5及更早浏览器版本直接以Quirks Mode解析。
+
+--所有IE版本的触发（在DTD申明前加上HTML注释）--
+
+```css
+&lt;!-- Let IE into quirks mode --&gt;
+&lt;!DOCTYPE html&gt;
+```
+当没有DTD声明时，所有IE版本也会进入Quirks Mode。
+
+
+#### 如何区别display:none与visibility:hidden？
+
+--方法：--
+
+```css
+相同的是display:none与visibility:hidden都可以用来隐藏某个元素；
+不同的是display:none在隐藏元素的时候，将其占位空间也去掉；而visibility:hidden只是隐藏了内容而已，其占位空间仍然保留。
+
+#### 如何设置IE下的iframe背景透明？
+
+--方法：--
+
+```css
+设置iframe元素的标签属性allowtransparency="allowtransparency"然后设置iframe内部页面的body背景色为transparent。
+不过由此会引发IE下一些其它问题，如：设置透明后的iframe将不能遮住select

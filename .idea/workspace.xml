@@ -2,116 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb8e0cbf-b908-45ce-8284-bc382ef3af47" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/file/other/2014_Nian_De_Ji_Ge_Shi_Bai.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/file/other/Cang_Hai_Yan_Mei_Liao_Bei_De_Chen_Ai.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/file/other/Dang_Wo_Men_Hui_Shou_Zhang_Wang.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/file/other/Jiu_Ji_Nian_De_Zhao_Dong.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/file/other/Kan_Bu_Jian_De_Sheng_Suo.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/file/other/Ming_Yun_De_Zhuo_Nong.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/file/other/Piao_Chen.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/file/other/Qing_Cao_Xiang.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/file/other/README.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/file/other/Sheng_Yi_Jing.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/file/other/Tao_Hua_Jin_Ge_Ci.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/file/other/Wo_Men_De_Hao_Qi.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/file/other/Xi_Wang_Ni_Shi_Yi_Zhu_Xiao_Cao.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/file/other/Xia_Yi_Fen_Zhong_De_Ni_You_Zai_Na_Li.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/file/other/Xian_Hu_Ge_Ci_Bai_Hu_Xu.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/file/other/Xiao_Mei_Ru_Yan.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/file/other/Zhuan_Yan_Ge_Ci.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/filemd/other/2014年的几个失败.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/filemd/other/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/filemd/other/下一分钟的你又在哪里.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/filemd/other/九几年的肇东.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/filemd/other/仙狐（歌词白狐续）.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/filemd/other/命运的捉弄.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/filemd/other/希望你是一株小草.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/filemd/other/当我们回首张望.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/filemd/other/我们的好奇.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/filemd/other/桃花尽（歌词）.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/filemd/other/沧海淹没了悲的尘埃.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/filemd/other/生意经.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/filemd/other/看不见的绳索.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/filemd/other/笑美如颜.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/filemd/other/转眼（歌词）.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/filemd/other/青草香.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mood/filemd/other/飘尘.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/css/BEM_Ming_Ming_Fang_Shi.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/css/Bu_Ju.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/css/Hua_Yi_Xie_Gui_Ze_Tu_Xing.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/css/Yan_Se.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/html/Zi_Ti.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/html/dom.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/html/emmet_Zi_Dong_Bu_Quan.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/html/meta_Biao_Qian.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/js/An_Quan.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/js/Fu_Dian_Shu.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/js/Han_Shu.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/js/Ji_Jian_Dai_Ma.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/js/Ji_Qiao.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/js/Nei_Cun.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/js/Ri_Qi.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/js/Shi_Jian.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/js/Shu_Ju_Cun_Chu.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/js/Shu_Xue_Han_Shu.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/js/Shu_Zu.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/js/Shua_Ti.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/js/Underscore_Yuan_Ma_Jie_Xi.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/js/Zheng_Ze.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/js/complexity.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/js/ie_javascript_compatibility.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/js/js_windows.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/other/Gong_Ju.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/file/other/Yan_Wen_Zi.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/css/BEM命名方式.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/css/布局.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/css/画一些规则图形.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/css/颜色.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/html/dom.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/html/emmet自动补全.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/html/meta标签.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/html/字体.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/js/Underscore源码解析.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/js/complexity.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/js/ie-javascript-compatibility.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/js/js_windows.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/js/事件.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/js/内存.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/js/函数.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/js/刷题.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/js/安全.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/js/技巧.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/js/数学函数.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/js/数据存储.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/js/数组.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/js/日期.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/js/极简代码.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/js/正则.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/js/浮点数.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/other/工具.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/filemd/other/颜文字.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/img/bg2015071003.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/img/operator_1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/img/operator_2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/note/img/operator_3.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/font/iconfont.eot" afterPath="$PROJECT_DIR$/static/font/iconfont.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/font/iconfont.ttf" afterPath="$PROJECT_DIR$/static/font/iconfont.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/font/iconfont.woff" afterPath="$PROJECT_DIR$/static/font/iconfont.woff" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mood/index.html" afterPath="$PROJECT_DIR$/mood/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mood/templates/css/mark.css" afterPath="$PROJECT_DIR$/mood/templates/css/mark.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mood/templates/index.html" afterPath="$PROJECT_DIR$/mood/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/note/index.html" afterPath="$PROJECT_DIR$/note/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/note/templates/css/base.css" afterPath="$PROJECT_DIR$/note/templates/css/base.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/note/templates/css/mark.css" afterPath="$PROJECT_DIR$/note/templates/css/mark.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/note/templates/index.html" afterPath="$PROJECT_DIR$/note/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/styles.css" afterPath="$PROJECT_DIR$/static/css/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/font/demo.html" afterPath="$PROJECT_DIR$/static/font/demo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/font/iconfont.css" afterPath="$PROJECT_DIR$/static/font/iconfont.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/font/iconfont.svg" afterPath="$PROJECT_DIR$/static/font/iconfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/145a765c-3bef-4844-b007-95ce79fc5825.html" afterPath="$PROJECT_DIR$/cn/145a765c-3bef-4844-b007-95ce79fc5825.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/b32030f0-ce47-4488-9ba1-2924e8149702.html" afterPath="$PROJECT_DIR$/cn/b32030f0-ce47-4488-9ba1-2924e8149702.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/note.html" afterPath="$PROJECT_DIR$/cn/note.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/unicode.html" afterPath="$PROJECT_DIR$/lib/unicode.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/markdown/note/css/滚动条.145a765c-3bef-4844-b007-95ce79fc5825.md" afterPath="$PROJECT_DIR$/markdown/note/css/滚动条.145a765c-3bef-4844-b007-95ce79fc5825.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/markdown/note/css/配色.b32030f0-ce47-4488-9ba1-2924e8149702.md" afterPath="$PROJECT_DIR$/markdown/note/css/配色.b32030f0-ce47-4488-9ba1-2924e8149702.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/base.css" afterPath="$PROJECT_DIR$/static/css/base.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/container.css" afterPath="$PROJECT_DIR$/static/css/container.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/index.css" afterPath="$PROJECT_DIR$/static/css/index.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/index.css.map" afterPath="$PROJECT_DIR$/static/css/index.css.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/lib-wiki.css" afterPath="$PROJECT_DIR$/static/css/lib-wiki.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/lib-wiki.css.map" afterPath="$PROJECT_DIR$/static/css/lib-wiki.css.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/sass/container.scss" afterPath="$PROJECT_DIR$/static/sass/container.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/sass/lib-wiki.scss" afterPath="$PROJECT_DIR$/static/sass/lib-wiki.scss" />
     </list>
     <ignored path="kangcafe.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -131,32 +36,12 @@
     <favorites_list name="kangcafe.github.io" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="base.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/note/templates/css/base.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mark.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/note/templates/css/mark.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2718">
-              <caret line="151" column="29" selection-start-line="151" selection-start-column="29" selection-end-line="151" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="61">
-              <caret line="224" column="0" selection-start-line="224" selection-start-column="0" selection-end-line="224" selection-end-column="0" />
+              <caret line="252" column="0" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -247,8 +132,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -264,6 +147,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="kangcafe.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kangcafe.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kangcafe.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -298,74 +195,6 @@
               <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kangcafe.github.io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kangcafe.github.io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kangcafe.github.io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kangcafe.github.io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="note" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kangcafe.github.io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kangcafe.github.io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="note" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kangcafe.github.io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kangcafe.github.io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="note" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -373,6 +202,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -483,11 +314,12 @@
       <workItem from="1470787359201" duration="2795000" />
       <workItem from="1470911188436" duration="73000" />
       <workItem from="1470913883040" duration="2713000" />
+      <workItem from="1471270402494" duration="14000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42196000" />
+    <option name="totallyTimeSpent" value="42210000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1345" height="733" extended-state="0" />
@@ -536,20 +368,8 @@
     <entry file="file://$PROJECT_DIR$/note/filemd/js/正则.md" />
     <entry file="file://$PROJECT_DIR$/note/filemd/js/浮点数.md" />
     <entry file="file://$PROJECT_DIR$/node_modules/crypto/Readme.md" />
-    <entry file="file://$PROJECT_DIR$/note/templates/pages.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/note/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-216">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/note/templates/pages.html" />
+    <entry file="file://$PROJECT_DIR$/note/index.html" />
     <entry file="file://$PROJECT_DIR$/mood/filemd/other/青草香.md" />
     <entry file="file://$PROJECT_DIR$/node_modules/guid/README.md" />
     <entry file="file://$PROJECT_DIR$/package.json">
@@ -559,42 +379,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mood/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/note/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mood/templates/css/base.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="255" column="21" selection-start-line="255" selection-start-column="21" selection-end-line="255" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/mood/templates/index.html" />
+    <entry file="file://$PROJECT_DIR$/note/templates/index.html" />
+    <entry file="file://$PROJECT_DIR$/mood/templates/css/base.css" />
     <entry file="file://$PROJECT_DIR$/mood/filemd/other/命运的捉弄.md" />
-    <entry file="file://$PROJECT_DIR$/mood/templates/pages.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="29" column="42" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mood/templates/css/mark.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="141" column="19" selection-start-line="141" selection-start-column="19" selection-end-line="141" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/mood/templates/pages.html" />
+    <entry file="file://$PROJECT_DIR$/mood/templates/css/mark.css" />
     <entry file="file://$PROJECT_DIR$/static/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="491">
@@ -602,319 +392,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/note/filemd/js/日期.7be58989-f1c6-48b2-b545-e1d6cb6cc8d1.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/note/filemd/js/数组.a6d7a10e-2bb6-4d60-b0a2-1bd041d7fa59.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/note/filemd/js/浮点数.0938b3d6-46da-4295-9517-9e38f8fe2bb7.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="36">
-            <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="12" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/note/filemd/js/正则.68d836ec-9dc3-47b8-a783-9599c02162fc.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/note/filemd/css/布局.9bd616d1-3c37-4ea3-a2f8-5c618809d8d0.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="36">
-            <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mood/filemd/other/2014年的几个失败.2cd12bab-ffe3-457a-9a4f-f5e6f814aed4.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="72">
-            <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/note/filemd/js/日期.7be58989-f1c6-48b2-b545-e1d6cb6cc8d1.md" />
+    <entry file="file://$PROJECT_DIR$/note/filemd/js/数组.a6d7a10e-2bb6-4d60-b0a2-1bd041d7fa59.md" />
+    <entry file="file://$PROJECT_DIR$/note/filemd/js/浮点数.0938b3d6-46da-4295-9517-9e38f8fe2bb7.md" />
+    <entry file="file://$PROJECT_DIR$/note/filemd/js/正则.68d836ec-9dc3-47b8-a783-9599c02162fc.md" />
+    <entry file="file://$PROJECT_DIR$/note/filemd/css/布局.9bd616d1-3c37-4ea3-a2f8-5c618809d8d0.md" />
+    <entry file="file://$PROJECT_DIR$/mood/filemd/other/2014年的几个失败.2cd12bab-ffe3-457a-9a4f-f5e6f814aed4.md" />
     <entry file="file://$PROJECT_DIR$/mood/filemd/other/好心境-坏心情.md" />
-    <entry file="file://$PROJECT_DIR$/mood/filemd/other/下一分钟的你又在哪里.0048265b-7fbf-4c2c-826c-6a6cc99315dc.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="252">
-            <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mood/filemd/other/九几年的肇东.0550373c-3cc3-4557-bb75-0bf74ef7c9b3.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="72">
-            <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mood/filemd/other/仙狐（歌词白狐续）.2f9d472f-efe6-42f2-bca8-2956d8c1138e.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="396">
-            <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mood/filemd/other/命运的捉弄.7d2feffa-2e02-4f1f-908c-b7560e86f019.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="378">
-            <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mood/filemd/other/好心境-坏心情.daa38e42-6436-4e57-968c-16fc699cd779.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mood/filemd/other/希望你是一株小草.64412cf1-6fc1-4267-b630-ff5ece4cb1cf.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="419">
-            <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mood/filemd/other/我们的好奇.3f804512-4863-45c6-8356-2d6923cd7088.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="252">
-            <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mood/filemd/other/当我们回首张望.f003ec51-a55c-4ed0-88c5-d677f8dfa452.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="288">
-            <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mood/filemd/other/桃花尽（歌词）.5f95100f-88f8-4cbb-9018-2776bc03d30f.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="288">
-            <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mood/filemd/other/沧海淹没了悲的尘埃.4b251a59-7719-4e81-b56d-ff7a3aca25f4.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="360">
-            <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mood/filemd/other/生意经.a5b1fea7-059f-4d3e-aedc-5049d536a58d.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="108">
-            <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mood/filemd/other/笑美如颜.3a1f7fc6-edec-40ea-a682-ff82a33c7ee4.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="180">
-            <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mood/filemd/other/转眼（歌词）.3f0b8904-4e6a-49bd-b848-f046c44b67ed.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="414">
-            <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mood/filemd/other/青草香.5fed0645-021a-45ff-ab34-283673570988.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="396">
-            <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mood/filemd/other/看不见的绳索.9d33adc4-a13b-44aa-b732-62cc0c620a20.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="324">
-            <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mood/filemd/other/飘尘.71cedcc4-6e28-46a7-8b7e-91af15b9b637.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="486">
-            <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/mood/filemd/other/下一分钟的你又在哪里.0048265b-7fbf-4c2c-826c-6a6cc99315dc.md" />
+    <entry file="file://$PROJECT_DIR$/mood/filemd/other/九几年的肇东.0550373c-3cc3-4557-bb75-0bf74ef7c9b3.md" />
+    <entry file="file://$PROJECT_DIR$/mood/filemd/other/仙狐（歌词白狐续）.2f9d472f-efe6-42f2-bca8-2956d8c1138e.md" />
+    <entry file="file://$PROJECT_DIR$/mood/filemd/other/命运的捉弄.7d2feffa-2e02-4f1f-908c-b7560e86f019.md" />
+    <entry file="file://$PROJECT_DIR$/mood/filemd/other/好心境-坏心情.daa38e42-6436-4e57-968c-16fc699cd779.md" />
+    <entry file="file://$PROJECT_DIR$/mood/filemd/other/希望你是一株小草.64412cf1-6fc1-4267-b630-ff5ece4cb1cf.md" />
+    <entry file="file://$PROJECT_DIR$/mood/filemd/other/我们的好奇.3f804512-4863-45c6-8356-2d6923cd7088.md" />
+    <entry file="file://$PROJECT_DIR$/mood/filemd/other/当我们回首张望.f003ec51-a55c-4ed0-88c5-d677f8dfa452.md" />
+    <entry file="file://$PROJECT_DIR$/mood/filemd/other/桃花尽（歌词）.5f95100f-88f8-4cbb-9018-2776bc03d30f.md" />
+    <entry file="file://$PROJECT_DIR$/mood/filemd/other/沧海淹没了悲的尘埃.4b251a59-7719-4e81-b56d-ff7a3aca25f4.md" />
+    <entry file="file://$PROJECT_DIR$/mood/filemd/other/生意经.a5b1fea7-059f-4d3e-aedc-5049d536a58d.md" />
+    <entry file="file://$PROJECT_DIR$/mood/filemd/other/笑美如颜.3a1f7fc6-edec-40ea-a682-ff82a33c7ee4.md" />
+    <entry file="file://$PROJECT_DIR$/mood/filemd/other/转眼（歌词）.3f0b8904-4e6a-49bd-b848-f046c44b67ed.md" />
+    <entry file="file://$PROJECT_DIR$/mood/filemd/other/青草香.5fed0645-021a-45ff-ab34-283673570988.md" />
+    <entry file="file://$PROJECT_DIR$/mood/filemd/other/看不见的绳索.9d33adc4-a13b-44aa-b732-62cc0c620a20.md" />
+    <entry file="file://$PROJECT_DIR$/mood/filemd/other/飘尘.71cedcc4-6e28-46a7-8b7e-91af15b9b637.md" />
     <entry file="file://$PROJECT_DIR$/note/img/bg2015071003.jpg" />
-    <entry file="file://$PROJECT_DIR$/note/img/markdownsheet.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/note/img/388bd189c44c56a90b21b6b0990240f3_b.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/note/img/markdownsheet.png" />
+    <entry file="file://$PROJECT_DIR$/note/img/388bd189c44c56a90b21b6b0990240f3_b.png" />
     <entry file="file://$PROJECT_DIR$/note/filemd/css/颜色.b32030f0-ce47-4488-9ba1-2924e8149702.md" />
-    <entry file="file://$PROJECT_DIR$/node_modules/swig/dist/swig.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="3913" column="0" selection-start-line="3913" selection-start-column="0" selection-end-line="3913" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/swig/lib/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="129" column="30" selection-start-line="129" selection-start-column="30" selection-end-line="129" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/swig/dist/swig.js" />
+    <entry file="file://$PROJECT_DIR$/node_modules/swig/lib/utils.js" />
     <entry file="file://$PROJECT_DIR$/node_modules/marked-toc/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="295">
@@ -926,30 +432,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/note/templates/css/mark.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2718">
-          <caret line="151" column="29" selection-start-line="151" selection-start-column="29" selection-end-line="151" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/note/templates/css/base.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/note/templates/css/mark.css" />
+    <entry file="file://$PROJECT_DIR$/note/templates/css/base.css" />
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="61">
-          <caret line="224" column="0" selection-start-line="224" selection-start-column="0" selection-end-line="224" selection-end-column="0" />
+          <caret line="252" column="0" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
           <folding />
         </state>
       </provider>

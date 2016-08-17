@@ -164,7 +164,7 @@ div.container {
     font-family: sans-serif;
     box-sizing: border-box;
     overflow: hidden; }
-    div.container .content__section .content-box__markdown--toc ul {
+    div.container .content__section .content-box__markdown--toc > ul {
       list-style-type: decimal;
       list-style-image: none;
       padding: 0;
@@ -172,25 +172,66 @@ div.container {
       text-align: left;
       color: #ba832c;
       counter-reset: xxx 0; }
-      div.container .content__section .content-box__markdown--toc ul li {
-        list-style: decimal;
-        transition: none;
-        padding: 0;
+      div.container .content__section .content-box__markdown--toc > ul li {
         margin: 0 0 0.1em;
-        position: initial;
-        color: #ba832c; }
-        div.container .content__section .content-box__markdown--toc ul li::before {
-          content: none; }
-        div.container .content__section .content-box__markdown--toc ul li a {
+        position: relative;
+        color: #ba832c;
+        padding: 0;
+        list-style: none;
+        transition: none; }
+        div.container .content__section .content-box__markdown--toc > ul li::before {
+          content: none;
+          transition: none; }
+        div.container .content__section .content-box__markdown--toc > ul li:hover::before {
+          color: #ba832c;
+          opacity: 1;
+          text-shadow: none;
+          -webkit-transition: none;
+          transition: none;
+          -webkit-transform: none;
+          -ms-transform: none;
+          transform: none;
+          border-radius: 0;
+          width: 0;
+          left: 0;
+          background: transparent; }
+      div.container .content__section .content-box__markdown--toc > ul > li {
+        counter-increment: section;
+        counter-reset: subsection; }
+        div.container .content__section .content-box__markdown--toc > ul > li::before {
+          content: counter(section) ". ";
+          position: absolute;
+          left: -15px;
+          top: 11px;
+          background: transparent;
+          font-size: 1em; }
+        div.container .content__section .content-box__markdown--toc > ul > li:hover::before {
+          left: -15px;
+          top: 11px; }
+        div.container .content__section .content-box__markdown--toc > ul > li a {
           text-decoration: none;
           background: none;
           font-weight: 100; }
-        div.container .content__section .content-box__markdown--toc ul li ul {
-          margin-left: 30px; }
-          div.container .content__section .content-box__markdown--toc ul li ul li ul {
-            margin-left: 40px; }
-            div.container .content__section .content-box__markdown--toc ul li ul li ul li a {
-              font-size: 12px; }
+        div.container .content__section .content-box__markdown--toc > ul > li > ul {
+          margin-left: 30px;
+          margin-bottom: 0; }
+          div.container .content__section .content-box__markdown--toc > ul > li > ul > li {
+            counter-increment: subsection; }
+            div.container .content__section .content-box__markdown--toc > ul > li > ul > li::before {
+              content: counter(section) "." counter(subsection) " ";
+              position: absolute;
+              left: -30px;
+              top: 11px;
+              background: transparent;
+              font-size: 1em; }
+            div.container .content__section .content-box__markdown--toc > ul > li > ul > li:hover::before {
+              left: -30px;
+              top: 11px; }
+            div.container .content__section .content-box__markdown--toc > ul > li > ul > li > ul {
+              margin-left: 40px;
+              margin-bottom: 0; }
+              div.container .content__section .content-box__markdown--toc > ul > li > ul > li > ul > li a {
+                font-size: 12px; }
   div.container sup.reference {
     font-weight: normal;
     font-style: normal;
@@ -264,7 +305,7 @@ div.container {
     div.container .footnote-box a {
       text-decoration: none;
       color: #0645ad; }
-  div.container h1 {
+  div.container > h1 {
     margin: 0 0 0.1em;
     background: none;
     font-size: 3em;
@@ -283,6 +324,13 @@ div.container {
     padding: 0;
     direction: ltr;
     border-bottom: 1px solid #aaa; }
+  div.container > p > strong > em {
+    font-size: 14px;
+    font-weight: 100;
+    zoom: 1;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    line-height: 20px; }
   div.container ol,
   div.container ul {
     text-align: left;
@@ -346,25 +394,39 @@ div.container {
   div.container table {
     border-collapse: collapse;
     border-spacing: 0;
-    border-left: 1px solid #ccc;
-    border-top: 1px solid #ccc; }
+    border-left: 1px solid #3B5F9B;
+    border-top: 1px solid #3B5F9B; }
   div.container td,
   div.container th {
     max-width: 700px;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    border-top: 1px solid #000;
+    border-left: 1px dotted #ccc;
+    border-right: 1px dotted #ccc;
+    border-bottom: 1px dotted #ccc;
+    border-top: 1px dotted #ccc;
     padding: 3px 5px; }
   div.container th {
-    background: #87968e;
+    background: #3B5F9B;
     color: #fff; }
+  div.container tbody,
+  div.container thead {
+    border: 3px solid #3B5F9B; }
   div.container td {
-    background: #fff2e3;
+    background: #fff;
     color: #777; }
   div.container img {
+    display: inline-block;
+    /*border: 5px solid rgba(246, 247, 248, 0.5);
+    -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.08);
+    -moz-box-shadow: 1px 1px 1px rgba(0,0,0,0.08);
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.08);*/
     width: auto;
     max-width: 100%; }
+  div.container iframe {
+    width: 100%;
+    min-height: 150px;
+    max-height: 400px;
+    /*border: 3px dotted #627680;*/
+    overflow: hidden; }
   div.container a {
     background-position: center right;
     background-repeat: no-repeat;

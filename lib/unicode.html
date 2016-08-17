@@ -13,15 +13,6 @@
   <script src="../static/js/marked.min.js"></script>
   <script src="../static/js/marked-toc.js"></script>
   <script type="text/javascript">
-      ! function($) {
-          $(window).scroll(function() {
-              $(this).scrollTop() > 100 ? $("#back-to-top").fadeIn() : $("#back-to-top").fadeOut()
-          }), $("#back-to-top").on("click", function(b) {
-              return b.preventDefault(), $("html, body").animate({
-                  scrollTop: 0
-              }, 100), !1
-          });
-      }(jQuery);
       var _hmt = _hmt || [];
       (function() {
           var hm = document.createElement("script");
@@ -51,9 +42,6 @@
         </div>
       </div>
       <footer class="book-footer footer">
-          <a class="footer__backToTop-btn" href="#" id="back-to-top">
-              <i class="footer__backToTop-btn--icon iconfont icon-chevronup"></i>
-          </a>
           <a class="footer__github-btn" href="https://github.com/kangcafe" target="_blank">Kang`s Cafe on GitHub</a>
           <div class="ds-thread" data-thread-key="unicode-kcFileId-uuid-2016-08-016" data-title="unicode-desc" data-url="http://kangcafe.com/lib/unicode.html"></div>
           <script type="text/javascript">

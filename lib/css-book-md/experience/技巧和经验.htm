@@ -1,0 +1,403 @@
+### CSS技巧和经验列表
+
+
+####
+如何清除图片下方出现几像素的空白间隙？
+
+```css
+img{display:block;}
+```
+
+
+
+```css
+img{vertical-align:top;}
+```
+
+除了top值，还可以设置为text-top | middle | bottom | text-bottom，甚至特定的[&lt;length&gt;](../values/length/index.htm)和[&lt;percentage&gt;](../values/numeric/percentage.htm)值都可以
+
+
+```css
+#test{font-size:0;line-height:0;}
+```
+
+`#test`为img的父元素
+
+####
+如何让文本垂直对齐文本输入框？
+
+```css
+input{vertical-align:middle;}
+```
+
+#### 如何让单行文本在容器内垂直居中？
+
+```css
+#test{height:25px;line-height:25px;}
+```
+
+只需设置文本的行高等于容器的高度即可
+
+
+####
+如何让超链接访问后和访问前的颜色不同且访问后仍保留hover和active效果？
+
+```css
+a:link{color:#03c;}
+a:visited{color:#666;}
+a:hover{color:#f30;}
+a:active{color:#c30;}
+```
+
+按L-V-H-A的顺序设置超链接样式即可，可速记为LoVe（喜欢）HAte（讨厌）
+
+
+####
+为什么Standard mode下IE无法设置滚动条的颜色？
+
+```css
+html{
+scrollbar-3dlight-color:#999;
+scrollbar-darkshadow-color:#999;
+scrollbar-highlight-color:#fff;
+scrollbar-shadow-color:#eee;
+scrollbar-arrow-color:#000;
+scrollbar-face-color:#ddd;
+scrollbar-track-color:#eee;
+scrollbar-base-color:#ddd;
+}
+```
+
+将原来设置在body上的滚动条颜色样式定义到html标签选择符上即可
+
+
+####
+如何使文本溢出边界不换行强制在一行内显示？
+
+```css
+#test{width:150px;white-space:nowrap;}
+```
+
+设置容器的宽度和[white-space](../properties/text/white-space.htm)为nowrap即可，其效果类似&lt;nobr&gt;标签
+
+
+####
+如何使文本溢出边界显示为省略号？（此方法Firefox5.0尚不支持）
+
+```css
+#test{width:150px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+```
+
+首先需设置将文本强制在一行内显示，然后将溢出的文本通过overflow:hidden截断，并以text-overflow:ellipsis方式将截断的文本显示为省略号。
+
+
+####
+如何使连续的长字符串自动换行？
+
+```css
+#test{width:150px;word-wrap:break-word;}
+```
+
+[word-wrap](../properties/text/word-wrap.htm)的break-word值允许单词内换行
+
+
+####
+如何清除浮动？
+
+```css
+#test{clear:both;}
+```
+
+`#test`为浮动元素的下一个兄弟元素
+
+
+```css
+#test{display:block;zoom:1;overflow:hidden;}
+```
+
+`#test`为浮动元素的父元素。zoom:1也可以替换为固定的width或height
+
+
+```css
+#test{zoom:1;}
+#test:after{display:block;clear:both;visibility:hidden;height:0;content:'';}
+```
+
+`#test`为浮动元素的父元素
+
+
+####
+如何定义鼠标指针的光标形状为手型并兼容所有浏览器？
+
+```css
+#test{cursor:pointer;}
+```
+
+若将[cursor](../properties/user-interface/cursor.htm)设置为hand，将只有IE和Opera支持，且hand为非标准属性值
+
+
+####
+如何让已知高度的容器在页面中水平垂直居中？
+
+```css
+#test{position:absolute;top:50%;left:50%;width:200px;height:200px;margin:-100px 0 0 -100px;}
+```
+
+已知高度的容器如何在页面中水平垂直居中
+
+
+####
+如何让未知尺寸的图片在已知宽高的容器内水平垂直居中？
+
+```css
+#test{display:table-cell;*display:block;*position:relative;width:200px;height:200px;text-align:center;vertical-align:middle;}
+#test p{*position:absolute;*top:50%;*left:50%;margin:0;}
+#test p img{*position:relative;*top:-50%;*left:-50%;vertical-align:middle;}
+```
+
+`#test`是img的祖父节点，p是img的父节点。未知尺寸的图片如何水平垂直居中
+
+
+####
+如何设置span的宽度和高度（即如何设置内联元素的宽高）？
+
+```css
+span{display:block;width:200px;height:100px;}
+```
+
+要使内联元素可以设置宽高，只需将其定义为块级或者内联块级元素即可。所以方法非常多样，既可以设置[display](../properties/layout/display.htm)属性，也可以设置[float](../properties/layout/float.htm)属性，或者[position](../properties/positioning/position.htm)属性等等。
+
+
+####
+如何给一个元素定义多个不同的css规则？
+
+```css
+.a{color:#f00;}
+.b{background:#eee;}
+.c{background:#ccc;}
+
+&lt;div class="a b"&gt;测试1&lt;/div&gt;
+&lt;div class="a c"&gt;测试2&lt;/div&gt;
+```
+
+多个规则之间使用空格分开，并且只有class能同时使用多个规则，id不可以
+
+
+####
+如何让某个元素充满整个页面？
+
+```css
+html,body{height:100%;margin:0;}
+#test{height:100%;}
+```
+
+####
+如何让某个元素距离窗口上右下左4边各10像素？
+
+```css
+html,body{height:100%;margin:0;}
+html{_padding:10px;}
+#test{position:absolute;top:10px;right:10px;bottom:10px;left:10px;_position:static;_height:100%;}
+```
+
+####
+如何去掉超链接的虚线框？
+
+```css
+a{outline:none;}
+```
+
+IE7及更早浏览器由于不支持[outline](../properties/user-interface/outline.htm)属性，需要通过js的blur()方法来实现，如&lt;a onfocus="this.blur();"...
+
+
+####
+如何容器透明，内容不透明？
+
+```css
+.outer{width:200px;height:200px;background:#000;filter:alpha(opacity=20);opacity:.2;}
+.inner{width:200px;height:200px;margin-top:-200px;}
+
+&lt;div class="outer"&gt;&lt;!--我是透明的容器--&gt;&lt;/div&gt;
+&lt;div class="inner"&gt;我是不透明的内容&lt;/div&gt;
+```
+
+原理是容器层与内容层并级，容器层设置透明度，内容层通过负[margin](../properties/margin/margin.htm)或者[position](../properties/positioning/position.htm)绝对定位等方式覆盖到容器层上
+
+
+```css
+.outer{width:200px;height:200px;background:rgba(0,0,0,.2);background:#000\9;filter:alpha(opacity=20)\9;}
+.outer .inner{position:relative\9;}
+
+&lt;div class="outer"&gt;
+&lt;div class="inner"&gt;我是不透明的内容&lt;/div&gt;
+&lt;/div&gt;
+```
+
+高级浏览器直接使用[rgba](../values/color/rgba.htm)颜色值实现；IE浏览器在定义容器透明的同时，让子节点相对定位，也可达到效果
+
+
+####
+如何让整个页面水平居中？
+
+```css
+body{text-align:center;}
+#test2{width:960px;margin:0 auto;text-align:left;}
+```
+
+定义body的[text-align](../properties/text/text-align.htm)值为center将使得IE5.5也能实现居中
+
+
+####
+为什么容器的背景色没显示出来？为什么容器无法自适应内容高度？
+
+[清除浮动](#no9)，方法请参考本页第9条
+
+通常出现这样的情况都是由于没有清除浮动而引起的，所以Debug时应第一时间想到是否有未清除浮动的地方
+
+
+####
+如何做1像素细边框的table？
+
+```css
+#test{border-collapse:collapse;border:1px solid #ddd;}
+#test th,#test td{border:1px solid #ddd;}
+
+&lt;table id="test"&gt;
+&lt;tr&gt;&lt;th&gt;姓名&lt;/th&gt;&lt;td&gt;Joy Du&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;th&gt;年龄&lt;/th&gt;&lt;td&gt;26&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+```
+
+
+
+```css
+#test{border-spacing:1px;background:#ddd;}
+#test tr{background:#fff;}
+
+&lt;table id="test" cellspacing="1"&gt;
+&lt;tr&gt;&lt;th&gt;姓名&lt;/th&gt;&lt;td&gt;Joy Du&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;th&gt;年龄&lt;/th&gt;&lt;td&gt;26&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+```
+
+IE7及更早浏览器不支持[border-spacing](../properties/table/border-spacing.htm)属性，但是可以通过table的标签属性cellspacing来替代。
+
+
+####
+如何使页面文本行距始终保持为n倍字体大小的基调？
+
+```css
+body{line-height:n;}
+```
+
+注意，不要给n加单位。如何使页面文本行距始终保持为n倍字体大小的基调
+
+
+####
+标准模式Standard mode和怪异模式Quirks mode下的盒模型区别？
+
+标准模式下：Element width = width + padding + border
+怪异模式下：Element width = width
+
+相关资料请参阅CSS3属性[box-sizing](../properties/user-interface/box-sizing.htm)
+
+
+####
+以图换字的几种方法及优劣分析</h3>
+<div class="gquote">
+<p class="gquote-tit"><strong>思路1：使用text-indent的负值，将内容移出容器</strong></p>
+<blockquote class="gquote-cont"><pre><code>.test1{width:200px;height:50px;text-indent:-9999px;background:#eee url(*.png) no-repeat;}
+
+&lt;div class="test"&gt;以图换字之内容负缩进法&lt;/div&gt;
+```
+
+<p class="gquote-info">该方法优点在于结构简洁，不理想的地方：1.由于使用场景不同，负缩进的值可能会不一样，不易抽象成公用样式；2.当该元素为链接时，在非IE下虚线框将变得不完整；3.如果该元素被定义为内联级或者内联块级，不同浏览器下会有较多的差异</p>
+<div class="gquote">
+<p class="gquote-tit"><strong>思路2：使用display:none或visibility:hidden将内容隐藏；</strong></p>
+<blockquote class="gquote-cont"><pre><code>.test{width:200px;height:50px;background:#eee url(*.png) no-repeat;}
+.test span{visibility:hidden;/* 或者display:none */}
+
+&lt;div class="test"&gt;&lt;span&gt;以图换字之内容隐藏法&lt;/span&gt;&lt;/div&gt;
+```
+
+该方法优点在于兼容性强并且容易抽象成公用样式，缺点在于结构较复杂
+<div class="gquote">
+<p class="gquote-tit"><strong>思路3：使用padding或者line-height将内容挤出容器之外；</strong></p>
+<blockquote class="gquote-cont"><pre><code>.test{overflow:hidden;width:200px;height:0;padding-top:50px;background:#eee url(*.png) no-repeat;}
+.test{overflow:hidden;width:200px;height:50px;line-height:50;background:#eee url(*.jpg) no-repeat;}
+
+&lt;div class="test"&gt;以图换字之内容排挤法&lt;/div&gt;
+```
+
+<p class="gquote-info">该方法优点在于结构简洁，缺点在于：1.由于使用场景不同，padding或line-height的值可能会不一样，不易抽象成公用样式；2.要兼容IE5.5及更早浏览器还得hack</p>
+<div class="gquote">
+<p class="gquote-tit"><strong>思路4：使用超小字体和文本全透明法；</strong></p>
+<blockquote class="gquote-cont"><pre><code>.test{overflow:hidden;width:200px;height:50px;font-size:0;line-height:0;color:rgba(0,0,0,0);background:#eee url(*.png) no-repeat;}
+
+&lt;div class="test"&gt;以图换字之超小字体+文本全透明法&lt;/div&gt;
+```
+
+该方法结构简单易用，推荐使用
+
+
+####
+为什么2个相邻div的margin只有1个生效？
+
+```css
+.box1{margin:10px 0;}
+.box2{margin:20px 0;}
+
+&lt;div class="box1"&gt;box1&lt;/div&gt;
+&lt;div class="box2"&gt;box2&lt;/div&gt;
+```
+
+<div class="gquote-info">
+<p>本例中box1的底部margin为10px，box2的顶部margin为20px，但表现在页面上2者之间的间隔为20px，而不是预想中的10+20px=30px，结果是选择2者之间最大的那个margin，我们把这种机制称之为“外边距合并”；外边距合并不仅仅出现在相邻的元素间，父子间同样会出现。</p>
+<p>简单列举几点注意事项:
+<br />　外边距合并只出现在块级元素上；
+<br />　浮动元素不会和相邻的元素产生外边距合并；
+<br />　绝对定位元素不会和相邻的元素产生外边距合并；
+<br />　内联块级元素间不会产生外边距合并；
+<br />　根元素间不会不会产生外边距合并（如html与body间）；
+<br />　设置了属性overflow且值不为visible的块级元素不会与它的子元素发生外边距合并；
+</p>
+
+
+####
+如何在文本框中禁用中文输入法？
+
+```css
+input,textarea{ime-mode:disabled;}
+```
+
+ime-mode为非标准属性，写该文档时只有IE和Firefox支持
+
+
+####
+如何解决列表中list-style-image不能精准定位的问题？</h3>
+<div class="gquote">
+<p class="gquote-tit"><strong>方法：</strong></p>
+<div class="gquote-cont">不使用[list-style-image](../properties/list/list-style-image.htm)来定义列表项目标记符号，而用[background-image](../properties/background/background-image.htm)来代替，并通过[background-position](../properties/background/background-position.htm)来进行定位</div>
+
+
+####
+如何解决伪对象:before和:after在input标签上的怪异表现的问题？</h3>
+<div class="gquote">
+<p class="gquote-tit"><strong>现象：</strong></p>
+<div class="gquote-cont">在编写本条目时，除了Opera，在所有浏览器下input标签使用伪对象:before和:after都没有效果，即使Opera的表现也同样令人诧异。大家可以试玩一下。浏览器版本：IE6-IE10, Firefox6.0, Chrome13.0, Safari5.1, Opera11.51</div>
+
+
+####
+如何解决伪对象:before和:after无法在Chrome,Safari,Opera上定义过渡和动画的问题？</h3>
+<div class="gquote">
+<p class="gquote-tit"><strong>现象：</strong></p>
+<div class="gquote-cont">在编写本条目时，除了Firefox，在所有浏览器下伪对象:before和:after无法定义过渡和动画效果。浏览器版本：IE6-IE10, Firefox6.0, Chrome13.0, Safari5.1, Opera11.51。如果这个过渡或动画效果是必须，可以考虑使用真实对象。</div>
+
+
+</ol>
+<p class="related">待续及修订。。。</p>
+</section>
+</section>
+
+</body>
+</html>
