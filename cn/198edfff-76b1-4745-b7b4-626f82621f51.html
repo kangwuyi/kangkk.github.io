@@ -22,7 +22,10 @@
     <![endif]-->
 </head>
 
-<body class="body__note">
+<body class="body__note" ontouchstart="">
+    <div class="progress">
+        <div class="progress-inner" id="progress"></div>
+    </div>
     <header class="header">
         <div class="header__content w-900">
             <h1 class="content__title">
@@ -370,6 +373,50 @@ x;
         hm.src = "//hm.baidu.com/hm.js?95e6652d7f50f8def7540e687f338f60";
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
+    })();
+    (function() {
+        // 获取进度条 div
+        var $progress = document.getElementById('progress');
+
+        // 初始进度，1%
+        var progress = 1;
+
+        // 生成随机数
+        var random = function(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        };
+
+        // 跑进度
+        var onprogress = function() {
+            // 随机时间
+            var timeout = random(10, 30);
+
+            setTimeout(function() {
+                // 如果页面加载完毕，则直接进度到 100%
+                if (window.loaded) {
+                    $progress.style.width = '100%';
+                    return;
+                }
+
+                // 随机进度
+                progress += random(1, 5);
+
+                // 随机进度不能超过 98%，以免页面还没加载完毕，进度已经 100% 了
+                if (progress > 98) {
+                    progress = 98;
+                }
+
+                $progressprogress.style.width = progress + '%';
+                onprogress();
+            }, timeout);
+        };
+
+        // 开始跑进度
+        onprogress();
+
+        window.onload = function() {
+            window.loaded = true;
+        };
     })();
 </script>
 </body>

@@ -164,6 +164,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    font-weight: 100;
     position: relative;
     text-decoration: none; }
     #toc .toc a:before {
@@ -191,6 +192,13 @@
       list-style: none; }
       #toc .toc > ul > li > a {
         border-bottom: 1px solid #ccc; }
+        #toc .toc > ul > li > a:nth-child(1) {
+          height: 51px;
+          box-shadow: rgba(0, 0, 0, 0.1) 0 1px 5px;
+          color: transparent;
+          font-size: 10px;
+          content: none;
+          margin-bottom: 10px; }
       #toc .toc > ul > li > ul {
         padding: 0 0 0 20px;
         box-sizing: border-box; }
@@ -205,7 +213,7 @@
             background: transparent;
             font-size: 1em; }
           #toc .toc > ul > li > ul > li > ul {
-            padding: 0px;
+            padding: 0;
             box-sizing: border-box;
             line-height: 1; }
             #toc .toc > ul > li > ul > li > ul > li {

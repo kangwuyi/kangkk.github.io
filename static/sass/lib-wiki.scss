@@ -40,6 +40,7 @@
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
+            font-weight: 100;
             position: relative;
             text-decoration: none;
             &:before {
@@ -70,10 +71,18 @@
                 list-style: none;
                 & > a {
                     border-bottom: 1px solid #ccc;
+                    &:nth-child(1) {
+                        height: 51px;
+                        box-shadow: rgba(0, 0, 0, 0.1) 0 1px 5px;
+                        color: transparent;
+                        font-size: 10px;
+                        content: none;
+                        margin-bottom: 10px;
+                    }
                 }
                 & > ul {
                     padding: 0 0 0 20px;
-                        box-sizing: border-box;
+                    box-sizing: border-box;
                     & > li {
                         counter-increment: section;
                         counter-reset: subsection;
@@ -86,8 +95,8 @@
                             font-size: 1em;
                         }
                         & > ul {
-                          padding: 0px;
-                              box-sizing: border-box;
+                            padding: 0;
+                            box-sizing: border-box;
                             line-height: 1;
                             & > li {
                                 counter-increment: subsection;
@@ -102,11 +111,10 @@
                                 & > ul {
                                     padding: 0;
                                     & > li {
-
-                                      a {
-                                          color: #009688;
-                                          padding: 1px;
-                                      }
+                                        a {
+                                            color: #009688;
+                                            padding: 1px;
+                                        }
                                     }
                                 }
                             }
