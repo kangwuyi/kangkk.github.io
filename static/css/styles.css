@@ -13,21 +13,38 @@ body {
   text-decoration: none;
   border-bottom: 1px solid transparent;
   color: #607d8b;
-  -webkit-transition: border .25s linear;
-  transition: border .25s linear; }
+  -webkit-transition: border 0.25s linear;
+  transition: border 0.25s linear; }
 
-.intro a, .intro a:active, .intro a:focus, .intro a:hover, .intro a:link, .intro a:visited {
-  -webkit-transition: background-color .25s linear,border-color .25s linear,box-shadow .25s linear,color .25s linear,opacity .25s linear;
-  transition: background-color .25s linear,border-color .25s linear,box-shadow .25s linear,color .25s linear,opacity .25s linear; }
+.intro a,
+.intro a:active,
+.intro a:focus,
+.intro a:hover,
+.intro a:link,
+.intro a:visited {
+  -webkit-transition: background-color 0.25s linear,border-color 0.25s linear,box-shadow 0.25s linear,color 0.25s linear,opacity 0.25s linear;
+  transition: background-color 0.25s linear,border-color 0.25s linear,box-shadow 0.25s linear,color 0.25s linear,opacity 0.25s linear; }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: #222;
   margin: 0 0 20px; }
 
-p, ul, ol, table, pre, dl {
+dl,
+ol,
+p,
+pre,
+table,
+ul {
   margin: 0 0 20px; }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   line-height: 1.1; }
 
 h1 {
@@ -46,7 +63,10 @@ h1 {
 h2 {
   color: #393939; }
 
-h3, h4, h5, h6 {
+h3,
+h4,
+h5,
+h6 {
   color: #494949; }
 
 a {
@@ -70,7 +90,8 @@ blockquote {
   padding: 0 0 0 20px;
   font-style: italic; }
 
-code, pre {
+code,
+pre {
   font-family: Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
   color: #333;
   font-size: 12px; }
@@ -86,7 +107,8 @@ table {
   width: 100%;
   border-collapse: collapse; }
 
-th, td {
+td,
+th {
   text-align: left;
   padding: 5px 10px;
   border-bottom: 1px solid #e5e5e5; }
@@ -186,7 +208,9 @@ footer {
     width: auto;
     margin: 0; }
 
-  header, section, footer {
+  footer,
+  header,
+  section {
     float: none;
     position: static;
     width: auto; }
@@ -214,10 +238,12 @@ footer {
   header {
     padding: 0; }
 
-  header ul, header p.view {
+  header p.view,
+  header ul {
     position: static; }
 
-  pre, code {
+  code,
+  pre {
     word-wrap: normal; } }
 @media print, screen and (max-width: 480px) {
   body {
@@ -294,8 +320,27 @@ footer {
   box-shadow: 0 1px 3px rgba(54, 54, 68, 0.8), inset 0 -1px 3px rgba(246, 247, 248, 0.5);
   border-collapse: separate; }
 
+tr.weblink a, td.weblink a {
+  color: #795da3; }
+
 .w-900 {
   width: 900px;
   margin: 0 auto; }
+
+.bs-docs-social-buttons {
+  display: inline-block;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none; }
+  .bs-docs-social-buttons li {
+    display: inline-block;
+    padding: 5px 8px;
+    line-height: 1; }
+    .bs-docs-social-buttons li .github-btn,
+    .bs-docs-social-buttons li .help-btn {
+      vertical-align: bottom; }
+    .bs-docs-social-buttons li .github-btn {
+      overflow: hidden;
+      border: 0; }
 
 /*# sourceMappingURL=styles.css.map */
