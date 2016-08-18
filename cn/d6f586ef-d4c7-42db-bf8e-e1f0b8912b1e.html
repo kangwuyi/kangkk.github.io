@@ -41,50 +41,49 @@
 <p><img src="../static/img/documentFragment/4.png" alt=""></p>
 <p>而我现在需要改成左边描述，右边源码的格式，如下图：</p>
 <p><img src="../static/img/documentFragment/5.png" alt=""></p>
-<p>var ul = document.createElement(&quot;ul&quot;).addClass(&#39;sections&#39;);
-var liList=[];
-$(&#39;#container-hiddle&#39;).children().each(function(i,n){
-  var obj = $(n);</p>
-<p>  if(obj.is(&#39;pre&#39;)){
-    var content = document.createElement(&quot;div&quot;).addClass(&#39;content&#39;),
-      highlight = document.createElement(&quot;div&quot;).addClass(&#39;highlight&#39;);</p>
-<pre><code>content.<span class="hljs-keyword">append</span>(highlight);
-$(liList[i-<span class="hljs-number">1</span>]).<span class="hljs-keyword">find</span>(<span class="hljs-string">'.annotation'</span>).<span class="hljs-keyword">append</span>(content);
-</code></pre><p>  }else {
-    var li = document.createElement(&quot;li&quot;).attr(&#39;id&#39;,&#39;section-&#39;+(i+1)),
-      annotation = document.createElement(&quot;div&quot;).addClass(&#39;annotation&#39;);</p>
-<pre><code><span class="hljs-keyword">if</span>(obj.<span class="hljs-keyword">is</span>(<span class="hljs-string">'h1'</span>)){
-  <span class="hljs-keyword">var</span> li = document.createElement(<span class="hljs-string">"li"</span>).attr(<span class="hljs-string">'id'</span>,<span class="hljs-string">'section-'</span>+(i+<span class="hljs-number">1</span>)),
-    <span class="hljs-keyword">annotation</span> = document.createElement(<span class="hljs-string">"div"</span>).addClass(<span class="hljs-string">'annotation'</span>);
-
-  <span class="hljs-keyword">annotation</span>.append(obj);
-}<span class="hljs-keyword">else</span>{
-
-  <span class="hljs-keyword">var</span> pilwrap = document.createElement(<span class="hljs-string">"div"</span>).addClass(<span class="hljs-string">'pilwrap'</span>),
-  pilcrow = document.createElement(<span class="hljs-string">"a"</span>).addClass(<span class="hljs-string">'annotation'</span>).attr(<span class="hljs-string">'href'</span>,<span class="hljs-string">'#section-'</span>+(i+<span class="hljs-number">1</span>)).attr(<span class="hljs-string">'text'</span>,<span class="hljs-string">'¶'</span>);
-
-  pilwrap.append(pilcrow);
-  <span class="hljs-keyword">annotation</span>.append(pilwrap);
-  <span class="hljs-keyword">annotation</span>.append(obj);
-}
-li.append(<span class="hljs-keyword">annotation</span>);
-liList.push(li);
-</code></pre><p>  }
-  ul.append(liList.join(&#39;&#39;))
-  $(&#39;#container-show&#39;).append(ul)
-});</p>
-<p>md--&gt;html--&gt; 特定规则的html</p>
+<p>作为合格的前端我肯定不会去苦哈哈的重新写一篇，或者每一行每一个标签的去更改<code>calss</code>类名以求得更改样式，我的文本存储格式是md--&gt;html--&gt; 特定规则的html，所以最轻松的做法是在前端浏览器层做文章，所以我写了一段jquery代码：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> ul = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"ul"</span>).addClass(<span class="hljs-string">'sections'</span>);
+<span class="hljs-keyword">var</span> liList=[];
+$(<span class="hljs-string">'#container-hiddle'</span>).children().each(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">i,n</span>)</span>{
+  <span class="hljs-keyword">var</span> obj = $(n);
+  <span class="hljs-keyword">if</span>(obj.is(<span class="hljs-string">'pre'</span>)){
+    <span class="hljs-keyword">var</span> content = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>).addClass(<span class="hljs-string">'content'</span>),
+      highlight = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>).addClass(<span class="hljs-string">'highlight'</span>);
+    content.append(highlight);
+    $(liList[i<span class="hljs-number">-1</span>]).find(<span class="hljs-string">'.annotation'</span>).append(content);
+  }<span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">var</span> li = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"li"</span>).attr(<span class="hljs-string">'id'</span>,<span class="hljs-string">'section-'</span>+(i+<span class="hljs-number">1</span>)),
+      annotation = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>).addClass(<span class="hljs-string">'annotation'</span>);
+    <span class="hljs-keyword">if</span>(obj.is(<span class="hljs-string">'h1'</span>)){
+      <span class="hljs-keyword">var</span> li = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"li"</span>).attr(<span class="hljs-string">'id'</span>,<span class="hljs-string">'section-'</span>+(i+<span class="hljs-number">1</span>)),
+        annotation = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>).addClass(<span class="hljs-string">'annotation'</span>);
+      annotation.append(obj);
+    }<span class="hljs-keyword">else</span>{
+      <span class="hljs-keyword">var</span> pilwrap = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>).addClass(<span class="hljs-string">'pilwrap'</span>),
+      pilcrow = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"a"</span>).addClass(<span class="hljs-string">'annotation'</span>).attr(<span class="hljs-string">'href'</span>,<span class="hljs-string">'#section-'</span>+(i+<span class="hljs-number">1</span>)).attr(<span class="hljs-string">'text'</span>,<span class="hljs-string">'¶'</span>);
+      pilwrap.append(pilcrow);
+      annotation.append(pilwrap);
+      annotation.append(obj);
+    }
+    li.append(annotation);
+    liList.push(li);
+  }
+  ul.append(liList.join(<span class="hljs-string">''</span>))
+  $(<span class="hljs-string">'#container-show'</span>).append(ul)
+});
+</code></pre>
+<p>这是第二版，第一版纯jquery已经被pass，第二版jquery+原生js，一次遍历几百个dom元素并插入，效果依然die，浏览器依然直接崩溃：</p>
+<p><img src="../static/img/documentFragment/1.png" alt=""></p>
+<p>工具栏里甚至直接显示空白，所以只能再改第三本，纯原生js：</p>
 <pre><code class="lang-js"><span class="hljs-keyword">if</span>(container_children[i].nodeName===<span class="hljs-string">'PRE'</span>){
   <span class="hljs-keyword">var</span> content = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>),
     highlight = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>);
-
   highlight.appendChild(childClone);
   content.appendChild(highlight);
   <span class="hljs-keyword">var</span> oFragmengChildren = oFragmeng.children;
   <span class="hljs-built_in">console</span>.log(oFragmengChildren)
   <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> oFragmengChildren)
   <span class="hljs-built_in">console</span>.log(oFragmengChildren[i])
-
   <span class="hljs-keyword">var</span> oFragmengChildrenClone = oFragmeng.children[i-prenum].item(<span class="hljs-number">0</span>);
   oFragmengChildrenClone.appendChild(content);
   oFragmeng.children[i-prenum]=oFragmengChildrenClone;
@@ -92,24 +91,22 @@ liList.push(li);
 }
 </code></pre>
 <p><img src="../static/img/documentFragment/2.png" alt=""></p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/DocumentFragment/querySelectorAll">DocumentFragment.querySelectorAll()</a></p>
-<p>content.appendChild(highlight);
-var oFragmengChildren = oFragmeng.children;
-console.log(oFragmengChildren)
-console.log(typeof oFragmengChildren)
-console.log(i)
-console.log(oFragmengChildren[&#39;section-&#39;+i].children)
-console.log(oFragmengChildren[&#39;section-&#39;+i].firstElementChild.children )
-console.log(oFragmengChildren[&#39;section-&#39;+i].querySelectorAll(&#39;div.pilwrap&#39;) )</p>
+<pre><code class="lang-js">content.appendChild(highlight);
+<span class="hljs-keyword">var</span> oFragmengChildren = oFragmeng.children;
+<span class="hljs-built_in">console</span>.log(oFragmengChildren)
+<span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> oFragmengChildren)
+<span class="hljs-built_in">console</span>.log(i)
+<span class="hljs-built_in">console</span>.log(oFragmengChildren[<span class="hljs-string">'section-'</span>+i].children)
+<span class="hljs-built_in">console</span>.log(oFragmengChildren[<span class="hljs-string">'section-'</span>+i].firstElementChild.children )
+<span class="hljs-built_in">console</span>.log(oFragmengChildren[<span class="hljs-string">'section-'</span>+i].querySelectorAll(<span class="hljs-string">'div.pilwrap'</span>) )
+</code></pre>
+<p>借助一些如<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/DocumentFragment/querySelectorAll">DocumentFragment.querySelectorAll()</a>的方法，测试还是可以行的通的，所以直接按逻辑开始码代码：</p>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> presign = <span class="hljs-keyword">false</span>;
 <span class="hljs-keyword">var</span> itmp = <span class="hljs-number">0</span>;
 <span class="hljs-keyword">var</span> oFragmeng = <span class="hljs-built_in">document</span>.createDocumentFragment();
 <span class="hljs-keyword">var</span> container_children = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'container-hiddle'</span>).childNodes;
-
 <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, length = container_children.length; i &lt; length; i += <span class="hljs-number">1</span>) {
-
     <span class="hljs-keyword">var</span> childClone = container_children[i].cloneNode(<span class="hljs-keyword">true</span>);
-
     <span class="hljs-keyword">if</span> (container_children[i].nodeName === <span class="hljs-string">'H1'</span> &amp;&amp; container_children[i].nodeName !== <span class="hljs-string">'#text'</span>) {
         itmp = itmp + <span class="hljs-number">1</span>
         <span class="hljs-keyword">var</span> li = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"li"</span>);
@@ -125,25 +122,19 @@ console.log(oFragmengChildren[&#39;section-&#39;+i].querySelectorAll(&#39;div.pi
         <span class="hljs-keyword">var</span> annotation = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>);
         <span class="hljs-keyword">var</span> pilwrap = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>);
         <span class="hljs-keyword">var</span> pilcrow = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"a"</span>);
-
         li.setAttribute(<span class="hljs-string">'id'</span>, <span class="hljs-string">'section-'</span> + itmp);
         annotation.setAttribute(<span class="hljs-string">'class'</span>, <span class="hljs-string">'annotation'</span>);
         pilwrap.setAttribute(<span class="hljs-string">'class'</span>, <span class="hljs-string">'pilwrap'</span>);
         pilcrow.setAttribute(<span class="hljs-string">'class'</span>, <span class="hljs-string">'pilcrow'</span>);
-
         pilcrow.href = <span class="hljs-string">'#section-'</span> + itmp;
         pilcrow.text = <span class="hljs-string">'¶'</span>
-
         pilwrap.appendChild(pilcrow);
         annotation.appendChild(pilwrap);
-
         <span class="hljs-keyword">if</span> (container_children[i].nodeName === <span class="hljs-string">'PRE'</span>) {
             <span class="hljs-keyword">var</span> content = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>);
             <span class="hljs-keyword">var</span> highlight = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>);
-
             content.setAttribute(<span class="hljs-string">'class'</span>, <span class="hljs-string">'content'</span>);
             highlight.setAttribute(<span class="hljs-string">'class'</span>, <span class="hljs-string">'highlight'</span>);
-
             content.appendChild(highlight);
             highlight.appendChild(childClone);
             li.appendChild(annotation);
@@ -166,13 +157,14 @@ console.log(oFragmengChildren[&#39;section-&#39;+i].querySelectorAll(&#39;div.pi
 <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'ul-show'</span>).appendChild(oFragmeng);
 oFragmeng = <span class="hljs-keyword">null</span>;
 </code></pre>
-<p>添加<code>console.time()</code>、<code>console.timeEnd()</code>方法：</p>
+<p>至此，一次成功渲染，再添加<code>console.time()</code>、<code>console.timeEnd()</code>方法测试一下时间：</p>
 <pre><code class="lang-js">console<span class="hljs-selector-class">.time</span>(<span class="hljs-string">'test documentFragment'</span>);
   <span class="hljs-comment">// todo</span>
 console<span class="hljs-selector-class">.timeEnd</span>(<span class="hljs-string">'test documentFragment'</span>);
 </code></pre>
 <p>得出结果<code>20.035ms</code>：</p>
 <p><img src="../static/img/documentFragment/3.png" alt=""></p>
+<p>原生js与jquery相比，某些场景优势依然很大。</p>
 
 </div>
 
