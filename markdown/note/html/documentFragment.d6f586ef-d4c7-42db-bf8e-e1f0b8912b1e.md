@@ -1,3 +1,12 @@
+# DocumentFragment
+
+今天遇到一个需求，我的online笔记本里关于源码解析的文章文本格式是这样的：
+
+![](../../../static/img/documentFragment/4.png)
+
+而我现在需要改成左边描述，右边源码的格式，如下图：
+
+![](../../../static/img/documentFragment/5.png)
 
 var ul = document.createElement("ul").addClass('sections');
 var liList=[];
@@ -69,3 +78,83 @@ console.log(i)
 console.log(oFragmengChildren['section-'+i].children)
 console.log(oFragmengChildren['section-'+i].firstElementChild.children )
 console.log(oFragmengChildren['section-'+i].querySelectorAll('div.pilwrap') )
+
+
+```js
+var presign = false;
+var itmp = 0;
+var oFragmeng = document.createDocumentFragment();
+var container_children = document.getElementById('container-hiddle').childNodes;
+
+for (var i = 0, length = container_children.length; i < length; i += 1) {
+
+    var childClone = container_children[i].cloneNode(true);
+
+    if (container_children[i].nodeName === 'H1' && container_children[i].nodeName !== '#text') {
+        itmp = itmp + 1
+        var li = document.createElement("li");
+        li.setAttribute('id', 'section-' + itmp);
+        var annotation = document.createElement("div");
+        annotation.setAttribute('class', 'annotation');
+        annotation.appendChild(childClone);
+        li.appendChild(annotation);
+        oFragmeng.appendChild(li);
+    } else if (container_children[i].nodeName !== '#text') {
+        itmp = itmp + 1
+        var li = document.createElement("li");
+        var annotation = document.createElement("div");
+        var pilwrap = document.createElement("div");
+        var pilcrow = document.createElement("a");
+
+        li.setAttribute('id', 'section-' + itmp);
+        annotation.setAttribute('class', 'annotation');
+        pilwrap.setAttribute('class', 'pilwrap');
+        pilcrow.setAttribute('class', 'pilcrow');
+
+        pilcrow.href = '#section-' + itmp;
+        pilcrow.text = '¶'
+
+        pilwrap.appendChild(pilcrow);
+        annotation.appendChild(pilwrap);
+
+        if (container_children[i].nodeName === 'PRE') {
+            var content = document.createElement("div");
+            var highlight = document.createElement("div");
+
+            content.setAttribute('class', 'content');
+            highlight.setAttribute('class', 'highlight');
+
+            content.appendChild(highlight);
+            highlight.appendChild(childClone);
+            li.appendChild(annotation);
+            li.appendChild(content);
+            oFragmeng.appendChild(li);
+            presign = true;
+        } else {
+            if (presign) {
+                itmp = itmp - 1;
+                oFragmeng.children['section-' + itmp].firstElementChild.appendChild(childClone);
+                presign = false;
+            } else {
+                annotation.appendChild(childClone);
+                li.appendChild(annotation);
+                oFragmeng.appendChild(li);
+            }
+        }
+    }
+}
+document.getElementById('ul-show').appendChild(oFragmeng);
+oFragmeng = null;
+```
+
+添加`console.time()`、`console.timeEnd()`方法：
+
+```js
+console.time('test documentFragment');
+  // todo
+console.timeEnd('test documentFragment');
+```
+
+得出结果`20.035ms`：
+
+![](../../../static/img/documentFragment/3.png)

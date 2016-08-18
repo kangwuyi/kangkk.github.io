@@ -97,6 +97,78 @@ console.log(i)
 console.log(oFragmengChildren[&#39;section-&#39;+i].children)
 console.log(oFragmengChildren[&#39;section-&#39;+i].firstElementChild.children )
 console.log(oFragmengChildren[&#39;section-&#39;+i].querySelectorAll(&#39;div.pilwrap&#39;) )</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> presign = <span class="hljs-keyword">false</span>;
+<span class="hljs-keyword">var</span> itmp = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">var</span> oFragmeng = <span class="hljs-built_in">document</span>.createDocumentFragment();
+<span class="hljs-keyword">var</span> container_children = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'container-hiddle'</span>).childNodes;
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, length = container_children.length; i &lt; length; i += <span class="hljs-number">1</span>) {
+
+    <span class="hljs-keyword">var</span> childClone = container_children[i].cloneNode(<span class="hljs-keyword">true</span>);
+
+    <span class="hljs-keyword">if</span> (container_children[i].nodeName === <span class="hljs-string">'H1'</span> &amp;&amp; container_children[i].nodeName !== <span class="hljs-string">'#text'</span>) {
+        itmp = itmp + <span class="hljs-number">1</span>
+        <span class="hljs-keyword">var</span> li = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"li"</span>);
+        li.setAttribute(<span class="hljs-string">'id'</span>, <span class="hljs-string">'section-'</span> + itmp);
+        <span class="hljs-keyword">var</span> annotation = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>);
+        annotation.setAttribute(<span class="hljs-string">'class'</span>, <span class="hljs-string">'annotation'</span>);
+        annotation.appendChild(childClone);
+        li.appendChild(annotation);
+        oFragmeng.appendChild(li);
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (container_children[i].nodeName !== <span class="hljs-string">'#text'</span>) {
+        itmp = itmp + <span class="hljs-number">1</span>
+        <span class="hljs-keyword">var</span> li = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"li"</span>);
+        <span class="hljs-keyword">var</span> annotation = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>);
+        <span class="hljs-keyword">var</span> pilwrap = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>);
+        <span class="hljs-keyword">var</span> pilcrow = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"a"</span>);
+
+        li.setAttribute(<span class="hljs-string">'id'</span>, <span class="hljs-string">'section-'</span> + itmp);
+        annotation.setAttribute(<span class="hljs-string">'class'</span>, <span class="hljs-string">'annotation'</span>);
+        pilwrap.setAttribute(<span class="hljs-string">'class'</span>, <span class="hljs-string">'pilwrap'</span>);
+        pilcrow.setAttribute(<span class="hljs-string">'class'</span>, <span class="hljs-string">'pilcrow'</span>);
+
+        pilcrow.href = <span class="hljs-string">'#section-'</span> + itmp;
+        pilcrow.text = <span class="hljs-string">'¶'</span>
+
+        pilwrap.appendChild(pilcrow);
+        annotation.appendChild(pilwrap);
+
+        <span class="hljs-keyword">if</span> (container_children[i].nodeName === <span class="hljs-string">'PRE'</span>) {
+            <span class="hljs-keyword">var</span> content = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>);
+            <span class="hljs-keyword">var</span> highlight = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>);
+
+            content.setAttribute(<span class="hljs-string">'class'</span>, <span class="hljs-string">'content'</span>);
+            highlight.setAttribute(<span class="hljs-string">'class'</span>, <span class="hljs-string">'highlight'</span>);
+
+            content.appendChild(highlight);
+            highlight.appendChild(childClone);
+            li.appendChild(annotation);
+            li.appendChild(content);
+            oFragmeng.appendChild(li);
+            presign = <span class="hljs-keyword">true</span>;
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">if</span> (presign) {
+                itmp = itmp - <span class="hljs-number">1</span>;
+                oFragmeng.children[<span class="hljs-string">'section-'</span> + itmp].firstElementChild.appendChild(childClone);
+                presign = <span class="hljs-keyword">false</span>;
+            } <span class="hljs-keyword">else</span> {
+                annotation.appendChild(childClone);
+                li.appendChild(annotation);
+                oFragmeng.appendChild(li);
+            }
+        }
+    }
+}
+<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'ul-show'</span>).appendChild(oFragmeng);
+oFragmeng = <span class="hljs-keyword">null</span>;
+</code></pre>
+<p>添加<code>console.time()</code>、<code>console.timeEnd()</code>方法：</p>
+<pre><code class="lang-js">console<span class="hljs-selector-class">.time</span>(<span class="hljs-string">'test documentFragment'</span>);
+  <span class="hljs-comment">// todo</span>
+console<span class="hljs-selector-class">.timeEnd</span>(<span class="hljs-string">'test documentFragment'</span>);
+</code></pre>
+<p>得出结果<code>20.035ms</code>：</p>
+<p><img src="../static/img/documentFragment/3.png" alt=""></p>
 
 </div>
 
