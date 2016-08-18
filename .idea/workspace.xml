@@ -2,21 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb8e0cbf-b908-45ce-8284-bc382ef3af47" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/iframeTracker-jquery-master.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/markdown/note/js/Underscore源码解析.d1a6dbbf-cda8-4c4e-8fff-5d6ab148b40e.md" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/0048265b-7fbf-4c2c-826c-6a6cc99315dc.html" afterPath="$PROJECT_DIR$/cn/0048265b-7fbf-4c2c-826c-6a6cc99315dc.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/0550373c-3cc3-4557-bb75-0bf74ef7c9b3.html" afterPath="$PROJECT_DIR$/cn/0550373c-3cc3-4557-bb75-0bf74ef7c9b3.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/0938b3d6-46da-4295-9517-9e38f8fe2bb7.html" afterPath="$PROJECT_DIR$/cn/0938b3d6-46da-4295-9517-9e38f8fe2bb7.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/145a765c-3bef-4844-b007-95ce79fc5825.html" afterPath="$PROJECT_DIR$/cn/145a765c-3bef-4844-b007-95ce79fc5825.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/198edfff-76b1-4745-b7b4-626f82621f51.html" afterPath="$PROJECT_DIR$/cn/198edfff-76b1-4745-b7b4-626f82621f51.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/2c0777f0-46d0-4fc7-bcbb-d3543f6d3315.html" afterPath="$PROJECT_DIR$/cn/2c0777f0-46d0-4fc7-bcbb-d3543f6d3315.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/2cd12bab-ffe3-457a-9a4f-f5e6f814aed4.html" afterPath="$PROJECT_DIR$/cn/2cd12bab-ffe3-457a-9a4f-f5e6f814aed4.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/2f9d472f-efe6-42f2-bca8-2956d8c1138e.html" afterPath="$PROJECT_DIR$/cn/2f9d472f-efe6-42f2-bca8-2956d8c1138e.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/3a1f7fc6-edec-40ea-a682-ff82a33c7ee4.html" afterPath="$PROJECT_DIR$/cn/3a1f7fc6-edec-40ea-a682-ff82a33c7ee4.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/3f0b8904-4e6a-49bd-b848-f046c44b67ed.html" afterPath="$PROJECT_DIR$/cn/3f0b8904-4e6a-49bd-b848-f046c44b67ed.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/3f804512-4863-45c6-8356-2d6923cd7088.html" afterPath="$PROJECT_DIR$/cn/3f804512-4863-45c6-8356-2d6923cd7088.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/43a453bf-6675-4ed9-9fbb-55be9ca70d86.html" afterPath="$PROJECT_DIR$/cn/43a453bf-6675-4ed9-9fbb-55be9ca70d86.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/4b251a59-7719-4e81-b56d-ff7a3aca25f4.html" afterPath="$PROJECT_DIR$/cn/4b251a59-7719-4e81-b56d-ff7a3aca25f4.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/5f95100f-88f8-4cbb-9018-2776bc03d30f.html" afterPath="$PROJECT_DIR$/cn/5f95100f-88f8-4cbb-9018-2776bc03d30f.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/5fed0645-021a-45ff-ab34-283673570988.html" afterPath="$PROJECT_DIR$/cn/5fed0645-021a-45ff-ab34-283673570988.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/6203fb8c-97e2-49c4-8707-f7a9ed11bcf8.html" afterPath="$PROJECT_DIR$/cn/6203fb8c-97e2-49c4-8707-f7a9ed11bcf8.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/64412cf1-6fc1-4267-b630-ff5ece4cb1cf.html" afterPath="$PROJECT_DIR$/cn/64412cf1-6fc1-4267-b630-ff5ece4cb1cf.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/68d836ec-9dc3-47b8-a783-9599c02162fc.html" afterPath="$PROJECT_DIR$/cn/68d836ec-9dc3-47b8-a783-9599c02162fc.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/71cedcc4-6e28-46a7-8b7e-91af15b9b637.html" afterPath="$PROJECT_DIR$/cn/71cedcc4-6e28-46a7-8b7e-91af15b9b637.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/7d2feffa-2e02-4f1f-908c-b7560e86f019.html" afterPath="$PROJECT_DIR$/cn/7d2feffa-2e02-4f1f-908c-b7560e86f019.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/96e694ca-fc70-4554-b822-8fe19ae01065.html" afterPath="$PROJECT_DIR$/cn/96e694ca-fc70-4554-b822-8fe19ae01065.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/993b1952-d863-471c-b9b4-09ee174174ed.html" afterPath="$PROJECT_DIR$/cn/993b1952-d863-471c-b9b4-09ee174174ed.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/9d33adc4-a13b-44aa-b732-62cc0c620a20.html" afterPath="$PROJECT_DIR$/cn/9d33adc4-a13b-44aa-b732-62cc0c620a20.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/a5b1fea7-059f-4d3e-aedc-5049d536a58d.html" afterPath="$PROJECT_DIR$/cn/a5b1fea7-059f-4d3e-aedc-5049d536a58d.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/a6d7a10e-2bb6-4d60-b0a2-1bd041d7fa59.html" afterPath="$PROJECT_DIR$/cn/a6d7a10e-2bb6-4d60-b0a2-1bd041d7fa59.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/b32030f0-ce47-4488-9ba1-2924e8149702.html" afterPath="$PROJECT_DIR$/cn/b32030f0-ce47-4488-9ba1-2924e8149702.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/d1a6dbbf-cda8-4c4e-8fff-5d6ab148b40e.html" afterPath="$PROJECT_DIR$/cn/d1a6dbbf-cda8-4c4e-8fff-5d6ab148b40e.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/da82757d-a1cc-4e90-890a-a7a60ee814eb.html" afterPath="$PROJECT_DIR$/cn/da82757d-a1cc-4e90-890a-a7a60ee814eb.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/daa38e42-6436-4e57-968c-16fc699cd779.html" afterPath="$PROJECT_DIR$/cn/daa38e42-6436-4e57-968c-16fc699cd779.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/f003ec51-a55c-4ed0-88c5-d677f8dfa452.html" afterPath="$PROJECT_DIR$/cn/f003ec51-a55c-4ed0-88c5-d677f8dfa452.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/note.html" afterPath="$PROJECT_DIR$/cn/note.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/unicode.html" afterPath="$PROJECT_DIR$/lib/unicode.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/markdown/note/css/滚动条.145a765c-3bef-4844-b007-95ce79fc5825.md" afterPath="$PROJECT_DIR$/markdown/note/css/滚动条.145a765c-3bef-4844-b007-95ce79fc5825.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/markdown/note/css/配色.b32030f0-ce47-4488-9ba1-2924e8149702.md" afterPath="$PROJECT_DIR$/markdown/note/css/配色.b32030f0-ce47-4488-9ba1-2924e8149702.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/base.css" afterPath="$PROJECT_DIR$/static/css/base.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/container.css" afterPath="$PROJECT_DIR$/static/css/container.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/index.css" afterPath="$PROJECT_DIR$/static/css/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/index.css.map" afterPath="$PROJECT_DIR$/static/css/index.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/lib-wiki.css" afterPath="$PROJECT_DIR$/static/css/lib-wiki.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/lib-wiki.css.map" afterPath="$PROJECT_DIR$/static/css/lib-wiki.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/sass/container.scss" afterPath="$PROJECT_DIR$/static/sass/container.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/sass/lib-wiki.scss" afterPath="$PROJECT_DIR$/static/sass/lib-wiki.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/templates/source.html" afterPath="$PROJECT_DIR$/static/templates/source.html" />
     </list>
     <ignored path="kangcafe.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,18 +57,7 @@
     <favorites_list name="kangcafe.github.io" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="61">
-              <caret line="252" column="0" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -94,6 +104,7 @@
         <option value="$PROJECT_DIR$/note/templates/css/mark.css" />
         <option value="$PROJECT_DIR$/note/templates/css/base.css" />
         <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/markdown/source/js/Underscore源码解析.d1a6dbbf-cda8-4c4e-8fff-5d6ab148b40e.md" />
       </list>
     </option>
   </component>
@@ -104,7 +115,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1345" />
+    <option name="width" value="1339" />
     <option name="height" value="733" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -132,6 +143,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -160,21 +172,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kangcafe.github.io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kangcafe.github.io" />
+              <option name="myItemId" value="markdown" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
+              <option name="myItemId" value="source" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -192,17 +194,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
+              <option name="myItemId" value="markdown" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -315,17 +312,18 @@
       <workItem from="1470911188436" duration="73000" />
       <workItem from="1470913883040" duration="2713000" />
       <workItem from="1471270402494" duration="14000" />
+      <workItem from="1471504409186" duration="1480000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42210000" />
+    <option name="totallyTimeSpent" value="43690000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1345" height="733" extended-state="0" />
+    <frame x="0" y="0" width="1339" height="733" extended-state="4" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26176023" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13567074" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -363,7 +361,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/note/filemd/js/数据存储.md" />
     <entry file="file://$PROJECT_DIR$/note/filemd/js/数学函数.md" />
     <entry file="file://$PROJECT_DIR$/note/filemd/js/正则.md" />
     <entry file="file://$PROJECT_DIR$/note/filemd/js/浮点数.md" />
@@ -440,8 +437,24 @@
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="61">
-          <caret line="252" column="0" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
-          <folding />
+          <caret line="253" column="0" selection-start-line="253" selection-start-column="0" selection-end-line="253" selection-end-column="0" />
+          <folding>
+            <marker date="1471480800160" expanded="true" signature="6952:6969" placeholder="/** 生成主页索引 ...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/markdown/source/js/Underscore源码解析.d1a6dbbf-cda8-4c4e-8fff-5d6ab148b40e.md">
+      <provider editor-type-id="MarkdownFxPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="270">
+            <caret line="1599" column="4" selection-start-line="1599" selection-start-column="4" selection-end-line="1599" selection-end-column="4" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

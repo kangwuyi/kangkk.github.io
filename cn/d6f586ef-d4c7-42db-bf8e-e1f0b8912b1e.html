@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta property="wb:webmaster" content="7e72a191affb5721" />
+    <meta name="description" content="documentFragment,documentFragment">
+    <meta name="keywords" content="documentFragment,documentFragment,documentFragment,documentFragment,documentFragment,documentFragment">
+    <!-- <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache"> -->
+    <title>KC.</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/mark.css">
+    <link rel="stylesheet" href="../static/font/iconfont.css">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script type="application/javascript" src="../static/js/jquery.min.js"></script>
+</head>
+
+<body class="body__note">
+    <header class="header">
+        <div class="header__content w-900">
+            <h1 class="content__title">
+                <a class="title__link-a" href="https://github.com/kangcafe" target="_blank">kang`s cafe<span class="title__link-span--icon iconfont icon-github"></span></a>
+            </h1>
+            <small class="content__btn">
+                <a class="content__btn-a" href="./note.html">BACK HOME</a>
+            </small>
+        </div>
+    </header>
+
+
+<div class="container w-900">
+    <p>var ul = document.createElement(&quot;ul&quot;).addClass(&#39;sections&#39;);
+var liList=[];
+$(&#39;#container-hiddle&#39;).children().each(function(i,n){
+  var obj = $(n);</p>
+<p>  if(obj.is(&#39;pre&#39;)){
+    var content = document.createElement(&quot;div&quot;).addClass(&#39;content&#39;),
+      highlight = document.createElement(&quot;div&quot;).addClass(&#39;highlight&#39;);</p>
+<pre><code>content.<span class="hljs-keyword">append</span>(highlight);
+$(liList[i-<span class="hljs-number">1</span>]).<span class="hljs-keyword">find</span>(<span class="hljs-string">'.annotation'</span>).<span class="hljs-keyword">append</span>(content);
+</code></pre><p>  }else {
+    var li = document.createElement(&quot;li&quot;).attr(&#39;id&#39;,&#39;section-&#39;+(i+1)),
+      annotation = document.createElement(&quot;div&quot;).addClass(&#39;annotation&#39;);</p>
+<pre><code><span class="hljs-keyword">if</span>(obj.<span class="hljs-keyword">is</span>(<span class="hljs-string">'h1'</span>)){
+  <span class="hljs-keyword">var</span> li = document.createElement(<span class="hljs-string">"li"</span>).attr(<span class="hljs-string">'id'</span>,<span class="hljs-string">'section-'</span>+(i+<span class="hljs-number">1</span>)),
+    <span class="hljs-keyword">annotation</span> = document.createElement(<span class="hljs-string">"div"</span>).addClass(<span class="hljs-string">'annotation'</span>);
+
+  <span class="hljs-keyword">annotation</span>.append(obj);
+}<span class="hljs-keyword">else</span>{
+
+  <span class="hljs-keyword">var</span> pilwrap = document.createElement(<span class="hljs-string">"div"</span>).addClass(<span class="hljs-string">'pilwrap'</span>),
+  pilcrow = document.createElement(<span class="hljs-string">"a"</span>).addClass(<span class="hljs-string">'annotation'</span>).attr(<span class="hljs-string">'href'</span>,<span class="hljs-string">'#section-'</span>+(i+<span class="hljs-number">1</span>)).attr(<span class="hljs-string">'text'</span>,<span class="hljs-string">'¶'</span>);
+
+  pilwrap.append(pilcrow);
+  <span class="hljs-keyword">annotation</span>.append(pilwrap);
+  <span class="hljs-keyword">annotation</span>.append(obj);
+}
+li.append(<span class="hljs-keyword">annotation</span>);
+liList.push(li);
+</code></pre><p>  }
+  ul.append(liList.join(&#39;&#39;))
+  $(&#39;#container-show&#39;).append(ul)
+});</p>
+<p>md--&gt;html--&gt; 特定规则的html</p>
+<pre><code class="lang-js"><span class="hljs-keyword">if</span>(container_children[i].nodeName===<span class="hljs-string">'PRE'</span>){
+  <span class="hljs-keyword">var</span> content = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>),
+    highlight = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>);
+
+  highlight.appendChild(childClone);
+  content.appendChild(highlight);
+  <span class="hljs-keyword">var</span> oFragmengChildren = oFragmeng.children;
+  <span class="hljs-built_in">console</span>.log(oFragmengChildren)
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> oFragmengChildren)
+  <span class="hljs-built_in">console</span>.log(oFragmengChildren[i])
+
+  <span class="hljs-keyword">var</span> oFragmengChildrenClone = oFragmeng.children[i-prenum].item(<span class="hljs-number">0</span>);
+  oFragmengChildrenClone.appendChild(content);
+  oFragmeng.children[i-prenum]=oFragmengChildrenClone;
+  prenum=prenum+<span class="hljs-number">1</span>;
+}
+</code></pre>
+<p><img src="../static/img/documentFragment/2.png" alt=""></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/DocumentFragment/querySelectorAll">DocumentFragment.querySelectorAll()</a></p>
+<p>content.appendChild(highlight);
+var oFragmengChildren = oFragmeng.children;
+console.log(oFragmengChildren)
+console.log(typeof oFragmengChildren)
+console.log(i)
+console.log(oFragmengChildren[&#39;section-&#39;+i].children)
+console.log(oFragmengChildren[&#39;section-&#39;+i].firstElementChild.children )
+console.log(oFragmengChildren[&#39;section-&#39;+i].querySelectorAll(&#39;div.pilwrap&#39;) )</p>
+
+</div>
+
+<footer class="footer w-900">
+    <a class="footer__backToTop-btn" href="#" id="back-to-top">
+        <i class="footer__backToTop-btn--icon iconfont icon-chevronup"></i>
+    </a>
+    <a class="footer__github-btn" href="https://github.com/kangcafe" target="_blank">Kang`s Cafe on GitHub</a>
+    <div class="ds-thread" data-thread-key="d6f586ef-d4c7-42db-bf8e-e1f0b8912b1e" data-title="documentFragment" data-url="http://kangcafe.com/cn/d6f586ef-d4c7-42db-bf8e-e1f0b8912b1e.html"></div>
+    <script type="text/javascript">
+        var duoshuoQuery = {
+            short_name: "kangcafe"
+        };
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';
+            ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] ||
+                document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <section class="content__section">
+        <p class="content__a-btn">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="../static/bgimg/licensebuttons.png" />
+            </a>
+        </p>
+        <p class="content__p--word">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+        </a>. Reprint the 《<sub>documentFragment</sub>》 need signature "<sub>kc</sub>", and the url is <sub>http://kangcafe.com/cn/d6f586ef-d4c7-42db-bf8e-e1f0b8912b1e.html</sub>.
+        </p>
+        <p class="content__text-p--desc">
+            <em>这里的大多数文章都写于很多年以前，十年历程，多于怀旧（@2006-2016）</em>
+            <br>Copyright (C) 2016 KangCafe.com, All Rights Reserved
+            <br>Made in China.
+            <span class="text__span--link">
+            ✎
+            <a href="../index.html">Home</a> –
+            <a href="./mood.html">Mood</a> –
+            <a href="./source.html">Source</a> –
+            <a href="./note.html">Note</a>.
+          </span>
+        </p>
+    </section>
+</footer>
+<script type="text/javascript">
+    ! function($) {
+        $(window).scroll(function() {
+            $(this).scrollTop() > 100 ? $("#back-to-top").fadeIn() : $("#back-to-top").fadeOut()
+        }), $("#back-to-top").on("click", function(b) {
+            return b.preventDefault(), $("html, body").animate({
+                scrollTop: 0
+            }, 100), !1
+        });
+    }(jQuery);
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?95e6652d7f50f8def7540e687f338f60";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+
+</html>
+

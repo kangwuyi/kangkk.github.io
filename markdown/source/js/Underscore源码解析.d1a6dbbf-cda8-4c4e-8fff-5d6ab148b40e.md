@@ -7,9 +7,11 @@
  - http://underscorejs.org
  - (c) 2009-2016 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors Underscore may be freely distributed under the MIT license.
 
-这里我们首先看到的是一个闭包，概念不再熬述，诸君有意详勘闭包的概念，请移步 [Closures](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures)。源码如下：
+```js
+(function() {
+```
 
-    (function() {
+这里我们首先看到的是一个闭包，概念不再熬述，诸君有意详勘闭包的概念，请移步 [Closures](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures)。源码如下：
 
 这里如果这里有 this 那么一定是指向 window，即：
 
@@ -33,14 +35,16 @@ window 具有的众多属性中就包含了 self 引用其自身，根据javascr
 - =										赋值、运算赋值
 - ,										多重求值
 
-
-      var root = typeof self == 'object' && self.self === self && self ||
-                typeof global == 'object' && global.global === global && global ||
-                this;
+```js
+	var root = typeof self == 'object' && self.self === self && self || typeof global == 'object'
+    && global.global === global && global || this;
+```
 
 这里首先判断的是存在 self 或者 node 环境下的全局变量 global，然后复制给 root，作为根对象。
 
-      var previousUnderscore = root._;
+```js
+	var previousUnderscore = root._;
+```
 
 previousUnderscore，从字面上理解就是“以前的 underscore”，说实话我并没理解这个赋值的用意，最开始以为是用来做判断全局 window是否已经存在 window._ 这个对象，然后通过判断 previousUnderscore 用来避免 window._ 污染 underscore 引起命名冲突，但是从头到尾只有一个地方用到了 previousUnderscore，即（1352行）：
 
@@ -57,49 +61,63 @@ previousUnderscore，从字面上理解就是“以前的 underscore”，说实
 >           this._wrapped = obj;
 >         };
 
-      var ArrayProto = Array.prototype, ObjProto = Object.prototype;
+```js
+	var ArrayProto = Array.prototype, ObjProto = Object.prototype;
+```
 
 这两句很简单，就是将原生 JAVASCRIPT 的 Array 和 Object 对象的 prototype 缓存，这样做的好处是使用 push、slice、toString等方法的代码行数会减少、减少 JAVASCRIPT 遍历等等，更具体的介绍会在下面讲解，不要心急。
 
-	  var SymbolProto = typeof Symbol !== 'undefined' ? Symbol.prototype : null;
+```js
+	var SymbolProto = typeof Symbol !== 'undefined' ? Symbol.prototype : null;
+```
 
 2009年的 ES5 规定了六种语言类型：Null Undefined Number Boolean  String Object，详见[ES5/类型](https://www.w3.org/html/ig/zh/wiki/ES5/%E7%B1%BB%E5%9E%8B) 和 [ES5/类型转换与测试](https://www.w3.org/html/ig/zh/wiki/ES5/conversion)。新出台的 ES6 则规定，包括六种原始类型：Null Undefined Number Boolean String 和 Symbol，还有一种 Object，详见[JavaScript 数据类型和数据结构](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures)。新增加的 Symbol 很早就已经提出，其具体概念这里不再复述请移步参考 [Symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol) ，得益于 [ES6](https://www.w3.org/html/ig/zh/wiki/ES6) 的渐渐普及，客户端浏览器也有很多已经支持 Symbol，比如 Firefox v36+ 和 Chrome v38+ 等，具体参考 [ES6 支持情况](http://kangax.github.io/compat-table/es6/)，如果大家对 ES6 想要深入了解可以看 [ES6 In Depth](https://hacks.mozilla.org/category/es6-in-depth/) 这篇文章和 [ES6草案](http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts)，说实话我的水平有限这份草案还没有读懂（*+﹏+*），如果想要进一步为 ES6 普及贡献自己的力量 [ES6 WIKI](https://www.w3.org/html/ig/zh/wiki/ES6#.E7.B1.BB.E5.9E.8B) 的编写是一个蛮好的选择。
 
 回归正题，上述代码的目的显而易见就是判断客户端是否支持 Symbol，支持则缓存 Symbol.prototype 原型链，不支持则赋值为 Null，三元运算符的灵活运用是判断一个人语言到达一个阶段的标识，这句话有点武断，但是算的上肺腑之言，要熟悉且灵活运用它。
 
-      var push = ArrayProto.push,
-          slice = ArrayProto.slice,
-          toString = ObjProto.toString,
-          hasOwnProperty = ObjProto.hasOwnProperty;
+```js
+	var push = ArrayProto.push,
+		slice = ArrayProto.slice,
+		toString = ObjProto.toString,
+		hasOwnProperty = ObjProto.hasOwnProperty;
+```
 
 这里是简单缓存了 push、slice、toString、hasOwnProperty 四个方法。
 
-      var nativeIsArray = Array.isArray,
-          nativeKeys = Object.keys,
-          nativeCreate = Object.create;
+```js
+	var nativeIsArray = Array.isArray,
+		nativeKeys = Object.keys,
+		nativeCreate = Object.create;
+```
 
 这里就比较有意思了，Array.isArray(element) 是 ES5 后来新增的静态函数，用来判断一个对象是不是数组，具体描述可见 [Array.isArray()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray) 和 Array.isArray 函数 (JavaScript)：`https://msdn.microsoft.com/zh-cn/library/ff848265(v=vs.94).aspx`，我一点都不喜欢微软，就比如现在我想粘一个微软的网址，但是它的网址里面居然有`()`，以至于我必须把网址贴到代码框里才能保证不出现错误ヽ(ˋДˊ)ノ。Object.keys 用于返回一个由给定对象的所有可枚举自身属性的属性名组成的数组，[Object.keys()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)。Object.create 用于创建一个拥有指定原型和若干个指定属性的对象，这一系列的函数方法都可以在 [Object](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object) 处了解详情。同时这里面有些内容可以参考 [Annotated ECMAScript 5.1](https://es5.github.io/)，有兴趣的同学可以看一看，雾里探花，蛮有趣的。
 
+```js
       var Ctor = function(){};
+```
 
 ctor 英文译为男星，或者我的百度翻译打开方式不对，翻译错了？？？，实际上就是一个空的方法，这种写法很常见，一般用于和 call、apply、argument 等配合使用，在 Underscore.js 中作者并没有上述的用法，只是用 Ctor 这个函数扩展了自身的 prototype，将一些函数方法绑定到自身作为一个 return function，具体细节后面接触到再详述。
 
-      var _ = function(obj) {
-        if (obj instanceof _) return obj;
-        if (!(this instanceof _)) return new _(obj);
-        this._wrapped = obj;
-      };
+```js
+	var _ = function(obj) {
+		if (obj instanceof _) return obj;
+		if (!(this instanceof _)) return new _(obj);
+		this._wrapped = obj;
+	};
+```
 
 定义 `_` 对象，作者的备注是”Create a safe reference to the Underscore object for use below.“，这里我们了解到 `_` 本身是一个函数，而在 JAVASCRIPT 中函数本身就是对象的一种，所以 Underscore.js 的一系列函数都是作为对象函数绑定到 `_` 这个函数对象上面的，上面这个函数默认传入一个 obj 参数，可以通过 `_(obj)` 用来校验 `_` 是否是 obj 的父类型以此判断继承关系，instanceof的用法详见 [JavaScript instanceof 运算符深入剖析](http://www.ibm.com/developerworks/cn/web/1306_jiangjj_jsinstanceof/)，至于 `_wrapped` 涉及到后面的链式操作，在（887行）一起讲。
 
-      if (typeof exports != 'undefined' && !exports.nodeType) {
-        if (typeof module != 'undefined' && !module.nodeType && module.exports) {
-          exports = module.exports = _;
-        }
-        exports._ = _;
-      } else {
-        root._ = _;
-      }
+```js
+	if (typeof exports != 'undefined' && !exports.nodeType) {
+	    if (typeof module != 'undefined' && !module.nodeType && module.exports) {
+	        exports = module.exports = _;
+	    }
+	    exports._ = _;
+	} else {
+	    root._ = _;
+	}
+```
 
 这是 Node.js 中对通用模块的封装方法，通过对判断 exports 是否存在来决定将局部变量 _ 赋值给exports，顺便说一下 AMD 规范、CMD规范和 UMD规范，Underscore.js 是支持 AMD 的，在源码尾部有定义，这里简单叙述一下：
 
@@ -128,71 +146,83 @@ cmd：[Common Module Definition / draft](https://github.com/cmdjs/specification/
 >           //todo
 >       }));
 
-      _.VERSION = '1.8.3';
+```js
+    _.VERSION = '1.8.3';
+```
 
 underscore 版本为 '1.8.3'。
 
-      var optimizeCb = function(func, context, argCount) {
+```js
+    var optimizeCb = function(func, context, argCount) {
         if (context === void 0) return func;
         switch (argCount == null ? 3 : argCount) {
-          case 1: return function(value) {
-            return func.call(context, value);
-          };
-          case 3: return function(value, index, collection) {
-            return func.call(context, value, index, collection);
-          };
-          case 4: return function(accumulator, value, index, collection) {
-            return func.call(context, accumulator, value, index, collection);
-          };
+            case 1: return function(value) {
+                return func.call(context, value);
+            };
+            case 3: return function(value, index, collection) {
+                return func.call(context, value, index, collection);
+            };
+            case 4: return function(accumulator, value, index, collection) {
+                return func.call(context, accumulator, value, index, collection);
+            };
         }
         return function() {
-          return func.apply(context, arguments);
+            return func.apply(context, arguments);
         };
-      };
+    };
+```
 
 optimizeCb 翻译成汉语就是优化回调（optimize callback），那么 optimizeCb 是如何优化的呢，我们可以首先看到它传入了三个参数，分别为：func、context、argCount，语义化可知一个是将要优化的 callback function，一个是 context 上下文函数，最后 argCount 是一个 number 类型的数字。`void 0` 的用法很巧妙，这里用 `context === void 0` 判断是否存在上下文环境，也就是第二个参数，其他的一些关于 void 的用法详见 [谈谈Javascript中的void操作符](https://segmentfault.com/a/1190000000474941)。接下来判断 argCount 数字进行相应的操作，其中有 call 和 apply 两个方法，详见 [Function.prototype.apply()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply) 和 [Function.prototype.call()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call)。
 
-      var builtinIteratee;
+```js
+var builtinIteratee;
+```
 
 builtinIteratee，内置的 Iteratee （迭代器）。
 
-      var cb = function(value, context, argCount) {
+```js
+    var cb = function(value, context, argCount) {
         if (_.iteratee !== builtinIteratee) return _.iteratee(value, context);
         if (value == null) return _.identity;
         if (_.isFunction(value)) return optimizeCb(value, context, argCount);
         if (_.isObject(value)) return _.matcher(value);
         return _.property(value);
-      };
+    };
+```
 
 cb 函数接受三个参数，陆续四个判断，第一个判断 `_.iteratee`，根据 JAVASCRIPT 的上下文，首先 builtinIteratee 为 undefined，然 cb 函数内 builtinIteratee 为 undefined，接下来就是 `_.iteratee = builtinIteratee` 里面的 cb 函数，so...接着第二个判断传入参数是否为空值，如果是则返回 `_.identity` 函数，即当前传入值。第三个判断传入值是方法则执行 optimizeCb 函数。第四个判断如果是对象执行返回一个断言函数，用来判定传入对象是否匹配attrs指定键/值属性。都不匹配最后执行 `_.property`，返回传入的对象的 key 属性。
 
-      _.iteratee = builtinIteratee = function(value, context) {
+```js
+    _.iteratee = builtinIteratee = function(value, context) {
         return cb(value, context, Infinity);
-      };
+    };
+```
 
 `_.iteratee` 这个函数一般认为是一个迭代器，这里是作者的主观写法，因为从意义上讲， cb 函数和 `_.iteratee` 函数很相似，甚至说只要稍加改动 cb 完全可以替换掉 `_.iteratee`，作者用 `_.iteratee` 包装 cb 并提供外部访问，虽然实际工作中我们运用 `_.iteratee` 函数并不常见，但如果用的好绝对是一利器，由 underscore.js 源码内部随处可见的 cb()，就知道这一函数的作用之大。在 `underscore` 中 `return cb()` 传入了第三个参数 Infinity，意为参数类型为 Infinity 当执行第三个 cb 函数的 if 判断，执行 `return optimizeCb();` 时就会发挥其作用，Infinity 类型也蛮有意思，有兴趣的同学可以参考 [Infinity](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity)、[POSITIVE_INFINITY](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/POSITIVE_INFINITY) 和 [NEGATIVE_INFINITY](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/NEGATIVE_INFINITY)。
 
-      var restArgs = function(func, startIndex) {
+```js
+    var restArgs = function(func, startIndex) {
         startIndex = startIndex == null ? func.length - 1 : +startIndex;
         return function() {
-          var length = Math.max(arguments.length - startIndex, 0);
-          var rest = Array(length);
-          for (var index = 0; index < length; index++) {
-            rest[index] = arguments[index + startIndex];
-          }
-          switch (startIndex) {
-            case 0: return func.call(this, rest);
-            case 1: return func.call(this, arguments[0], rest);
-            case 2: return func.call(this, arguments[0], arguments[1], rest);
-          }
-          var args = Array(startIndex + 1);
-          for (index = 0; index < startIndex; index++) {
-            args[index] = arguments[index];
-          }
-          args[startIndex] = rest;
-          return func.apply(this, args);
+            var length = Math.max(arguments.length - startIndex, 0);
+            var rest = Array(length);
+            for (var index = 0; index < length; index++) {
+                rest[index] = arguments[index + startIndex];
+            }
+            switch (startIndex) {
+                case 0: return func.call(this, rest);
+                case 1: return func.call(this, arguments[0], rest);
+                case 2: return func.call(this, arguments[0], arguments[1], rest);
+            }
+            var args = Array(startIndex + 1);
+                for (index = 0; index < startIndex; index++) {
+                    args[index] = arguments[index];
+            }
+            args[startIndex] = rest;
+            return func.apply(this, args);
         };
-      };
+    };
+```
 
 restArgs（其余的参数），什么意思呢，我们看它传入了一个 function 和 一个 Number 类型的 startIndex 标识，首先处理的是 startIndex。三元运算判断 startIndex 是否存在，是则为 `+startIndex`，否则为 `func.length - 1` 即传入 function 中的传入形参的数量减一，举个例子如：
 
@@ -228,30 +258,38 @@ restArgs（其余的参数），什么意思呢，我们看它传入了一个 fu
 
 作者将5行代码扩展到21行，其实就是为了一个 startIndex 而已。
 
-      var baseCreate = function(prototype) {
+```js
+    var baseCreate = function(prototype) {
         if (!_.isObject(prototype)) return {};
         if (nativeCreate) return nativeCreate(prototype);
         Ctor.prototype = prototype;
         var result = new Ctor;
         Ctor.prototype = null;
         return result;
-      };
+    };
+```
 
 baseCreate 用于创建一个干净且只存在具有想要其具有 prototype 的函数，第一个判断是否具有 prototype 参数，第二个判断运用 Object.create 创建，余下则是自己运用 Ctor 这个空函数创建，没什么可细说的。
 
-      var property = function(key) {
+```js
+    var property = function(key) {
         return function(obj) {
-          return obj == null ? void 0 : obj[key];
+            return obj == null ? void 0 : obj[key];
         };
-      };
+    };
+```
 
 property 用于获取 obj 的 key 值，通过 `property（）` 设置 key ，重点是`设置`两个字，有 key 则以没有则创建之。
 
-      var MAX_ARRAY_INDEX = Math.pow(2, 53) - 1;
+```js
+    var MAX_ARRAY_INDEX = Math.pow(2, 53) - 1;
+```
 
 设置 一个最大值 MAX_ARRAY_INDEX，`Math.pow(2, 53) - 1` 意为2的53次幂等于9007199254740991，Math 的相关函数参考 [Math](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math)，其实我一直觉得 MAX_ARRAY_INDEX 并不用设置这么大的值，Math.pow(2, 16) 就足以。
 
-      var getLength = property('length');
+```js
+    var getLength = property('length');
+```
 
 设置 obj 的 key 值并生成函数，等同于：
 
@@ -259,65 +297,73 @@ property 用于获取 obj 的 key 值，通过 `property（）` 设置 key ，�
 >      		return obj == null ? void 0 : obj['length'];
 >     	};
 
-      var isArrayLike = function(collection) {
+```js
+    var isArrayLike = function(collection) {
         var length = getLength(collection);
         return typeof length == 'number' && length >= 0 && length <= MAX_ARRAY_INDEX;
-      };
+    };
+```
 
 isArrayLike，使 Obj 具有 length 属性且有值则返回 true，否则返回 false，这是一个判断函数。
 
-      _.each = _.forEach = function(obj, iteratee, context) {
+```js
+    _.each = _.forEach = function(obj, iteratee, context) {
         iteratee = optimizeCb(iteratee, context);
         var i, length;
         if (isArrayLike(obj)) {
-          for (i = 0, length = obj.length; i < length; i++) {
-            iteratee(obj[i], i, obj);
-          }
+            for (i = 0, length = obj.length; i < length; i++) {
+                iteratee(obj[i], i, obj);
+            }
         } else {
-          var keys = _.keys(obj);
-          for (i = 0, length = keys.length; i < length; i++) {
-            iteratee(obj[keys[i]], keys[i], obj);
-          }
+            var keys = _.keys(obj);
+            for (i = 0, length = keys.length; i < length; i++) {
+                iteratee(obj[keys[i]], keys[i], obj);
+            }
         }
         return obj;
-      };
+    };
+```
 
 我一直以为 JAVASCRIPT 最精华的就是回调的执行方式，虽然互联网上一些文章总在说回调毁了一切，人云亦云等等，但是回调支撑起了所有的框架，而且回调很优雅用的好可以很舒服，回调不是毁了一切只是因为某些人不恰当的设置回调毁了他自己的代码。在 `_.forEach` 中 iteratee 即回调函数，其中运用了 optimizeCb 优化回调，然后是一个常规判断，这里为什么用 isArrayLike(obj) 而不是 isArray(obj) 来判断是不是数组呢，留下一个思考问题。
 
-      _.map = _.collect = function(obj, iteratee, context) {
+```js
+    _.map = _.collect = function(obj, iteratee, context) {
         iteratee = cb(iteratee, context);
         var keys = !isArrayLike(obj) && _.keys(obj),
-            length = (keys || obj).length,
-            results = Array(length);
+        length = (keys || obj).length,
+        results = Array(length);
         for (var index = 0; index < length; index++) {
-          var currentKey = keys ? keys[index] : index;
-          results[index] = iteratee(obj[currentKey], currentKey, obj);
+            var currentKey = keys ? keys[index] : index;
+            results[index] = iteratee(obj[currentKey], currentKey, obj);
         }
         return results;
-      };
+    };
+```
 
 封装 map 函数，没什么好说的，参考 [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Mapv)、[Map.prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/prototype)、[WeakMap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap) 用于知识储备，至于作者的 `_.map` 更多的是根据一定的条件遍历 obj 中的元素，与 `_.forEach` 的更大区别是 `_.forEach` 不会对传入的 obj 做改动直接 `return obj`，而 `_.map` 会 `return results`，`return results` 是每个 iteratee 回调的集合。
 
-      var createReduce = function(dir) {
+```js
+    var createReduce = function(dir) {
         var reducer = function(obj, iteratee, memo, initial) {
-          var keys = !isArrayLike(obj) && _.keys(obj),
-              length = (keys || obj).length,
-              index = dir > 0 ? 0 : length - 1;
-          if (!initial) {
-            memo = obj[keys ? keys[index] : index];
-            index += dir;
-          }
-          for (; index >= 0 && index < length; index += dir) {
-            var currentKey = keys ? keys[index] : index;
-            memo = iteratee(memo, obj[currentKey], currentKey, obj);
-          }
-          return memo;
+            var keys = !isArrayLike(obj) && _.keys(obj),
+            length = (keys || obj).length,
+            index = dir > 0 ? 0 : length - 1;
+            if (!initial) {
+                memo = obj[keys ? keys[index] : index];
+                index += dir;
+            }
+            for (; index >= 0 && index < length; index += dir) {
+                var currentKey = keys ? keys[index] : index;
+                memo = iteratee(memo, obj[currentKey], currentKey, obj);
+            }
+            return memo;
         };
         return function(obj, iteratee, memo, context) {
-          var initial = arguments.length >= 3;
-          return reducer(obj, optimizeCb(iteratee, context, 4), memo, initial);
+            var initial = arguments.length >= 3;
+            return reducer(obj, optimizeCb(iteratee, context, 4), memo, initial);
         };
-      };
+    };
+```
 
 createReduce，创建 reduce。关于 reduce 的介绍可见 reduce 方法 (Array) (JavaScript)：`https://msdn.microsoft.com/library/ff679975(v=vs.94).aspx` 和 [array-reduce](http://www.zhangxinxu.com/study/201304/array-reduce.html)，作者这里的 reduce 肯定不是这样，但既然命名为 createReduce，想来也脱不了太多关系。函数中 reducer 首先定义 keys，其值为 obj 的 key 集合或者 false，后面几个语句里都有对于 keys 的三元运算，目的就是排除 obj 不为 Object 的可能性。接下来判断传入 initial，如果传入 initial 为 false 则默认 memo 值为 `keys[keys.length-1] || 0`，之后是 for 循环遍历回调，并返回最后一个回调值。跳出 reducer 函数 return function 的恰恰是引用 reducer 函数的外部接口，于是所有一切都连贯上了，包括 initial 的定义是 arguments 长度大于等于3等等。
 我们再重新过一遍代码，在最外部 return 的时候判断 initial，实际上就是再确定是否传入了 memo 和 context，当然最主要的就是 memo，以此来确定在内部 reducer 的时候是否具有初始值。在这里我觉得作者应该对 memo 进行类型判断的，如果是 Number 或者 String 还说的过去，但是如果传入 memo 是 Object 就有点说不过去了，会出错的。比如：
@@ -335,19 +381,25 @@ createReduce，创建 reduce。关于 reduce 的介绍可见 reduce 方法 (Arra
 >         _.reduce([1, 2, 3], function(memo, num){ return memo + num; }, {a:1});
 >         "[object Object]123"
 
-      _.reduce = _.foldl = _.inject = createReduce(1);
+```js
+    _.reduce = _.foldl = _.inject = createReduce(1);
+```
 
 这里就是用 `createReduce` 包装好的 `_.reduce`，不解释。
 
-      _.reduceRight = _.foldr = createReduce(-1);
+```js
+    _.reduceRight = _.foldr = createReduce(-1);
+```
 
 这里就是用 `createReduce` 包装好的 `_.reduceRight`，与 `_.reduce` 计算顺序相反即从右面向左面开始。
 
-      _.find = _.detect = function(obj, predicate, context) {
+```js
+    _.find = _.detect = function(obj, predicate, context) {
         var keyFinder = isArrayLike(obj) ? _.findIndex : _.findKey;
         var key = keyFinder(obj, predicate, context);
         if (key !== void 0 && key !== -1) return obj[key];
-      };
+    };
+```
 
 `_.find`，讨论这个函数首先要弄懂 `_.findIndex` 和 `_.findKey`，这里我们先简单知道一个是针对数组一个是针对对象，具体的后面读到源码再说。传入值 obj 进行 isArrayLike 判断以此决定 keyFinder 函数，将三个参数包括回调传入 keyFinder 中其中 predicate 回调函数充当迭代器进行真值检测，最后 return obj[key]。
 
@@ -365,54 +417,64 @@ createReduce，创建 reduce。关于 reduce 的介绍可见 reduce 方法 (Arra
 
 以 `_.findIndex` 为例简单介绍一下，`_.findIndex` 是由 createPredicateIndexFinder 包装而成，意义在于返回 predicate 函数内部 return true。
 
-      _.filter = _.select = function(obj, predicate, context) {
+```js
+    _.filter = _.select = function(obj, predicate, context) {
         var results = [];
         predicate = cb(predicate, context);
         _.each(obj, function(value, index, list) {
-          if (predicate(value, index, list)) results.push(value);
+            if (predicate(value, index, list)) results.push(value);
         });
         return results;
-      };
+    };
+```
 
 `_.filter` 函数与 `_.find` 类似，内部实现较之 `_.find` 更简单些，`_.find` 意为匹配 predicate 回调 return true 唯一就近值，`_.filter` 则是匹配所有值的集合。那么有人说为什么不用 `_.filter()[0]` 取代 `_.find`，理论上二者确实是相同值，但是 `_.filter` 会遍历传参 obj 直至结束，而 `_.find` 则是遍历过程中匹配成功结束遍历，所以某些情况下 `_.find` 优于 `_.filter`。
 
-      _.reject = function(obj, predicate, context) {
+```js
+    _.reject = function(obj, predicate, context) {
         return _.filter(obj, _.negate(cb(predicate)), context);
-      };
+    };
+```
 
 `_.reject`，通过 `_.negate` 和 `cb` 函数包装 predicate 回调，实际上就是用 `optimizeCb` 优化 predicate function，然后用 `_.negate` 返回与 predicate 相反的 Boolean 类型值，以此获得与 `_.filter` 作用相反的结果集合。
 
-      _.every = _.all = function(obj, predicate, context) {
+```js
+    _.every = _.all = function(obj, predicate, context) {
         predicate = cb(predicate, context);
         var keys = !isArrayLike(obj) && _.keys(obj),
-            length = (keys || obj).length;
+        length = (keys || obj).length;
         for (var index = 0; index < length; index++) {
-          var currentKey = keys ? keys[index] : index;
-          if (!predicate(obj[currentKey], currentKey, obj)) return false;
+            var currentKey = keys ? keys[index] : index;
+            if (!predicate(obj[currentKey], currentKey, obj)) return false;
         }
         return true;
-      };
+    };
+```
 
 `_.every`，我们看源码中的返回值类型为 Boolean 知道这是一个用于真值检测的函数，内部的处理步骤已经很程序化了，首先优化回调函数 predicate，处理传参 obj（根据 Object 或者 Array），回调中接收 `obj[currentKey], currentKey, obj` 三个参数进行 Boolean 判断，当判断失败的时候则 `if (!false) return false;` 结束 for 循环。这个方法看上去很鸡肋，但实际上结合 predicate 回调应用于某些判断处理很给力。
 
-      _.some = _.any = function(obj, predicate, context) {
+```js
+    _.some = _.any = function(obj, predicate, context) {
         predicate = cb(predicate, context);
         var keys = !isArrayLike(obj) && _.keys(obj),
-            length = (keys || obj).length;
+        length = (keys || obj).length;
         for (var index = 0; index < length; index++) {
-          var currentKey = keys ? keys[index] : index;
-          if (predicate(obj[currentKey], currentKey, obj)) return true;
+        var currentKey = keys ? keys[index] : index;
+            if (predicate(obj[currentKey], currentKey, obj)) return true;
         }
         return false;
-      };
+    };
+```
 
 `_.some`，看源码我们可以知道它基本上与 `_.every` 类似，区别在于 `_.some` 遍历 obj 过程中只要任何一个元素通过 predicate 回调的真值检测就直接立即中断遍历并返回 true。我主观意识上更偏向于 `_.every` 和 `_.some` 用一个相同的基础函数包装再通过判断值构建它们，就像 `createReduce` 函数构成 `_.reduce`、`_.reduceRight` 一样，但是不知道作者为什么没有这样做，可能有其他的考虑吧，这里不再揣测。
 
-      _.contains = _.includes = _.include = function(obj, item, fromIndex, guard) {
+```js
+    _.contains = _.includes = _.include = function(obj, item, fromIndex, guard) {
         if (!isArrayLike(obj)) obj = _.values(obj);
         if (typeof fromIndex != 'number' || guard) fromIndex = 0;
         return _.indexOf(obj, item, fromIndex) >= 0;
-      };
+    };
+```
 
 `_.contains` 用于检查 obj 中是否包含 item 值，我更倾向于这是一个简化版的 `_.some`，如果是我写基础函数可能真的就只有 `_.some` 不用 `_.contains`，但是 Undescore.js 作为一个知名函数库，在代码优化的执行速度上肯定要比我们做的更细。
 这里顺便说一下 `_.indexOf` 和 `guard`，`_.indexOf` 是由 createIndexFinder 包装而来，可以理解为数组版的 indexOf，indexOf 概念可参考 [String.prototype.indexOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) 和 [Array.prototype.indexOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf)。关于 `array.indexOf(searchElement[, fromIndex = 0])`，我这里再说几句，这个 JAVASCRIPT 函数传入1或2个参数，第一个参数为将要进行匹配的内容，可为 Number 可为 String，第二个可选参数为`(需要定向匹配数组中某一值的数组下标值 - array.length)*n，且 n！= 0`，`array.indexOf` 根据这个下标进行定向匹配验证，如果匹配成功则返回值为被匹配值的数组下标，匹配失败则返回 -1。
@@ -436,13 +498,15 @@ createReduce，创建 reduce。关于 reduce 的介绍可见 reduce 方法 (Arra
 
 `_.indexOf` 虽然与 `array.indexOf(searchElement[, fromIndex = 0])` 有所区别，但也有很多相通之处。
 
-      _.invoke = restArgs(function(obj, method, args) {
+```js
+    _.invoke = restArgs(function(obj, method, args) {
         var isFunc = _.isFunction(method);
         return _.map(obj, function(value) {
-          var func = isFunc ? method : value[method];
-          return func == null ? func : func.apply(value, args);
+            var func = isFunc ? method : value[method];
+            return func == null ? func : func.apply(value, args);
         });
-      });
+    });
+```
 
 `_.invoke` 用于批量执行方法，前面我们讲了 restArgs 方法，虽然代码很复杂，但目前实际上只应用了如下简化的结构：
 
@@ -464,9 +528,11 @@ createReduce，创建 reduce。关于 reduce 的介绍可见 reduce 方法 (Arra
 
 其中 `_.isFunction` 是判断是否为 function，接下来 `_.map` 回调，实际上我很纳闷万一传入的 method 是 obj[i] 对象上没有的方法怎么办，按照 return 的结果如果没有则返回 func 也就是 `null`，总觉得这样返回缺少点什么。
 
-      _.pluck = function(obj, key) {
+```js
+    _.pluck = function(obj, key) {
         return _.map(obj, _.property(key));
-      };
+    };
+```
 
 ` _.pluck` 返回传入 obj 的 key 的集合，或者说 key 的集合有点武断，更具体点说是 obj 下第二层所包含 key 的值的集合，而第一层也就是 obj 可为 Object 或 Array，但 obj 中第二层必须是 Object。这是为什么呢？
 
@@ -478,9 +544,11 @@ createReduce，创建 reduce。关于 reduce 的介绍可见 reduce 方法 (Arra
 
 在上述简化的代码中我们可以看出 `return obj == null ? void 0 : obj[key];` 的值是 obj[key]，所以第二层只能是 Object。
 
-      _.where = function(obj, attrs) {
+```js
+    _.where = function(obj, attrs) {
         return _.filter(obj, _.matcher(attrs));
-      };
+    };
+```
 
 `_.where` 很有趣，代码简化之后是：
 
@@ -504,109 +572,121 @@ createReduce，创建 reduce。关于 reduce 的介绍可见 reduce 方法 (Arra
 
 这个方法在处理数据的时候特别有用。
 
-      _.findWhere = function(obj, attrs) {
+```js
+    _.findWhere = function(obj, attrs) {
         return _.find(obj, _.matcher(attrs));
-      };
+    };
+```
 
 `_.findWhere`，相当于 `_.where()[0]`，即返回结果集合的第一个值，这么设定的目的和 `_.find` 与 `_.filter` 一样，运算更快，遍历到目标马上停止遍历。
 
-      _.max = function(obj, iteratee, context) {
+```js
+    _.max = function(obj, iteratee, context) {
         var result = -Infinity, lastComputed = -Infinity,
-            value, computed;
+        value, computed;
         if (iteratee == null || (typeof iteratee == 'number' && typeof obj[0] != 'object') && obj != null) {
-          obj = isArrayLike(obj) ? obj : _.values(obj);
-          for (var i = 0, length = obj.length; i < length; i++) {
-            value = obj[i];
-            if (value != null && value > result) {
-              result = value;
+            obj = isArrayLike(obj) ? obj : _.values(obj);
+            for (var i = 0, length = obj.length; i < length; i++) {
+                value = obj[i];
+                if (value != null && value > result) {
+                    result = value;
+                }
             }
-          }
         } else {
-          iteratee = cb(iteratee, context);
-          _.each(obj, function(v, index, list) {
-            computed = iteratee(v, index, list);
-            if (computed > lastComputed || computed === -Infinity && result === -Infinity) {
-              result = v;
-              lastComputed = computed;
-            }
-          });
+            iteratee = cb(iteratee, context);
+            _.each(obj, function(v, index, list) {
+                computed = iteratee(v, index, list);
+                if (computed > lastComputed || computed === -Infinity && result === -Infinity) {
+                    result = v;
+                    lastComputed = computed;
+                }
+            });
         }
         return result;
-      };
+    };
+```
 
 `_.max` 用来查找 obj 对象数组中某一 key 的最大值的 Object，限定是 key-value 的 value 必须是 Number 类型。`-Infinity` 我更喜欢叫它负无穷，这里的 if true 第一个判断可以忽略了，为什么不讲了呢，因为作者要放弃 `typeof iteratee == 'number' && typeof obj[0] != 'object'` 这种情况，可见其他版本的 Underscore.js。如果忽略 `typeof iteratee == 'number' && typeof obj[0] != 'object'` 的情况则  `_.max` 传参为一个数组，return 为数组中最大值。if false 则进行常规的 `_.each` 代码很简单这里不再讲解。
 
-      _.min = function(obj, iteratee, context) {
+```js
+    _.min = function(obj, iteratee, context) {
         var result = Infinity, lastComputed = Infinity,
-            value, computed;
+        value, computed;
         if (iteratee == null || (typeof iteratee == 'number' && typeof obj[0] != 'object') && obj != null) {
-          obj = isArrayLike(obj) ? obj : _.values(obj);
-          for (var i = 0, length = obj.length; i < length; i++) {
-            value = obj[i];
-            if (value != null && value < result) {
-              result = value;
+            obj = isArrayLike(obj) ? obj : _.values(obj);
+            for (var i = 0, length = obj.length; i < length; i++) {
+                value = obj[i];
+                if (value != null && value < result) {
+                    result = value;
+                }
             }
-          }
         } else {
-          iteratee = cb(iteratee, context);
-          _.each(obj, function(v, index, list) {
-            computed = iteratee(v, index, list);
-            if (computed < lastComputed || computed === Infinity && result === Infinity) {
-              result = v;
-              lastComputed = computed;
-            }
-          });
+            iteratee = cb(iteratee, context);
+            _.each(obj, function(v, index, list) {
+                computed = iteratee(v, index, list);
+                    if (computed < lastComputed || computed === Infinity && result === Infinity) {
+                        result = v;
+                    lastComputed = computed;
+                }
+            });
         }
         return result;
-      };
+    };
+```
 
 `_.min` 真心不用讲了，参考 `_.max`。
 
-      _.shuffle = function(obj) {
+```js
+    _.shuffle = function(obj) {
         return _.sample(obj, Infinity);
-      };
+    };
+```
 
 `_.shuffle` 官网释义是`返回一个随机乱序的 list 副本, 使用 Fisher-Yates shuffle 来进行随机乱序.`，`Fisher-Yates shuffle` 是什么鬼，我们这里看到 `_.shuffle` 这个函数用到了 `_.sample`，所以我们先讲 `_.sample`。
 
-      _.sample = function(obj, n, guard) {
+```js
+    _.sample = function(obj, n, guard) {
         if (n == null || guard) {
-          if (!isArrayLike(obj)) obj = _.values(obj);
-          return obj[_.random(obj.length - 1)];
+            if (!isArrayLike(obj)) obj = _.values(obj);
+            return obj[_.random(obj.length - 1)];
         }
         var sample = isArrayLike(obj) ? _.clone(obj) : _.values(obj);
         var length = getLength(sample);
         n = Math.max(Math.min(n, length), 0);
         var last = length - 1;
         for (var index = 0; index < n; index++) {
-          var rand = _.random(index, last);
-          var temp = sample[index];
-          sample[index] = sample[rand];
-          sample[rand] = temp;
+            var rand = _.random(index, last);
+            var temp = sample[index];
+            sample[index] = sample[rand];
+            sample[rand] = temp;
         }
         return sample.slice(0, n);
-      };
+    };
+```
 
 `_.sample` 是从一个 obj 中随机返回值，并且返回值受限于 n 这个参数，如果没有传入 n 或者传入了 guard = true 则执行 if 语句，目的是将 obj 判断处理之后返回单一值。这里觉得特鸡肋有木有，也就是说 `_.sample（obj,n,true）` 和`_.sample(obj)` 是一回事。如果按照 `_.sample（obj,n）` 的逻辑执行，依赖是老套路，处理 obj （Object 和 Array），然后 `n = Math.max(Math.min(n, length), 0);` 获得合理的 n 值，前面我们讲到了 `Infinity` 正无穷和 `-Infinity` 负无穷，这段代码利用了 Infinity 的特性包装了 `_.shuffle`函数，关键就是 Infinity 大于所有 Number 数字，即 `Math.min(Infinity, Number)` 等于 Number，好处就是让人眼前一亮，哇，原来代码还可以这样写，坏处就是当单独使用 `_.sample` 函数的 n 大于处理之后的 obj 的长度时并不会报错，而是默认执行 `n=sample.length`，仁者见仁，智者见智吧。后面就是很套路的根据数组下标替换数组内容，当然数组下标是通过 `_.random` 随机的，然后 slice 一刀切数组。
 
-      _.sortBy = function(obj, iteratee, context) {
+```js
+    _.sortBy = function(obj, iteratee, context) {
         var index = 0;
         iteratee = cb(iteratee, context);
         return _.pluck(_.map(obj, function(value, key, list) {
-          return {
-            value: value,
-            index: index++,
-            criteria: iteratee(value, key, list)
-          };
+            return {
+                value: value,
+                index: index++,
+                criteria: iteratee(value, key, list)
+            };
         }).sort(function(left, right) {
-          var a = left.criteria;
-          var b = right.criteria;
-          if (a !== b) {
+            var a = left.criteria;
+            var b = right.criteria;
+            if (a !== b) {
             if (a > b || a === void 0) return 1;
             if (a < b || b === void 0) return -1;
-          }
-          return left.index - right.index;
+        }
+            return left.index - right.index;
         }), 'value');
-      };
+    };
+```
 
 `_.sortBy`，顾名思义这是一个对数组进行排序处理的函数，在原生 JAVASCRIPT 中 sort() 的详情可参考 [Array.prototype.sort()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)、[TypedArray.prototype.sort()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray/sort)。`_.sortBy` 接收三个参数分别为 obj、iteratee 回调和 context，其中 iteratee 与 context 是可选参数。
 当传入值只有 obj 时，应该限定 obj 类型为数组且值为 Number，为什么呢，这里涉及到 JAVASCRIPT 对数字字符串的比较的问题了，JAVASCRIPT 在进行字符串比较的时候遵循的是二进制与运算，也就是说并不是数字 length 越长就会大于 length 小的。举个栗子：
@@ -641,23 +721,27 @@ createReduce，创建 reduce。关于 reduce 的介绍可见 reduce 方法 (Arra
 
 这样看上去就直白好多。整理完数据之后就是 `arr.sort([compareFunction])` 进行排序，这里不说了。当传入参数有 iteratee 回调的时候，依旧老套路优化回调，然后根据回调函数里面的设定决定 criteria 参数值，criteria 参数是 `arr.sort([compareFunction])` 进行排序的关键标识，so一定要是 Number才行。
 
-      var group = function(behavior, partition) {
+```js
+    var group = function(behavior, partition) {
         return function(obj, iteratee, context) {
-          var result = partition ? [[], []] : {};
-          iteratee = cb(iteratee, context);
-          _.each(obj, function(value, index) {
-            var key = iteratee(value, index, obj);
-            behavior(result, value, key);
-          });
-          return result;
+            var result = partition ? [[], []] : {};
+            iteratee = cb(iteratee, context);
+            _.each(obj, function(value, index) {
+                var key = iteratee(value, index, obj);
+                behavior(result, value, key);
+            });
+            return result;
         };
-      };
+    };
+```
 
 `group` 是一个内部函数，我觉得它最特别在于将回调称之为一个 behavior，为什么呢，因为虽然 behavior function 只能被动接受 `value, index, obj` 三个参数进行数值运算，但作者巧妙的用它结合 group 包装出 `_.groupBy`、`_.indexBy`、`_.countBy`、`_.partition` 四个函数，在实际开发中我们处理数据时可能需要各种适用场景的工具，那么把如何函数写好写活呢，group 给了我很大的启发，言归正传，group 的 behavior 回调是在外部定义，源码到这里并不知道 behavior 是什么东西，所以先一带而过。
 
-      _.groupBy = group(function(result, value, key) {
+```js
+    _.groupBy = group(function(result, value, key) {
         if (_.has(result, key)) result[key].push(value); else result[key] = [value];
-      });
+    });
+```
 
 `_.groupBy` 官网定义`把一个集合分组为多个集合，通过 iterator 返回的结果进行分组. 如果 iterator 是一个字符串而不是函数, 那么将使用 iterator 作为各元素的属性名来对比进行分组.`。
 
@@ -692,19 +776,25 @@ createReduce，创建 reduce。关于 reduce 的介绍可见 reduce 方法 (Arra
 也就是说作者虽然大才，但是并没有对超出范围的值类型做进一步的处理，也就是说 iteratee 的可选值类型只能为 Function 和 String。当然这并不是错，从工具的角度来讲我们应用函数应该遵守函数创造者设定的规则，超出规则后出现错误并不是说作者的函数一定有问题，也可能是我们太过于调皮了（比如番茄西红柿需要用平底锅来炒，但厨师非要用电饭煲，这是厨师的错还是平底锅生产商的错 ─=≡Σ((( つ•̀ω•́)つ）。
 言归正传当传入合理的 iteratee 值时，其实整个函数的重点还是 `group` 函数内部的 `cb` 函数，因为我们可以看源码 `_.groupBy` 上的回调最终是落实到 `cb` 上，将一个函数比作一个公共房间，众多人就是传入传出的参数，那么 cb 就是门禁卡识别每个人的身份并发身份牌。如果 iteratee 是 String 则用 `_.property` 处理恰到好处（生成获取属性值的函数），如果是 Function 也只是在 `if (_.has(result, key)) result[key].push(value); else result[key] = [value];` 之前通过回调生成相应的 key 值。
 
-      _.indexBy = group(function(result, value, key) {
+```js
+    _.indexBy = group(function(result, value, key) {
         result[key] = value;
-      });
+    });
+```
 
 官网释义 `给定一个list，和 一个用来返回一个在列表中的每个元素键 的iterator 函数（或属性名）， 返回一个每一项索引的对象。`，关键代码参考 `_.groupBy`，二者的二区别也之有一行代码，理解起来并不难，我就不再水文字了。
 
-      _.countBy = group(function(result, value, key) {
+```js
+    _.countBy = group(function(result, value, key) {
         if (_.has(result, key)) result[key]++; else result[key] = 1;
-      });
+    });
+```
 
 官网释义 `排序一个列表组成一个组，并且返回各组中的对象的数量的计数。类似groupBy，但是不是返回列表的值，而是返回在该组中值的数目。`，其实就是对匹配成功的元素计数。
 
-      var reStrSymbol = /[^\ud800-\udfff]|[\ud800-\udbff][\udc00-\udfff]|[\ud800-\udfff]/g;
+```js
+    var reStrSymbol = /[^\ud800-\udfff]|[\ud800-\udbff][\udc00-\udfff]|[\ud800-\udfff]/g;
+```
 
 reStrSymbol 用于正则函数，这一块我也不是很熟悉，但是我找到了两篇文章做了参考，[Unicode Regular Expressions, Surrogate Points and UTF-8](http://unicode.org/pipermail/unicode/2014-June/000679.html)、
 [Re: Java char and Unicode 3.0+ (was:Canonical equivalence in rendering: mandatory or recommended?)](http://www.unicode.org/mail-arch/unicode-ml/y2003-m10/0216.html)、[unicode](http://unicode.org/)。另外知乎上也有人对这句话做了判断：
@@ -715,124 +805,149 @@ reStrSymbol 用于正则函数，这一块我也不是很熟悉，但是我找�
 
 以上仅供参考，我也不是很清楚，等我做好这方面功课的时候再重新说这个话题。
 
-      _.toArray = function(obj) {
+```js
+    _.toArray = function(obj) {
         if (!obj) return [];
         if (_.isArray(obj)) return slice.call(obj);
         if (_.isString(obj)) {
-          return obj.match(reStrSymbol);
+            return obj.match(reStrSymbol);
         }
         if (isArrayLike(obj)) return _.map(obj, _.identity);
         return _.values(obj);
-      };
+    };
+```
 
 官网说 `把list(任何可以迭代的对象)转换成一个数组，在转换 arguments 对象时非常有用`，并给出一个 `(function(){ return _.toArray(arguments).slice(1); })(1, 2, 3, 4);`，说心里话每当看到 arguments 的时候我第一个印象是 `Array.prototype.slice.call(arguments, indexes);`，这里作者对待 Array 的原理同样是这个。`_.toArray` 函数本身没有重点，无非就是根据字符串、数组、对象进行数组转换，需要注意的是当转换 Object 的时候会忽略 key-value 的 key，只单独把 value 放到数组中，另外就是 `if (_.isArray(obj))` 和 `if (isArrayLike(obj))`，顾名思义第一个是判断数组，第二个难道是考虑到 `{'length':[1,2,3,4]}` 这种数据结构的情况？
 
-      _.size = function(obj) {
+```js
+    _.size = function(obj) {
         if (obj == null) return 0;
         return isArrayLike(obj) ? obj.length : _.keys(obj).length;
-      };
+    };
+```
 
 `_.size` 用于返回传入参数的长度，包括但不限于 Object、Array 、 String 和 Function，Function 返回的是 Function 中传入参数的个数（arguments）。另外 Map 这里有个坑，Map返回值是12，众所周知 Map是一个大的对象，所以返回值是它的12个基本属性的个数。
 
-      _.partition = group(function(result, value, pass) {
+```js
+    _.partition = group(function(result, value, pass) {
         result[pass ? 0 : 1].push(value);
-      }, true);
+    }, true);
+```
 
 `_.partition` 是第四个用 group 函数包装的函数，用来对传入 obj 做判断时返回符合回调断言的结果集以及不符合的结果集，从 `result[pass ? 0 : 1].push(value)` 这里就可见一斑了，也就是说 group 的第三个传参 partition 也就是为了 `_.partition` 而存在。partition 使 result 的设定为固定的 `[[][]]`，这种写法我觉得并不是看上去最优雅地，理想情况是最好不存在第三个参数才对，但这一定是相对节约性能的，面对可节约的性能怎么取舍已经很清楚了。
 
-      _.first = _.head = _.take = function(array, n, guard) {
+```js
+    _.first = _.head = _.take = function(array, n, guard) {
         if (array == null) return void 0;
         if (n == null || guard) return array[0];
         return _.initial(array, array.length - n);
-      };
+    };
+```
 
 `_.first` 用于返回数组中从左到右指定数目 n 的结果集，传入 array、n、guard 三个参数中 array 只能为 Array，当 `n = null` 时返回数组第一个元素，这里需要讲解的是 `_.initial` 函数是与 `_.first` 完全对立的函数，它用于返回数组中从左到右指定数目 `Array.length - n` 的结果集。
 
-      _.initial = function(array, n, guard) {
+```js
+    _.initial = function(array, n, guard) {
         return slice.call(array, 0, Math.max(0, array.length - (n == null || guard ? 1 : n)));
-      };
+    };
+```
 
 那么它是如何实现的呢，依然是应用数组 Array 的 `Array.prototype.slice.call(array, start, end);` 实现，这个概念请参看：[Array.prototype.slice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)。
 
-      _.last = function(array, n, guard) {
+```js
+    _.last = function(array, n, guard) {
         if (array == null) return void 0;
         if (n == null || guard) return array[array.length - 1];
         return _.rest(array, Math.max(0, array.length - n));
-      };
+    };
+```
 
 `_.last` 是返回数组中从右到左指定数目 n 的结果集。实现原理依旧 `Array.prototype.slice.call(array, start, end);`
 
-      _.rest = _.tail = _.drop = function(array, n, guard) {
+```js
+    _.rest = _.tail = _.drop = function(array, n, guard) {
         return slice.call(array, n == null || guard ? 1 : n);
-      };
+    };
+```
 
 `_.rest` 用于返回数组中从右到左指定数目 `Array.length - n` 的结果集。
 
-      _.compact = function(array) {
+```js
+    _.compact = function(array) {
         return _.filter(array, Boolean);
-      };
+    };
+```
+
 `_.compact`，我喜欢称它为过滤器，过滤坏的数据，那么什么样的数据为坏数据呢，我们可以看下 `_.filter`，前面讲 `_.filter` 接收三个参数 `obj, predicate, context`，其中 predicate 依旧由 cb 处理，那么这里 `_.compact` 传的 predicate 是 `Boolean = function Boolean() { [native code] }`，这是一个 JAVASCRIPT 内置的函数用于 Boolean 判断，我们可以参考 [Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) 和 [Boolean data type](https://en.wikipedia.org/wiki/Boolean_data_type)。那么重点来了，什么的值会是 Boolean 函数断言为 false 呢，答案就是 `false, 0, "", null, undefined, NaN`，这个可不是我瞎说或者 copy 官网，我是有理论依据的（vˍv），当当当，看这里 [Truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy)。
 
-      var flatten = function(input, shallow, strict, output) {
+```js
+    var flatten = function(input, shallow, strict, output) {
         output = output || [];
         var idx = output.length;
         for (var i = 0, length = getLength(input); i < length; i++) {
-          var value = input[i];
-          if (isArrayLike(value) && (_.isArray(value) || _.isArguments(value))) {
-            if (shallow) {
-              var j = 0, len = value.length;
-              while (j < len) output[idx++] = value[j++];
-            } else {
-              flatten(value, shallow, strict, output);
-              idx = output.length;
+            var value = input[i];
+            if (isArrayLike(value) && (_.isArray(value) || _.isArguments(value))) {
+                if (shallow) {
+                    var j = 0, len = value.length;
+                    while (j < len) output[idx++] = value[j++];
+                } else {
+                    flatten(value, shallow, strict, output);
+                    idx = output.length;
+                }
+            } else if (!strict) {
+                output[idx++] = value;
             }
-          } else if (!strict) {
-            output[idx++] = value;
-          }
         }
         return output;
-      };
+    };
+```
 
 flatten 传入四个参数，`input, shallow, strict, output`，其中我们可以通过 flatten 内部的 for 循环中 `length = getLength(input);` 知道 input 数据类型为 Array。然后通过对 `shallow, strict` 两个 Boolean 型变量的控制执行相应的数据处理方式。比如 shallow 为 false 会一直执行 `flatten(value, shallow, strict, output);` 和 `output[idx++] = value;` 对多维数组进行一维数组的转换。
 
-      _.flatten = function(array, shallow) {
+```js
+    _.flatten = function(array, shallow) {
         return flatten(array, shallow, false);
-      };
+    };
+```
 
 `_.flatten` 函数用于对多维度数组进行扁平化处理，即将任意维数的数组转换为一维数组，上面已经说到了这个的实现方式。
 
-      _.without = restArgs(function(array, otherArrays) {
+```js
+    _.without = restArgs(function(array, otherArrays) {
         return _.difference(array, otherArrays);
-      });
+    });
+```
 
 `_.without` 用于删除数组中的某些特定元素。它由 `_.difference` 构成。
 
-      _.uniq = _.unique = function(array, isSorted, iteratee, context) {
+```js
+    _.uniq = _.unique = function(array, isSorted, iteratee, context) {
         if (!_.isBoolean(isSorted)) {
-          context = iteratee;
-          iteratee = isSorted;
-          isSorted = false;
+            context = iteratee;
+            iteratee = isSorted;
+            isSorted = false;
         }
         if (iteratee != null) iteratee = cb(iteratee, context);
-        var result = [];
-        var seen = [];
-        for (var i = 0, length = getLength(array); i < length; i++) {
-          var value = array[i],
-              computed = iteratee ? iteratee(value, i, array) : value;
-          if (isSorted) {
-            if (!i || seen !== computed) result.push(value);
-            seen = computed;
-          } else if (iteratee) {
-            if (!_.contains(seen, computed)) {
-              seen.push(computed);
-              result.push(value);
+            var result = [];
+            var seen = [];
+            for (var i = 0, length = getLength(array); i < length; i++) {
+                var value = array[i],
+                computed = iteratee ? iteratee(value, i, array) : value;
+                if (isSorted) {
+                    if (!i || seen !== computed) result.push(value);
+                    seen = computed;
+                } else if (iteratee) {
+                    if (!_.contains(seen, computed)) {
+                        seen.push(computed);
+                        result.push(value);
+                    }
+                } else if (!_.contains(result, value)) {
+                result.push(value);
             }
-          } else if (!_.contains(result, value)) {
-            result.push(value);
-          }
         }
         return result;
-      };
+    };
+```
 
 `_.uniq` 是数组去重，实现原理是如果 isSorted 及后面元素省略，那么  _.uniq 简化为：
 
@@ -854,82 +969,98 @@ flatten 传入四个参数，`input, shallow, strict, output`，其中我们可�
 我们可以看到其核心代码只有 `if (!_.contains(result, value))`，用于判断数组中是否包含其值，以此达到数组去重的目的。是这里我想说的是 context、iteratee、isSorted 变成了未定义的参数，作者没有处理它会在这种情况下变成全局污染。
 接下来我们说一下传入 `array, isSorted, iteratee` 三个参数的情况，我们已经知道 isSorted 默认为 false，代表去重，那么如果定义 isSorted 为 true 则就是不去重，如果 isSorted 是回调函数，则默认内部重新定义 isSorted 为 false，并将回调函数赋给 iteratee，然后很悲剧的 iteratee 参数依然是没有 var 过的，又污染了啊(‧_‧？) 。大致就是这酱了。
 
-      _.union = restArgs(function(arrays) {
+```js
+_.union = restArgs(function(arrays) {
         return _.uniq(flatten(arrays, true, true));
       });
+```
 
 `_.union` 对多个一维数组进行并运算，实际上就是加强版的 `_.uniq`。在代码中作者首先用 flatten 函数处理参数，之前我们说到 flatten 是用于多个多维数组进行一位转换，实际上就是要把 arrays 转换。这里有同学可能问道 flatten 直接收一个 Array 剩下的值是 Boolean 啊，那么使用 `_.union` 的时候是一次性传入 n 个 Array（如这样：`_.union([1, 2, 3], [101, 2, 1, 10], [2, 1]);`），说不通啊。所以我要说的是 restArgs 这个函数，将传入参数转换为一个数组进行 `func.apply(this, args)` 到 restArgs 的回调函数 `function(arrays) {}` 中，以此达到 flatten 函数 arrays 接到的是一个一维数组的集合。最后通过 `_.uniq` 函数对数组进行处理。
 
-      _.intersection = function(array) {
+```js
+    _.intersection = function(array) {
         var result = [];
         var argsLength = arguments.length;
         for (var i = 0, length = getLength(array); i < length; i++) {
-          var item = array[i];
-          if (_.contains(result, item)) continue;
-          var j;
-          for (j = 1; j < argsLength; j++) {
-            if (!_.contains(arguments[j], item)) break;
-          }
-          if (j === argsLength) result.push(item);
+            var item = array[i];
+            if (_.contains(result, item)) continue;
+            var j;
+            for (j = 1; j < argsLength; j++) {
+                if (!_.contains(arguments[j], item)) break;
+            }
+            if (j === argsLength) result.push(item);
         }
         return result;
-      };
+    };
+```
 
 `_.intersection` 用于获取多个一维数组的相同数据的集合，即交集。又是一番对 Array 的 for 啊 for 啊 for,然后 if 然后 push，相信大家这么聪明，不用多说了，因为这个函数很直白，没太多可讲的。
 
-      _.difference = restArgs(function(array, rest) {
+```js
+    _.difference = restArgs(function(array, rest) {
         rest = flatten(rest, true, true);
         return _.filter(array, function(value){
-          return !_.contains(rest, value);
+            return !_.contains(rest, value);
         });
-      });
+    });
+```
 
 `_.difference` 函数的实现与 `_.union` 类似，都是通过 restArgs 对 n 个传参进行数组转变，然后赋给回调函数，区别在于这个函数可能更加复杂，它首先 restArgs 回调写了两个传参 `array, rest`，但实际上 rest 是 undefined，之后在回调内部给 rest 赋值为 flatten 函数处理之后的数组，即扁平化后的一维数组。因为 restArgs 函数只有一个 function 回调，所以内部执行 `return func.call(this, arguments[0], rest);`，返回的是第一个数组和其他数组的集合，即 `array, rest`。
 
-      _.unzip = function(array) {
+```js
+    _.unzip = function(array) {
         var length = array && _.max(array, getLength).length || 0;
         var result = Array(length);
         for (var index = 0; index < length; index++) {
-          result[index] = _.pluck(array, index);
+            result[index] = _.pluck(array, index);
         }
         return result;
-      };
+    };
+```
 
 `_.unzip` 用于将多个数组中元素按照数组下标进行拼接，只接收一个二维数组，返回值同样是一个二维数组。
 
-      _.zip = restArgs(_.unzip);
+```js
+    _.zip = restArgs(_.unzip);
+```
 
 `_.zip` 与 `_.unzip` 不同之处在于它可以传入不定的一维数组参数然后通过 restArgs 函数转换实现 `_.unzip` 传参的效果。
 
-      _.object = function(list, values) {
+```js
+    _.object = function(list, values) {
         var result = {};
         for (var i = 0, length = getLength(list); i < length; i++) {
-          if (values) {
-            result[list[i]] = values[i];
-          } else {
-            result[list[i][0]] = list[i][1];
-          }
+            if (values) {
+                result[list[i]] = values[i];
+            } else {
+                result[list[i][0]] = list[i][1];
+            }
         }
         return result;
-      };
+    };
+```
 
 `_.object` 用于将数组转换成对象。
 
-      var createPredicateIndexFinder = function(dir) {
+```js
+    var createPredicateIndexFinder = function(dir) {
         return function(array, predicate, context) {
-          predicate = cb(predicate, context);
-          var length = getLength(array);
-          var index = dir > 0 ? 0 : length - 1;
-          for (; index >= 0 && index < length; index += dir) {
-            if (predicate(array[index], index, array)) return index;
-          }
-          return -1;
+            predicate = cb(predicate, context);
+            var length = getLength(array);
+            var index = dir > 0 ? 0 : length - 1;
+            for (; index >= 0 && index < length; index += dir) {
+                if (predicate(array[index], index, array)) return index;
+            }
+            return -1;
         };
-      };
+    };
+```
 
 createPredicateIndexFinder 这个函数适用于生成 `_.findIndex` 之类的函数，当我们看到 `return index;` 的是后就已经可以知道，其核心是与数组下标有关。
 
-      _.findIndex = createPredicateIndexFinder(1);
+```js
+    _.findIndex = createPredicateIndexFinder(1);
+```
 
 `_.findIndex` 函数由 createPredicateIndexFinder 包装而成，我们可以看到它的默认传值是 `1`，也就是：
 
@@ -943,84 +1074,98 @@ createPredicateIndexFinder 这个函数适用于生成 `_.findIndex` 之类的�
 
 其中 predicate 是回调函数接收 `array[index], index, array` 三个值用于 Boolean 判断，最终结果是返回符合规则的数组中的第一条数据的数组下标。
 
-      _.findLastIndex = createPredicateIndexFinder(-1);
+```js
+    _.findLastIndex = createPredicateIndexFinder(-1);
+```
 
 `_.findLastIndex` 顾名思义就是返回数组中符合规则的最后一条数据的下标，说直白了就是遍历数组的时候从右往左而已。
 
-      _.sortedIndex = function(array, obj, iteratee, context) {
+```js
+    _.sortedIndex = function(array, obj, iteratee, context) {
         iteratee = cb(iteratee, context, 1);
         var value = iteratee(obj);
         var low = 0, high = getLength(array);
         while (low < high) {
-          var mid = Math.floor((low + high) / 2);
-          if (iteratee(array[mid]) < value) low = mid + 1; else high = mid;
+            var mid = Math.floor((low + high) / 2);
+            if (iteratee(array[mid]) < value) low = mid + 1; else high = mid;
         }
         return low;
-      };
+    };
+```
 
 `_.sortedIndex` 官网解释说 `使用二分查找确定value在list中的位置序号，value按此序号插入能保持list原有的排序。`，很绕口，这里我们需要注意的是如果进行 `_.sortedIndex` 查找这个特定的序列号，一定要事先将 array 进行按需排序。
 
-      var createIndexFinder = function(dir, predicateFind, sortedIndex) {
+```js
+    var createIndexFinder = function(dir, predicateFind, sortedIndex) {
         return function(array, item, idx) {
-          var i = 0, length = getLength(array);
-          if (typeof idx == 'number') {
-            if (dir > 0) {
-              i = idx >= 0 ? idx : Math.max(idx + length, i);
-            } else {
-              length = idx >= 0 ? Math.min(idx + 1, length) : idx + length + 1;
+            var i = 0, length = getLength(array);
+            if (typeof idx == 'number') {
+                if (dir > 0) {
+                    i = idx >= 0 ? idx : Math.max(idx + length, i);
+                } else {
+                    length = idx >= 0 ? Math.min(idx + 1, length) : idx + length + 1;
+                }
+            } else if (sortedIndex && idx && length) {
+                idx = sortedIndex(array, item);
+                return array[idx] === item ? idx : -1;
             }
-          } else if (sortedIndex && idx && length) {
-            idx = sortedIndex(array, item);
-            return array[idx] === item ? idx : -1;
-          }
-          if (item !== item) {
-            idx = predicateFind(slice.call(array, i, length), _.isNaN);
-            return idx >= 0 ? idx + i : -1;
-          }
-          for (idx = dir > 0 ? i : length - 1; idx >= 0 && idx < length; idx += dir) {
-            if (array[idx] === item) return idx;
-          }
-          return -1;
+            if (item !== item) {
+                idx = predicateFind(slice.call(array, i, length), _.isNaN);
+                return idx >= 0 ? idx + i : -1;
+            }
+            for (idx = dir > 0 ? i : length - 1; idx >= 0 && idx < length; idx += dir) {
+                if (array[idx] === item) return idx;
+            }
+            return -1;
         };
-      };
+    };
+```
 
 createIndexFinder，看命名就可以知道依旧与数组下标有关。我们可以看到数据处理的一个关键是 idx，它可能是一个数字也可能是一个字符串或者对象。当它是 Number 的时候遵循 idx 是限制查找范围的数组下标规则，如果它是其他的则使用 sortedIndex 函数查找到 idx 的数组下标再岁数组查找范围进行限定。
 
-      _.indexOf = createIndexFinder(1, _.findIndex, _.sortedIndex);
+```js
+    _.indexOf = createIndexFinder(1, _.findIndex, _.sortedIndex);
+```
 
 `_.indexOf` 函数与 `_.findIndex` 区别在于 `_.findIndex` 需要查找的数据可能存在于数组中也可能不存在数组中，而 `_.indexOf` 的 predicateFind 一定是数组中的元素。同时也用 `array, item, idx` 三个参数中的 idx 限定开始查找的范围。
 
-      _.lastIndexOf = createIndexFinder(-1, _.findLastIndex);
+```js
+    _.lastIndexOf = createIndexFinder(-1, _.findLastIndex);
+```
 
 `_.lastIndexOf` 查找数组中的符合结果的最后条数据的数组下标。
 
-      _.range = function(start, stop, step) {
+```js
+    _.range = function(start, stop, step) {
         if (stop == null) {
-          stop = start || 0;
-          start = 0;
+            stop = start || 0;
+            start = 0;
         }
         if (!step) {
-          step = stop < start ? -1 : 1;
+            step = stop < start ? -1 : 1;
         }
         var length = Math.max(Math.ceil((stop - start) / step), 0);
         var range = Array(length);
         for (var idx = 0; idx < length; idx++, start += step) {
-          range[idx] = start;
+            range[idx] = start;
         }
         return range;
-      };
+    };
+```
 
 `_.range` 用于生成一个有序的数组，通过 start 和 stop 限定数组范围，通过 step 限定差值。
 
-      _.chunk = function(array, count) {
+```js
+    _.chunk = function(array, count) {
         if (count == null || count < 1) return [];
         var result = [];
         var i = 0, length = array.length;
         while (i < length) {
-          result.push(slice.call(array, i, i += count));
+            result.push(slice.call(array, i, i += count));
         }
         return result;
-      };
+    };
+```
 
 ` _.chunk`，这个函数目前官网并没有释义，估计作者忘记加进去了吧，我们看到 chunk 很自然的就应该想到 stream 的概念，这里也差不多，只不过拆分的不限定是 Buffer 数组，` _.chunk` 传入两个参数 Array 以及 count，其中 count 用来限定拆分出的每一组的大小，举个栗子：
 
@@ -1031,23 +1176,27 @@ createIndexFinder，看命名就可以知道依旧与数组下标有关。我们
 
 然而但凡对 stream 的概念有所了解都知道这个函数吧，没什么特殊的地方。
 
-      var executeBound = function(sourceFunc, boundFunc, context, callingContext, args) {
+```js
+    var executeBound = function(sourceFunc, boundFunc, context, callingContext, args) {
         if (!(callingContext instanceof boundFunc)) return sourceFunc.apply(context, args);
         var self = baseCreate(sourceFunc.prototype);
         var result = sourceFunc.apply(self, args);
         if (_.isObject(result)) return result;
         return self;
-      };
+    };
+```
 
 executeBound 用来构成 `_.bind` 和 `_.partial` 两个函数，主要针对的是为了将函数调用模式更改为构造器调用和方法调用。
 
-      _.bind = restArgs(function(func, context, args) {
+```js
+    _.bind = restArgs(function(func, context, args) {
         if (!_.isFunction(func)) throw new TypeError('Bind must be called on a function');
         var bound = restArgs(function(callArgs) {
-          return executeBound(func, bound, context, this, args.concat(callArgs));
+            return executeBound(func, bound, context, this, args.concat(callArgs));
         });
         return bound;
-      });
+    });
+```
 
 也许我们可以参考下 [Function.prototype.bind()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)，`_.bind` 函数这个需要仔细讲一下了，先化简：
 
@@ -1169,35 +1318,41 @@ executeBound 用来构成 `_.bind` 和 `_.partial` 两个函数，主要针对�
 
 所以 `_.bind` 一定要遵循正确的用法，不然真的出错了可能调试都不好发现问题，多层回调嵌套的时候一层套一层，很麻烦。
 
-      _.partial = restArgs(function(func, boundArgs) {
+```js
+    _.partial = restArgs(function(func, boundArgs) {
         var placeholder = _.partial.placeholder;
         var bound = function() {
-          var position = 0, length = boundArgs.length;
-          var args = Array(length);
-          for (var i = 0; i < length; i++) {
-            args[i] = boundArgs[i] === placeholder ? arguments[position++] : boundArgs[i];
-          }
-          while (position < arguments.length) args.push(arguments[position++]);
-          return executeBound(func, bound, this, this, args);
+            var position = 0, length = boundArgs.length;
+            var args = Array(length);
+            for (var i = 0; i < length; i++) {
+                args[i] = boundArgs[i] === placeholder ? arguments[position++] : boundArgs[i];
+            }
+            while (position < arguments.length) args.push(arguments[position++]);
+            return executeBound(func, bound, this, this, args);
         };
         return bound;
-      });
+    });
+```
 
 `_.partial` 函数的核心思想与 `_.bind` 相同，都是为了解决 this 指向的问题，区别在于 `_.partial` 不需要对 this 上的值做什么处理。用法上我觉得 `_.partial` 看上去更怪异一些，也许用来做一些特定的计算可能更合适些。
 
-      _.partial.placeholder = _;
+```js
+    _.partial.placeholder = _;
+```
 
 设置 `_.partial.placeholder` 为 `_`。
 
-      _.bindAll = restArgs(function(obj, keys) {
+```js
+    _.bindAll = restArgs(function(obj, keys) {
         keys = flatten(keys, false, false);
         var index = keys.length;
         if (index < 1) throw new Error('bindAll must be passed function names');
         while (index--) {
-          var key = keys[index];
-          obj[key] = _.bind(obj[key], obj);
+            var key = keys[index];
+            obj[key] = _.bind(obj[key], obj);
         }
-      });
+    });
+```
 
 这里我们看到 `_.bindAll` 函数官网的示例就有点糊涂了：
 
@@ -1225,16 +1380,18 @@ executeBound 用来构成 `_.bind` 和 `_.partial` 两个函数，主要针对�
 
 这个`函数调用模式`的示例正好答疑了 this 指向已经被改变的这个问题。
 
-      _.memoize = function(func, hasher) {
+```js
+    _.memoize = function(func, hasher) {
         var memoize = function(key) {
-          var cache = memoize.cache;
-          var address = '' + (hasher ? hasher.apply(this, arguments) : key);
-          if (!_.has(cache, address)) cache[address] = func.apply(this, arguments);
-          return cache[address];
+            var cache = memoize.cache;
+            var address = '' + (hasher ? hasher.apply(this, arguments) : key);
+            if (!_.has(cache, address)) cache[address] = func.apply(this, arguments);
+            return cache[address];
         };
         memoize.cache = {};
         return memoize;
-      };
+    };
+```
 
 `_.memoize` 函数更像是一个可以缓存第一次执行结果的递归函数，我们从源码中可以看到 `memoize.cache = {};` 就是用来存储计算结果的容器，这里面比较有意思的是 hasher 这个参数，官网释义： `hashFunction`，实际上就是通过 hashFunction 对传入的 key 值进行处理然后放到 `memoize.cache = {};` 中，至于怎么处理 hash 也好、md5 也好、或者什么其他的计算加密真值判断增加对象等等都可以通过 hasher 这个传入的回调进行扩展。
 
@@ -1242,54 +1399,60 @@ executeBound 用来构成 `_.bind` 和 `_.partial` 两个函数，主要针对�
 这几天北京总在下雨，身体特别的疲惫，状态也不怎么好，所以今天才开始继续更新。
 ————————— END ———————————
 
-      _.delay = restArgs(function(func, wait, args) {
+```js
+    _.delay = restArgs(function(func, wait, args) {
         return setTimeout(function() {
-          return func.apply(null, args);
+            return func.apply(null, args);
         }, wait);
-      });
+    });
+```
 
 `_.delay` 函数用于处理定时器相关函数，原理是通过 setTimeout 进行二次封装，比较关键的就是 args 参数通过 restArgs 函数处理为一个数组，方便了下一步的 `func.apply(null, args);` 传值。
 
+```js
       _.defer = _.partial(_.delay, _, 1);
+```
 
 `_.defer` 这个函数我们首先可以看到内部应用了 `_.partial` 并且中间传入参数 `_`，这意味着当 `_.defer` 执行的时候传入的参数会被补全到 `_.partial` 内部 bound 中的 `args[0]` 位置，而此时 `args` 的值为 `[func, 1]`并将它传给 `_.delay` 函数，即 `_.delay.apply(null, args);`，用着这种方式曲线的设置 setTimeout 函数的 `wait = 1`，目的就是处理代码复用问题，不然的话完全可以改装一下 `_.delay` 函数可以更简单的实现这一功能。
 
-      _.throttle = function(func, wait, options) {
+```js
+    _.throttle = function(func, wait, options) {
         var timeout, context, args, result;
         var previous = 0;
         if (!options) options = {};
         var later = function() {
-          previous = options.leading === false ? 0 : _.now();
-          timeout = null;
-          result = func.apply(context, args);
-          if (!timeout) context = args = null;
-        };
-        var throttled = function() {
-          var now = _.now();
-          if (!previous && options.leading === false) previous = now;
-          var remaining = wait - (now - previous);
-          context = this;
-          args = arguments;
-          if (remaining <= 0 || remaining > wait) {
-            if (timeout) {
-              clearTimeout(timeout);
-              timeout = null;
-            }
-            previous = now;
+            previous = options.leading === false ? 0 : _.now();
+            timeout = null;
             result = func.apply(context, args);
             if (!timeout) context = args = null;
-          } else if (!timeout && options.trailing !== false) {
-            timeout = setTimeout(later, remaining);
-          }
-          return result;
+        };
+        var throttled = function() {
+            var now = _.now();
+            if (!previous && options.leading === false) previous = now;
+            var remaining = wait - (now - previous);
+            context = this;
+            args = arguments;
+            if (remaining <= 0 || remaining > wait) {
+                if (timeout) {
+                    clearTimeout(timeout);
+                    timeout = null;
+                }
+                previous = now;
+                result = func.apply(context, args);
+                if (!timeout) context = args = null;
+            } else if (!timeout && options.trailing !== false) {
+                timeout = setTimeout(later, remaining);
+            }
+            return result;
         };
         throttled.cancel = function() {
-          clearTimeout(timeout);
-          previous = 0;
-          timeout = context = args = null;
+            clearTimeout(timeout);
+            previous = 0;
+            timeout = context = args = null;
         };
-        return throttled;
-      };
+            return throttled;
+    };
+```
 
 `_.throttle` 函数可以限制和控制其参数 func 的执行次数和执行时间，思想就是通过 wait、now、previous 和 remaining 进行判断然后分别执行相应的策略。
 
@@ -1311,118 +1474,131 @@ executeBound 用来构成 `_.bind` 和 `_.partial` 两个函数，主要针对�
 - `0 < remaining <= wait`：通过 setTimeout 函数设定时间为 remaining 毫秒后执行 `_.throttle` 函数的回调函数 func，用以达到在规定时间 wait 毫秒时执行函数的目的，并且规定 wait 时间内只执行一次函数。
 
 
-      _.debounce = function(func, wait, immediate) {
+```js
+    _.debounce = function(func, wait, immediate) {
         var timeout, result;
         var later = function(context, args) {
-          timeout = null;
-          if (args) result = func.apply(context, args);
+            timeout = null;
+            if (args) result = func.apply(context, args);
         };
         var debounced = restArgs(function(args) {
-          if (timeout) clearTimeout(timeout);
-          if (immediate) {
-            var callNow = !timeout;
-            timeout = setTimeout(later, wait);
-            if (callNow) result = func.apply(this, args);
-          } else {
-            timeout = _.delay(later, wait, this, args);
-          }
-          return result;
+            if (timeout) clearTimeout(timeout);
+            if (immediate) {
+                var callNow = !timeout;
+                timeout = setTimeout(later, wait);
+                if (callNow) result = func.apply(this, args);
+            } else {
+                timeout = _.delay(later, wait, this, args);
+            }
+            return result;
         });
         debounced.cancel = function() {
-          clearTimeout(timeout);
-          timeout = null;
+            clearTimeout(timeout);
+            timeout = null;
         };
         return debounced;
-      };
+    };
+```
 
 `_.debounce` 更像是 `_.delay` 的方言版，当 `immediate = true` 的时候通过 `var callNow = !timeout = false` 达到立即执行回调函数 func 的目的，并用 later 函数限制 规定 wait 时间内不允许在调用函数（later 函数内部 context = args = underfind，其实我们知道 `var later = function(context, args)` 这个条件是为 `_.delay(later, wait, this, args)` 准备的）。
 
-      _.wrap = function(func, wrapper) {
+```js
+    _.wrap = function(func, wrapper) {
         return _.partial(wrapper, func);
-      };
+    };
+```
 
 `_.wrap` 的两个参数理论上都要求是 Function，我们已经知道 `_.partial` 是用来在 this 上下功夫的，虽然这里和 this 也没什么太大关系，之所以这里应用了 `_.partial` 是为了让 func 作为 wrapper 的第一个参数执行，并且通过 executeBound 函数对`函数调用模式`和`方法调用模式`做处理。
 
-      _.negate = function(predicate) {
+```js
+    _.negate = function(predicate) {
         return function() {
-          return !predicate.apply(this, arguments);
+            return !predicate.apply(this, arguments);
         };
-      };
+    };
+```
 
 `_.negate` 用来做真值判断。
 
-      _.compose = function() {
+```js
+	_.compose = function() {
         var args = arguments;
         var start = args.length - 1;
         return function() {
-          var i = start;
-          var result = args[start].apply(this, arguments);
-          while (i--) result = args[i].call(this, result);
-          return result;
+            var i = start;
+            var result = args[start].apply(this, arguments);
+            while (i--) result = args[i].call(this, result);
+            return result;
         };
       };
+```
 
 `_.compose` 用于将函数执行结果进行传递，需要注意的是 `var args = arguments;` 中的 arguments 和 `args[start].apply(this, arguments);` 中的 arguments 并不相同就可以了。这个涉及到函数的执行，当每一个函数执行的时候都会形成一个内部的上下文执行环境（传说叫 `ExecutionContext`，这个我还没有考证过），在构建环境的同时生成 arguments 变量和作用域链表等等，这里不像叙述了。
 
-      _.after = function(times, func) {
+```js
+	_.after = function(times, func) {
         return function() {
-          if (--times < 1) {
-            return func.apply(this, arguments);
-          }
+            if (--times < 1) {
+                return func.apply(this, arguments);
+            }
         };
       };
+```
 
 `_.after` 接受两个参数，Number 参数用来限定 `_.after` 实例化函数的执行次数，说白了就是只有当第 Number 次执行实例化函数的时候才会继续执行 func 回调，这个用来处理遍历 `_.each` 时某些情况很有用。
 
-      _.before = function(times, func) {
+```js
+	_.before = function(times, func) {
         var memo;
         return function() {
-          if (--times > 0) {
-            memo = func.apply(this, arguments);
-          }
-          if (times <= 1) func = null;
-          return memo;
+            if (--times > 0) {
+                memo = func.apply(this, arguments);
+            }
+            if (times <= 1) func = null;
+            return memo;
         };
       };
+```
 
 `_.before`，与 `_.after` 相反，只在规定 Number 参数的次数内以此执行 `_.before`，超过之后结束。
 
-      _.once = _.partial(_.before, 2);
+```js
+    _.once = _.partial(_.before, 2);
+```
 
 `_.once` 创建一个只能调用一次的函数。到这里关于函数相关的源码就结束了，说心里话很多地方看得懂不一定说的懂，说的懂也不一定用的懂，就拿这个 `_.once` 来讲，它只用了 `_.partial` 和 `_.before` 来做文章，用 `_.before` 限定只能执行一次还好理解，那么为什么一定要用 `_.partial` 坐下处理呢，其目的真的只是为了让 `2` 作为 `_.before` 的第一个参数进行传递过去并将 `_.once` 的传参作为 `arguments[1+]` 传入么，更深一层考虑，`_.partial` 函数是不是有处理过 `_.once` 传递过来的函数的作用域链和 this 相关的情况呢。
 
-      _.restArgs = restArgs;
+```js
+    _.restArgs = restArgs;
+```
 
 `_.restArgs` 将 restArgs 函数绑定到 `_` 对象上。
 
-      var hasEnumBug = !{toString: null}.propertyIsEnumerable('toString');
-
-
-
-      var nonEnumerableProps = ['valueOf', 'isPrototypeOf', 'toString',
-                          'propertyIsEnumerable', 'hasOwnProperty', 'toLocaleString'];
-      var collectNonEnumProps = function(obj, keys) {
+```js
+	var hasEnumBug = !{toString: null}.propertyIsEnumerable('toString');
+    var nonEnumerableProps = ['valueOf', 'isPrototypeOf', 'toString', 'propertyIsEnumerable', 'hasOwnProperty', 'toLocaleString'];
+    var collectNonEnumProps = function(obj, keys) {
         var nonEnumIdx = nonEnumerableProps.length;
         var constructor = obj.constructor;
         var proto = _.isFunction(constructor) && constructor.prototype || ObjProto;
         var prop = 'constructor';
         if (_.has(obj, prop) && !_.contains(keys, prop)) keys.push(prop);
         while (nonEnumIdx--) {
-          prop = nonEnumerableProps[nonEnumIdx];
-          if (prop in obj && obj[prop] !== proto[prop] && !_.contains(keys, prop)) {
-            keys.push(prop);
-          }
+            prop = nonEnumerableProps[nonEnumIdx];
+            if (prop in obj && obj[prop] !== proto[prop] && !_.contains(keys, prop)) {
+                keys.push(prop);
+            }
         }
-      };
+    };
 
-      _.keys = function(obj) {
+    _.keys = function(obj) {
         if (!_.isObject(obj)) return [];
         if (nativeKeys) return nativeKeys(obj);
         var keys = [];
         for (var key in obj) if (_.has(obj, key)) keys.push(key);
         if (hasEnumBug) collectNonEnumProps(obj, keys);
         return keys;
-      };
+    };
 
       _.allKeys = function(obj) {
         if (!_.isObject(obj)) return [];
@@ -1671,7 +1847,8 @@ executeBound 用来构成 `_.bind` 和 `_.partial` 两个函数，主要针对�
         return type === 'function' || type === 'object' && !!obj;
       };
 
-      _.each(['Arguments', 'Function', 'String', 'Number', 'Date', 'RegExp', 'Error', 'Symbol', 'Map', 'WeakMap', 'Set', 'WeakSet'], function(name) {
+      _.each(['Arguments', 'Function', 'String', 'Number', 'Date', 'RegExp', 'Error', 'Symbol',
+        'Map', 'WeakMap', 'Set', 'WeakSet'], function(name) {
         _['is' + name] = function(obj) {
           return toString.call(obj) === '[object ' + name + ']';
         };
@@ -1919,13 +2096,16 @@ executeBound 用来构成 `_.bind` 和 `_.partial` 两个函数，主要针对�
       _.prototype.toString = function() {
         return '' + this._wrapped;
       };
+```
+
 
 将自己注册为AMD（Require.js），Bower和Component， 以及作为一个CommonJS的模块
 
-      if (typeof define == 'function' && define.amd) {
-        define('underscore', [], function() {
-          return _;
-        });
-      }
-    }());
-
+```js
+	if (typeof define == 'function' && define.amd) {
+		define('underscore', [], function() {
+			return _;
+		});
+	}
+}());
+```

@@ -19,7 +19,7 @@ youdao.set({
     key: '938031020',
 });
 
-var folderMenu = ['note', 'mood'];
+var folderMenu = ['note', 'mood','source'];
 
 var mdToHtmlOutPath = path.join(__dirname, 'cn');
 

@@ -15,7 +15,7 @@
     <![endif]-->
     <style type="text/css">
         .div-content {
-            background: url(../static/bgimg/bg-<%= folder %>.jpg);
+            background: url(../static/bgimg/bg-source.jpg);
             background-color: rgba(0, 204, 204, .5);
             background-size: 100%;
             background-repeat: no-repeat;
@@ -36,7 +36,7 @@
 
 <body class="div-content">
   <script>
-		(new Image()).src = "../static/bgimg/bg-<%= folder %>.jpg";
+		(new Image()).src = "../static/bgimg/bg-source.jpg";
 	</script>
     <div class="w-900">
         <h1><a class="thistitle" href="https://github.com/kangcafe" target="_blank">kang`s cafe<span
@@ -45,13 +45,13 @@
     </h1>
 
         <ul>
-            <% content.linkList.forEach(function(item){ %>
+            
                 <li>
-                    <a href="./<%= item.path %>" class="col-xs-12 link -download">
-                        <%= item.fileName %>
+                    <a href="./d1a6dbbf-cda8-4c4e-8fff-5d6ab148b40e.html" class="col-xs-12 link -download">
+                        Underscore源码解析
                     </a>
                 </li>
-                <% }) %>
+                
         </ul>
     </div>
     <footer>
