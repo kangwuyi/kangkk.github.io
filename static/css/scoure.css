@@ -13,7 +13,18 @@
   .header .content__btn {
     font-size: 90%; }
 
+@media print, screen and (max-width: 720px) {
+  pre {
+    max-width: 370px; } }
+@media print, screen and (max-width: 800px) {
+  pre {
+    max-width: 370px; } }
 /* folder header style end */
+@media print, screen and (max-width: 480px) {
+  .header .content__title {
+    font-size: 2em; }
+  .header .content__btn .content__btn-a {
+    font-size: 1em; } }
 /* folder footer style start */
 .footer {
   padding: 0; }
@@ -239,7 +250,7 @@ blockquote > pre {
   margin: 0 !important; }
 
 .w-900 {
-  width: 900px; }
+  max-width: 900px; }
 
 .header {
   padding: 10px;
@@ -707,5 +718,16 @@ pre .hljs-chunk {
 
 pre .hljs-tex .hljs-formula {
   opacity: 0.5; }
+
+@media print, screen and (max-width: 720px) {
+  pre {
+    max-width: 370px; } }
+@media print, screen and (max-width: 800px) {
+  pre {
+    max-width: 370px; } }
+/* folder header style end */
+@media print, screen and (max-width: 480px) {
+  code {
+    word-wrap: break-word; } }
 
 /*# sourceMappingURL=scoure.css.map */

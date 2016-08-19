@@ -54,7 +54,7 @@ blockquote > pre {
     margin: 0 !important;
 }
 .w-900 {
-    width: 900px;
+    max-width: 900px;
 }
 .header {
     padding: 10px;
@@ -532,4 +532,22 @@ pre .hljs-chunk {
 }
 pre .hljs-tex .hljs-formula {
     opacity: 0.5;
+}
+@media print, screen and (max-width: 720px) {
+  pre{
+        max-width: 370px;
+  }
+}
+@media print, screen and (max-width: 800px) {
+  pre{
+        max-width: 370px;
+  }
+}
+@media print, screen and (max-width: 960px) {
+}
+/* folder header style end */
+@media print, screen and (max-width: 480px) {
+  code{
+    word-wrap:break-word;
+  }
 }

@@ -9,7 +9,7 @@
                         margin: 15px 0 20px 50px;
                         display: table;
                         zoom: 1;
-                        padding: 7px 30px;
+                        padding: 7px 10px;
                         border: 1px solid #aaa;
                         background-color: #f9f9f9;
                         font-size: 95%;
@@ -18,87 +18,27 @@
                         font-family: sans-serif;
                         box-sizing: border-box;
                         overflow: hidden;
-                        & > ul {
-                            list-style-type: decimal;
-                            list-style-image: none;
+                        & > ol {
+                            margin: 0.3em 0 !important;
+                        }
+                        ol {
+                            margin: 0 0 0 1em;
                             padding: 0;
-                            margin: 0.3em 0;
+                            counter-reset: out;
+                            list-style: none;
                             text-align: left;
-                            color: #ba832c;
-                            counter-reset: xxx 0;
+                            margin-bottom: 0;
                             li {
-                                margin: 0 0 0.1em;
-                                position: relative;
                                 color: #ba832c;
-                                padding: 0;
-                                list-style: none;
-                                transition: none;
-                                &::before {
-                                    content: none;
-                                    transition: none;
-                                }
-                                &:hover::before {
-                                    color: #ba832c;
-                                    opacity: 1;
-                                    text-shadow: none;
-                                    -webkit-transition: none;
-                                    transition: none;
-                                    -webkit-transform: none;
-                                    -ms-transform: none;
-                                    transform: none;
-                                    border-radius: 0;
-                                    width: 0;
-                                    left: 0;
-                                    background: transparent;
-                                }
-                            }
-                            & > li {
-                                counter-increment: section;
-                                counter-reset: subsection;
-                                &::before {
-                                    content: counter(section) ". ";
-                                    position: absolute;
-                                    left: -15px;
-                                    top: 11px;
-                                    background: transparent;
-                                    font-size: 1em;
-                                }
-                                &:hover::before {
-                                    left: -15px;
-                                    top: 11px;
+                                &:before {
+                                    margin-right: 5px;
+                                    counter-increment: out;
+                                    content: counters(out, ".") " ";
                                 }
                                 a {
                                     text-decoration: none;
                                     background: none;
                                     font-weight: 100;
-                                }
-                                & > ul {
-                                    margin-left: 30px;
-                                    margin-bottom: 0;
-                                    & > li {
-                                        counter-increment: subsection;
-                                        &::before {
-                                            content: counter(section) "." counter(subsection) " ";
-                                            position: absolute;
-                                            left: -30px;
-                                            top: 11px;
-                                            background: transparent;
-                                            font-size: 1em;
-                                        }
-                                        &:hover::before {
-                                            left: -30px;
-                                            top: 11px;
-                                        }
-                                        & > ul {
-                                            margin-left: 40px;
-                                            margin-bottom: 0;
-                                            & > li {
-                                                a {
-                                                    font-size: 12px;
-                                                }
-                                            }
-                                        }
-                                    }
                                 }
                             }
                         }

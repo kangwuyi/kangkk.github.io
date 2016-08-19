@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>KC.</title>
+    <link href="../../../favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" href="../../css/mark.css" media="screen" title="no title" charset="utf-8">
+    <style>
+    div.container table table {
+      border-left: 1px solid #627680;
+      border-top: 1px solid #627680;
+    }
+    div.container table table thead,div.container table table tbody{
+          border: 1px solid #627680;
+    }
+    div.container table table td, div.container table table th {
+    border-left: 1px solid #627680;
+    border-right: 1px solid #627680;
+    border-bottom: 1px solid #627680;
+    border-top: 1px solid #627680;
+}
+    div.container table table thead th{
+      background: #fff;
+          color: #363644;
+    }
+    td ul{
+      margin:0;
+      padding: 0 10px 0 30px;
+    }
+    div.container pre {
+      background: #f5f5f5;
+      font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+      font-size: 12px;
+      color: #333;
+      word-wrap: normal;
+      white-space: pre;
+      overflow-x: auto;
+      /*-moz-box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+      -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.1);*/ }
+    div.container dl,
+    div.container ol,
+    div.container p,
+    div.container pre,
+    div.container table,
+    div.container ul {
+      margin-bottom: 1em; }
+    div.container table {
+      color: #f6e6cc; }
+    div.container table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      border-left: 1px solid #3B5F9B;
+      border-top: 1px solid #3B5F9B; }
+    div.container td,
+    div.container th {
+      max-width: 700px;
+      border-left: 1px dotted #ccc;
+      border-right: 1px dotted #ccc;
+      border-bottom: 1px dotted #ccc;
+      border-top: 1px dotted #ccc;
+      padding: 3px 5px; }
+    div.container th {
+      background: #3B5F9B;
+      color: #fff; }
+    div.container tbody,
+    div.container thead {
+      border: 3px solid #3B5F9B; }
+    div.container td {
+      background: #fff;
+      color: #777; }
+        table td,
+        table th {
+            overflow-x: auto !important;
+            min-width: 100px;
+        }
+        div.container {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        pre,
+        blockquote {
+            margin: 10px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>markdown代码</th>
+                    <th>效果</th>
+                    <th>markdown代码</th>
+                    <th>效果</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+<pre><code class="lang-markdown">|<span class="hljs-string"> 缺省对齐表头1 </span>|<span class="hljs-string"> 缺省对齐表头2 </span>|
+|<span class="hljs-string"> ------------- </span>|<span class="hljs-string"> ------------- </span>|
+|<span class="hljs-string"> col 3 is      </span>|<span class="hljs-string"> some wordy text </span>|
+|<span class="hljs-string"> col 2 is      </span>|<span class="hljs-string"> centered        </span>|
+|<span class="hljs-string"> zebra stripes </span>|<span class="hljs-string"> are neat        </span>|
+</code></pre>
+                    </td>
+                    <td>
+                      <table>
+                      <thead>
+                      <tr>
+                      <th>缺省对齐表头1</th>
+                      <th>缺省对齐表头2</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                      <td>col 3 is</td>
+                      <td>some wordy text</td>
+                      </tr>
+                      <tr>
+                      <td>col 2 is</td>
+                      <td>centered</td>
+                      </tr>
+                      <tr>
+                      <td>zebra stripes</td>
+                      <td>are neat</td>
+                      </tr>
+                      </tbody>
+                      </table>
+                    </td>
+                    <td>
+<pre><code class="lang-markdown">| 左对齐 | 居中  | 右对齐 |
+| <span class="hljs-symbol">:------------</span> |<span class="hljs-symbol">:---------------</span><span class="hljs-symbol">:|</span> -----<span class="hljs-symbol">:|</span>
+| col <span class="hljs-number">3</span> is      | some wordy text | <span class="hljs-variable">$1600</span> |
+| col <span class="hljs-number">2</span> is      | centered        |   <span class="hljs-variable">$12</span> |
+| zebra stripes | are neat        |    <span class="hljs-variable">$1</span> |
+</code></pre>
+                    </td>
+                    <td>
+                      <table>
+                      <thead>
+                      <tr>
+                      <th>缺省表头1</th>
+                      <th>缺省表头2</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                      <td>col 3 is</td>
+                      <td>some wordy text</td>
+                      </tr>
+                      <tr>
+                      <td>col 2 is</td>
+                      <td>centered</td>
+                      </tr>
+                      <tr>
+                      <td>zebra stripes</td>
+                      <td>are neat</td>
+                      </tr>
+                      </tbody>
+                      </table>
+                    </td>
+                </tr>
+                <tr>
+                  <td>
+<pre><code class="lang-markdown">缺省表头<span class="hljs-number">1</span>  <span class="hljs-string">| 缺省表头2</span>
+------------- <span class="hljs-string">| -------------</span>
+col <span class="hljs-number">3</span> is      <span class="hljs-string">| some wordy text</span>
+col <span class="hljs-number">2</span> is      <span class="hljs-string">| centered</span>
+zebra stripes <span class="hljs-string">| are neat</span>
+</code></pre>
+                  </td>
+                  <td>
+                    <table>
+<thead>
+<tr>
+<th>缺省表头1</th>
+<th>缺省表头2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>col 3 is</td>
+<td>some wordy text</td>
+</tr>
+<tr>
+<td>col 2 is</td>
+<td>centered</td>
+</tr>
+<tr>
+<td>zebra stripes</td>
+<td>are neat</td>
+</tr>
+</tbody>
+</table>
+                  </td>
+                  <td>
+<pre><code>|<span class="hljs-string"> 描述 </span>|<span class="hljs-string"> 使用删除线等符号 </span>|
+|<span class="hljs-string"> ------------- </span>|<span class="hljs-string"> ----------- </span>|
+|<span class="hljs-string"> 使用`~~`      </span>|<span class="hljs-string"> ~~some~~ wordy text </span>|
+|<span class="hljs-string"> 使用`__`      </span>|<span class="hljs-string"> _centered_          </span>|
+|<span class="hljs-string"> 使用`**`      </span>|<span class="hljs-string"> **are** neat        </span>|
+</code></pre>
+                  </td>
+                  <td>
+                    <table>
+<thead>
+<tr>
+<th>描述</th>
+<th>使用删除线等符号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>使用<code>~~</code></td>
+<td><del>some</del> wordy text</td>
+</tr>
+<tr>
+<td>使用<code>__</code></td>
+<td><em>centered</em></td>
+</tr>
+<tr>
+<td>使用<code>**</code></td>
+<td><strong>are</strong> neat</td>
+</tr>
+</tbody>
+</table>
+                  </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

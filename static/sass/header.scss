@@ -26,4 +26,26 @@
         }
     }
 }
+@media print, screen and (max-width: 720px) {
+  pre{
+        max-width: 370px;
+  }
+}
+@media print, screen and (max-width: 800px) {
+  pre{
+        max-width: 370px;
+  }
+}
+@media print, screen and (max-width: 960px) {
+}
 /* folder header style end */
+@media print, screen and (max-width: 480px) {
+  .header{
+    .content__title{
+      font-size: 2em;
+    }
+    .content__btn .content__btn-a{
+        font-size: 1em;
+    }
+  }
+}

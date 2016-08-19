@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>KC.</title>
+    <link href="../../../favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" href="../../css/base.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="../../css/mark.css" media="screen" title="no title" charset="utf-8">
+    <style>
+    body{
+      height: 240px;
+    }
+    td ul{
+      margin:0;
+      padding: 0 10px 0 30px;
+    }
+    blockquote blockquote{
+    max-width: 200px;
+    }
+    div.container pre {
+      background: #f5f5f5;
+      font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+      font-size: 12px;
+      color: #333;
+      word-wrap: normal;
+      white-space: pre;
+      overflow-x: auto;
+      max-width: 200px;
+      /*-moz-box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+      -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.1);*/ }
+    div.container dl,
+    div.container ol,
+    div.container p,
+    div.container pre,
+    div.container table,
+    div.container ul {
+      margin-bottom: 1em; }
+    div.container table {
+      color: #f6e6cc; }
+    div.container table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      border-left: 1px solid #3B5F9B;
+      border-top: 1px solid #3B5F9B; }
+    div.container td,
+    div.container th {
+      max-width: 700px;
+      border-left: 1px dotted #ccc;
+      border-right: 1px dotted #ccc;
+      border-bottom: 1px dotted #ccc;
+      border-top: 1px dotted #ccc;
+      padding: 3px 5px; }
+    div.container th {
+      background: #3B5F9B;
+      color: #fff; }
+    div.container tbody,
+    div.container thead {
+      border: 3px solid #3B5F9B; }
+    div.container td {
+      background: #fff;
+      color: #777; }
+        table td,
+        table th {
+            overflow-x: auto !important;
+            min-width: 100px;
+        }
+        div.container {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        pre,
+        blockquote {
+            margin: 10px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>markdown代码</th>
+                    <th>html代码</th>
+                    <th>效果</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <pre><code class="lang-markdown"><span class="hljs-built_in">&gt; </span>这是一个区块引用。
+与上面文本属于一个段落，因此这一行前面可以不加`&gt;`标记。
+
+<span class="hljs-built_in">&gt; </span>由于上面空了一行，因此这是另一个不同的段落，前面的 `<span class="hljs-built_in">&gt;</span>`必须添加。
+<span class="hljs-built_in">&gt; </span>虽然这也是另一个不同的段落，但上面空行加了 `<span class="hljs-built_in">&gt;</span>`，因此这里段落之前的 `<span class="hljs-built_in">&gt;</span>`也可以省略，相当于上面空行的 `<span class="hljs-built_in">&gt;</span>`属于这个段落。
+对应的HTML语法：
+</code></pre>
+                    </td>
+                    <td>
+                        <pre><code class="lang-html"><span class="hljs-string">&lt;blockquote&gt;</span>
+<span class="hljs-string">&lt;p&gt;</span>这是一个区块引用。
+与上面文本属于一个段落，因此这一行前面可以不加`<span class="hljs-built_in">&gt; </span>`标记。<span class="hljs-string">&lt;/p&gt;</span>
+<span class="hljs-string">&lt;p&gt;</span>由于上面空了一行，因此这是另一个不同的段落，前面的 `<span class="hljs-built_in">&gt; </span>`必须   添加。<span class="hljs-string">&lt;/p&gt;</span>
+<span class="hljs-string">&lt;p&gt;</span>虽然这也是另一个不同的段落，但上面空行加了 `<span class="hljs-built_in">&gt; </span>`，因此这里段落之前的 `<span class="hljs-built_in">&gt; </span>`也可以省略，相当于上面空行的 `&gt;`属于这个段落。<span class="hljs-string">&lt;/p&gt;</span>
+<span class="hljs-string">&lt;/blockquote&gt;</span>
+</code></pre>
+                    </td>
+                    <td>
+                        <blockquote>
+                            <p>这是一个区块引用。 与上面文本属于一个段落，因此这一行前面可以不加
+                                <code>&gt;</code>标记。</p>
+                            <p>由于上面空了一行，因此这是另一个不同的段落，前面的 <code>&gt;</code>必须添加。 虽然这也是另一个不同的段落，但上面空行加了 <code>&gt;</code>，因此这里段落之前的 <code>&gt;</code>也可以省略，相当于上面空行的 <code>&gt;</code>属于这个段落。 对应的HTML语法：
+                            </p>
+                        </blockquote>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

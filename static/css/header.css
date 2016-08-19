@@ -1,0 +1,29 @@
+/* folder header style start */
+.header {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 1px 5px; }
+  .header__content {
+    text-align: center;
+    border-right: 1px solid #f3f3f3;
+    border-left: 1px solid #f3f3f3; }
+  .header .content__title {
+    display: inline; }
+  .header .content__btn {
+    font-size: 90%; }
+
+@media print, screen and (max-width: 720px) {
+  pre {
+    max-width: 370px; } }
+@media print, screen and (max-width: 800px) {
+  pre {
+    max-width: 370px; } }
+/* folder header style end */
+@media print, screen and (max-width: 480px) {
+  .header .content__title {
+    font-size: 2em; }
+  .header .content__btn .content__btn-a {
+    font-size: 1em; } }
+
+/*# sourceMappingURL=header.css.map */

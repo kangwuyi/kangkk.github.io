@@ -27,7 +27,6 @@ div.container {
         margin-bottom: 0.25em;
         padding: 0;
         direction: ltr;
-        border-bottom: 1px solid #aaa;
     }
     & > p > strong > em {
         font-size: 14px;
@@ -46,43 +45,8 @@ div.container {
     ul {
         padding: 0;
         & > li {
-            list-style: none;
-            position: relative;
-            padding: 0 0 0 2em;
             margin: 0 0 0.5em 10px;
-            -webkit-transition: 0.12s;
-            transition: 0.12s;
             color: #333;
-            &::before {
-                position: absolute;
-                display: inline-block;
-                background: #009688;
-                text-align: center;
-                font-size: 2em;
-                opacity: 0.8;
-                -webkit-transition: 0.5s;
-                transition: 0.5s;
-                content: '';
-                width: 10px;
-                height: 10px;
-                border-radius: 3px;
-                line-height: 0;
-                top: 6px;
-                left: 5px;
-            }
-            &:hover::before {
-                opacity: 1;
-                text-shadow: 0 0 4px;
-                -webkit-transition: 0.1s;
-                transition: 0.1s;
-                -webkit-transform: none;
-                -ms-transform: none;
-                transform: none;
-                border-radius: 5px;
-                width: 25px;
-                left: -10px;
-                background: #558abb;
-            }
         }
     }
     ol {
@@ -153,7 +117,7 @@ div.container {
     iframe {
         width: 100%;
         min-height: 150px;
-        max-height: 400px;
+        max-height: 600px;
         /*border: 3px dotted #627680;*/
         overflow: hidden;
     }
@@ -181,5 +145,41 @@ div.container {
             }
         }
     }
+}
+@media print, screen and (max-width: 720px) {
+    pre {
+        max-width: 370px;
+    }
+}
+@media print, screen and (max-width: 800px) {
+    pre {
+        max-width: 370px;
+    }
+}
+@media print, screen and (max-width: 960px) {}
+/* folder header style end */
+@media print, screen and (max-width: 480px) {
+     table {
+        overflow-x: overlay;
+        max-width: 340px;
+        display: inline-block;
+        td,
+        th {
+            min-width: 100px;
+        }
+    }
+    .content-box__markdown--toc{
+      margin: 15px 0 20px 10px !important;
+    }
+    p{
+      a{
+        text-wrap:normal;
+        word-wrap:break-word;
+      }
+      code{
+        word-wrap:break-word;
+      }
+    }
+
 }
 /* folder container style end */

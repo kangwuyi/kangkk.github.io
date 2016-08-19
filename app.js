@@ -19,7 +19,7 @@ youdao.set({
     key: '938031020',
 });
 
-var folderMenu = ['note', 'mood','source'];
+var folderMenu = ['note', 'mood', 'source'];
 
 var mdToHtmlOutPath = path.join(__dirname, 'cn');
 
@@ -77,7 +77,7 @@ function creatMdToHtml(op, folder) {
         fileFs = fs.readFileSync(sourcePath, 'utf8'),
         fileFsTimeObject = fs.statSync(sourcePath),
         birthtime = moment(fileFsTimeObject.birthtime).format("YYYY-MM-DD"),
-        mtime = moment(fileFsTimeObject.mtime).format("YYYY-MM-DD"),
+        mtime = moment(fileFsTimeObject.mtime).format("MM-DD"),
         mtimeGetTime = moment(fileFsTimeObject.mtime).unix(),
         fileNameContent = path.basename(sourcePath, path.extname(sourcePath)),
         fileNameArray = fileNameContent.split(/\./g),
@@ -89,7 +89,9 @@ function creatMdToHtml(op, folder) {
         relativePath = path.relative(outPath, __dirname),
         template = '<%= depth %><%= bullet %>[<%= heading %>](#<%= url %>)\n',
         tocMd = toc(fileFs, {
-            template: template
+            template: template,
+            bullet: "1. ",
+            maxDepth: 5
         }),
         mdToHtml = markdown(tocReplace(fileFs, tocMd)),
         fileNameUuid = '';
