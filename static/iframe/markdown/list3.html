@@ -70,6 +70,17 @@
         blockquote {
             margin: 10px !important;
         }
+        @media print, screen and (max-width: 480px) {
+            table{
+              display: block;
+              float: left;
+              padding:0;
+              margin:0;
+            }
+            thead{
+              display: none;
+            }
+        }
     </style>
 </head>
 

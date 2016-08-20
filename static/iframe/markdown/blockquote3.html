@@ -73,6 +73,34 @@
         blockquote {
             margin: 10px !important;
         }
+        @media print, screen and (max-width: 480px) {
+            table,tbody{
+              display: block !important;
+              float: left !important;
+              padding:0 !important;
+              margin:0 !important;
+            }
+            thead{
+              display: none !important;
+            }
+            tr{
+              display: inline-block;
+              float: left;
+            }
+            td{
+              display: block;
+              float: left;
+              padding:5px 0 !important;
+              width: 100%;
+            }
+            td>pre{
+              padding:0 auto;
+              width: 100%;
+            }
+            blockquote,pre{
+              max-width: 280px;
+            }
+        }
     </style>
 </head>
 
