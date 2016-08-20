@@ -22,8 +22,8 @@
 /* folder header style end */
 @media print, screen and (max-width: 480px) {
   .header .content__title {
-    font-size: 2em; }
+    font-size: 2em !important; }
   .header .content__btn .content__btn-a {
-    font-size: 1em; } }
+    font-size: 1em !important; } }
 
 /*# sourceMappingURL=header.css.map */

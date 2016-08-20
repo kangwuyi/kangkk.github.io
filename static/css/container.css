@@ -131,7 +131,8 @@ div.container {
     line-height: 1.3;
     margin-bottom: 0.25em;
     padding: 0;
-    direction: ltr; }
+    direction: ltr;
+    word-wrap: break-word; }
   div.container > p > strong > em {
     font-size: 14px;
     font-weight: 100;
@@ -249,9 +250,18 @@ div.container {
 
   p a {
     text-wrap: normal;
-    word-wrap: break-word; }
+    word-wrap: break-word;
+    word-break: break-all; }
   p code {
-    word-wrap: break-word; } }
+    word-wrap: break-word;
+    word-break: break-all; }
+
+  pre {
+    max-width: 100% !important;
+    padding: 10px 0 !important; }
+
+  .container {
+    margin: 0 !important; } }
 /* folder container style end */
 
 /*# sourceMappingURL=container.css.map */

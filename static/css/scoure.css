@@ -22,9 +22,9 @@
 /* folder header style end */
 @media print, screen and (max-width: 480px) {
   .header .content__title {
-    font-size: 2em; }
+    font-size: 2em !important; }
   .header .content__btn .content__btn-a {
-    font-size: 1em; } }
+    font-size: 1em !important; } }
 /* folder footer style start */
 .footer {
   padding: 0; }
@@ -99,7 +99,8 @@
     margin: -2px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
-    border-radius: 3px; }
+    border-radius: 3px;
+    z-index: 101; }
     .footer__github-btn:hover {
       text-decoration: none;
       background-color: #4d4d60;
@@ -151,6 +152,10 @@
         border-bottom: 0.08em solid rgba(0, 0, 0, 0.1); }
 
 /* folder footer style end */
+@media print, screen and (max-width: 480px) {
+  .footer {
+    padding: 20px;
+    box-sizing: border-box; } }
 /* highlight style start */
 .hljs {
   display: block;
