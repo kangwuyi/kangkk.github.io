@@ -2,6 +2,8 @@
 
 <!-- toc -->
 
+![](../../../static/img/markdown/4.png)
+
 > Markdown is a lightweight markup language with plain text formatting syntax designed so that it can be converted to HTML and many other formats using a tool by the same name. Markdown is often used to format readme files, for writing messages in online discussion forums, and to create rich text using a plain text editor.[^^markdown_wiki_lightweight_desc]
 
 [^^markdown_wiki_lightweight_desc]:[Markdown](https://en.wikipedia.org/wiki/Markdown):维基百科Markdown说明。
@@ -135,11 +137,12 @@ Markdown语法说明：
 ![tablesgenerator](../../../static/img/markdown/3.png)
 
 ## 代码
-。
 
 ### LaTeX
 
-[LaTeX](https://en.wikipedia.org/wiki/LaTeX)
+Markdown与LaTeX[^^latex_website_desc]结合起来写作还没有尝试过，后续回补上，前年的时候写毕业论文的时候做过一个LaTeX论文模板（[latex-paper-template](https://github.com/kangcafe/latex-paper-template)）。
+
+[^^latex_website_desc]:[LaTeX](https://en.wikipedia.org/wiki/LaTeX):维基百科LaTeX网页。
 
 ### R
 
