@@ -40,16 +40,13 @@ atx形式的标题可以表示标题1~标题6共6阶。
 
 ## 区块引用
 
-Markdown标记区块引用是使用 > 标记，一个段落既可以只用一个 >标记（放在段首，属偷懒做法），也可以在一个段落的每一行前面加上 >。
-
 <iframe name="archives" src="../static/iframe/markdown/blockquote.html" frameborder="0" height="250px"></iframe>
 
-区块引用可以嵌套使用，即引用内的引用，只要根据层次加上不同数量的 > 即可，比如两层就需要两个> ：
-
+区块引用可以嵌套使用。
 
 <iframe name="archives" src="../static/iframe/markdown/blockquote2.html" frameborder="0" height="250px"></iframe>
 
-引用的区块内也可以使用其他的Markdown语法，包括标题、列表、代码块等：
+引用的区块内也可以使用其他的Markdown语法，包括标题、列表、代码块等。
 
 <iframe name="archives" src="../static/iframe/markdown/blockquote3.html" frameborder="0" height="390px"></iframe>
 
@@ -140,7 +137,7 @@ Markdown语法说明：
 
 ### LaTeX
 
-Markdown与LaTeX[^^latex_website_desc]结合起来写作还没有尝试过，后续回补上，前年的时候写毕业论文的时候做过一个LaTeX论文模板（[latex-paper-template](https://github.com/kangcafe/latex-paper-template)）。
+Markdown与LaTeX[^^latex_website_desc]结合起来写作还没有尝试过，后续回补上，前年写毕业论文的时候做过一个LaTeX论文模板（[latex-paper-template](https://github.com/kangcafe/latex-paper-template)）。
 
 [^^latex_website_desc]:[LaTeX](https://en.wikipedia.org/wiki/LaTeX):维基百科LaTeX网页。
 

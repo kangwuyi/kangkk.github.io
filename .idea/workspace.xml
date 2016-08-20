@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb8e0cbf-b908-45ce-8284-bc382ef3af47" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/iframeTracker-jquery-master.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/markdown/note/js/Underscore源码解析.d1a6dbbf-cda8-4c4e-8fff-5d6ab148b40e.md" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/0048265b-7fbf-4c2c-826c-6a6cc99315dc.html" afterPath="$PROJECT_DIR$/cn/0048265b-7fbf-4c2c-826c-6a6cc99315dc.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/0550373c-3cc3-4557-bb75-0bf74ef7c9b3.html" afterPath="$PROJECT_DIR$/cn/0550373c-3cc3-4557-bb75-0bf74ef7c9b3.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/0938b3d6-46da-4295-9517-9e38f8fe2bb7.html" afterPath="$PROJECT_DIR$/cn/0938b3d6-46da-4295-9517-9e38f8fe2bb7.html" />
@@ -19,6 +15,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/3f804512-4863-45c6-8356-2d6923cd7088.html" afterPath="$PROJECT_DIR$/cn/3f804512-4863-45c6-8356-2d6923cd7088.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/43a453bf-6675-4ed9-9fbb-55be9ca70d86.html" afterPath="$PROJECT_DIR$/cn/43a453bf-6675-4ed9-9fbb-55be9ca70d86.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/4b251a59-7719-4e81-b56d-ff7a3aca25f4.html" afterPath="$PROJECT_DIR$/cn/4b251a59-7719-4e81-b56d-ff7a3aca25f4.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/53d85629-ddc2-427c-9bbe-e7c242984d6a.html" afterPath="$PROJECT_DIR$/cn/53d85629-ddc2-427c-9bbe-e7c242984d6a.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/5f95100f-88f8-4cbb-9018-2776bc03d30f.html" afterPath="$PROJECT_DIR$/cn/5f95100f-88f8-4cbb-9018-2776bc03d30f.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/5fed0645-021a-45ff-ab34-283673570988.html" afterPath="$PROJECT_DIR$/cn/5fed0645-021a-45ff-ab34-283673570988.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/6203fb8c-97e2-49c4-8707-f7a9ed11bcf8.html" afterPath="$PROJECT_DIR$/cn/6203fb8c-97e2-49c4-8707-f7a9ed11bcf8.html" />
@@ -33,11 +30,14 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/a6d7a10e-2bb6-4d60-b0a2-1bd041d7fa59.html" afterPath="$PROJECT_DIR$/cn/a6d7a10e-2bb6-4d60-b0a2-1bd041d7fa59.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/b32030f0-ce47-4488-9ba1-2924e8149702.html" afterPath="$PROJECT_DIR$/cn/b32030f0-ce47-4488-9ba1-2924e8149702.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/d1a6dbbf-cda8-4c4e-8fff-5d6ab148b40e.html" afterPath="$PROJECT_DIR$/cn/d1a6dbbf-cda8-4c4e-8fff-5d6ab148b40e.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/d6f586ef-d4c7-42db-bf8e-e1f0b8912b1e.html" afterPath="$PROJECT_DIR$/cn/d6f586ef-d4c7-42db-bf8e-e1f0b8912b1e.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/da82757d-a1cc-4e90-890a-a7a60ee814eb.html" afterPath="$PROJECT_DIR$/cn/da82757d-a1cc-4e90-890a-a7a60ee814eb.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/daa38e42-6436-4e57-968c-16fc699cd779.html" afterPath="$PROJECT_DIR$/cn/daa38e42-6436-4e57-968c-16fc699cd779.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/f003ec51-a55c-4ed0-88c5-d677f8dfa452.html" afterPath="$PROJECT_DIR$/cn/f003ec51-a55c-4ed0-88c5-d677f8dfa452.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/mood.html" afterPath="$PROJECT_DIR$/cn/mood.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/note.html" afterPath="$PROJECT_DIR$/cn/note.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/templates/source.html" afterPath="$PROJECT_DIR$/static/templates/source.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cn/source.html" afterPath="$PROJECT_DIR$/cn/source.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/markdown/note/other/Markdown.53d85629-ddc2-427c-9bbe-e7c242984d6a.md" afterPath="$PROJECT_DIR$/markdown/note/other/Markdown.53d85629-ddc2-427c-9bbe-e7c242984d6a.md" />
     </list>
     <ignored path="kangcafe.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -57,7 +57,7 @@
     <favorites_list name="kangcafe.github.io" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -115,7 +115,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1339" />
+    <option name="width" value="1333" />
     <option name="height" value="733" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -143,7 +143,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -200,7 +200,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -313,17 +313,18 @@
       <workItem from="1470913883040" duration="2713000" />
       <workItem from="1471270402494" duration="14000" />
       <workItem from="1471504409186" duration="1480000" />
+      <workItem from="1471680471385" duration="18000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43690000" />
+    <option name="totallyTimeSpent" value="43708000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1339" height="733" extended-state="4" />
+    <frame x="0" y="0" width="1333" height="733" extended-state="4" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13567074" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26952526" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -438,24 +439,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="61">
           <caret line="253" column="0" selection-start-line="253" selection-start-column="0" selection-end-line="253" selection-end-column="0" />
-          <folding>
-            <marker date="1471480800160" expanded="true" signature="6952:6969" placeholder="/** 生成主页索引 ...*/" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/markdown/source/js/Underscore源码解析.d1a6dbbf-cda8-4c4e-8fff-5d6ab148b40e.md">
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="FIRST">
           <first_editor relative-caret-position="270">
             <caret line="1599" column="4" selection-start-line="1599" selection-start-column="4" selection-end-line="1599" selection-end-column="4" />
-            <folding />
           </first_editor>
           <second_editor />
         </state>
+      </provider>
+      <provider editor-type-id="MarkdownFxPreviewEditor">
+        <state />
       </provider>
     </entry>
   </component>
