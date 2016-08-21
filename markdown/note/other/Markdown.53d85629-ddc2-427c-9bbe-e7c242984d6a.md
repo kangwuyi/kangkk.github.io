@@ -139,7 +139,7 @@ Markdown语法说明：
 
 Markdown与LaTeX[^^latex_website_desc]结合起来写作还没有尝试过，后续回补上，前年写毕业论文的时候做过一个LaTeX论文模板（[latex-paper-template](https://github.com/kangcafe/latex-paper-template)）。
 
-[^^latex_website_desc]:[LaTeX](https://en.wikipedia.org/wiki/LaTeX):维基百科LaTeX网页。
+[^^latex_website_desc]:[LaTeX](https://en.wikipedia.org/wiki/LaTeX):维基百科LaTeX网页，[ctex](http://www.ctex.org/HomePage)。
 
 ### R
 
