@@ -363,6 +363,13 @@ tr.weblink a, td.weblink a {
 
 @media print, screen and (max-width: 600px) {
   .ascllartTr {
-    display: none; } }
+    display: none; }
+
+  td {
+    font-size: 10px !important; }
+    td i {
+      font-size: 10px !important; }
+    td a {
+      font-size: 10px !important; } }
 
 /*# sourceMappingURL=styles.css.map */
