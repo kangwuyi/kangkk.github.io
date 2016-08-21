@@ -361,4 +361,8 @@ tr.weblink a, td.weblink a {
     overflow: hidden;
     height: 80px; }
 
+@media print, screen and (max-width: 600px) {
+  .ascllartTr {
+    display: none; } }
+
 /*# sourceMappingURL=styles.css.map */
