@@ -8,160 +8,272 @@ var fs = require('fs'),
     highlight = require('highlight.js'),
     transliteration = require('transliteration'),
     ejs = require('ejs'),
+    async = require('async'),
     moment = require('moment'),
-    youdao = require('youdao'),
     matter = require('gray-matter'),
     uuid = require('uuid'),
     toc = require('marked-toc');
 
-youdao.set({
-    keyfrom: 'kangcafe',
-    key: '938031020',
-});
-
+/**
+ * 测试环境： test
+ * 发布环境： publish
+ * 清空环境： clean
+ **/
+var setEvnParam = 'clean';
 var folderMenu = ['note', 'mood', 'source'];
 
 var mdToHtmlOutPath = path.join(__dirname, 'cn');
-
-if (verificationPath(mdToHtmlOutPath).status) deteleOutputGlobalPath(mdToHtmlOutPath);
-
-_.each(folderMenu, function(item) {
-
-    var fileObjContainer = [];
-
-    queryMdFile({
-            sourcePath: mdToHtmlSourcePath(item),
-            outPath: mdToHtmlOutPath
-        },
-        item,
-        function(fileTitleObject) {
-            fileObjContainer.push(fileTitleObject);
-        }
-    );
-    creatHtmlIndexFile(item, fileObjContainer);
-    fileObjContainer = null;
-
-
-});
-
-function creatMdToHtml(op, folder) {
-
-    var renderer = new markdown.Renderer();
-
-    renderer.heading = function(text, level) {
-        var escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
-
-        return '<h' + level + '><span class="header-link" id="' +
-            text.toLowerCase().replace(/^\s+|\s+$/g, '').replace(/\s+/g, '-') + '">' +
-            text + '</span></h' + level + '>';
-    };
-
-    renderer.image = function(href, title, text) {
-        var xhtml = false;
-        var hrefReplace = href.replace(/^\.\.\/\.\.\/\.\.\//g, '');
-        var out = '<img src="../' + hrefReplace + '" alt="' + text + '"';
-        if (title) {
-            out += ' title="' + title + '"';
-        }
-        out += xhtml ? '/>' : '>';
-        return out;
-    };
-    markdown.setOptions({
-        renderer: renderer,
-        highlight: function(code) {
-            return highlight.highlightAuto(code).value;
-        }
-    });
-    var sourcePath = op.sourcePath,
-        outPath = op.outPath,
-        fileFs = fs.readFileSync(sourcePath, 'utf8'),
-        fileFsTimeObject = fs.statSync(sourcePath),
-        birthtime = moment(fileFsTimeObject.birthtime).format("YYYY-MM-DD"),
-        mtime = moment(fileFsTimeObject.mtime).format("MM-DD"),
-        mtimeGetTime = moment(fileFsTimeObject.mtime).unix(),
-        fileNameContent = path.basename(sourcePath, path.extname(sourcePath)),
-        fileNameArray = fileNameContent.split(/\./g),
-        fileName = fileNameArray[0],
-        englishToPinYin = transliteration.slugify(fileName, {
-            lowercase: false,
-            separator: ' '
-        }),
-        relativePath = path.relative(outPath, __dirname),
-        template = '<%= depth %><%= bullet %>[<%= heading %>](#<%= url %>)\n',
-        tocMd = toc(fileFs, {
-            template: template,
-            bullet: "1. ",
-            maxDepth: 5
-        }),
-        mdToHtml = markdown(tocReplace(fileFs, tocMd)),
-        fileNameUuid = '';
-
-    if (fileNameArray.length > 1) {
-        fileNameUuid = fileNameArray[1];
-    } else {
-        fileNameUuid = uuid.v4();
-        fs.renameSync(sourcePath, path.join(path.dirname(sourcePath), fileNameArray[0] + '.' + uuid.v4() + '.md'));
-    }
-
-    var htmlFileName = path.join(fileNameUuid + '.html'),
-        creatFilePath = path.join(outPath, htmlFileName);
-    youdao.translate(fileName, function(e, result) {
-        var englishToPinYin_keyWolds = englishToPinYin.split(' ').join(','),
-            result_keyWolds = '',
-            keyWorlds = '',
-            description = '';
-
-        englishToPinYin_keyWolds = englishToPinYin_keyWolds + ',' + englishToPinYin;
-        if (_.isArray(result)) {
-            result_keyWolds = result.join(',');
-        } else {
-            result_keyWolds = result.split(' ').join(',');
-            result_keyWolds = result_keyWolds + ',' + result;
-        }
-        keyWorlds = englishToPinYin_keyWolds + ',' + result_keyWolds + ',' + fileName + ',' + (_.isArray(result) ? result.join(',') : result);
-        description = fileName + ',' + (_.isArray(result) ? result.join(',') : result);
-
-        fs.writeFileSync(
-            creatFilePath,
-            ejs.render(
-                getTemplates(folder).pages, {
-                    filename: path.join(__dirname, 'static/templates/' + folder + '.html'),
-                    folder: folder,
-                    kcFileId: fileNameUuid,
-                    kcFileName: fileName,
-                    kcFileAddr: 'http://kangcafe.com/' + path.relative(__dirname, creatFilePath),
-                    keyWorlds: keyWorlds,
-                    description: description,
-                    content: mdToHtml,
-                    relativePath: relativePath,
-                    birthtime: birthtime,
-                    mtime: mtime
-                }
-            ),
-            'utf8'
-        );
-        console.log('creat [' + htmlFileName + ']');
-    });
-    return {
-        path: path.join(path.relative(path.join(__dirname), path.dirname(outPath)), htmlFileName),
-        fileName: fileName,
-        birthtime: birthtime,
-        mtime: mtime,
-        mtimeGetTime: mtimeGetTime
-    };
+var mdIndexCont = [];
+switch (setEvnParam) {
+    case 'test':
+        startTest(setEvnParam);
+        break;
+    case 'publish':
+        startPublish(setEvnParam);
+        break;
+    case 'clean':
+        startClean(setEvnParam);
+        break;
+    default:
+        startTest('test');
 }
 
-function queryMdFile(op, folder, cb) {
+function startTest(evnParam) {
+    loopMdFolder(evnParam);
+}
+
+function startPublish(evnParam) {
+    loopMdFolder(evnParam);
+}
+
+function startClean(evnParam) {
+    if (verificationPath(mdToHtmlOutPath).status) deteleOutputGlobalPath(mdToHtmlOutPath);
+    loopMdFolder(evnParam);
+}
+
+function loopMdFolder(evnParam) {
+    _.each(folderMenu, function(item) {
+
+        async.waterfall([
+            function(callback) {
+                queryMdFile({
+                        sourcePath: mdToHtmlSourcePath(item),
+                        outPath: mdToHtmlOutPath
+                    },
+                    item,
+                    evnParam
+                );
+                callback(null, 'one', 'two');
+            },
+            function(arg1, arg2, callback) {
+                creatHtmlIndexFile(item, mdIndexCont);
+                callback(null, 'three');
+            }
+        ], function(err, result) {
+            // result now equals 'done'
+            console.log(result);
+        });
+
+
+        mdIndexCont = [];
+    });
+}
+
+function cheackExtnameIsMd(extname) {
+    return _.indexOf(['.md', '.markdown', '.MARKDOWN', '.MD'], extname) !== -1
+}
+
+function creatMdToHtml(op, folder, evnParam) {
+
+    var sourcePath = op.sourcePath,
+        outPath = op.outPath,
+        fileNameContent = path.basename(sourcePath, path.extname(sourcePath)),
+        fileNameArray = fileNameContent.split(/\./g),
+        sourcePathDirPath = path.dirname(sourcePath),
+        fileNameUuid = ''
+
+    function cheackFileNameIsNRoY(nameArray) {
+        var nameIndexStatus = 0;
+
+        _.each(nameArray, function(item, index) {
+            if ((item === 'n' || item === 'y') && (index === 0 || index === 1)) {
+                nameIndexStatus++;
+            }
+        })
+
+        switch (nameIndexStatus) {
+            case 0:
+                nameArray.unshift('error');
+                break;
+            case 1:
+
+                if (nameArray.length === 4) {
+                    nameArray.unshift('error');
+                } else {
+                    nameArray.unshift('n');
+                }
+                break;
+        }
+        return nameArray;
+    }
+
+    switch (fileNameArray.length) {
+        case 1:
+            fileNameUuid = uuid.v4();
+            fs.rename(sourcePath, path.join(path.dirname(sourcePath), 'n.n.' + fileNameArray[0] + '.' + fileNameUuid + '.md'), function(err) {
+                if (err) {
+                    throw err;
+                }
+                fileNameArray = ['n', 'n', fileNameArray[0], fileNameUuid];
+                startRenderProp(fileNameArray);
+            })
+            break;
+        case 2:
+            fileNameUuid = fileNameArray[1];
+            fs.rename(sourcePath, path.join(path.dirname(sourcePath), 'n.n.' + fileNameArray[0] + '.' + fileNameUuid + '.md'), function(err) {
+                if (err) {
+                    throw err;
+                }
+                fileNameArray = ['n', 'n', fileNameArray[0], fileNameUuid];
+                startRenderProp(fileNameArray);
+            })
+            break;
+        case 3:
+            fileNameArray = cheackFileNameIsNRoY(fileNameArray)
+            fileNameUuid = fileNameArray[3];
+            fs.rename(sourcePath, path.join(sourcePathDirPath, fileNameArray[0] + '.' + fileNameArray[1] + '.' + fileNameArray[2] + '.' + fileNameUuid + '.md'), function(err) {
+                if (err) {
+                    throw err;
+                }
+                startRenderProp(fileNameArray);
+            })
+            break;
+        case 4:
+            fileNameArray = cheackFileNameIsNRoY(fileNameArray)
+            fileNameUuid = fileNameArray[3];
+            startRenderProp(fileNameArray);
+            break;
+    }
+
+    function startRenderProp(fileNameArray) {
+        if (fileNameArray[0] === 'error') {
+            throw fileNameArray;
+            process.exit(0);
+        }
+
+        var renderer = new markdown.Renderer();
+
+        renderer.heading = function(text, level) {
+            var escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+
+            return '<h' + level + '><span class="header-link" id="' +
+                text.toLowerCase().replace(/^\s+|\s+$/g, '').replace(/\s+/g, '-') + '">' +
+                text + '</span></h' + level + '>';
+        };
+
+        renderer.image = function(href, title, text) {
+            var xhtml = false;
+            var hrefReplace = href.replace(/^\.\.\/\.\.\/\.\.\//g, '');
+            var out = '<img src="../' + hrefReplace + '" alt="' + text + '"';
+            if (title) {
+                out += ' title="' + title + '"';
+            }
+            out += xhtml ? '/>' : '>';
+            return out;
+        };
+        markdown.setOptions({
+            renderer: renderer,
+            highlight: function(code) {
+                return highlight.highlightAuto(code).value;
+            }
+        });
+
+
+        var newSourceNameFile = path.join(sourcePathDirPath, fileNameArray.join('.') + '.md'),
+            fileFs = fs.readFileSync(newSourceNameFile, 'utf8'),
+            fileFsTimeObject = fs.statSync(newSourceNameFile),
+            birthtime = moment(fileFsTimeObject.birthtime).format("YYYY-MM-DD"),
+            mtime = moment(fileFsTimeObject.mtime).format("MM-DD"),
+            mtimeGetTime = moment(fileFsTimeObject.mtime).unix(),
+            fileName = fileNameArray[2],
+            englishToPinYin = transliteration.slugify(fileName, {
+                lowercase: false,
+                separator: ' '
+            }),
+            relativePath = path.relative(outPath, __dirname),
+            template = '<%= depth %><%= bullet %>[<%= heading %>](#<%= url %>)\n',
+            tocMd = toc(fileFs, {
+                template: template,
+                bullet: "1. ",
+                maxDepth: 5
+            }),
+            mdToHtml = markdown(tocReplace(fileFs, tocMd));
+
+        var htmlFileName = path.join(fileNameUuid + '.html'),
+            creatFilePath = path.join(outPath, htmlFileName);
+
+        var englishToPinYin_keyWolds = englishToPinYin.split(' ').join(','),
+
+            keyWorlds = englishToPinYin_keyWolds + ',' + englishToPinYin + ',' + fileName,
+            description = fileName;
+
+        switch (evnParam) {
+            case 'test':
+                if (verificationPath(creatFilePath).status) fs.unlinkSync(creatFilePath);
+                break;
+            case 'publish':
+                if (verificationPath(creatFilePath).status) fs.unlinkSync(creatFilePath);
+                break;
+        }
+        if (fileNameArray[0] === 'y' || evnParam === 'clean') {
+            fs.writeFileSync(
+                creatFilePath,
+                ejs.render(
+                    getTemplates(folder).pages, {
+                        filename: path.join(__dirname, 'static/templates/' + folder + '.html'),
+                        folder: folder,
+                        kcFileId: fileNameUuid,
+                        kcFileName: fileName,
+                        kcFileAddr: 'http://kangcafe.com/' + path.relative(__dirname, creatFilePath),
+                        keyWorlds: keyWorlds,
+                        description: description,
+                        content: mdToHtml,
+                        relativePath: relativePath,
+                        birthtime: birthtime,
+                        mtime: mtime
+                    }
+                ),
+                'utf8'
+            );
+            console.log('creat [' + htmlFileName + ']');
+
+        }
+
+        if (fileNameArray[1] === 'y' || evnParam === 'test' || evnParam === 'clean') {
+            mdIndexCont.push({
+                path: path.join(path.relative(path.join(__dirname), path.dirname(outPath)), htmlFileName),
+                fileName: fileName + '--' + evnParam,
+                birthtime: birthtime,
+                mtime: mtime,
+                mtimeGetTime: mtimeGetTime
+            });
+
+        }
+
+    }
+}
+
+function queryMdFile(op, folder, evnParam) {
 
     try {
-        iterator(op);
+        iterator(op, evnParam);
         return true;
     } catch (error) {
         if (error.code === "ENOENT") throw error;
         return false;
     }
 
-    function iterator(param) {
+    function iterator(param, evnParams) {
         var sourcePath = param.sourcePath,
             outPath = param.outPath,
             fsStat = fs.statSync(sourcePath);
@@ -174,14 +286,14 @@ function queryMdFile(op, folder, cb) {
                 iterator({
                     sourcePath: path.join(sourcePath, item),
                     outPath: path.join(outPath)
-                });
+                }, evnParams);
             });
 
         } else if (fsStat.isFile()) {
 
-            if (_.indexOf(['.md', '.markdown', '.MARKDOWN', '.MD'], path.extname(sourcePath)) !== -1) {
+            if (cheackExtnameIsMd(path.extname(sourcePath))) {
 
-                cb(creatMdToHtml(param, folder));
+                creatMdToHtml(param, folder, evnParam);
             }
         }
     }
