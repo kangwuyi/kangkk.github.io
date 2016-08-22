@@ -19,7 +19,7 @@ var fs = require('fs'),
  * 发布环境： publish
  * 清空环境： clean
  **/
-var setEvnParam = 'clean';
+var setEvnParam = 'publish';
 var folderMenu = ['note', 'mood', 'source'];
 
 var mdToHtmlOutPath = path.join(__dirname, 'cn');
@@ -225,7 +225,7 @@ function creatMdToHtml(op, folder, evnParam) {
                 if (verificationPath(creatFilePath).status) fs.unlinkSync(creatFilePath);
                 break;
         }
-        if (fileNameArray[0] === 'y' || evnParam === 'clean') {
+        if (fileNameArray[0] === 'y' || evnParam === 'clean'||(fileNameArray[1] === 'y' || evnParam === 'publish')) {
             fs.writeFileSync(
                 creatFilePath,
                 ejs.render(
@@ -252,7 +252,7 @@ function creatMdToHtml(op, folder, evnParam) {
         if (fileNameArray[1] === 'y' || evnParam === 'test' || evnParam === 'clean') {
             mdIndexCont.push({
                 path: path.join(path.relative(path.join(__dirname), path.dirname(outPath)), htmlFileName),
-                fileName: fileName + '--' + evnParam,
+                fileName: fileName,
                 birthtime: birthtime,
                 mtime: mtime,
                 mtimeGetTime: mtimeGetTime
