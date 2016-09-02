@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta property="wb:webmaster" content="7e72a191affb5721" />
+    <meta name="description" content="mysql">
+    <meta name="keywords" content="mysql,mysql,mysql">
+    <!-- <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache"> -->
+    <title>KC.</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/mark.css">
+    <link rel="stylesheet" href="../static/font/iconfont.css">
+    <!--[if lt IE 9]>
+    <script src="../static/js/html5.js"></script>
+    <![endif]-->
+    <script type="application/javascript" src="../static/js/jquery.min.js"></script>
+</head>
+
+<body class="body__note">
+    <header class="header">
+        <div class="header__content w-900">
+            <h1 class="content__title">
+                <a class="title__link-a" href="https://github.com/kangcafe" target="_blank">kang`s cafe<span class="title__link-span--icon iconfont icon-github"></span></a>
+            </h1>
+            <small class="content__btn">
+                <a class="content__btn-a" href="./note.html">BACK HOME</a>
+            </small>
+        </div>
+    </header>
+
+
+<div class="container w-900">
+    <h1><span class="header-link" id="mysql">MySQL</span></h1><h2><span class="header-link" id="远程连接">远程连接</span></h2><pre><code class="lang-bash"><span class="hljs-keyword">vi</span> /etc/mysql/my.<span class="hljs-keyword">cnf</span>
+</code></pre>
+<p>找到 <code>bind-address = 127.0.0.1</code>，注释掉这行或者改为<code>bind-address = 0.0.0.0</code>允许任意IP访问，或者自己指定一个IP地址。</p>
+<p>重启<code>MySQL</code>。</p>
+<pre><code class="lang-bash">sudo <span class="hljs-meta-keyword">/etc/</span>init.d/mysql restart
+</code></pre>
+<h3><span class="header-link" id="授权用户能进行远程连接">授权用户能进行远程连接</span></h3><pre><code class="lang-bash"><span class="hljs-attribute">mysql</span> -uroot -p
+</code></pre>
+<pre><code>mysql&gt; grant all privileges <span class="hljs-keyword">on</span> *.* <span class="hljs-keyword">to</span> root@<span class="hljs-string">"%"</span> identified <span class="hljs-keyword">by</span> <span class="hljs-string">"password"</span> <span class="hljs-keyword">with</span> grant option;
+mysql&gt; flush privileges;
+</code></pre><p>第一行命令解释如下，<em>.</em>：第一个<em>代表数据库名；第二个</em>代表表名。这里的意思是所有数据库里的所有表都授权给用户。root：授予root账号。“%”：表示授权的用户IP可以指定，这里代表任意的IP地址都能访问MySQL数据库。“password”：分配账号对应的密码，这里密码自己替换成你的mysql root帐号密码。第二行命令是刷新权限信息，也即是让我们所作的设置马上生效。</p>
+
+</div>
+
+<footer class="footer w-900">
+    <a class="footer__backToTop-btn" href="#" id="back-to-top">
+        <i class="footer__backToTop-btn--icon iconfont icon-chevronup"></i>
+    </a>
+    <a class="footer__github-btn" href="https://github.com/kangcafe" target="_blank">Kang`s Cafe on GitHub</a>
+    <div class="ds-thread" data-thread-key="9794b99f-c504-4baf-93ce-0e79e475ab43" data-title="mysql" data-url="http://kangcafe.com/cn/9794b99f-c504-4baf-93ce-0e79e475ab43.html"></div>
+    <script type="text/javascript">
+        var duoshuoQuery = {
+            short_name: "kangcafe"
+        };
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';
+            ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] ||
+                document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <section class="content__section">
+        <p class="content__a-btn">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="../static/bgimg/licensebuttons.png" />
+            </a>
+        </p>
+        <p class="content__p--word">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+        </a>. Reprint the 《<sub>mysql</sub>》 need signature "<sub>kc</sub>", and the url is <sub>http://kangcafe.com/cn/9794b99f-c504-4baf-93ce-0e79e475ab43.html</sub>.
+        </p>
+        <p class="content__text-p--desc">
+            <em>这里的大多数文章都写于很多年以前，十年历程，多于怀旧（@2006-2016）</em>
+            <br>Copyright (C) 2016 KangCafe.com, All Rights Reserved
+            <br>Made in China.
+            <span class="text__span--link">
+            ✎
+            <a href="../index.html">Home</a> –
+            <a href="./mood.html">Mood</a> –
+            <a href="./source.html">Source</a> –
+            <a href="./note.html">Note</a>.
+          </span>
+        </p>
+    </section>
+</footer>
+<script type="text/javascript">
+    ! function($) {
+        $(window).scroll(function() {
+            $(this).scrollTop() > 100 ? $("#back-to-top").fadeIn() : $("#back-to-top").fadeOut()
+        }), $("#back-to-top").on("click", function(b) {
+            return b.preventDefault(), $("html, body").animate({
+                scrollTop: 0
+            }, 100), !1
+        });
+    }(jQuery);
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?95e6652d7f50f8def7540e687f338f60";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script type="text/javascript">
+    (function() {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+</body>
+
+</html>
+

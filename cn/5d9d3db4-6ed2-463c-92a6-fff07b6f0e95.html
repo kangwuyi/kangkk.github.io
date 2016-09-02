@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta property="wb:webmaster" content="7e72a191affb5721" />
+    <meta name="description" content="phantomjs">
+    <meta name="keywords" content="phantomjs,phantomjs,phantomjs">
+    <!-- <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache"> -->
+    <title>KC.</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/mark.css">
+    <link rel="stylesheet" href="../static/font/iconfont.css">
+    <!--[if lt IE 9]>
+    <script src="../static/js/html5.js"></script>
+    <![endif]-->
+    <script type="application/javascript" src="../static/js/jquery.min.js"></script>
+</head>
+
+<body class="body__note">
+    <header class="header">
+        <div class="header__content w-900">
+            <h1 class="content__title">
+                <a class="title__link-a" href="https://github.com/kangcafe" target="_blank">kang`s cafe<span class="title__link-span--icon iconfont icon-github"></span></a>
+            </h1>
+            <small class="content__btn">
+                <a class="content__btn-a" href="./note.html">BACK HOME</a>
+            </small>
+        </div>
+    </header>
+
+
+<div class="container w-900">
+    <h1><span class="header-link" id="phantomjs">phantomjs</span></h1><p>PhantomJS 是一个基于 WebKit 的服务器端 JavaScript API。它全面支持web而不需浏览器支持，其快速，原生支持各种Web标准： DOM 处理, CSS 选择器, JSON, Canvas, 和 SVG。 PhantomJS 可以用于 页面自动化 ， 网络监测 ， 网页截屏 ，以及 无界面测试 等。</p>
+<h2><span class="header-link" id="安装">安装</span></h2><p><a href="http://phantomjs.org/">phantomjs</a>下载对应操作系统的文件，比如LINUX，按照步骤安装并设置环境变量。</p>
+<p>安装依赖。</p>
+<pre><code class="lang-bash">sudo apt-<span class="hljs-built_in">get</span> <span class="hljs-keyword">update</span>
+sudo apt-<span class="hljs-built_in">get</span> install build-essential chrpath libssl-<span class="hljs-built_in">dev</span> libxft-<span class="hljs-built_in">dev</span>
+sudo apt-<span class="hljs-built_in">get</span> install libfreetype6 libfreetype6-<span class="hljs-built_in">dev</span>
+sudo apt-<span class="hljs-built_in">get</span> install libfontconfig1 libfontconfig1-<span class="hljs-built_in">dev</span>
+</code></pre>
+<p>下载文件。</p>
+<pre><code class="lang-shell">aria2c https:<span class="hljs-comment">//bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2</span>
+tar -jxvf phantomjs-<span class="hljs-number">2.1</span>.<span class="hljs-number">1</span>-linux-x86_64<span class="hljs-selector-class">.tar</span><span class="hljs-selector-class">.bz2</span> &amp;&amp; cd phantomjs-<span class="hljs-number">2.1</span>.<span class="hljs-number">1</span>-linux-x86_64<span class="hljs-selector-class">.tar</span><span class="hljs-selector-class">.bz2</span>/bin
+chmod +x phantomjs
+vi /etc/profile
+</code></pre>
+<p><code>profile</code>文件底部添加变量。</p>
+<pre><code class="lang-sh">export PATH=<span class="hljs-variable">${</span>PATH}<span class="hljs-symbol">:/home/kang/application/phantomjs-</span><span class="hljs-number">2.1</span>.<span class="hljs-number">1</span>-linux-x86_64/bin/
+</code></pre>
+<p>退出文件后更新变量。</p>
+<pre><code class="lang-bash"><span class="hljs-keyword">source</span> <span class="hljs-regexp">/etc/</span>profile
+</code></pre>
+<p>测试安装。</p>
+<pre><code class="lang-bash">phantomjs -v
+=<span class="ruby">=&gt; <span class="hljs-number">2.1</span>.<span class="hljs-number">1</span></span>
+</code></pre>
+<h2><span class="header-link" id="phantomjs-prebuilt">phantomjs-prebuilt</span></h2><p><a href="https://github.com/ariya/phantomjs">phantomjs(github)</a></p>
+
+</div>
+
+<footer class="footer w-900">
+    <a class="footer__backToTop-btn" href="#" id="back-to-top">
+        <i class="footer__backToTop-btn--icon iconfont icon-chevronup"></i>
+    </a>
+    <a class="footer__github-btn" href="https://github.com/kangcafe" target="_blank">Kang`s Cafe on GitHub</a>
+    <div class="ds-thread" data-thread-key="5d9d3db4-6ed2-463c-92a6-fff07b6f0e95" data-title="phantomjs" data-url="http://kangcafe.com/cn/5d9d3db4-6ed2-463c-92a6-fff07b6f0e95.html"></div>
+    <script type="text/javascript">
+        var duoshuoQuery = {
+            short_name: "kangcafe"
+        };
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';
+            ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] ||
+                document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <section class="content__section">
+        <p class="content__a-btn">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="../static/bgimg/licensebuttons.png" />
+            </a>
+        </p>
+        <p class="content__p--word">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+        </a>. Reprint the 《<sub>phantomjs</sub>》 need signature "<sub>kc</sub>", and the url is <sub>http://kangcafe.com/cn/5d9d3db4-6ed2-463c-92a6-fff07b6f0e95.html</sub>.
+        </p>
+        <p class="content__text-p--desc">
+            <em>这里的大多数文章都写于很多年以前，十年历程，多于怀旧（@2006-2016）</em>
+            <br>Copyright (C) 2016 KangCafe.com, All Rights Reserved
+            <br>Made in China.
+            <span class="text__span--link">
+            ✎
+            <a href="../index.html">Home</a> –
+            <a href="./mood.html">Mood</a> –
+            <a href="./source.html">Source</a> –
+            <a href="./note.html">Note</a>.
+          </span>
+        </p>
+    </section>
+</footer>
+<script type="text/javascript">
+    ! function($) {
+        $(window).scroll(function() {
+            $(this).scrollTop() > 100 ? $("#back-to-top").fadeIn() : $("#back-to-top").fadeOut()
+        }), $("#back-to-top").on("click", function(b) {
+            return b.preventDefault(), $("html, body").animate({
+                scrollTop: 0
+            }, 100), !1
+        });
+    }(jQuery);
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?95e6652d7f50f8def7540e687f338f60";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script type="text/javascript">
+    (function() {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+</body>
+
+</html>
+

@@ -141,6 +141,9 @@ function creatMdToHtml(op, folder, evnParam) {
         case 3:
             fileNameArray = cheackFileNameIsNRoY(fileNameArray)
             fileNameUuid = fileNameArray[3];
+            if(!fileNameUuid){
+              fileNameUuid = uuid.v4();
+            }
             fs.rename(sourcePath, path.join(sourcePathDirPath, fileNameArray[0] + '.' + fileNameArray[1] + '.' + fileNameArray[2] + '.' + fileNameUuid + '.md'), function(err) {
                 if (err) {
                     throw err;

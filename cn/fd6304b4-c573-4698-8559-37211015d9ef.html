@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta property="wb:webmaster" content="7e72a191affb5721" />
+    <meta name="description" content="meta标签">
+    <meta name="keywords" content="meta,Biao,Qian,meta Biao Qian,meta标签">
+    <!-- <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache"> -->
+    <title>KC.</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/mark.css">
+    <link rel="stylesheet" href="../static/font/iconfont.css">
+    <!--[if lt IE 9]>
+    <script src="../static/js/html5.js"></script>
+    <![endif]-->
+    <script type="application/javascript" src="../static/js/jquery.min.js"></script>
+</head>
+
+<body class="body__note">
+    <header class="header">
+        <div class="header__content w-900">
+            <h1 class="content__title">
+                <a class="title__link-a" href="https://github.com/kangcafe" target="_blank">kang`s cafe<span class="title__link-span--icon iconfont icon-github"></span></a>
+            </h1>
+            <small class="content__btn">
+                <a class="content__btn-a" href="./note.html">BACK HOME</a>
+            </small>
+        </div>
+    </header>
+
+
+<div class="container w-900">
+    <h1><span class="header-link" id="meta标签">meta标签</span></h1><h1><span class="header-link" id="meta（meta-information）">meta（meta-information）</span></h1><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>形式</td>
+<td><code>&lt;meta http-equiv=&quot;...&quot; content=&quot;...&quot;&gt; or &lt;meta name=&quot;...&quot; content=&quot;...&quot;&gt;</code></td>
+</tr>
+<tr>
+<td>支持</td>
+<td>H3+ / e2+ / N2+ / Fx1+ / Op6+ / Ch1+ / Sa1+</td>
+</tr>
+<tr>
+<td>标签省略</td>
+<td>开始标签：必须，结束标签：无</td>
+</tr>
+</tbody>
+</table>
+<h2><span class="header-link" id="属性">属性</span></h2><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name=name</td>
+<td>H2+/e2+/N2+。指定名字。</td>
+</tr>
+<tr>
+<td>http-equiv=http-equiv</td>
+<td>H2+/e2+/N2+。指定HTTP头部信息名。</td>
+</tr>
+<tr>
+<td>content=content</td>
+<td>H2+/e2+/N2+。指定内容，HTML4.01 中为必须属性。</td>
+</tr>
+<tr>
+<td>scheme=scheme</td>
+<td>H4+。设定解释 content 时的提示信息。基本不使用。</td>
+</tr>
+<tr>
+<td>dir=dir</td>
+<td>H4+/e5+。指定文字显示的方向。</td>
+</tr>
+<tr>
+<td>lang=lang</td>
+<td>H4+/e4+。指定语言种类。</td>
+</tr>
+<tr>
+<td>title=title</td>
+<td>e4+。指定标题。</td>
+</tr>
+</tbody>
+</table>
+<h3><span class="header-link" id="文字编码">文字编码</span></h3><p>声明文档的文字编码，不设定的话有可能显示成乱码。</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"Content-Type"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"text/html; charset=UTF-8"</span>&gt;</span>
+</code></pre>
+<h3><span class="header-link" id="脚本语言">脚本语言</span></h3><p>设定文档的脚本语言。HTML4.01 中强烈推荐设定，HTML5 中默认为 text/javascript ，如果使用 JavaScript 的话不需要设定。</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"Content-Script-Type"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span>
+</code></pre>
+<h3><span class="header-link" id="样式表语言">样式表语言</span></h3><p>设定文档的样式表语言。HTML4.01 中强烈推荐设定，HTML5 中默认为 text/css ，如果使用 css 的话不需要设定。</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"Content-Style-Type"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"text/css"</span>&gt;</span>
+</code></pre>
+<h3><span class="header-link" id="文档的作者">文档的作者</span></h3><p>注明文档的作者。画面上没有变化。</p>
+<pre><code class="lang-html">&lt;meta <span class="hljs-built_in">name</span>=<span class="hljs-string">"Author"</span> content=<span class="hljs-string">"mmkguanli"</span>&gt;
+</code></pre>
+<h3><span class="header-link" id="文档的关键词">文档的关键词</span></h3><p>指定关于此文档的关键词。有些搜索引擎以这些关键词来搜索和排序结果。</p>
+<pre><code class="lang-html">&lt;meta <span class="hljs-built_in">name</span>=<span class="hljs-string">"Keywords"</span> content=<span class="hljs-string">"HTML,CGI,JavaScript"</span>&gt;
+</code></pre>
+<h3><span class="header-link" id="网页描述">网页描述</span></h3><p>设定关于此文档的网页描述。这些信息可能会出现在搜索引擎的搜索结果中。</p>
+<pre><code class="lang-html">&lt;meta <span class="hljs-built_in">name</span>=<span class="hljs-string">"Description"</span> content=<span class="hljs-string">"HTML标签"</span>&gt;
+</code></pre>
+<h3><span class="header-link" id="页面刷新">页面刷新</span></h3><p>比如可以让页面每隔10秒钟刷新一次。这种功能叫 Client Pull。</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"Refresh"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"10"</span>&gt;</span>
+</code></pre>
+<h3><span class="header-link" id="自动跳转到其他页面">自动跳转到其他页面</span></h3><p>比如可以设定10秒后跳转到指定的URL。</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"Refresh"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"10;URL=http://www.monmonkey.com/"</span>&gt;</span>
+</code></pre>
+<h3><span class="header-link" id="缓存的有效期">缓存的有效期</span></h3><p>设定缓存的有效期，超过时间的话，缓存里的关于此网页的内容将过期而无法使用。如果指定过去的时间，则此网页无法使用缓存。</p>
+<h3><span class="header-link" id="缓存控制">缓存控制</span></h3><p>设定此网页无法被存入缓存，每次打开此页面都需要重新读取。</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"Pragma"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"no-cache"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"Cache-Control"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"no-cache"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"Expires"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"0"</span>&gt;</span>
+</code></pre>
+<h3><span class="header-link" id="搜索引擎机器人的控制">搜索引擎机器人的控制</span></h3><p>可以设定对 Google 等搜索机器人的信息。index 为允许搜索、noindex 为禁止搜索、follow 为允许搜索链接目标、nofollow 为禁止搜索链接目标。</p>
+<pre><code class="lang-html">&lt;meta <span class="hljs-built_in">name</span>=<span class="hljs-string">"robots"</span> content=<span class="hljs-string">"noindex,nofollow"</span>&gt;
+</code></pre>
+<h3><span class="header-link" id="过度效果">过度效果</span></h3><p>设定网页跳转时的视觉效果。</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"Page-Enter"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"blendTrans(Duration=0.8)"</span>&gt;</span>
+</code></pre>
+<h3><span class="header-link" id="使图像工具条无效">使图像工具条无效</span></h3><p>使IE6.0 中支持的图像工具条无效。（就是鼠标移到图像上会显示打印、保存等按钮的工具条）</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"imagetoolbar"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"no"</span>&gt;</span>
+</code></pre>
+<h3><span class="header-link" id="编辑器">编辑器</span></h3><p>注明用来制作此网页的HTML编辑器。</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"Generator"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"Simple HTML Editor V2.5"</span>&gt;</span>
+</code></pre>
+<h2><span class="header-link" id="参考">参考</span></h2><ul>
+<li><a href="http://www.iana.org/assignments/character-sets">http://www.iana.org/assignments/character-sets</a></li>
+</ul>
+
+</div>
+
+<footer class="footer w-900">
+    <a class="footer__backToTop-btn" href="#" id="back-to-top">
+        <i class="footer__backToTop-btn--icon iconfont icon-chevronup"></i>
+    </a>
+    <a class="footer__github-btn" href="https://github.com/kangcafe" target="_blank">Kang`s Cafe on GitHub</a>
+    <div class="ds-thread" data-thread-key="fd6304b4-c573-4698-8559-37211015d9ef" data-title="meta标签" data-url="http://kangcafe.com/cn/fd6304b4-c573-4698-8559-37211015d9ef.html"></div>
+    <script type="text/javascript">
+        var duoshuoQuery = {
+            short_name: "kangcafe"
+        };
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';
+            ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] ||
+                document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <section class="content__section">
+        <p class="content__a-btn">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="../static/bgimg/licensebuttons.png" />
+            </a>
+        </p>
+        <p class="content__p--word">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+        </a>. Reprint the 《<sub>meta标签</sub>》 need signature "<sub>kc</sub>", and the url is <sub>http://kangcafe.com/cn/fd6304b4-c573-4698-8559-37211015d9ef.html</sub>.
+        </p>
+        <p class="content__text-p--desc">
+            <em>这里的大多数文章都写于很多年以前，十年历程，多于怀旧（@2006-2016）</em>
+            <br>Copyright (C) 2016 KangCafe.com, All Rights Reserved
+            <br>Made in China.
+            <span class="text__span--link">
+            ✎
+            <a href="../index.html">Home</a> –
+            <a href="./mood.html">Mood</a> –
+            <a href="./source.html">Source</a> –
+            <a href="./note.html">Note</a>.
+          </span>
+        </p>
+    </section>
+</footer>
+<script type="text/javascript">
+    ! function($) {
+        $(window).scroll(function() {
+            $(this).scrollTop() > 100 ? $("#back-to-top").fadeIn() : $("#back-to-top").fadeOut()
+        }), $("#back-to-top").on("click", function(b) {
+            return b.preventDefault(), $("html, body").animate({
+                scrollTop: 0
+            }, 100), !1
+        });
+    }(jQuery);
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?95e6652d7f50f8def7540e687f338f60";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script type="text/javascript">
+    (function() {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+</body>
+
+</html>
+

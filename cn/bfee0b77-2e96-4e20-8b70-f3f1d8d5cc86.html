@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta property="wb:webmaster" content="7e72a191affb5721" />
+    <meta name="description" content="Strider">
+    <meta name="keywords" content="Strider,Strider,Strider">
+    <!-- <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache"> -->
+    <title>KC.</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/mark.css">
+    <link rel="stylesheet" href="../static/font/iconfont.css">
+    <!--[if lt IE 9]>
+    <script src="../static/js/html5.js"></script>
+    <![endif]-->
+    <script type="application/javascript" src="../static/js/jquery.min.js"></script>
+</head>
+
+<body class="body__note">
+    <header class="header">
+        <div class="header__content w-900">
+            <h1 class="content__title">
+                <a class="title__link-a" href="https://github.com/kangcafe" target="_blank">kang`s cafe<span class="title__link-span--icon iconfont icon-github"></span></a>
+            </h1>
+            <small class="content__btn">
+                <a class="content__btn-a" href="./note.html">BACK HOME</a>
+            </small>
+        </div>
+    </header>
+
+
+<div class="container w-900">
+    <h1><span class="header-link" id="strider">Strider</span></h1><p><a href="git@github.com:DoctorMcKay/node-steamcommunity.git">Strider</a>是一个开源的持续集成和部署平台，使用Javascript Node.js和MongoDB架构，BSD许可证，概念上类似Travis 和 Jenkins，Strider是易设置使用和定制的。</p>
+<h2><span class="header-link" id="安装node">安装Node</span></h2><pre><code class="lang-bash">wget https://nodejs.org/dist/v4.<span class="hljs-number">4.2</span>/<span class="hljs-keyword">node</span><span class="hljs-title">-v4</span>.<span class="hljs-number">4.2</span>.tar.gz
+tar zxf <span class="hljs-keyword">node</span><span class="hljs-title">-v4</span>.<span class="hljs-number">4.2</span>.tar.gz
+cd <span class="hljs-keyword">node</span><span class="hljs-title">-v4</span>.<span class="hljs-number">4.2</span>
+./configure &amp;&amp; make &amp;&amp; sudo make install
+</code></pre>
+<h2><span class="header-link" id="安装strider">安装Strider</span></h2><pre><code class="lang-bash">git <span class="hljs-keyword">clone</span> <span class="hljs-title">https</span>://github.com/Strider-CD/strider
+cd strider
+npm install  <span class="hljs-comment"># 安装依赖包</span>
+</code></pre>
+<h3><span class="header-link" id="添加striderrc文件">添加striderrc文件</span></h3><pre><code class="lang-bash"><span class="hljs-selector-tag">vi</span> <span class="hljs-selector-class">.striderrc</span>
+</code></pre>
+<pre><code class="lang-html">{
+<span class="hljs-string">"db_uri"</span>: <span class="hljs-string">"mongodb://dongwm:dongwm@ds015720.mlab.com:15720/strider-dongwm"</span>,  <span class="hljs-comment"># 我的VPS不够1G内存， 不能安装MongoDB， 使用 MongoLab的免费服务来测试</span>
+<span class="hljs-string">"smtp_host"</span>: <span class="hljs-string">"smtp.mailgun.org"</span>,  <span class="hljs-comment"># Mailgun提供每天可发送300封邮件的免费服务， 我们用它来测试</span>
+<span class="hljs-string">"smtp_user"</span>: <span class="hljs-string">"postmaster@sandboxabe8d2f42ac8424fa8dd4c5ab1f1d92b.mailgun.org"</span>,
+<span class="hljs-string">"smtp_pass"</span>: <span class="hljs-string">"4e0c2880f7aaf6c1b5f39bb88acabee1"</span>
+}
+</code></pre>
+<h3><span class="header-link" id="创建管理员用户">创建管理员用户</span></h3><pre><code class="lang-html"><span class="hljs-attr">DB_URI=</span>mongodb://dongwm:dongwm@ds015720.mlab.com:<span class="hljs-number">15720</span>/strider-dongwm <span class="hljs-keyword">node</span> <span class="hljs-title">bin</span>/strider addUser
+</code></pre>
+<h3><span class="header-link" id="关联github">关联github</span></h3><p>这里移动要先到<a href="https://github.com/settings/applications/new">github</a>注册一个开发者账号</p>
+<p>之后在服务器端输入变量。</p>
+<pre><code class="lang-bash"><span class="hljs-keyword">export</span> SERVER_NAME=http:<span class="hljs-comment">//VPS:3000</span>
+<span class="hljs-keyword">export</span> PLUGIN_GITHUB_APP_ID=<span class="hljs-built_in">Client</span> ID
+<span class="hljs-keyword">export</span> PLUGIN_GITHUB_APP_SECRET=<span class="hljs-built_in">Client</span> Secret
+source ~/.bashrc
+NODE_ENV=production npm start
+</code></pre>
+<p>更具体的信息参考<a href="https://github.com/Strider-CD/strider-gitlab">strider-gitlab</a>。</p>
+
+</div>
+
+<footer class="footer w-900">
+    <a class="footer__backToTop-btn" href="#" id="back-to-top">
+        <i class="footer__backToTop-btn--icon iconfont icon-chevronup"></i>
+    </a>
+    <a class="footer__github-btn" href="https://github.com/kangcafe" target="_blank">Kang`s Cafe on GitHub</a>
+    <div class="ds-thread" data-thread-key="bfee0b77-2e96-4e20-8b70-f3f1d8d5cc86" data-title="Strider" data-url="http://kangcafe.com/cn/bfee0b77-2e96-4e20-8b70-f3f1d8d5cc86.html"></div>
+    <script type="text/javascript">
+        var duoshuoQuery = {
+            short_name: "kangcafe"
+        };
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';
+            ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] ||
+                document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <section class="content__section">
+        <p class="content__a-btn">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="../static/bgimg/licensebuttons.png" />
+            </a>
+        </p>
+        <p class="content__p--word">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+        </a>. Reprint the 《<sub>Strider</sub>》 need signature "<sub>kc</sub>", and the url is <sub>http://kangcafe.com/cn/bfee0b77-2e96-4e20-8b70-f3f1d8d5cc86.html</sub>.
+        </p>
+        <p class="content__text-p--desc">
+            <em>这里的大多数文章都写于很多年以前，十年历程，多于怀旧（@2006-2016）</em>
+            <br>Copyright (C) 2016 KangCafe.com, All Rights Reserved
+            <br>Made in China.
+            <span class="text__span--link">
+            ✎
+            <a href="../index.html">Home</a> –
+            <a href="./mood.html">Mood</a> –
+            <a href="./source.html">Source</a> –
+            <a href="./note.html">Note</a>.
+          </span>
+        </p>
+    </section>
+</footer>
+<script type="text/javascript">
+    ! function($) {
+        $(window).scroll(function() {
+            $(this).scrollTop() > 100 ? $("#back-to-top").fadeIn() : $("#back-to-top").fadeOut()
+        }), $("#back-to-top").on("click", function(b) {
+            return b.preventDefault(), $("html, body").animate({
+                scrollTop: 0
+            }, 100), !1
+        });
+    }(jQuery);
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?95e6652d7f50f8def7540e687f338f60";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script type="text/javascript">
+    (function() {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+</body>
+
+</html>
+

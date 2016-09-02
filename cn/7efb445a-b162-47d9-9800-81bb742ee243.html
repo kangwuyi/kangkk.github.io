@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta property="wb:webmaster" content="7e72a191affb5721" />
+    <meta name="description" content="redis">
+    <meta name="keywords" content="redis,redis,redis">
+    <!-- <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache"> -->
+    <title>KC.</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/mark.css">
+    <link rel="stylesheet" href="../static/font/iconfont.css">
+    <!--[if lt IE 9]>
+    <script src="../static/js/html5.js"></script>
+    <![endif]-->
+    <script type="application/javascript" src="../static/js/jquery.min.js"></script>
+</head>
+
+<body class="body__note">
+    <header class="header">
+        <div class="header__content w-900">
+            <h1 class="content__title">
+                <a class="title__link-a" href="https://github.com/kangcafe" target="_blank">kang`s cafe<span class="title__link-span--icon iconfont icon-github"></span></a>
+            </h1>
+            <small class="content__btn">
+                <a class="content__btn-a" href="./note.html">BACK HOME</a>
+            </small>
+        </div>
+    </header>
+
+
+<div class="container w-900">
+    <h1><span class="header-link" id="redis">redis</span></h1><h2><span class="header-link" id="安装">安装</span></h2><pre><code class="lang-bash">apt-<span class="hljs-keyword">cache</span> <span class="hljs-keyword">search</span> redis
+apt-<span class="hljs-keyword">get</span> <span class="hljs-keyword">install</span> redis-<span class="hljs-keyword">server</span>
+</code></pre>
+<ul>
+<li>配置文件：/etc/redis/redis.conf</li>
+<li>服务路径：/etc/init.d/redis-server</li>
+</ul>
+<h2><span class="header-link" id="设置访问密码">设置访问密码</span></h2><pre><code class="lang-bash"><span class="hljs-keyword">vi</span> /etc/redis/redis.<span class="hljs-keyword">conf</span>
+</code></pre>
+<p>在redis.conf文件中查找<code>requirepass</code>字符串</p>
+<pre><code class="lang-bash">/requirepass
+</code></pre>
+<p>取消注释requirepass</p>
+<p>登陆Redis服务器，输入密码</p>
+<pre><code class="lang-bash">redis-cli -<span class="hljs-selector-tag">a</span> redisredis
+</code></pre>
+<h2><span class="header-link" id="启动redis">启动redis</span></h2><pre><code class="lang-bash"><span class="hljs-keyword">cd</span> /etc/init.<span class="hljs-built_in">d</span>
+redis-server &amp;
+</code></pre>
+<h2><span class="header-link" id="检查redis服务器系统进程">检查Redis服务器系统进程</span></h2><pre><code class="lang-bash"><span class="hljs-keyword">ps</span> -aux|<span class="hljs-keyword">grep</span> redis
+</code></pre>
+<pre><code>redis    <span class="hljs-number"> 6578 </span> 0.0  0.7 <span class="hljs-number"> 39844 </span><span class="hljs-number"> 7280 </span>?        Ssl  21:55   0:00 /usr/bin/redis-server *:6379               
+root     <span class="hljs-number"> 6585 </span> 0.0  0.0 <span class="hljs-number"> 11740 </span> <span class="hljs-number"> 932 </span>pts/0    S+   22:00   0:00 grep --color=auto redis
+</code></pre><h2><span class="header-link" id="通过启动命令检查redis服务器状态">通过启动命令检查Redis服务器状态</span></h2><pre><code class="lang-bash">netstat -nlt<span class="hljs-string">|grep 6379</span>
+</code></pre>
+<pre><code><span class="hljs-selector-tag">tcp</span>        0      0 0<span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.0</span><span class="hljs-selector-pseudo">:6379</span>            0<span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.0</span>:*               <span class="hljs-selector-tag">LISTEN</span>     
+<span class="hljs-selector-tag">tcp6</span>       0      0 :<span class="hljs-selector-pseudo">::6379</span>                 :::*                    <span class="hljs-selector-tag">LISTEN</span>
+</code></pre><h2><span class="header-link" id="远程访问">远程访问</span></h2><p>默认情况下，Redis服务器不允许远程访问，只允许本机访问，所以我们需要设置打开远程访问的功能。</p>
+<p>打开Redis服务器的配置文件redis.conf</p>
+<pre><code class="lang-bash"><span class="hljs-keyword">vi</span> /etc/redis/redis.<span class="hljs-keyword">conf</span>
+</code></pre>
+<p>注释<code>bind</code></p>
+<pre><code class="lang-bash"><span class="hljs-selector-id">#bind</span> 127<span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.1</span>
+</code></pre>
+<p>修改后，重启Redis服务器。</p>
+<pre><code class="lang-bash">service redis-<span class="hljs-keyword">server</span> restart
+</code></pre>
+<h2><span class="header-link" id="问题处理">问题处理</span></h2><pre><code>&gt; java<span class="hljs-selector-class">.net</span><span class="hljs-selector-class">.ConnectException</span>: 拒绝连接
+</code></pre>
+</div>
+
+<footer class="footer w-900">
+    <a class="footer__backToTop-btn" href="#" id="back-to-top">
+        <i class="footer__backToTop-btn--icon iconfont icon-chevronup"></i>
+    </a>
+    <a class="footer__github-btn" href="https://github.com/kangcafe" target="_blank">Kang`s Cafe on GitHub</a>
+    <div class="ds-thread" data-thread-key="7efb445a-b162-47d9-9800-81bb742ee243" data-title="redis" data-url="http://kangcafe.com/cn/7efb445a-b162-47d9-9800-81bb742ee243.html"></div>
+    <script type="text/javascript">
+        var duoshuoQuery = {
+            short_name: "kangcafe"
+        };
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';
+            ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] ||
+                document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <section class="content__section">
+        <p class="content__a-btn">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="../static/bgimg/licensebuttons.png" />
+            </a>
+        </p>
+        <p class="content__p--word">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+        </a>. Reprint the 《<sub>redis</sub>》 need signature "<sub>kc</sub>", and the url is <sub>http://kangcafe.com/cn/7efb445a-b162-47d9-9800-81bb742ee243.html</sub>.
+        </p>
+        <p class="content__text-p--desc">
+            <em>这里的大多数文章都写于很多年以前，十年历程，多于怀旧（@2006-2016）</em>
+            <br>Copyright (C) 2016 KangCafe.com, All Rights Reserved
+            <br>Made in China.
+            <span class="text__span--link">
+            ✎
+            <a href="../index.html">Home</a> –
+            <a href="./mood.html">Mood</a> –
+            <a href="./source.html">Source</a> –
+            <a href="./note.html">Note</a>.
+          </span>
+        </p>
+    </section>
+</footer>
+<script type="text/javascript">
+    ! function($) {
+        $(window).scroll(function() {
+            $(this).scrollTop() > 100 ? $("#back-to-top").fadeIn() : $("#back-to-top").fadeOut()
+        }), $("#back-to-top").on("click", function(b) {
+            return b.preventDefault(), $("html, body").animate({
+                scrollTop: 0
+            }, 100), !1
+        });
+    }(jQuery);
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?95e6652d7f50f8def7540e687f338f60";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script type="text/javascript">
+    (function() {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+</body>
+
+</html>
+

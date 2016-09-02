@@ -1,0 +1,1092 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta property="wb:webmaster" content="7e72a191affb5721" />
+    <meta name="description" content="reduxjs">
+    <meta name="keywords" content="reduxjs,reduxjs,reduxjs">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <!-- <meta http-equiv="Expires" content="0">
+      <meta http-equiv="Pragma" content="no-cache">
+      <meta http-equiv="Cache-control" content="no-cache">
+      <meta http-equiv="Cache" content="no-cache"> -->
+    <title>KC.</title>
+    <link rel="stylesheet" href="../static/font/iconfont.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" media="all" href="../static/css/scoure.css">
+    <!--[if lt IE 9]>
+    <script src="../static/js/html5.js"></script>
+    <![endif]-->
+    <script type="application/javascript" src="../static/js/jquery.min.js"></script>
+</head>
+
+<body class="body__source">
+    <header class="header">
+        <div class="header__content w-900">
+            <h1 class="content__title">
+                  <a class="title__link-a" href="https://github.com/kangcafe" target="_blank">kang`s cafe<span class="title__link-span--icon iconfont icon-github"></span></a>
+              </h1>
+            <small class="content__btn">
+                  <a class="content__btn-a" href="./source.html">BACK HOME</a>
+              </small>
+        </div>
+    </header>
+    <div class="container container-hiddle" id="container-hiddle" style="display:none;">
+        <h1><span class="header-link" id="reduxjs">reduxjs</span></h1><pre><code class="lang-js">(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">webpackUniversalModuleDefinition</span>(<span class="hljs-params">root, factory</span>) </span>{
+    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> exports === <span class="hljs-string">'object'</span> &amp;&amp; <span class="hljs-keyword">typeof</span> <span class="hljs-built_in">module</span> === <span class="hljs-string">'object'</span>)
+        <span class="hljs-built_in">module</span>.exports = factory();
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> define === <span class="hljs-string">'function'</span> &amp;&amp; define.amd)
+        define([], factory);
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> exports === <span class="hljs-string">'object'</span>)
+        exports[<span class="hljs-string">"Redux"</span>] = factory();
+    <span class="hljs-keyword">else</span>
+        root[<span class="hljs-string">"Redux"</span>] = factory();
+})(<span class="hljs-keyword">this</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-keyword">return</span> <span class="hljs-comment">/******/</span> (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">modules</span>) </span>{ <span class="hljs-comment">// webpackBootstrap</span>
+<span class="hljs-comment">/******/</span>     <span class="hljs-comment">// The module cache</span>
+<span class="hljs-comment">/******/</span>     <span class="hljs-keyword">var</span> installedModules = {};
+
+<span class="hljs-comment">/******/</span>     <span class="hljs-comment">// The require function</span>
+<span class="hljs-comment">/******/</span>     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__webpack_require__</span>(<span class="hljs-params">moduleId</span>) </span>{
+
+<span class="hljs-comment">/******/</span>         <span class="hljs-comment">// Check if module is in cache</span>
+<span class="hljs-comment">/******/</span>         <span class="hljs-keyword">if</span>(installedModules[moduleId])
+<span class="hljs-comment">/******/</span>             <span class="hljs-keyword">return</span> installedModules[moduleId].exports;
+
+<span class="hljs-comment">/******/</span>         <span class="hljs-comment">// Create a new module (and put it into the cache)</span>
+<span class="hljs-comment">/******/</span>         <span class="hljs-keyword">var</span> <span class="hljs-built_in">module</span> = installedModules[moduleId] = {
+<span class="hljs-comment">/******/</span>             exports: {},
+<span class="hljs-comment">/******/</span>             id: moduleId,
+<span class="hljs-comment">/******/</span>             loaded: <span class="hljs-literal">false</span>
+<span class="hljs-comment">/******/</span>         };
+
+<span class="hljs-comment">/******/</span>         <span class="hljs-comment">// Execute the module function</span>
+<span class="hljs-comment">/******/</span>         modules[moduleId].call(<span class="hljs-built_in">module</span>.exports, <span class="hljs-built_in">module</span>, <span class="hljs-built_in">module</span>.exports, __webpack_require__);
+
+<span class="hljs-comment">/******/</span>         <span class="hljs-comment">// Flag the module as loaded</span>
+<span class="hljs-comment">/******/</span>         <span class="hljs-built_in">module</span>.loaded = <span class="hljs-literal">true</span>;
+
+<span class="hljs-comment">/******/</span>         <span class="hljs-comment">// Return the exports of the module</span>
+<span class="hljs-comment">/******/</span>         <span class="hljs-keyword">return</span> <span class="hljs-built_in">module</span>.exports;
+<span class="hljs-comment">/******/</span>     }
+
+
+<span class="hljs-comment">/******/</span>     <span class="hljs-comment">// expose the modules object (__webpack_modules__)</span>
+<span class="hljs-comment">/******/</span>     __webpack_require__.m = modules;
+
+<span class="hljs-comment">/******/</span>     <span class="hljs-comment">// expose the module cache</span>
+<span class="hljs-comment">/******/</span>     __webpack_require__.c = installedModules;
+
+<span class="hljs-comment">/******/</span>     <span class="hljs-comment">// __webpack_public_path__</span>
+<span class="hljs-comment">/******/</span>     __webpack_require__.p = <span class="hljs-string">""</span>;
+
+<span class="hljs-comment">/******/</span>     <span class="hljs-comment">// Load entry module and return exports</span>
+<span class="hljs-comment">/******/</span>     <span class="hljs-keyword">return</span> __webpack_require__(<span class="hljs-number">0</span>);
+<span class="hljs-comment">/******/</span> })
+<span class="hljs-comment">/************************************************************************/</span>
+<span class="hljs-comment">/******/</span> ([
+<span class="hljs-comment">/* 0 */</span>
+<span class="hljs-comment">/***/</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">module, exports, __webpack_require__</span>) </span>{
+<span class="hljs-meta">
+    'use strict'</span>;
+
+    exports.__esModule = <span class="hljs-literal">true</span>;
+    exports.compose = exports.applyMiddleware = exports.bindActionCreators = exports.combineReducers = exports.createStore = <span class="hljs-literal">undefined</span>;
+
+    <span class="hljs-keyword">var</span> _createStore = __webpack_require__(<span class="hljs-number">2</span>);
+
+    <span class="hljs-keyword">var</span> _createStore2 = _interopRequireDefault(_createStore);
+
+    <span class="hljs-keyword">var</span> _combineReducers = __webpack_require__(<span class="hljs-number">7</span>);
+
+    <span class="hljs-keyword">var</span> _combineReducers2 = _interopRequireDefault(_combineReducers);
+
+    <span class="hljs-keyword">var</span> _bindActionCreators = __webpack_require__(<span class="hljs-number">6</span>);
+
+    <span class="hljs-keyword">var</span> _bindActionCreators2 = _interopRequireDefault(_bindActionCreators);
+
+    <span class="hljs-keyword">var</span> _applyMiddleware = __webpack_require__(<span class="hljs-number">5</span>);
+
+    <span class="hljs-keyword">var</span> _applyMiddleware2 = _interopRequireDefault(_applyMiddleware);
+
+    <span class="hljs-keyword">var</span> _compose = __webpack_require__(<span class="hljs-number">1</span>);
+
+    <span class="hljs-keyword">var</span> _compose2 = _interopRequireDefault(_compose);
+
+    <span class="hljs-keyword">var</span> _warning = __webpack_require__(<span class="hljs-number">3</span>);
+
+    <span class="hljs-keyword">var</span> _warning2 = _interopRequireDefault(_warning);
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_interopRequireDefault</span>(<span class="hljs-params">obj</span>) </span>{ <span class="hljs-keyword">return</span> obj &amp;&amp; obj.__esModule ? obj : { <span class="hljs-string">"default"</span>: obj }; }
+
+    <span class="hljs-comment">/*
+    * This is a dummy function to check if the function name has been altered by minification.
+    * If the function has been minified and NODE_ENV !== 'production', warn the user.
+    */</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isCrushed</span>(<span class="hljs-params"></span>) </span>{}
+
+    <span class="hljs-keyword">if</span> ((<span class="hljs-string">"development"</span>) !== <span class="hljs-string">'production'</span> &amp;&amp; <span class="hljs-keyword">typeof</span> isCrushed.name === <span class="hljs-string">'string'</span> &amp;&amp; isCrushed.name !== <span class="hljs-string">'isCrushed'</span>) {
+      (<span class="hljs-number">0</span>, _warning2[<span class="hljs-string">"default"</span>])(<span class="hljs-string">'You are currently using minified code outside of NODE_ENV === \'production\'. '</span> + <span class="hljs-string">'This means that you are running a slower development build of Redux. '</span> + <span class="hljs-string">'You can use loose-envify (https://github.com/zertosh/loose-envify) for browserify '</span> + <span class="hljs-string">'or DefinePlugin for webpack (http://stackoverflow.com/questions/30030031) '</span> + <span class="hljs-string">'to ensure you have the correct code for your production build.'</span>);
+    }
+
+    exports.createStore = _createStore2[<span class="hljs-string">"default"</span>];
+    exports.combineReducers = _combineReducers2[<span class="hljs-string">"default"</span>];
+    exports.bindActionCreators = _bindActionCreators2[<span class="hljs-string">"default"</span>];
+    exports.applyMiddleware = _applyMiddleware2[<span class="hljs-string">"default"</span>];
+    exports.compose = _compose2[<span class="hljs-string">"default"</span>];
+
+<span class="hljs-comment">/***/</span> },
+<span class="hljs-comment">/* 1 */</span>
+<span class="hljs-comment">/***/</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">module, exports</span>) </span>{
+<span class="hljs-meta">
+    "use strict"</span>;
+
+    exports.__esModule = <span class="hljs-literal">true</span>;
+    exports[<span class="hljs-string">"default"</span>] = compose;
+    <span class="hljs-comment">/**
+     * Composes single-argument functions from right to left. The rightmost
+     * function can take multiple arguments as it provides the signature for
+     * the resulting composite function.
+     *
+     * @param {...Function} funcs The functions to compose.
+     * @returns {Function} A function obtained by composing the argument functions
+     * from right to left. For example, compose(f, g, h) is identical to doing
+     * (...args) =&gt; f(g(h(...args))).
+     */</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">compose</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> _len = <span class="hljs-built_in">arguments</span>.length, funcs = <span class="hljs-built_in">Array</span>(_len), _key = <span class="hljs-number">0</span>; _key &lt; _len; _key++) {
+        funcs[_key] = <span class="hljs-built_in">arguments</span>[_key];
+      }
+
+      <span class="hljs-keyword">if</span> (funcs.length === <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">arg</span>) </span>{
+          <span class="hljs-keyword">return</span> arg;
+        };
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">var</span> _ret = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+          <span class="hljs-keyword">var</span> last = funcs[funcs.length - <span class="hljs-number">1</span>];
+          <span class="hljs-keyword">var</span> rest = funcs.slice(<span class="hljs-number">0</span>, <span class="hljs-number">-1</span>);
+          <span class="hljs-keyword">return</span> {
+            v: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">v</span>(<span class="hljs-params"></span>) </span>{
+              <span class="hljs-keyword">return</span> rest.reduceRight(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">composed, f</span>) </span>{
+                <span class="hljs-keyword">return</span> f(composed);
+              }, last.apply(<span class="hljs-literal">undefined</span>, <span class="hljs-built_in">arguments</span>));
+            }
+          };
+        }();
+
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> _ret === <span class="hljs-string">"object"</span>) <span class="hljs-keyword">return</span> _ret.v;
+      }
+    }
+
+<span class="hljs-comment">/***/</span> },
+<span class="hljs-comment">/* 2 */</span>
+<span class="hljs-comment">/***/</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">module, exports, __webpack_require__</span>) </span>{
+<span class="hljs-meta">
+    'use strict'</span>;
+
+    exports.__esModule = <span class="hljs-literal">true</span>;
+    exports.ActionTypes = <span class="hljs-literal">undefined</span>;
+    exports[<span class="hljs-string">"default"</span>] = createStore;
+
+    <span class="hljs-keyword">var</span> _isPlainObject = __webpack_require__(<span class="hljs-number">4</span>);
+
+    <span class="hljs-keyword">var</span> _isPlainObject2 = _interopRequireDefault(_isPlainObject);
+
+    <span class="hljs-keyword">var</span> _symbolObservable = __webpack_require__(<span class="hljs-number">11</span>);
+
+    <span class="hljs-keyword">var</span> _symbolObservable2 = _interopRequireDefault(_symbolObservable);
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_interopRequireDefault</span>(<span class="hljs-params">obj</span>) </span>{ <span class="hljs-keyword">return</span> obj &amp;&amp; obj.__esModule ? obj : { <span class="hljs-string">"default"</span>: obj }; }
+
+    <span class="hljs-comment">/**
+     * These are private action types reserved by Redux.
+     * For any unknown actions, you must return the current state.
+     * If the current state is undefined, you must return the initial state.
+     * Do not reference these action types directly in your code.
+     */</span>
+    <span class="hljs-keyword">var</span> ActionTypes = exports.ActionTypes = {
+      INIT: <span class="hljs-string">'@@redux/INIT'</span>
+    };
+
+    <span class="hljs-comment">/**
+     * Creates a Redux store that holds the state tree.
+     * The only way to change the data in the store is to call `dispatch()` on it.
+     *
+     * There should only be a single store in your app. To specify how different
+     * parts of the state tree respond to actions, you may combine several reducers
+     * into a single reducer function by using `combineReducers`.
+     *
+     * @param {Function} reducer A function that returns the next state tree, given
+     * the current state tree and the action to handle.
+     *
+     * @param {any} [initialState] The initial state. You may optionally specify it
+     * to hydrate the state from the server in universal apps, or to restore a
+     * previously serialized user session.
+     * If you use `combineReducers` to produce the root reducer function, this must be
+     * an object with the same shape as `combineReducers` keys.
+     *
+     * @param {Function} enhancer The store enhancer. You may optionally specify it
+     * to enhance the store with third-party capabilities such as middleware,
+     * time travel, persistence, etc. The only store enhancer that ships with Redux
+     * is `applyMiddleware()`.
+     *
+     * @returns {Store} A Redux store that lets you read the state, dispatch actions
+     * and subscribe to changes.
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createStore</span>(<span class="hljs-params">reducer, initialState, enhancer</span>) </span>{
+      <span class="hljs-keyword">var</span> _ref2;
+
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> initialState === <span class="hljs-string">'function'</span> &amp;&amp; <span class="hljs-keyword">typeof</span> enhancer === <span class="hljs-string">'undefined'</span>) {
+        enhancer = initialState;
+        initialState = <span class="hljs-literal">undefined</span>;
+      }
+
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> enhancer !== <span class="hljs-string">'undefined'</span>) {
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> enhancer !== <span class="hljs-string">'function'</span>) {
+          <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'Expected the enhancer to be a function.'</span>);
+        }
+
+        <span class="hljs-keyword">return</span> enhancer(createStore)(reducer, initialState);
+      }
+
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> reducer !== <span class="hljs-string">'function'</span>) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'Expected the reducer to be a function.'</span>);
+      }
+
+      <span class="hljs-keyword">var</span> currentReducer = reducer;
+      <span class="hljs-keyword">var</span> currentState = initialState;
+      <span class="hljs-keyword">var</span> currentListeners = [];
+      <span class="hljs-keyword">var</span> nextListeners = currentListeners;
+      <span class="hljs-keyword">var</span> isDispatching = <span class="hljs-literal">false</span>;
+
+      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ensureCanMutateNextListeners</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">if</span> (nextListeners === currentListeners) {
+          nextListeners = currentListeners.slice();
+        }
+      }
+
+      <span class="hljs-comment">/**
+       * Reads the state tree managed by the store.
+       *
+       * @returns {any} The current state tree of your application.
+       */</span>
+      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getState</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> currentState;
+      }
+
+      <span class="hljs-comment">/**
+       * Adds a change listener. It will be called any time an action is dispatched,
+       * and some part of the state tree may potentially have changed. You may then
+       * call `getState()` to read the current state tree inside the callback.
+       *
+       * You may call `dispatch()` from a change listener, with the following
+       * caveats:
+       *
+       * 1. The subscriptions are snapshotted just before every `dispatch()` call.
+       * If you subscribe or unsubscribe while the listeners are being invoked, this
+       * will not have any effect on the `dispatch()` that is currently in progress.
+       * However, the next `dispatch()` call, whether nested or not, will use a more
+       * recent snapshot of the subscription list.
+       *
+       * 2. The listener should not expect to see all state changes, as the state
+       * might have been updated multiple times during a nested `dispatch()` before
+       * the listener is called. It is, however, guaranteed that all subscribers
+       * registered before the `dispatch()` started will be called with the latest
+       * state by the time it exits.
+       *
+       * @param {Function} listener A callback to be invoked on every dispatch.
+       * @returns {Function} A function to remove this change listener.
+       */</span>
+      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">subscribe</span>(<span class="hljs-params">listener</span>) </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> listener !== <span class="hljs-string">'function'</span>) {
+          <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'Expected listener to be a function.'</span>);
+        }
+
+        <span class="hljs-keyword">var</span> isSubscribed = <span class="hljs-literal">true</span>;
+
+        ensureCanMutateNextListeners();
+        nextListeners.push(listener);
+
+        <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unsubscribe</span>(<span class="hljs-params"></span>) </span>{
+          <span class="hljs-keyword">if</span> (!isSubscribed) {
+            <span class="hljs-keyword">return</span>;
+          }
+
+          isSubscribed = <span class="hljs-literal">false</span>;
+
+          ensureCanMutateNextListeners();
+          <span class="hljs-keyword">var</span> index = nextListeners.indexOf(listener);
+          nextListeners.splice(index, <span class="hljs-number">1</span>);
+        };
+      }
+
+      <span class="hljs-comment">/**
+       * Dispatches an action. It is the only way to trigger a state change.
+       *
+       * The `reducer` function, used to create the store, will be called with the
+       * current state tree and the given `action`. Its return value will
+       * be considered the **next** state of the tree, and the change listeners
+       * will be notified.
+       *
+       * The base implementation only supports plain object actions. If you want to
+       * dispatch a Promise, an Observable, a thunk, or something else, you need to
+       * wrap your store creating function into the corresponding middleware. For
+       * example, see the documentation for the `redux-thunk` package. Even the
+       * middleware will eventually dispatch plain object actions using this method.
+       *
+       * @param {Object} action A plain object representing “what changed”. It is
+       * a good idea to keep actions serializable so you can record and replay user
+       * sessions, or use the time travelling `redux-devtools`. An action must have
+       * a `type` property which may not be `undefined`. It is a good idea to use
+       * string constants for action types.
+       *
+       * @returns {Object} For convenience, the same action object you dispatched.
+       *
+       * Note that, if you use a custom middleware, it may wrap `dispatch()` to
+       * return something else (for example, a Promise you can await).
+       */</span>
+      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dispatch</span>(<span class="hljs-params">action</span>) </span>{
+        <span class="hljs-keyword">if</span> (!(<span class="hljs-number">0</span>, _isPlainObject2[<span class="hljs-string">"default"</span>])(action)) {
+          <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'Actions must be plain objects. '</span> + <span class="hljs-string">'Use custom middleware for async actions.'</span>);
+        }
+
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> action.type === <span class="hljs-string">'undefined'</span>) {
+          <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'Actions may not have an undefined "type" property. '</span> + <span class="hljs-string">'Have you misspelled a constant?'</span>);
+        }
+
+        <span class="hljs-keyword">if</span> (isDispatching) {
+          <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'Reducers may not dispatch actions.'</span>);
+        }
+
+        <span class="hljs-keyword">try</span> {
+          isDispatching = <span class="hljs-literal">true</span>;
+          currentState = currentReducer(currentState, action);
+        } <span class="hljs-keyword">finally</span> {
+          isDispatching = <span class="hljs-literal">false</span>;
+        }
+
+        <span class="hljs-keyword">var</span> listeners = currentListeners = nextListeners;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; listeners.length; i++) {
+          listeners[i]();
+        }
+
+        <span class="hljs-keyword">return</span> action;
+      }
+
+      <span class="hljs-comment">/**
+       * Replaces the reducer currently used by the store to calculate the state.
+       *
+       * You might need this if your app implements code splitting and you want to
+       * load some of the reducers dynamically. You might also need this if you
+       * implement a hot reloading mechanism for Redux.
+       *
+       * @param {Function} nextReducer The reducer for the store to use instead.
+       * @returns {void}
+       */</span>
+      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">replaceReducer</span>(<span class="hljs-params">nextReducer</span>) </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> nextReducer !== <span class="hljs-string">'function'</span>) {
+          <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'Expected the nextReducer to be a function.'</span>);
+        }
+
+        currentReducer = nextReducer;
+        dispatch({ type: ActionTypes.INIT });
+      }
+
+      <span class="hljs-comment">/**
+       * Interoperability point for observable/reactive libraries.
+       * @returns {observable} A minimal observable of state changes.
+       * For more information, see the observable proposal:
+       * https://github.com/zenparsing/es-observable
+       */</span>
+      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">observable</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> _ref;
+
+        <span class="hljs-keyword">var</span> outerSubscribe = subscribe;
+        <span class="hljs-keyword">return</span> _ref = {
+          <span class="hljs-comment">/**
+           * The minimal observable subscription method.
+           * @param {Object} observer Any object that can be used as an observer.
+           * The observer object should have a `next` method.
+           * @returns {subscription} An object with an `unsubscribe` method that can
+           * be used to unsubscribe the observable from the store, and prevent further
+           * emission of values from the observable.
+           */</span>
+
+          subscribe: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">subscribe</span>(<span class="hljs-params">observer</span>) </span>{
+            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> observer !== <span class="hljs-string">'object'</span>) {
+              <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>(<span class="hljs-string">'Expected the observer to be an object.'</span>);
+            }
+
+            <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">observeState</span>(<span class="hljs-params"></span>) </span>{
+              <span class="hljs-keyword">if</span> (observer.next) {
+                observer.next(getState());
+              }
+            }
+
+            observeState();
+            <span class="hljs-keyword">var</span> unsubscribe = outerSubscribe(observeState);
+            <span class="hljs-keyword">return</span> { unsubscribe: unsubscribe };
+          }
+        }, _ref[_symbolObservable2[<span class="hljs-string">"default"</span>]] = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+          <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+        }, _ref;
+      }
+
+      <span class="hljs-comment">// When a store is created, an "INIT" action is dispatched so that every</span>
+      <span class="hljs-comment">// reducer returns their initial state. This effectively populates</span>
+      <span class="hljs-comment">// the initial state tree.</span>
+      dispatch({ type: ActionTypes.INIT });
+
+      <span class="hljs-keyword">return</span> _ref2 = {
+        dispatch: dispatch,
+        subscribe: subscribe,
+        getState: getState,
+        replaceReducer: replaceReducer
+      }, _ref2[_symbolObservable2[<span class="hljs-string">"default"</span>]] = observable, _ref2;
+    }
+
+<span class="hljs-comment">/***/</span> },
+<span class="hljs-comment">/* 3 */</span>
+<span class="hljs-comment">/***/</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">module, exports</span>) </span>{
+<span class="hljs-meta">
+    'use strict'</span>;
+
+    exports.__esModule = <span class="hljs-literal">true</span>;
+    exports[<span class="hljs-string">"default"</span>] = warning;
+    <span class="hljs-comment">/**
+     * Prints a warning in the console if it exists.
+     *
+     * @param {String} message The warning message.
+     * @returns {void}
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">warning</span>(<span class="hljs-params">message</span>) </span>{
+      <span class="hljs-comment">/* eslint-disable no-console */</span>
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">console</span> !== <span class="hljs-string">'undefined'</span> &amp;&amp; <span class="hljs-keyword">typeof</span> <span class="hljs-built_in">console</span>.error === <span class="hljs-string">'function'</span>) {
+        <span class="hljs-built_in">console</span>.error(message);
+      }
+      <span class="hljs-comment">/* eslint-enable no-console */</span>
+      <span class="hljs-keyword">try</span> {
+        <span class="hljs-comment">// This error was thrown as a convenience so that if you enable</span>
+        <span class="hljs-comment">// "break on all exceptions" in your console,</span>
+        <span class="hljs-comment">// it would pause the execution at this line.</span>
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(message);
+        <span class="hljs-comment">/* eslint-disable no-empty */</span>
+      } <span class="hljs-keyword">catch</span> (e) {}
+      <span class="hljs-comment">/* eslint-enable no-empty */</span>
+    }
+
+<span class="hljs-comment">/***/</span> },
+<span class="hljs-comment">/* 4 */</span>
+<span class="hljs-comment">/***/</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">module, exports, __webpack_require__</span>) </span>{
+
+    <span class="hljs-keyword">var</span> getPrototype = __webpack_require__(<span class="hljs-number">8</span>),
+        isHostObject = __webpack_require__(<span class="hljs-number">9</span>),
+        isObjectLike = __webpack_require__(<span class="hljs-number">10</span>);
+
+    <span class="hljs-comment">/** `Object#toString` result references. */</span>
+    <span class="hljs-keyword">var</span> objectTag = <span class="hljs-string">'[object Object]'</span>;
+
+    <span class="hljs-comment">/** Used for built-in method references. */</span>
+    <span class="hljs-keyword">var</span> objectProto = <span class="hljs-built_in">Object</span>.prototype;
+
+    <span class="hljs-comment">/** Used to resolve the decompiled source of functions. */</span>
+    <span class="hljs-keyword">var</span> funcToString = <span class="hljs-built_in">Function</span>.prototype.toString;
+
+    <span class="hljs-comment">/** Used to check objects for own properties. */</span>
+    <span class="hljs-keyword">var</span> hasOwnProperty = objectProto.hasOwnProperty;
+
+    <span class="hljs-comment">/** Used to infer the `Object` constructor. */</span>
+    <span class="hljs-keyword">var</span> objectCtorString = funcToString.call(<span class="hljs-built_in">Object</span>);
+
+    <span class="hljs-comment">/**
+     * Used to resolve the
+     * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
+     * of values.
+     */</span>
+    <span class="hljs-keyword">var</span> objectToString = objectProto.toString;
+
+    <span class="hljs-comment">/**
+     * Checks if `value` is a plain object, that is, an object created by the
+     * `Object` constructor or one with a `[[Prototype]]` of `null`.
+     *
+     * @static
+     * @memberOf _
+     * @since 0.8.0
+     * @category Lang
+     * @param {*} value The value to check.
+     * @returns {boolean} Returns `true` if `value` is a plain object,
+     *  else `false`.
+     * @example
+     *
+     * function Foo() {
+     *   this.a = 1;
+     * }
+     *
+     * _.isPlainObject(new Foo);
+     * // =&gt; false
+     *
+     * _.isPlainObject([1, 2, 3]);
+     * // =&gt; false
+     *
+     * _.isPlainObject({ 'x': 0, 'y': 0 });
+     * // =&gt; true
+     *
+     * _.isPlainObject(Object.create(null));
+     * // =&gt; true
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isPlainObject</span>(<span class="hljs-params">value</span>) </span>{
+      <span class="hljs-keyword">if</span> (!isObjectLike(value) ||
+          objectToString.call(value) != objectTag || isHostObject(value)) {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+      }
+      <span class="hljs-keyword">var</span> proto = getPrototype(value);
+      <span class="hljs-keyword">if</span> (proto === <span class="hljs-literal">null</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+      }
+      <span class="hljs-keyword">var</span> Ctor = hasOwnProperty.call(proto, <span class="hljs-string">'constructor'</span>) &amp;&amp; proto.constructor;
+      <span class="hljs-keyword">return</span> (<span class="hljs-keyword">typeof</span> Ctor == <span class="hljs-string">'function'</span> &amp;&amp;
+        Ctor <span class="hljs-keyword">instanceof</span> Ctor &amp;&amp; funcToString.call(Ctor) == objectCtorString);
+    }
+
+    <span class="hljs-built_in">module</span>.exports = isPlainObject;
+
+
+<span class="hljs-comment">/***/</span> },
+<span class="hljs-comment">/* 5 */</span>
+<span class="hljs-comment">/***/</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">module, exports, __webpack_require__</span>) </span>{
+<span class="hljs-meta">
+    'use strict'</span>;
+
+    exports.__esModule = <span class="hljs-literal">true</span>;
+
+    <span class="hljs-keyword">var</span> _extends = <span class="hljs-built_in">Object</span>.assign || <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">target</span>) </span>{ <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>; i &lt; <span class="hljs-built_in">arguments</span>.length; i++) { <span class="hljs-keyword">var</span> source = <span class="hljs-built_in">arguments</span>[i]; <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> key <span class="hljs-keyword">in</span> source) { <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Object</span>.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } <span class="hljs-keyword">return</span> target; };
+
+    exports[<span class="hljs-string">"default"</span>] = applyMiddleware;
+
+    <span class="hljs-keyword">var</span> _compose = __webpack_require__(<span class="hljs-number">1</span>);
+
+    <span class="hljs-keyword">var</span> _compose2 = _interopRequireDefault(_compose);
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_interopRequireDefault</span>(<span class="hljs-params">obj</span>) </span>{ <span class="hljs-keyword">return</span> obj &amp;&amp; obj.__esModule ? obj : { <span class="hljs-string">"default"</span>: obj }; }
+
+    <span class="hljs-comment">/**
+     * Creates a store enhancer that applies middleware to the dispatch method
+     * of the Redux store. This is handy for a variety of tasks, such as expressing
+     * asynchronous actions in a concise manner, or logging every action payload.
+     *
+     * See `redux-thunk` package as an example of the Redux middleware.
+     *
+     * Because middleware is potentially asynchronous, this should be the first
+     * store enhancer in the composition chain.
+     *
+     * Note that each middleware will be given the `dispatch` and `getState` functions
+     * as named arguments.
+     *
+     * @param {...Function} middlewares The middleware chain to be applied.
+     * @returns {Function} A store enhancer applying the middleware.
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">applyMiddleware</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> _len = <span class="hljs-built_in">arguments</span>.length, middlewares = <span class="hljs-built_in">Array</span>(_len), _key = <span class="hljs-number">0</span>; _key &lt; _len; _key++) {
+        middlewares[_key] = <span class="hljs-built_in">arguments</span>[_key];
+      }
+
+      <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">createStore</span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">reducer, initialState, enhancer</span>) </span>{
+          <span class="hljs-keyword">var</span> store = createStore(reducer, initialState, enhancer);
+          <span class="hljs-keyword">var</span> _dispatch = store.dispatch;
+          <span class="hljs-keyword">var</span> chain = [];
+
+          <span class="hljs-keyword">var</span> middlewareAPI = {
+            getState: store.getState,
+            dispatch: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dispatch</span>(<span class="hljs-params">action</span>) </span>{
+              <span class="hljs-keyword">return</span> _dispatch(action);
+            }
+          };
+          chain = middlewares.map(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">middleware</span>) </span>{
+            <span class="hljs-keyword">return</span> middleware(middlewareAPI);
+          });
+          _dispatch = _compose2[<span class="hljs-string">"default"</span>].apply(<span class="hljs-literal">undefined</span>, chain)(store.dispatch);
+
+          <span class="hljs-keyword">return</span> _extends({}, store, {
+            dispatch: _dispatch
+          });
+        };
+      };
+    }
+
+<span class="hljs-comment">/***/</span> },
+<span class="hljs-comment">/* 6 */</span>
+<span class="hljs-comment">/***/</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">module, exports</span>) </span>{
+<span class="hljs-meta">
+    'use strict'</span>;
+
+    exports.__esModule = <span class="hljs-literal">true</span>;
+    exports[<span class="hljs-string">"default"</span>] = bindActionCreators;
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bindActionCreator</span>(<span class="hljs-params">actionCreator, dispatch</span>) </span>{
+      <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> dispatch(actionCreator.apply(<span class="hljs-literal">undefined</span>, <span class="hljs-built_in">arguments</span>));
+      };
+    }
+
+    <span class="hljs-comment">/**
+     * Turns an object whose values are action creators, into an object with the
+     * same keys, but with every function wrapped into a `dispatch` call so they
+     * may be invoked directly. This is just a convenience method, as you can call
+     * `store.dispatch(MyActionCreators.doSomething())` yourself just fine.
+     *
+     * For convenience, you can also pass a single function as the first argument,
+     * and get a function in return.
+     *
+     * @param {Function|Object} actionCreators An object whose values are action
+     * creator functions. One handy way to obtain it is to use ES6 `import * as`
+     * syntax. You may also pass a single function.
+     *
+     * @param {Function} dispatch The `dispatch` function available on your Redux
+     * store.
+     *
+     * @returns {Function|Object} The object mimicking the original object, but with
+     * every action creator wrapped into the `dispatch` call. If you passed a
+     * function as `actionCreators`, the return value will also be a single
+     * function.
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bindActionCreators</span>(<span class="hljs-params">actionCreators, dispatch</span>) </span>{
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> actionCreators === <span class="hljs-string">'function'</span>) {
+        <span class="hljs-keyword">return</span> bindActionCreator(actionCreators, dispatch);
+      }
+
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> actionCreators !== <span class="hljs-string">'object'</span> || actionCreators === <span class="hljs-literal">null</span>) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'bindActionCreators expected an object or a function, instead received '</span> + (actionCreators === <span class="hljs-literal">null</span> ? <span class="hljs-string">'null'</span> : <span class="hljs-keyword">typeof</span> actionCreators) + <span class="hljs-string">'. '</span> + <span class="hljs-string">'Did you write "import ActionCreators from" instead of "import * as ActionCreators from"?'</span>);
+      }
+
+      <span class="hljs-keyword">var</span> keys = <span class="hljs-built_in">Object</span>.keys(actionCreators);
+      <span class="hljs-keyword">var</span> boundActionCreators = {};
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; keys.length; i++) {
+        <span class="hljs-keyword">var</span> key = keys[i];
+        <span class="hljs-keyword">var</span> actionCreator = actionCreators[key];
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> actionCreator === <span class="hljs-string">'function'</span>) {
+          boundActionCreators[key] = bindActionCreator(actionCreator, dispatch);
+        }
+      }
+      <span class="hljs-keyword">return</span> boundActionCreators;
+    }
+
+<span class="hljs-comment">/***/</span> },
+<span class="hljs-comment">/* 7 */</span>
+<span class="hljs-comment">/***/</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">module, exports, __webpack_require__</span>) </span>{
+<span class="hljs-meta">
+    'use strict'</span>;
+
+    exports.__esModule = <span class="hljs-literal">true</span>;
+    exports[<span class="hljs-string">"default"</span>] = combineReducers;
+
+    <span class="hljs-keyword">var</span> _createStore = __webpack_require__(<span class="hljs-number">2</span>);
+
+    <span class="hljs-keyword">var</span> _isPlainObject = __webpack_require__(<span class="hljs-number">4</span>);
+
+    <span class="hljs-keyword">var</span> _isPlainObject2 = _interopRequireDefault(_isPlainObject);
+
+    <span class="hljs-keyword">var</span> _warning = __webpack_require__(<span class="hljs-number">3</span>);
+
+    <span class="hljs-keyword">var</span> _warning2 = _interopRequireDefault(_warning);
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_interopRequireDefault</span>(<span class="hljs-params">obj</span>) </span>{ <span class="hljs-keyword">return</span> obj &amp;&amp; obj.__esModule ? obj : { <span class="hljs-string">"default"</span>: obj }; }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUndefinedStateErrorMessage</span>(<span class="hljs-params">key, action</span>) </span>{
+      <span class="hljs-keyword">var</span> actionType = action &amp;&amp; action.type;
+      <span class="hljs-keyword">var</span> actionName = actionType &amp;&amp; <span class="hljs-string">'"'</span> + actionType.toString() + <span class="hljs-string">'"'</span> || <span class="hljs-string">'an action'</span>;
+
+      <span class="hljs-keyword">return</span> <span class="hljs-string">'Given action '</span> + actionName + <span class="hljs-string">', reducer "'</span> + key + <span class="hljs-string">'" returned undefined. '</span> + <span class="hljs-string">'To ignore an action, you must explicitly return the previous state.'</span>;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUnexpectedStateShapeWarningMessage</span>(<span class="hljs-params">inputState, reducers, action</span>) </span>{
+      <span class="hljs-keyword">var</span> reducerKeys = <span class="hljs-built_in">Object</span>.keys(reducers);
+      <span class="hljs-keyword">var</span> argumentName = action &amp;&amp; action.type === _createStore.ActionTypes.INIT ? <span class="hljs-string">'initialState argument passed to createStore'</span> : <span class="hljs-string">'previous state received by the reducer'</span>;
+
+      <span class="hljs-keyword">if</span> (reducerKeys.length === <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'Store does not have a valid reducer. Make sure the argument passed '</span> + <span class="hljs-string">'to combineReducers is an object whose values are reducers.'</span>;
+      }
+
+      <span class="hljs-keyword">if</span> (!(<span class="hljs-number">0</span>, _isPlainObject2[<span class="hljs-string">"default"</span>])(inputState)) {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'The '</span> + argumentName + <span class="hljs-string">' has unexpected type of "'</span> + {}.toString.call(inputState).match(<span class="hljs-regexp">/\s([a-z|A-Z]+)/</span>)[<span class="hljs-number">1</span>] + <span class="hljs-string">'". Expected argument to be an object with the following '</span> + (<span class="hljs-string">'keys: "'</span> + reducerKeys.join(<span class="hljs-string">'", "'</span>) + <span class="hljs-string">'"'</span>);
+      }
+
+      <span class="hljs-keyword">var</span> unexpectedKeys = <span class="hljs-built_in">Object</span>.keys(inputState).filter(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">key</span>) </span>{
+        <span class="hljs-keyword">return</span> !reducers.hasOwnProperty(key);
+      });
+
+      <span class="hljs-keyword">if</span> (unexpectedKeys.length &gt; <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'Unexpected '</span> + (unexpectedKeys.length &gt; <span class="hljs-number">1</span> ? <span class="hljs-string">'keys'</span> : <span class="hljs-string">'key'</span>) + <span class="hljs-string">' '</span> + (<span class="hljs-string">'"'</span> + unexpectedKeys.join(<span class="hljs-string">'", "'</span>) + <span class="hljs-string">'" found in '</span> + argumentName + <span class="hljs-string">'. '</span>) + <span class="hljs-string">'Expected to find one of the known reducer keys instead: '</span> + (<span class="hljs-string">'"'</span> + reducerKeys.join(<span class="hljs-string">'", "'</span>) + <span class="hljs-string">'". Unexpected keys will be ignored.'</span>);
+      }
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">assertReducerSanity</span>(<span class="hljs-params">reducers</span>) </span>{
+      <span class="hljs-built_in">Object</span>.keys(reducers).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">key</span>) </span>{
+        <span class="hljs-keyword">var</span> reducer = reducers[key];
+        <span class="hljs-keyword">var</span> initialState = reducer(<span class="hljs-literal">undefined</span>, { type: _createStore.ActionTypes.INIT });
+
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> initialState === <span class="hljs-string">'undefined'</span>) {
+          <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'Reducer "'</span> + key + <span class="hljs-string">'" returned undefined during initialization. '</span> + <span class="hljs-string">'If the state passed to the reducer is undefined, you must '</span> + <span class="hljs-string">'explicitly return the initial state. The initial state may '</span> + <span class="hljs-string">'not be undefined.'</span>);
+        }
+
+        <span class="hljs-keyword">var</span> type = <span class="hljs-string">'@@redux/PROBE_UNKNOWN_ACTION_'</span> + <span class="hljs-built_in">Math</span>.random().toString(<span class="hljs-number">36</span>).substring(<span class="hljs-number">7</span>).split(<span class="hljs-string">''</span>).join(<span class="hljs-string">'.'</span>);
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> reducer(<span class="hljs-literal">undefined</span>, { type: type }) === <span class="hljs-string">'undefined'</span>) {
+          <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'Reducer "'</span> + key + <span class="hljs-string">'" returned undefined when probed with a random type. '</span> + (<span class="hljs-string">'Don\'t try to handle '</span> + _createStore.ActionTypes.INIT + <span class="hljs-string">' or other actions in "redux/*" '</span>) + <span class="hljs-string">'namespace. They are considered private. Instead, you must return the '</span> + <span class="hljs-string">'current state for any unknown actions, unless it is undefined, '</span> + <span class="hljs-string">'in which case you must return the initial state, regardless of the '</span> + <span class="hljs-string">'action type. The initial state may not be undefined.'</span>);
+        }
+      });
+    }
+
+    <span class="hljs-comment">/**
+     * Turns an object whose values are different reducer functions, into a single
+     * reducer function. It will call every child reducer, and gather their results
+     * into a single state object, whose keys correspond to the keys of the passed
+     * reducer functions.
+     *
+     * @param {Object} reducers An object whose values correspond to different
+     * reducer functions that need to be combined into one. One handy way to obtain
+     * it is to use ES6 `import * as reducers` syntax. The reducers may never return
+     * undefined for any action. Instead, they should return their initial state
+     * if the state passed to them was undefined, and the current state for any
+     * unrecognized action.
+     *
+     * @returns {Function} A reducer function that invokes every reducer inside the
+     * passed object, and builds a state object with the same shape.
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">combineReducers</span>(<span class="hljs-params">reducers</span>) </span>{
+      <span class="hljs-keyword">var</span> reducerKeys = <span class="hljs-built_in">Object</span>.keys(reducers);
+      <span class="hljs-keyword">var</span> finalReducers = {};
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; reducerKeys.length; i++) {
+        <span class="hljs-keyword">var</span> key = reducerKeys[i];
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> reducers[key] === <span class="hljs-string">'function'</span>) {
+          finalReducers[key] = reducers[key];
+        }
+      }
+      <span class="hljs-keyword">var</span> finalReducerKeys = <span class="hljs-built_in">Object</span>.keys(finalReducers);
+
+      <span class="hljs-keyword">var</span> sanityError;
+      <span class="hljs-keyword">try</span> {
+        assertReducerSanity(finalReducers);
+      } <span class="hljs-keyword">catch</span> (e) {
+        sanityError = e;
+      }
+
+      <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">combination</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> state = <span class="hljs-built_in">arguments</span>.length &lt;= <span class="hljs-number">0</span> || <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>] === <span class="hljs-literal">undefined</span> ? {} : <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">var</span> action = <span class="hljs-built_in">arguments</span>[<span class="hljs-number">1</span>];
+
+        <span class="hljs-keyword">if</span> (sanityError) {
+          <span class="hljs-keyword">throw</span> sanityError;
+        }
+
+        <span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) {
+          <span class="hljs-keyword">var</span> warningMessage = getUnexpectedStateShapeWarningMessage(state, finalReducers, action);
+          <span class="hljs-keyword">if</span> (warningMessage) {
+            (<span class="hljs-number">0</span>, _warning2[<span class="hljs-string">"default"</span>])(warningMessage);
+          }
+        }
+
+        <span class="hljs-keyword">var</span> hasChanged = <span class="hljs-literal">false</span>;
+        <span class="hljs-keyword">var</span> nextState = {};
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; finalReducerKeys.length; i++) {
+          <span class="hljs-keyword">var</span> key = finalReducerKeys[i];
+          <span class="hljs-keyword">var</span> reducer = finalReducers[key];
+          <span class="hljs-keyword">var</span> previousStateForKey = state[key];
+          <span class="hljs-keyword">var</span> nextStateForKey = reducer(previousStateForKey, action);
+          <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> nextStateForKey === <span class="hljs-string">'undefined'</span>) {
+            <span class="hljs-keyword">var</span> errorMessage = getUndefinedStateErrorMessage(key, action);
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(errorMessage);
+          }
+          nextState[key] = nextStateForKey;
+          hasChanged = hasChanged || nextStateForKey !== previousStateForKey;
+        }
+        <span class="hljs-keyword">return</span> hasChanged ? nextState : state;
+      };
+    }
+
+<span class="hljs-comment">/***/</span> },
+<span class="hljs-comment">/* 8 */</span>
+<span class="hljs-comment">/***/</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">module, exports</span>) </span>{
+
+    <span class="hljs-comment">/* Built-in method references for those with the same name as other `lodash` methods. */</span>
+    <span class="hljs-keyword">var</span> nativeGetPrototype = <span class="hljs-built_in">Object</span>.getPrototypeOf;
+
+    <span class="hljs-comment">/**
+     * Gets the `[[Prototype]]` of `value`.
+     *
+     * @private
+     * @param {*} value The value to query.
+     * @returns {null|Object} Returns the `[[Prototype]]`.
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPrototype</span>(<span class="hljs-params">value</span>) </span>{
+      <span class="hljs-keyword">return</span> nativeGetPrototype(<span class="hljs-built_in">Object</span>(value));
+    }
+
+    <span class="hljs-built_in">module</span>.exports = getPrototype;
+
+
+<span class="hljs-comment">/***/</span> },
+<span class="hljs-comment">/* 9 */</span>
+<span class="hljs-comment">/***/</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">module, exports</span>) </span>{
+
+    <span class="hljs-comment">/**
+     * Checks if `value` is a host object in IE &lt; 9.
+     *
+     * @private
+     * @param {*} value The value to check.
+     * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isHostObject</span>(<span class="hljs-params">value</span>) </span>{
+      <span class="hljs-comment">// Many host objects are `Object` objects that can coerce to strings</span>
+      <span class="hljs-comment">// despite having improperly defined `toString` methods.</span>
+      <span class="hljs-keyword">var</span> result = <span class="hljs-literal">false</span>;
+      <span class="hljs-keyword">if</span> (value != <span class="hljs-literal">null</span> &amp;&amp; <span class="hljs-keyword">typeof</span> value.toString != <span class="hljs-string">'function'</span>) {
+        <span class="hljs-keyword">try</span> {
+          result = !!(value + <span class="hljs-string">''</span>);
+        } <span class="hljs-keyword">catch</span> (e) {}
+      }
+      <span class="hljs-keyword">return</span> result;
+    }
+
+    <span class="hljs-built_in">module</span>.exports = isHostObject;
+
+
+<span class="hljs-comment">/***/</span> },
+<span class="hljs-comment">/* 10 */</span>
+<span class="hljs-comment">/***/</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">module, exports</span>) </span>{
+
+    <span class="hljs-comment">/**
+     * Checks if `value` is object-like. A value is object-like if it's not `null`
+     * and has a `typeof` result of "object".
+     *
+     * @static
+     * @memberOf _
+     * @since 4.0.0
+     * @category Lang
+     * @param {*} value The value to check.
+     * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+     * @example
+     *
+     * _.isObjectLike({});
+     * // =&gt; true
+     *
+     * _.isObjectLike([1, 2, 3]);
+     * // =&gt; true
+     *
+     * _.isObjectLike(_.noop);
+     * // =&gt; false
+     *
+     * _.isObjectLike(null);
+     * // =&gt; false
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isObjectLike</span>(<span class="hljs-params">value</span>) </span>{
+      <span class="hljs-keyword">return</span> !!value &amp;&amp; <span class="hljs-keyword">typeof</span> value == <span class="hljs-string">'object'</span>;
+    }
+
+    <span class="hljs-built_in">module</span>.exports = isObjectLike;
+
+
+<span class="hljs-comment">/***/</span> },
+<span class="hljs-comment">/* 11 */</span>
+<span class="hljs-comment">/***/</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">module, exports, __webpack_require__</span>) </span>{
+
+    <span class="hljs-comment">/* WEBPACK VAR INJECTION */</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">global</span>) </span>{<span class="hljs-comment">/* global window */</span>
+<span class="hljs-meta">    'use strict'</span>;
+
+    <span class="hljs-built_in">module</span>.exports = __webpack_require__(<span class="hljs-number">12</span>)(global || <span class="hljs-built_in">window</span> || <span class="hljs-keyword">this</span>);
+
+    <span class="hljs-comment">/* WEBPACK VAR INJECTION */</span>}.call(exports, (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>; }())))
+
+<span class="hljs-comment">/***/</span> },
+<span class="hljs-comment">/* 12 */</span>
+<span class="hljs-comment">/***/</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">module, exports</span>) </span>{
+<span class="hljs-meta">
+    'use strict'</span>;
+
+    <span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">symbolObservablePonyfill</span>(<span class="hljs-params">root</span>) </span>{
+        <span class="hljs-keyword">var</span> result;
+        <span class="hljs-keyword">var</span> <span class="hljs-built_in">Symbol</span> = root.Symbol;
+
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">Symbol</span> === <span class="hljs-string">'function'</span>) {
+            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Symbol</span>.observable) {
+                result = <span class="hljs-built_in">Symbol</span>.observable;
+            } <span class="hljs-keyword">else</span> {
+                <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">Symbol</span>[<span class="hljs-string">'for'</span>] === <span class="hljs-string">'function'</span>) {
+                    result = <span class="hljs-built_in">Symbol</span>[<span class="hljs-string">'for'</span>](<span class="hljs-string">'observable'</span>);
+                } <span class="hljs-keyword">else</span> {
+                    result = <span class="hljs-built_in">Symbol</span>(<span class="hljs-string">'observable'</span>);
+                }
+                <span class="hljs-built_in">Symbol</span>.observable = result;
+            }
+        } <span class="hljs-keyword">else</span> {
+            result = <span class="hljs-string">'@@observable'</span>;
+        }
+
+        <span class="hljs-keyword">return</span> result;
+    };
+
+
+<span class="hljs-comment">/***/</span> }
+<span class="hljs-comment">/******/</span> ])
+});
+;
+</code></pre>
+
+    </div>
+    <div id="container-show" class="container-show">
+        <div id="background"></div>
+        <ul id="ul-show" class="sections">
+
+        </ul>
+    </div>
+    <script type="text/javascript">
+        console.time('test documentFragment')
+        var presign = false;
+        var itmp = 0;
+        var oFragmeng = document.createDocumentFragment();
+        var container_children = document.getElementById('container-hiddle').childNodes;
+
+        for (var i = 0, length = container_children.length; i < length; i += 1) {
+
+            var childClone = container_children[i].cloneNode(true);
+
+            if (container_children[i].nodeName === 'H1' && container_children[i].nodeName !== '#text') {
+                itmp = itmp + 1
+                var li = document.createElement("li");
+                li.setAttribute('id', 'section-' + itmp);
+                var annotation = document.createElement("div");
+                annotation.setAttribute('class', 'annotation');
+                annotation.appendChild(childClone);
+                li.appendChild(annotation);
+                oFragmeng.appendChild(li);
+            } else if (container_children[i].nodeName !== '#text') {
+                itmp = itmp + 1
+                var li = document.createElement("li");
+                var annotation = document.createElement("div");
+                var pilwrap = document.createElement("div");
+                var pilcrow = document.createElement("a");
+
+                li.setAttribute('id', 'section-' + itmp);
+                annotation.setAttribute('class', 'annotation');
+                pilwrap.setAttribute('class', 'pilwrap');
+                pilcrow.setAttribute('class', 'pilcrow');
+
+                pilcrow.href = '#section-' + itmp;
+                pilcrow.text = '¶'
+
+                pilwrap.appendChild(pilcrow);
+                annotation.appendChild(pilwrap);
+
+                if (container_children[i].nodeName === 'PRE') {
+                    var content = document.createElement("div");
+                    var highlight = document.createElement("div");
+
+                    content.setAttribute('class', 'content');
+                    highlight.setAttribute('class', 'highlight');
+
+                    content.appendChild(highlight);
+                    highlight.appendChild(childClone);
+                    li.appendChild(annotation);
+                    li.appendChild(content);
+                    oFragmeng.appendChild(li);
+                    presign = true;
+                } else {
+                    if (presign) {
+                        itmp = itmp - 1;
+                        oFragmeng.children['section-' + itmp].firstElementChild.appendChild(childClone);
+                        presign = false;
+                    } else {
+                        annotation.appendChild(childClone);
+                        li.appendChild(annotation);
+                        oFragmeng.appendChild(li);
+                    }
+                }
+            }
+        }
+        document.getElementById('ul-show').appendChild(oFragmeng);
+        oFragmeng = null;
+        console.timeEnd('test documentFragment')
+    </script>
+
+    <footer class="footer w-900">
+    <a class="footer__backToTop-btn" href="#" id="back-to-top">
+        <i class="footer__backToTop-btn--icon iconfont icon-chevronup"></i>
+    </a>
+    <a class="footer__github-btn" href="https://github.com/kangcafe" target="_blank">Kang`s Cafe on GitHub</a>
+    <div class="ds-thread" data-thread-key="ab6d540e-c9e3-4b64-a624-ad93949bb470" data-title="reduxjs" data-url="http://kangcafe.com/cn/ab6d540e-c9e3-4b64-a624-ad93949bb470.html"></div>
+    <script type="text/javascript">
+        var duoshuoQuery = {
+            short_name: "kangcafe"
+        };
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';
+            ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] ||
+                document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <section class="content__section">
+        <p class="content__a-btn">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="../static/bgimg/licensebuttons.png" />
+            </a>
+        </p>
+        <p class="content__p--word">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+        </a>. Reprint the 《<sub>reduxjs</sub>》 need signature "<sub>kc</sub>", and the url is <sub>http://kangcafe.com/cn/ab6d540e-c9e3-4b64-a624-ad93949bb470.html</sub>.
+        </p>
+        <p class="content__text-p--desc">
+            <em>这里的大多数文章都写于很多年以前，十年历程，多于怀旧（@2006-2016）</em>
+            <br>Copyright (C) 2016 KangCafe.com, All Rights Reserved
+            <br>Made in China.
+            <span class="text__span--link">
+            ✎
+            <a href="../index.html">Home</a> –
+            <a href="./mood.html">Mood</a> –
+            <a href="./source.html">Source</a> –
+            <a href="./note.html">Note</a>.
+          </span>
+        </p>
+    </section>
+</footer>
+<script type="text/javascript">
+    ! function($) {
+        $(window).scroll(function() {
+            $(this).scrollTop() > 100 ? $("#back-to-top").fadeIn() : $("#back-to-top").fadeOut()
+        }), $("#back-to-top").on("click", function(b) {
+            return b.preventDefault(), $("html, body").animate({
+                scrollTop: 0
+            }, 100), !1
+        });
+    }(jQuery);
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?95e6652d7f50f8def7540e687f338f60";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script type="text/javascript">
+    (function() {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+</body>
+
+</html>
+
