@@ -1,4 +1,5 @@
 /* footnote style start */
+/* line 2, ../sass/reference.scss */
 sup.reference {
   font-weight: normal;
   font-style: normal;
@@ -6,20 +7,26 @@ sup.reference {
   unicode-bidi: -webkit-isolate;
   unicode-bidi: isolate;
   white-space: nowrap;
-  direction: ltr; }
+  direction: ltr;
+}
 
+/* line 11, ../sass/reference.scss */
 sup.reference a {
   white-space: nowrap;
   text-decoration: none;
   color: #0b0080;
   background: none;
   font-size: 10px;
-  padding: 0 3px; }
+  padding: 0 3px;
+}
 
+/* line 19, ../sass/reference.scss */
 sub,
 sup {
-  line-height: 1; }
+  line-height: 1;
+}
 
+/* line 23, ../sass/reference.scss */
 .footnote-box {
   box-sizing: border-box;
   border: 1px solid #aaa;
@@ -30,50 +37,67 @@ sup {
   padding: 3px;
   margin: 0 auto;
   background: #fdfdfd;
-  display: inline-block; }
-  .footnote-box ul {
-    display: inline-block;
-    list-style-type: decimal;
-    list-style-image: none;
-    padding: 0;
-    margin: 0.3em 2em;
-    text-align: left;
-    color: #252525;
-    counter-reset: xxx 0;
-    line-height: 0.3; }
-    .footnote-box ul li {
-      list-style: decimal;
-      transition: none;
-      padding: 0;
-      margin: 0 0 0.1em;
-      position: initial;
-      color: #252525;
-      line-height: 1.6;
-      font-size: 0.875em; }
-      .footnote-box ul li::before {
-        content: none; }
-  .footnote-box .backlink {
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    padding-right: 5px; }
-    .footnote-box .backlink b a {
-      background-image: none;
-      padding: 0;
-      text-decoration: none;
-      color: #0645ad; }
-      .footnote-box .backlink b a:visited {
-        font-weight: bold;
-        color: #0b0080; }
-  .footnote-box .reference-text {
-    -webkit-column-break-inside: avoid;
-    page-break-inside: avoid;
-    break-inside: avoid-column;
-    word-break: break-all;
-    word-wrap: break-word; }
-  .footnote-box a {
-    text-decoration: none;
-    color: #0645ad; }
+  display: inline-block;
+}
+/* line 34, ../sass/reference.scss */
+.footnote-box ul {
+  display: inline-block;
+  list-style-type: decimal;
+  list-style-image: none;
+  padding: 0;
+  margin: 0.3em 2em;
+  text-align: left;
+  color: #252525;
+  counter-reset: xxx 0;
+  line-height: 0.3;
+}
+/* line 44, ../sass/reference.scss */
+.footnote-box ul li {
+  list-style: decimal;
+  transition: none;
+  padding: 0;
+  margin: 0 0 0.1em;
+  position: initial;
+  color: #252525;
+  line-height: 1.6;
+  font-size: 0.875em;
+}
+/* line 53, ../sass/reference.scss */
+.footnote-box ul li::before {
+  content: none;
+}
+/* line 58, ../sass/reference.scss */
+.footnote-box .backlink {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-right: 5px;
+}
+/* line 64, ../sass/reference.scss */
+.footnote-box .backlink b a {
+  background-image: none;
+  padding: 0;
+  text-decoration: none;
+  color: #0645ad;
+}
+/* line 69, ../sass/reference.scss */
+.footnote-box .backlink b a:visited {
+  font-weight: bold;
+  color: #0b0080;
+}
+/* line 75, ../sass/reference.scss */
+.footnote-box .reference-text {
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid-column;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+/* line 82, ../sass/reference.scss */
+.footnote-box a {
+  text-decoration: none;
+  color: #0645ad;
+}
 
 /*# sourceMappingURL=reference.css.map */

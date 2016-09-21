@@ -376,6 +376,10 @@ function tocReplace(mdFile, mdFileToc) {
     var footnoteStart = new RegExp("\\[\\^\\^+[a-zA-Z0-9_\u4e00-\u9fa5]+\\](?!:)", "igm");
     var footnoteEnd = new RegExp("\\[\\^\\^+[a-zA-Z0-9_\u4e00-\u9fa5]+\\]:.+", "ig");
 
+    var tableTreeStart = new RegExp("\\[\\^\\-\\>+[a-zA-Z0-9_\u4e00-\u9fa5\\s\\-\\>\"\\.\\/\\;\\[\\]\\(\\)\\（\\）\\=\\'\\{\\}\\,\\:\\`\\“\\‘]+\\-\\>]", "igm");
+    var tableTreeItem=  new RegExp("\\-\\>+[a-zA-Z0-9_\u4e00-\u9fa5\\s\\-\"\\.\\/\\;\\[\\]\\(\\)\\（\\）\\=\\'\\{\\}\\,\\:\\`\\“\\‘]+(?!(\\>|\\>\\]))+", "igm");
+
+
     var start = '<!-- toc -->';
     var stop = '<!-- toc stop -->';
     var strip = /<!-- toc -->[\s\S]+<!-- toc stop -->/;
@@ -402,6 +406,27 @@ function tocReplace(mdFile, mdFileToc) {
             '<span class="reference-text">' + item.replace(/\[\^\^(.+?)\]:/g, "") + '</span>' +
             '</li>';
     });
+    content = content.replace(tableTreeStart, function(item) {
+      var tableReplaceListArray = [];
+      var tableReplaceList = item.replace(tableTreeItem, function(item2, index) {
+        if(item2!=='->]'){
+          tableReplaceListArray.unshift(item2.substring(2,item2.length))
+          return '';
+        }else{
+          return '';
+        }
+      });
+      tableReplaceList=null;
+      var tableReplaceListHtml = _.reduce(tableReplaceListArray,function(memo, treeContent, index){
+          if(index === 0){
+            return treeNodeEnd(treeContent);
+          }else{
+            return treeNodeList(treeContent, memo);
+          }
+        },'');
+      return treeNodeStart(tableReplaceListHtml);
+    });
+
     content = content.replace(footnoteStart, function(item) {
         item = item.replace(/\[\^\^(.+?)\]/g, '$1');
 
@@ -414,5 +439,22 @@ function tocReplace(mdFile, mdFileToc) {
     var footnoteBox = '\n\n## References\n\n<section class="footnote-box"><ul>' + footnoteMap.join('') + '</ul></section>\n\n';
 
     return content + ((footnoteMap.length > 0) ? footnoteBox : '\n\n');
+};
+function treeNodeEnd(content) {
+  return '<table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="treeTd"><br></td><td rowspan="2" class="treeTdNoBorder treeTdContentText">'
+    + content
+    + '</td></tr><tr><td class="treeTdFooter"><br></td></tr></tbody></table>';
+};
+function treeNodeList(content, childNode) {
+  return '<table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="treeTd"><br></td><td rowspan="2" class="treeTdNoBorder treeTdContentText">'
+    + content
+    + '</td></tr><tr><td class="treeTd2"><br></td></tr><tr><td class="treeTd3"><br></td><td rowspan="2" class="treeTdNoBorder">'
+    + childNode
+    + '</td></tr><tr><td class="treeTdFooter"><br></td></tr></tbody></table>';
+};
+function treeNodeStart(childNode) {
+  return '<table cellspacing="0" cellpadding="0" border="0" class="tableTree"><tbody><tr><td class="treeTd"><br></td><td rowspan="2" class="treeTdNoBorder">'
+    + childNode
+    + '</td></tr><tr><td class="treeTdFooter"><br></td></tr></tbody></table>';
 };
 //process.exit(0);

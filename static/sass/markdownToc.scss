@@ -2,11 +2,13 @@
 /* folder markdown-toc style start */
 .content {
     @include element ('section') {
+      float: left;
+      margin: 0 30px 20px 0;
         .content {
             &-box {
                 @include element ('markdown') {
                     @include modifier ('toc') {
-                        margin: 15px 0 20px 50px;
+                        //margin: 15px 0 20px 50px;
                         display: table;
                         zoom: 1;
                         padding: 7px 10px;

@@ -12,7 +12,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache"> -->
-    <title>KC.</title>
+    <title>搜索引擎</title>
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../static/css/base.css">
     <link rel="stylesheet" href="../static/css/mark.css">
@@ -48,7 +48,30 @@
 <p><a href="http://blog.csdn.net/dm_vincent/article/details/47710367">数据建模 - 处理关联关系(1)</a></p>
 <h2><span class="header-link" id="leveldb">leveldb</span></h2><h2><span class="header-link" id="libmmseg">libmmseg</span></h2><h2><span class="header-link" id="sphinx">sphinx</span></h2>
 </div>
-
+<script>
+$(function(){
+  /**$('pre code').each(function(){
+        var lines = $(this).text().split('\n').length - 1;
+        var $numbering = $('<ul/>').addClass('pre-numbering');
+        $(this)
+            .addClass('has-numbering')
+            .parent()
+            .append($numbering);
+        for(i=1;i<=lines;i++){
+            $numbering.append($('<li/>').text(i));
+        }
+    });**/
+    $('img').each(function(){
+          var _self = $(this);
+          var altCache = _self.attr('alt');
+          if(altCache === 'svg'){
+            var hrefCache = _self.attr('src');
+            var dataCache = hrefCache.substr(0,(hrefCache.length-3))+'svg';
+            _self.replaceWith('<p class="svgNodePhoto"><object data="'+dataCache+'" type="image/svg+xml"></object></p>')
+          }
+      });
+});
+</script>
 <footer class="footer w-900">
     <a class="footer__backToTop-btn" href="#" id="back-to-top">
         <i class="footer__backToTop-btn--icon iconfont icon-chevronup"></i>
@@ -76,7 +99,7 @@
             </a>
         </p>
         <p class="content__p--word">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
-        </a>. Reprint the 《<sub>搜索引擎</sub>》 need signature "<sub>kc</sub>", and the url is <sub>http://kangcafe.com/cn/a5097971-9908-4810-bdba-c4911064d60c.html</sub>.
+        </a>. Reprint the 《<sub>搜索引擎</sub>》 need signature "<sub>kangcafe</sub>", and the url is <sub>http://kangcafe.com/cn/a5097971-9908-4810-bdba-c4911064d60c.html</sub>.
         </p>
         <p class="content__text-p--desc">
             <em>这里的大多数文章都写于很多年以前，十年历程，多于怀旧（@2006-2016）</em>

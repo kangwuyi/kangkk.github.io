@@ -9,22 +9,89 @@ div.container {
     font-size: 1em;
     @import "markdownToc";
     @import "reference";
+    .tableTree{
+      border: 0;
+      font-size   : 80%;
+      line-height : 75%;
+      table, tbody{
+        border: 0;
+        margin: 0;
+      }
+      .treeTd {
+        width          : 1.5em;
+        border-bottom  : 1px solid black;
+        border-left    : 0;
+        border-top     : 0;
+        border-right   : 0;
+        padding        : 0 0.2em;
+        vertical-align : bottom;
+        text-align     : center;
+      }
+
+      .treeTd2 {
+        border-left    : 1px solid black;
+        border-top     : 0;
+        border-right   : 0;
+        border-bottom  : 0;
+        vertical-align : top;
+      }
+
+      .treeTd3 {
+        border-left    : 1px solid black;
+        border-top     : 0;
+        border-right   : 0;
+        border-bottom  : 1px solid black;
+        padding        : 0 0.2em;
+        vertical-align : bottom;
+        text-align     : center;
+      }
+      .treeTdNoBorder {
+        border: 0; padding: 0;
+      }
+      .treeTdFooter {
+        border: 0; padding: 0; vertical-align: top;
+       }
+       .treeTdContentText{
+         padding-left: 5px;
+       }
+    }
+    .svgNodePhoto{
+      margin: 0;
+    }
+    .has-numbering{
+      margin-left: 21px;
+      display: inline-block;
+    }
+    .pre-numbering{
+      position: absolute;
+      top: 0;
+      left: -23px;
+      width: 20px;
+      padding: 12px 2px 10px 0;
+      border-right: 1px solid #C3CCD0;
+      border-radius: 3px 0 0 3px;
+      background-color: #EEE;
+      text-align: right;
+      font-family: Menlo, monospace;
+      font-size: 0.8em;
+      color: #AAA;
+      margin: 0 0 0 20px;
+      margin-bottom: 0px;
+      line-height: 1.1;
+      &>li{
+        margin:0 !important;
+        font-size: 10pt;
+      }
+    }
     & > h1 {
-        margin: 0 0 0.1em;
-        background: none;
-        font-size: 3em;
-        overflow: visible;
-        line-height: 1.3;
-        margin-bottom: 0.25em;
+        margin: 0 0 .5em;
         padding: 0;
         direction: ltr;
         border-bottom: 1px solid #aaa;
-        margin: 0 0 0.1em;
         background: none;
         font-size: 3em;
         overflow: visible;
         line-height: 1.3;
-        margin-bottom: 0.25em;
         padding: 0;
         direction: ltr;
         word-wrap: break-word;
@@ -57,16 +124,37 @@ div.container {
         }
     }
     pre {
-        background: #f5f5f5;
+        background: #384047;
         font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
         font-size: 12px;
-        color: #333;
+        color: #fff;
         word-wrap: normal;
         white-space: pre;
         overflow-x: auto;
         /*-moz-box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
         -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
         box-shadow: inset 0 0 10px rgba(0,0,0,0.1);*/
+        &.pre-no-border{
+          border: 1px solid #333;
+          width: inherit;
+          background: #FFEB3B;
+          color: #E91E63;
+        }
+    }
+    .hljs-keyword, .hljs-attribute, .hljs-selector-tag, .hljs-meta-keyword, .hljs-doctag, .hljs-name {
+        color: #00BCD4;
+    }
+    .hljs-type, .hljs-string, .hljs-number, .hljs-selector-id, .hljs-selector-class, .hljs-quote, .hljs-template-tag, .hljs-deletion {
+        color: #FFEB3B;
+    }
+    .hljs-title, .hljs-section {
+        color: #FF5722;
+    }
+    .hljs-built_in, .hljs-bullet, .hljs-code, .hljs-addition {
+        color: #4CAF50;
+    }
+    .hljs-regexp, .hljs-symbol, .hljs-variable, .hljs-template-variable, .hljs-link, .hljs-selector-attr, .hljs-selector-pseudo {
+        color: #E91E63;
     }
     dl,
     ol,

@@ -1,0 +1,340 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta property="wb:webmaster" content="7e72a191affb5721" />
+    <meta name="description" content="加载规范">
+    <meta name="keywords" content="Jia,Zai,Gui,Fan,Jia Zai Gui Fan,加载规范">
+    <!-- <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache"> -->
+    <title>加载规范</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/mark.css">
+    <link rel="stylesheet" href="../static/font/iconfont.css">
+    <!--[if lt IE 9]>
+    <script src="../static/js/html5.js"></script>
+    <![endif]-->
+    <script type="application/javascript" src="../static/js/jquery.min.js"></script>
+</head>
+
+<body class="body__note">
+    <header class="header">
+        <div class="header__content w-900">
+            <h1 class="content__title">
+                <a class="title__link-a" href="https://github.com/kangcafe" target="_blank">kang`s cafe<span class="title__link-span--icon iconfont icon-github"></span></a>
+            </h1>
+            <small class="content__btn">
+                <a class="content__btn-a" href="./note.html">BACK HOME</a>
+            </small>
+        </div>
+    </header>
+
+
+<div class="container w-900">
+    <h1><span class="header-link" id="加载规范">加载规范</span></h1><p><a href="http://webpack.github.io/docs/api-in-modules.html#require-ensure"></a></p>
+<p><a href="http://webpack.github.io/docs/api-in-modules.html#require-amd"></a></p>
+<p>require-amd
+说明: 同AMD规范的require函数，使用时传递一个模块数组和回调函数，模块都被下载下来且都被执行后才执行回调函数
+语法: require(dependencies: String[], [callback: function(...)])
+参数
+dependencies: 模块依赖数组
+callback: 回调函数
+require-ensure
+说明: require.ensure在需要的时候才下载依赖的模块，当参数指定的模块都下载下来了（下载下来的模块还没执行），便执行参数指定的回调函数。require.ensure会创建一个chunk，且可以指定该chunk的名称，如果这个chunk名已经存在了，则将本次依赖的模块合并到已经存在的chunk中，最后这个chunk在webpack构建的时候会单独生成一个文件。
+语法: require.ensure(dependencies: String[], callback: function([require]), [chunkName: String])
+dependencies: 依赖的模块数组
+callback: 回调函数，该函数调用时会传一个require参数
+chunkName: 模块名，用于构建时生成文件时命名使用
+注意点：requi.ensure的模块只会被下载下来，不会被执行，只有在回调函数使用require(模块名)后，这个模块才会被执行。
+示例</p>
+<p>require-amd</p>
+<p>源代码</p>
+<p>webpack.config.amd.js</p>
+<p>var path = require(&quot;path&quot;);
+module.exports = {
+    entry: &quot;./example.amd.js&quot;,
+    output: {
+        path: path.join(__dirname, &quot;amd&quot;),
+        filename: &quot;[name].bundle.js&quot;,
+        chunkFilename: &quot;[id].chunk.js&quot;
+    }
+};
+1
+2
+3
+4
+5
+6
+7
+8
+9
+example.amd.js</p>
+<p>require([&quot;./module1&quot;], function(module1) {
+    console.log(&quot;aaa&quot;);
+    var module2 = require(&quot;./module2&quot;);
+    console.log(&quot;bbb&quot;);
+});
+1
+2
+3
+4
+5
+module1.js</p>
+<p>console.log(&quot;module1&quot;);
+module.exports = 1;
+1
+2
+module2.js</p>
+<p>console.log(&quot;module2&quot;);
+module.exports = 2;<br>1
+2
+构建结果</p>
+<p>命令行中运行webpack --config webpack.config.amd.js</p>
+<ul>
+<li>main.bundle.js</li>
+<li>example.amd.js</li>
+<li>1.chunk.js</li>
+<li>module1.js</li>
+<li>module2.js</li>
+</ul>
+<p>运行结果</p>
+<p>浏览器中运行amd/index.html，控制台输出：</p>
+<p>module1
+aaa
+module2
+bbb
+1
+2
+3
+4
+require-ensure</p>
+<p>源代码</p>
+<p>webpack.config.ensure.js</p>
+<p>var path = require(&quot;path&quot;);
+module.exports = {
+    entry: &quot;./example.ensure.js&quot;,
+    output: {
+        path: path.join(__dirname, &quot;ensure&quot;),
+        filename: &quot;[name].bundle.js&quot;,
+        chunkFilename: &quot;[name].chunk.js&quot;
+    }
+};
+1
+2
+3
+4
+5
+6
+7
+8
+9
+example.ensure.js</p>
+<p>require.ensure([&quot;./module1&quot;], function(require) {
+    console.log(&quot;aaa&quot;);
+    var module2 = require(&quot;./module2&quot;);
+    console.log(&quot;bbb&quot;);
+    require(&quot;./module1&quot;);
+}, &#39;test&#39;);
+1
+2
+3
+4
+5
+6
+module1.js
+同上</p>
+<p>module2.js
+同上
+构建结果</p>
+<p>命令行中运行webpack --config webpack.config.ensure.js</p>
+<ul>
+<li>main.bundle.js</li>
+<li>example.amd.js</li>
+<li>1.chunk.js</li>
+<li>module1.js</li>
+<li>module2.js</li>
+</ul>
+<p>运行结果</p>
+<p>浏览器中运行ensure/index.html，控制台输出：</p>
+<p>aaa
+module2
+bbb
+module1
+1
+2
+3
+4
+require-ensure-chunk</p>
+<p>源代码</p>
+<p>webpack.config.ensure.chunk.js</p>
+<p>var path = require(&quot;path&quot;);
+module.exports = {
+    entry: &quot;./example.ensur.chunk.js&quot;,
+    output: {
+        path: path.join(__dirname, &quot;ensure-chunk&quot;),
+        filename: &quot;[name].bundle.js&quot;,
+        chunkFilename: &quot;[name].chunk.js&quot;
+    }
+};
+1
+2
+3
+4
+5
+6
+7
+8
+9
+example.ensur.chunk.js</p>
+<p>require.ensure([&quot;./module1&quot;], function(require) {
+    console.log(&quot;aaa&quot;);
+    require(&quot;./module1&quot;);
+    console.log(&quot;bbb&quot;);
+}, &#39;common&#39;);</p>
+<p>require.ensure([&quot;./module2&quot;], function(require) {
+    console.log(&quot;ccc&quot;);
+    require(&quot;./module2&quot;);
+    console.log(&quot;ddd&quot;);
+}, &#39;common&#39;);
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+module1.js
+同上</p>
+<p>module2.js
+同上
+构建结果</p>
+<p>命令行中运行webpack --config webpack.config.ensure.js</p>
+<ul>
+<li>main.bundle.js</li>
+<li>example.amd.js</li>
+<li>1.chunk.js</li>
+<li>module1.js</li>
+<li>module2.js</li>
+</ul>
+<p>运行结果</p>
+<p>浏览器中运行ensure/index.html，控制台输出：</p>
+<p>aaa
+module1
+bbb
+ccc
+1module2
+ddd</p>
+
+</div>
+<script>
+$(function(){
+  /**$('pre code').each(function(){
+        var lines = $(this).text().split('\n').length - 1;
+        var $numbering = $('<ul/>').addClass('pre-numbering');
+        $(this)
+            .addClass('has-numbering')
+            .parent()
+            .append($numbering);
+        for(i=1;i<=lines;i++){
+            $numbering.append($('<li/>').text(i));
+        }
+    });**/
+    $('img').each(function(){
+          var _self = $(this);
+          var altCache = _self.attr('alt');
+          if(altCache === 'svg'){
+            var hrefCache = _self.attr('src');
+            var dataCache = hrefCache.substr(0,(hrefCache.length-3))+'svg';
+            _self.replaceWith('<p class="svgNodePhoto"><object data="'+dataCache+'" type="image/svg+xml"></object></p>')
+          }
+      });
+});
+</script>
+<footer class="footer w-900">
+    <a class="footer__backToTop-btn" href="#" id="back-to-top">
+        <i class="footer__backToTop-btn--icon iconfont icon-chevronup"></i>
+    </a>
+    <a class="footer__github-btn" href="https://github.com/kangcafe" target="_blank">Kang`s Cafe on GitHub</a>
+    <div class="ds-thread" data-thread-key="dc93344c-71fc-439c-b46e-bb4923f8c258" data-title="加载规范" data-url="http://kangcafe.com/cn/dc93344c-71fc-439c-b46e-bb4923f8c258.html"></div>
+    <script type="text/javascript">
+        var duoshuoQuery = {
+            short_name: "kangcafe"
+        };
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';
+            ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] ||
+                document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <section class="content__section">
+        <p class="content__a-btn">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="../static/bgimg/licensebuttons.png" />
+            </a>
+        </p>
+        <p class="content__p--word">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+        </a>. Reprint the 《<sub>加载规范</sub>》 need signature "<sub>kangcafe</sub>", and the url is <sub>http://kangcafe.com/cn/dc93344c-71fc-439c-b46e-bb4923f8c258.html</sub>.
+        </p>
+        <p class="content__text-p--desc">
+            <em>这里的大多数文章都写于很多年以前，十年历程，多于怀旧（@2006-2016）</em>
+            <br>Copyright (C) 2016 KangCafe.com, All Rights Reserved
+            <br>Made in China.
+            <span class="text__span--link">
+            ✎
+            <a href="../index.html">Home</a> –
+            <a href="./mood.html">Mood</a> –
+            <a href="./source.html">Source</a> –
+            <a href="./note.html">Note</a>.
+          </span>
+        </p>
+    </section>
+</footer>
+<script type="text/javascript">
+    ! function($) {
+        $(window).scroll(function() {
+            $(this).scrollTop() > 100 ? $("#back-to-top").fadeIn() : $("#back-to-top").fadeOut()
+        }), $("#back-to-top").on("click", function(b) {
+            return b.preventDefault(), $("html, body").animate({
+                scrollTop: 0
+            }, 100), !1
+        });
+    }(jQuery);
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?95e6652d7f50f8def7540e687f338f60";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script type="text/javascript">
+    (function() {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+</body>
+
+</html>
+

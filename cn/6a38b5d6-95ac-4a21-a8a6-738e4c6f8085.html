@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta property="wb:webmaster" content="7e72a191affb5721" />
+    <meta name="description" content="Boilerplate">
+    <meta name="keywords" content="Boilerplate,Boilerplate,Boilerplate">
+    <!-- <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache"> -->
+    <title>Boilerplate</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/mark.css">
+    <link rel="stylesheet" href="../static/font/iconfont.css">
+    <!--[if lt IE 9]>
+    <script src="../static/js/html5.js"></script>
+    <![endif]-->
+    <script type="application/javascript" src="../static/js/jquery.min.js"></script>
+</head>
+
+<body class="body__note">
+    <header class="header">
+        <div class="header__content w-900">
+            <h1 class="content__title">
+                <a class="title__link-a" href="https://github.com/kangcafe" target="_blank">kang`s cafe<span class="title__link-span--icon iconfont icon-github"></span></a>
+            </h1>
+            <small class="content__btn">
+                <a class="content__btn-a" href="./note.html">BACK HOME</a>
+            </small>
+        </div>
+    </header>
+
+
+<div class="container w-900">
+    <h1><span class="header-link" id="boilerplate">Boilerplate</span></h1>
+</div>
+<script>
+$(function(){
+  /**$('pre code').each(function(){
+        var lines = $(this).text().split('\n').length - 1;
+        var $numbering = $('<ul/>').addClass('pre-numbering');
+        $(this)
+            .addClass('has-numbering')
+            .parent()
+            .append($numbering);
+        for(i=1;i<=lines;i++){
+            $numbering.append($('<li/>').text(i));
+        }
+    });**/
+    $('img').each(function(){
+          var _self = $(this);
+          var altCache = _self.attr('alt');
+          if(altCache === 'svg'){
+            var hrefCache = _self.attr('src');
+            var dataCache = hrefCache.substr(0,(hrefCache.length-3))+'svg';
+            _self.replaceWith('<p class="svgNodePhoto"><object data="'+dataCache+'" type="image/svg+xml"></object></p>')
+          }
+      });
+});
+</script>
+<footer class="footer w-900">
+    <a class="footer__backToTop-btn" href="#" id="back-to-top">
+        <i class="footer__backToTop-btn--icon iconfont icon-chevronup"></i>
+    </a>
+    <a class="footer__github-btn" href="https://github.com/kangcafe" target="_blank">Kang`s Cafe on GitHub</a>
+    <div class="ds-thread" data-thread-key="6a38b5d6-95ac-4a21-a8a6-738e4c6f8085" data-title="Boilerplate" data-url="http://kangcafe.com/cn/6a38b5d6-95ac-4a21-a8a6-738e4c6f8085.html"></div>
+    <script type="text/javascript">
+        var duoshuoQuery = {
+            short_name: "kangcafe"
+        };
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';
+            ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] ||
+                document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <section class="content__section">
+        <p class="content__a-btn">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="../static/bgimg/licensebuttons.png" />
+            </a>
+        </p>
+        <p class="content__p--word">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+        </a>. Reprint the 《<sub>Boilerplate</sub>》 need signature "<sub>kangcafe</sub>", and the url is <sub>http://kangcafe.com/cn/6a38b5d6-95ac-4a21-a8a6-738e4c6f8085.html</sub>.
+        </p>
+        <p class="content__text-p--desc">
+            <em>这里的大多数文章都写于很多年以前，十年历程，多于怀旧（@2006-2016）</em>
+            <br>Copyright (C) 2016 KangCafe.com, All Rights Reserved
+            <br>Made in China.
+            <span class="text__span--link">
+            ✎
+            <a href="../index.html">Home</a> –
+            <a href="./mood.html">Mood</a> –
+            <a href="./source.html">Source</a> –
+            <a href="./note.html">Note</a>.
+          </span>
+        </p>
+    </section>
+</footer>
+<script type="text/javascript">
+    ! function($) {
+        $(window).scroll(function() {
+            $(this).scrollTop() > 100 ? $("#back-to-top").fadeIn() : $("#back-to-top").fadeOut()
+        }), $("#back-to-top").on("click", function(b) {
+            return b.preventDefault(), $("html, body").animate({
+                scrollTop: 0
+            }, 100), !1
+        });
+    }(jQuery);
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?95e6652d7f50f8def7540e687f338f60";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script type="text/javascript">
+    (function() {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+</body>
+
+</html>
+

@@ -12,7 +12,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache"> -->
-    <title>KC.</title>
+    <title>Markdown</title>
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../static/css/base.css">
     <link rel="stylesheet" href="../static/css/mark.css">
@@ -299,7 +299,7 @@
 <td>&#60;kang@kangcafe.com&#62;</td>
 <td>&#60;a href=&quot;mailto:kang@kangcafe.com&quot;&#62;<br>kang@kangcafe.com&#60;&#47;a&#62;</td>
 <td>可点击的Email</td>
-<td><a href="&#109;&#x61;&#x69;&#108;&#116;&#111;&#x3a;&#x6b;&#x61;&#110;&#103;&#64;&#x6b;&#97;&#x6e;&#103;&#99;&#x61;&#102;&#101;&#46;&#99;&#x6f;&#109;">&#x6b;&#x61;&#110;&#103;&#64;&#x6b;&#97;&#x6e;&#103;&#99;&#x61;&#102;&#101;&#46;&#99;&#x6f;&#109;</a></td>
+<td><a href="&#109;&#x61;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#107;&#x61;&#x6e;&#x67;&#64;&#x6b;&#x61;&#x6e;&#x67;&#x63;&#x61;&#102;&#101;&#x2e;&#x63;&#111;&#x6d;">&#107;&#x61;&#x6e;&#x67;&#64;&#x6b;&#x61;&#x6e;&#x67;&#x63;&#x61;&#102;&#101;&#x2e;&#x63;&#111;&#x6d;</a></td>
 </tr>
 </tbody>
 </table>
@@ -457,7 +457,30 @@ _   底线
 
 
 </div>
-
+<script>
+$(function(){
+  /**$('pre code').each(function(){
+        var lines = $(this).text().split('\n').length - 1;
+        var $numbering = $('<ul/>').addClass('pre-numbering');
+        $(this)
+            .addClass('has-numbering')
+            .parent()
+            .append($numbering);
+        for(i=1;i<=lines;i++){
+            $numbering.append($('<li/>').text(i));
+        }
+    });**/
+    $('img').each(function(){
+          var _self = $(this);
+          var altCache = _self.attr('alt');
+          if(altCache === 'svg'){
+            var hrefCache = _self.attr('src');
+            var dataCache = hrefCache.substr(0,(hrefCache.length-3))+'svg';
+            _self.replaceWith('<p class="svgNodePhoto"><object data="'+dataCache+'" type="image/svg+xml"></object></p>')
+          }
+      });
+});
+</script>
 <footer class="footer w-900">
     <a class="footer__backToTop-btn" href="#" id="back-to-top">
         <i class="footer__backToTop-btn--icon iconfont icon-chevronup"></i>
@@ -485,7 +508,7 @@ _   底线
             </a>
         </p>
         <p class="content__p--word">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
-        </a>. Reprint the 《<sub>Markdown</sub>》 need signature "<sub>kc</sub>", and the url is <sub>http://kangcafe.com/cn/53d85629-ddc2-427c-9bbe-e7c242984d6a.html</sub>.
+        </a>. Reprint the 《<sub>Markdown</sub>》 need signature "<sub>kangcafe</sub>", and the url is <sub>http://kangcafe.com/cn/53d85629-ddc2-427c-9bbe-e7c242984d6a.html</sub>.
         </p>
         <p class="content__text-p--desc">
             <em>这里的大多数文章都写于很多年以前，十年历程，多于怀旧（@2006-2016）</em>

@@ -6,6 +6,7 @@
         @include element ('backToTop') {
             &-btn {
                 position: fixed;
+                padding: 0;
                 right: 10px;
                 bottom: 10px;
                 display: none;

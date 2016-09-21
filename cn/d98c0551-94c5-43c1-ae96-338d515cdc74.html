@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta property="wb:webmaster" content="7e72a191affb5721" />
+    <meta name="description" content="数据传输">
+    <meta name="keywords" content="Shu,Ju,Chuan,Shu,Shu Ju Chuan Shu,数据传输">
+    <!-- <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache"> -->
+    <title>数据传输</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/mark.css">
+    <link rel="stylesheet" href="../static/font/iconfont.css">
+    <!--[if lt IE 9]>
+    <script src="../static/js/html5.js"></script>
+    <![endif]-->
+    <script type="application/javascript" src="../static/js/jquery.min.js"></script>
+</head>
+
+<body class="body__note">
+    <header class="header">
+        <div class="header__content w-900">
+            <h1 class="content__title">
+                <a class="title__link-a" href="https://github.com/kangcafe" target="_blank">kang`s cafe<span class="title__link-span--icon iconfont icon-github"></span></a>
+            </h1>
+            <small class="content__btn">
+                <a class="content__btn-a" href="./note.html">BACK HOME</a>
+            </small>
+        </div>
+    </header>
+
+
+<div class="container w-900">
+    <h1><span class="header-link" id="数据传输">数据传输</span></h1><h2><span class="header-link" id="单向数据传输">单向数据传输</span></h2><p>现在主流的状态与数据管理框架便数Redux与MobX，其中MobX并非Flux的实现。</p>
+<p>Relay与Falcor也是很流行的可以用于状态管理的工具，不过不同于Redux或者MobX，它们对于后端有特定的需求，只能基于GraphQL或者Falcor Server，并且Relay中的状态也与服务端持久化存储的某些数据相匹配。换言之，Relay与Falcor并没有提供了可以独立运行在客户端并且支持暂时态的状态管理功能，不过如果你需要同时维护Client-Only与Server-Persisted的状态，那么混用Redux与Relay也是个不错的选择。没有最好的工具，只有最合适的工具。
+随 Flux、CQRS 和 Event Sourcing
+flux，redux</p>
+<p><a href="https://github.com/reactjs/redux">Redux</a>、<a href="https://github.com/facebook/flux">flux</a>、<a href="https://github.com/acdlite/flummox">flummox</a>、<a href="https://github.com/mobxjs/mobx">mobx</a>、<a href="https://github.com/reflux/refluxjs">refluxjs</a>和<a href="https://github.com/martyjs/marty">martyjs</a></p>
+<h2><span class="header-link" id="双向数据绑定">双向数据绑定</span></h2><p><a href="http://elm-lang.org/">http://elm-lang.org/</a>
+<a href="https://github.com/acdlite/flux-standard-action/">https://github.com/acdlite/flux-standard-action/</a>
+<a href="http://www.jdon.com/idea/js/mean.html">http://www.jdon.com/idea/js/mean.html</a></p>
+
+</div>
+<script>
+$(function(){
+  /**$('pre code').each(function(){
+        var lines = $(this).text().split('\n').length - 1;
+        var $numbering = $('<ul/>').addClass('pre-numbering');
+        $(this)
+            .addClass('has-numbering')
+            .parent()
+            .append($numbering);
+        for(i=1;i<=lines;i++){
+            $numbering.append($('<li/>').text(i));
+        }
+    });**/
+    $('img').each(function(){
+          var _self = $(this);
+          var altCache = _self.attr('alt');
+          if(altCache === 'svg'){
+            var hrefCache = _self.attr('src');
+            var dataCache = hrefCache.substr(0,(hrefCache.length-3))+'svg';
+            _self.replaceWith('<p class="svgNodePhoto"><object data="'+dataCache+'" type="image/svg+xml"></object></p>')
+          }
+      });
+});
+</script>
+<footer class="footer w-900">
+    <a class="footer__backToTop-btn" href="#" id="back-to-top">
+        <i class="footer__backToTop-btn--icon iconfont icon-chevronup"></i>
+    </a>
+    <a class="footer__github-btn" href="https://github.com/kangcafe" target="_blank">Kang`s Cafe on GitHub</a>
+    <div class="ds-thread" data-thread-key="d98c0551-94c5-43c1-ae96-338d515cdc74" data-title="数据传输" data-url="http://kangcafe.com/cn/d98c0551-94c5-43c1-ae96-338d515cdc74.html"></div>
+    <script type="text/javascript">
+        var duoshuoQuery = {
+            short_name: "kangcafe"
+        };
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';
+            ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] ||
+                document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <section class="content__section">
+        <p class="content__a-btn">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="../static/bgimg/licensebuttons.png" />
+            </a>
+        </p>
+        <p class="content__p--word">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+        </a>. Reprint the 《<sub>数据传输</sub>》 need signature "<sub>kangcafe</sub>", and the url is <sub>http://kangcafe.com/cn/d98c0551-94c5-43c1-ae96-338d515cdc74.html</sub>.
+        </p>
+        <p class="content__text-p--desc">
+            <em>这里的大多数文章都写于很多年以前，十年历程，多于怀旧（@2006-2016）</em>
+            <br>Copyright (C) 2016 KangCafe.com, All Rights Reserved
+            <br>Made in China.
+            <span class="text__span--link">
+            ✎
+            <a href="../index.html">Home</a> –
+            <a href="./mood.html">Mood</a> –
+            <a href="./source.html">Source</a> –
+            <a href="./note.html">Note</a>.
+          </span>
+        </p>
+    </section>
+</footer>
+<script type="text/javascript">
+    ! function($) {
+        $(window).scroll(function() {
+            $(this).scrollTop() > 100 ? $("#back-to-top").fadeIn() : $("#back-to-top").fadeOut()
+        }), $("#back-to-top").on("click", function(b) {
+            return b.preventDefault(), $("html, body").animate({
+                scrollTop: 0
+            }, 100), !1
+        });
+    }(jQuery);
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?95e6652d7f50f8def7540e687f338f60";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script type="text/javascript">
+    (function() {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+</body>
+
+</html>
+

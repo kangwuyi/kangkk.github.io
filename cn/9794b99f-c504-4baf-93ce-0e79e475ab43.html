@@ -12,7 +12,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache"> -->
-    <title>KC.</title>
+    <title>mysql</title>
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../static/css/base.css">
     <link rel="stylesheet" href="../static/css/mark.css">
@@ -41,16 +41,39 @@
 </code></pre>
 <p>找到 <code>bind-address = 127.0.0.1</code>，注释掉这行或者改为<code>bind-address = 0.0.0.0</code>允许任意IP访问，或者自己指定一个IP地址。</p>
 <p>重启<code>MySQL</code>。</p>
-<pre><code class="lang-bash">sudo <span class="hljs-meta-keyword">/etc/</span>init.d/mysql restart
+<pre><code class="lang-bash">sudo <span class="hljs-regexp">/etc/i</span>nit.d<span class="hljs-regexp">/mysql restart</span>
 </code></pre>
-<h3><span class="header-link" id="授权用户能进行远程连接">授权用户能进行远程连接</span></h3><pre><code class="lang-bash"><span class="hljs-attribute">mysql</span> -uroot -p
+<h3><span class="header-link" id="授权用户能进行远程连接">授权用户能进行远程连接</span></h3><pre><code class="lang-bash"><span class="hljs-attribute">mysql -uroot -p</span>
 </code></pre>
 <pre><code>mysql&gt; grant all privileges <span class="hljs-keyword">on</span> *.* <span class="hljs-keyword">to</span> root@<span class="hljs-string">"%"</span> identified <span class="hljs-keyword">by</span> <span class="hljs-string">"password"</span> <span class="hljs-keyword">with</span> grant option;
 mysql&gt; flush privileges;
 </code></pre><p>第一行命令解释如下，<em>.</em>：第一个<em>代表数据库名；第二个</em>代表表名。这里的意思是所有数据库里的所有表都授权给用户。root：授予root账号。“%”：表示授权的用户IP可以指定，这里代表任意的IP地址都能访问MySQL数据库。“password”：分配账号对应的密码，这里密码自己替换成你的mysql root帐号密码。第二行命令是刷新权限信息，也即是让我们所作的设置马上生效。</p>
 
 </div>
-
+<script>
+$(function(){
+  /**$('pre code').each(function(){
+        var lines = $(this).text().split('\n').length - 1;
+        var $numbering = $('<ul/>').addClass('pre-numbering');
+        $(this)
+            .addClass('has-numbering')
+            .parent()
+            .append($numbering);
+        for(i=1;i<=lines;i++){
+            $numbering.append($('<li/>').text(i));
+        }
+    });**/
+    $('img').each(function(){
+          var _self = $(this);
+          var altCache = _self.attr('alt');
+          if(altCache === 'svg'){
+            var hrefCache = _self.attr('src');
+            var dataCache = hrefCache.substr(0,(hrefCache.length-3))+'svg';
+            _self.replaceWith('<p class="svgNodePhoto"><object data="'+dataCache+'" type="image/svg+xml"></object></p>')
+          }
+      });
+});
+</script>
 <footer class="footer w-900">
     <a class="footer__backToTop-btn" href="#" id="back-to-top">
         <i class="footer__backToTop-btn--icon iconfont icon-chevronup"></i>
@@ -78,7 +101,7 @@ mysql&gt; flush privileges;
             </a>
         </p>
         <p class="content__p--word">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
-        </a>. Reprint the 《<sub>mysql</sub>》 need signature "<sub>kc</sub>", and the url is <sub>http://kangcafe.com/cn/9794b99f-c504-4baf-93ce-0e79e475ab43.html</sub>.
+        </a>. Reprint the 《<sub>mysql</sub>》 need signature "<sub>kangcafe</sub>", and the url is <sub>http://kangcafe.com/cn/9794b99f-c504-4baf-93ce-0e79e475ab43.html</sub>.
         </p>
         <p class="content__text-p--desc">
             <em>这里的大多数文章都写于很多年以前，十年历程，多于怀旧（@2006-2016）</em>
