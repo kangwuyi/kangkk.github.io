@@ -178,16 +178,42 @@ export default (initialState = {}, history) => {
 
 ![svg][redux-middleware.png]
 
-制作中间件一般用到dispatch和getState两个方法。
 
 ### Subscribe
 
+Subscribe从设计的角度来说是一个订阅者，监听事件变化。
+
+```js
+function subscribe(listener) {
+  ...
+  ensureCanMutateNextListeners()
+  nextListeners.push(listener)
+
+  return function unsubscribe() {
+    ...
+    ensureCanMutateNextListeners()
+    var index = nextListeners.indexOf(listener)
+    nextListeners.splice(index, 1)
+  }
+}
+```
 ### GetState
-
+getState是获取当前store的state(currentState)；
+```js
+function getState() {
+    return currentState
+  }
+  ```
 ### ReplaceReducer
+动态替换reducer函数
 
-
-
+```js
+function replaceReducer(nextReducer) {
+   ...
+   currentReducer = nextReducer
+   dispatch({ type: ActionTypes.INIT })
+ }
+```
 ### State
 
 State对象存储在store状态树中，state只能通过`dispatch(action)`来触发更新，更新逻辑由reducer来执行，需要注意的是当state变化时会返回全新的对象，而不是修改传入的参数。
@@ -310,6 +336,8 @@ immutablejs通过结构共享来解决的数据拷贝时的性能问题，即当
 
 #### Reselect
 
+缓存的概念。
+
 [reselect][reselect]
 
 带 cache 功能的 selector，使用Resselect避免不必要的selector计算
@@ -332,7 +360,7 @@ dispatch(add());
 #### 异步Action Creator
 redux-thunks 和 redux-promise 分别是使用异步回调和 Promise 来解决异步 action 问题的。
 
-https://www.npmjs.com/package/isomorphic-fetch
+如果直接用[Fetch API][Fetch_API]，可能一些浏览器并不支持，所以还是需要添加垫片[isomorphic-fetch][isomorphic-fetch]
 
 
 ```js
@@ -536,6 +564,22 @@ constructor(){
 }
 ```
 
+## 附录
+
+| Github源码 | 描述 |
+| :------------- | :------------- |
+| [ducks-modular-redux][ducks-modular-redux] |{ctionTypes, actions, reducer}规则解决方案|
+|[react-slingshot][react-slingshot]||
+|[saga-login-flow][saga-login-flow]||
+|[login-flow][login-flow]||
+|[redux-saga][redux-saga]||
+|[redux-auth-wrapper][redux-auth-wrapper]||
+|[dva][dva]||
+|[react-redux-tutorial][react-redux-tutorial]||
+|[reduxjs doc][cn-reduxjs-org]|reduxjs中文档案|
+|[alloyteam:react-redux][alloyteam-react-redux]|React 数据流管理架构之 Redux 介绍|
+
+
 
 [^^redux_website_title_desc]:[redux.js文档](http://redux.js.org/)，源自`redux.js`文档中首页的一段话，对`redux`特性的官方描述。
 [^^behavioral_functionality_desc]:行为功能是对目的功能和有用行为的一种抽象。这里特指在"web&nbsp;page"中对视图的按钮等`DOM`元素点击、页面路由切换等功能的操作行为，在redux中被称为[action](http://redux.js.org/docs/basics/Actions.html)。
@@ -577,6 +621,19 @@ constructor(){
 [expressjs-middleware]:http://expressjs.com/en/4x/api.html#express.methods
 [koajs-middleware]:https://github.com/koajs/koa/wiki
 [react-redux]:https://github.com/reactjs/react-redux
+[ducks-modular-redux]:https://github.com/erikras/ducks-modular-redux
+[isomorphic-fetch]:https://www.npmjs.com/package/isomorphic-fetch
+[Fetch_API]:https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+[react-slingshot]:https://github.com/coryhouse/react-slingshot
+[saga-login-flow]:https://github.com/sotojuan/saga-login-flow
+[login-flow]:https://github.com/mxstbr/login-flow
+[redux-saga]:https://github.com/yelouafi/redux-saga
+[redux-auth-wrapper]:https://github.com/mjrussell/redux-auth-wrapper
+[dva]:https://github.com/dvajs/dva
+[react-redux-tutorial]:https://github.com/lewis617/react-redux-tutorial
+[cn-reduxjs-org]:http://cn.redux.js.org/
+[alloyteam-react-redux]:http://www.alloyteam.com/2015/09/react-redux/
+
 
 [logo_1.png]:../../../static/img/redux/logo_1.png
 [redux-middleware.png]:../../../static/img/redux/redux-middleware.png

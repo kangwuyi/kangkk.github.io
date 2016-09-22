@@ -76,6 +76,7 @@
 <li><a href="#connect">Connect</a></li>
 </ol>
 </li>
+<li><a href="#附录">附录</a></li>
 </ol>
 </div></section>
 
@@ -237,8 +238,33 @@ store<span class="hljs-selector-class">.dispatch</span>(addTodo(<span class="hlj
 }
 </code></pre>
 <p><img src="../static/img/redux/redux-middleware.png" alt="svg"></p>
-<p>制作中间件一般用到dispatch和getState两个方法。</p>
-<h3><span class="header-link" id="subscribe">Subscribe</span></h3><h3><span class="header-link" id="getstate">GetState</span></h3><h3><span class="header-link" id="replacereducer">ReplaceReducer</span></h3><h3><span class="header-link" id="state">State</span></h3><p>State对象存储在store状态树中，state只能通过<code>dispatch(action)</code>来触发更新，更新逻辑由reducer来执行，需要注意的是当state变化时会返回全新的对象，而不是修改传入的参数。</p>
+<h3><span class="header-link" id="subscribe">Subscribe</span></h3><p>Subscribe从设计的角度来说是一个订阅者，监听事件变化。</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">subscribe</span><span class="hljs-params">(listener)</span> </span>{
+  ...
+  ensureCanMutateNextListeners()
+  nextListeners.push(listener)
+
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unsubscribe</span><span class="hljs-params">()</span> </span>{
+    ...
+    ensureCanMutateNextListeners()
+    <span class="hljs-keyword">var</span> index = nextListeners.indexOf(listener)
+    nextListeners.splice(index, <span class="hljs-number">1</span>)
+  }
+}
+</code></pre>
+<h3><span class="header-link" id="getstate">GetState</span></h3><p>getState是获取当前store的state(currentState)；</p>
+<pre><code class="lang-js"><span class="hljs-keyword">function</span> <span class="hljs-title">getState</span>() {
+    <span class="hljs-keyword">return</span> <span class="hljs-type">currentState</span>
+  }
+</code></pre>
+<h3><span class="header-link" id="replacereducer">ReplaceReducer</span></h3><p>动态替换reducer函数</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">replaceReducer</span><span class="hljs-params">(nextReducer)</span></span> {
+   ...
+   currentReducer = nextReducer
+   dispatch({ <span class="hljs-built_in">type</span>: ActionTypes.INIT })
+ }
+</code></pre>
+<h3><span class="header-link" id="state">State</span></h3><p>State对象存储在store状态树中，state只能通过<code>dispatch(action)</code>来触发更新，更新逻辑由reducer来执行，需要注意的是当state变化时会返回全新的对象，而不是修改传入的参数。</p>
 <p><img src="../static/img/redux/store-state-view.png" alt="svg"></p>
 <p>这里示例的逻辑由四步分组成，第一部分是定义子路由，在子路由中引入用于收集reducer的回调函数，我命名为injectReducer，当然也可以命名其它的名字，如collectReducer、pushReducer等等都可以</p>
 <pre><code class="lang-js"><span class="hljs-keyword">import</span> { injectReducer } <span class="hljs-keyword">from</span> <span class="hljs-string">'../../store/reducers'</span>;
@@ -330,7 +356,8 @@ export default (initialState = {}, history) =&gt; {
 <ul>
 <li><a href="https://www.npmjs.com/package/deep-freeze-node">deep-freeze-node</a></li>
 </ul>
-<h4><span class="header-link" id="reselect">Reselect</span></h4><p><a href="https://github.com/reactjs/reselect">reselect</a></p>
+<h4><span class="header-link" id="reselect">Reselect</span></h4><p>缓存的概念。</p>
+<p><a href="https://github.com/reactjs/reselect">reselect</a></p>
 <p>带 cache 功能的 selector，使用Resselect避免不必要的selector计算</p>
 <h2><span class="header-link" id="action">Action</span></h2><p>Action同样是一个javascript对象，通常包含<code>type</code>等一些字段。</p>
 <h3><span class="header-link" id="action-creator">Action Creator</span></h3><p>“Action Creator”是action的创造者，本质上就是一个函数，返回值是一个action，“Action Creator”可以是同步也可以是异步。</p>
@@ -340,7 +367,7 @@ export default (initialState = {}, history) =&gt; {
 dispatch(add());
 </code></pre>
 <h4><span class="header-link" id="异步action-creator">异步Action Creator</span></h4><p>redux-thunks 和 redux-promise 分别是使用异步回调和 Promise 来解决异步 action 问题的。</p>
-<p><a href="https://www.npmjs.com/package/isomorphic-fetch">https://www.npmjs.com/package/isomorphic-fetch</a></p>
+<p>如果直接用<a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a>，可能一些浏览器并不支持，所以还是需要添加垫片<a href="https://www.npmjs.com/package/isomorphic-fetch">isomorphic-fetch</a></p>
 <pre><code class="lang-js"><span class="hljs-selector-tag">function</span> <span class="hljs-selector-tag">fetchDataAsync</span>() {
     <span class="hljs-selector-tag">return</span> <span class="hljs-selector-tag">function</span> (dispatch) {
       <span class="hljs-selector-tag">fetch</span>(<span class="hljs-string">'/posttest'</span>, {
@@ -539,6 +566,56 @@ export <span class="hljs-keyword">default</span> connect(mapStateToProps, mapDis
   this.clearCache()
 }
 </code></pre>
+<h2><span class="header-link" id="附录">附录</span></h2><table>
+<thead>
+<tr>
+<th style="text-align:left">Github源码</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="https://github.com/erikras/ducks-modular-redux">ducks-modular-redux</a></td>
+<td style="text-align:left">{ctionTypes, actions, reducer}规则解决方案</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://github.com/coryhouse/react-slingshot">react-slingshot</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://github.com/sotojuan/saga-login-flow">saga-login-flow</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://github.com/mxstbr/login-flow">login-flow</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://github.com/yelouafi/redux-saga">redux-saga</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://github.com/mjrussell/redux-auth-wrapper">redux-auth-wrapper</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://github.com/dvajs/dva">dva</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://github.com/lewis617/react-redux-tutorial">react-redux-tutorial</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://cn.redux.js.org/">reduxjs doc</a></td>
+<td style="text-align:left">reduxjs中文档案</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://www.alloyteam.com/2015/09/react-redux/">alloyteam:react-redux</a></td>
+<td style="text-align:left">React 数据流管理架构之 Redux 介绍</td>
+</tr>
+</tbody>
+</table>
 <h2><span class="header-link" id="references">References</span></h2><section class="footnote-box"><ul><li id="footnoteDo_1" class="footnoteUp"><span class="backlink" data-desc="redux_website_title_desc"><b><a  href="#footnoteUp_1">^</a></b></span><span class="reference-text"><a href="http://redux.js.org/">redux.js文档</a>，源自<code>redux.js</code>文档中首页的一段话，对<code>redux</code>特性的官方描述。</span></li><li id="footnoteDo_2" class="footnoteUp"><span class="backlink" data-desc="behavioral_functionality_desc"><b><a  href="#footnoteUp_2">^</a></b></span><span class="reference-text">行为功能是对目的功能和有用行为的一种抽象。这里特指在&quot;web&nbsp;page&quot;中对视图的按钮等<code>DOM</code>元素点击、页面路由切换等功能的操作行为，在redux中被称为<a href="http://redux.js.org/docs/basics/Actions.html">action</a>。</span></li><li id="footnoteDo_3" class="footnoteUp"><span class="backlink" data-desc="redux_middleware_wedsite_desc"><b><a  href="#footnoteUp_3">^</a></b></span><span class="reference-text"><a href="http://redux.js.org/docs/api/applyMiddleware.html">applyMiddleware(...middlewares)</a>:Middleware is the suggested way to extend Redux with custom functionality. Middleware lets you wrap the store&#39;s dispatch method for fun and profit. The key feature of middleware is that it is composable. Multiple middleware can be combined together, where each middleware requires no knowledge of what comes before or after it in the chain.</span></li><li id="footnoteDo_4" class="footnoteUp"><span class="backlink" data-desc="redux_expressjs_middleware_list_desc"><b><a  href="#footnoteUp_4">^</a></b></span><span class="reference-text"><a href="http://expressjs.com/">expressjs</a>，中间件的介绍为<a href="http://expressjs.com/en/4x/api.html#express.methods">expressjs-middleware</a>，概括来说中间件<code>middleware</code>函数能够访问请求对象 <code>req</code>、响应对象 <code>res</code> 以及应用程序的请求/响应循环中的下一个中间件<code>middleware</code>函数。下一个中间件函数通常由名为<code>next</code>的变量来表示。</span></li><li id="footnoteDo_5" class="footnoteUp"><span class="backlink" data-desc="redux_koa_middleware_list_desc"><b><a  href="#footnoteUp_5">^</a></b></span><span class="reference-text"><a href="http://koajs.com/">koajs</a>，中间件的介绍为<a href="https://github.com/koajs/koa/wiki">koajs-middleware</a>。</span></li><li id="footnoteDo_6" class="footnoteUp"><span class="backlink" data-desc="aspect_oriented_programming_desc"><b><a  href="#footnoteUp_6">^</a></b></span><span class="reference-text"><a href="https://en.wikipedia.org/wiki/Aspect-oriented_programming">AOP（Aspect-Oriented Programming）</a>，面向切面编程，通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术，被认为是<a href="https://en.wikipedia.org/wiki/Object-oriented_programming">OOP</a>的一种延续（补充和完善<code>OOP</code>）。</span></li></ul></section>
 
 
