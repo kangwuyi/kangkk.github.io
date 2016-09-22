@@ -12,23 +12,25 @@
 
 ![svg][action-store-view.png]
 
-Redux作为一个[javascript][javascript]应用的可预测状态（state）容器，借鉴flux的数据单向流动、[elm][elm]的[The Elm Architecture][architecture]、[函数式编程][functional-javascript-workshop]、[柯里化（Currying）][Currying]函数、[组合模式（Composite pattern）][Composite_pattern]的等思想。将视图（view）中可操作的这些行为类比为动作（action），对应为状态（state），状态引导动作进行视图更新，redux状态容器[store][Store]对状态（state）进行同一管理，可以说store可预测状态容器是redux的骨架也不为过。
+Redux诞生的出发点是作为一个javascript应用状态（state）容器，借鉴flux的数据单向流动、[elm][elm]的[The Elm Architecture][architecture]、[函数式编程][functional-javascript-workshop]、[柯里化（Currying）][Currying]函数、[组合模式（Composite pattern）][Composite_pattern]的等思想。将视图（view）中可操作的这些行为类比为动作（action），每个动作传递都附带状态（state）信息，状态引导动作对redux状态容器[store][Store]更新进而对视图更新，store对状态（state）进行同一管理，可以说store可预测状态容器是redux的骨架也不为过。
 
 ### Redux原则
 
-Redux在文档中规定了三条原则（[Three Principles][ThreePrinciples]）：“Single source of truth”、“State is read-only”和“Changes are made with pure functions”，用于描述在redux整个生命周期内怎样去管理和维护store树。
+无论什么框架都会设定一些属于它的规则，规则恒定，附者云起进而形成生态，react如是redux也是如此，在redux中所以规定了三条原则（[Three Principles][ThreePrinciples]），即“Single source of truth”、“State is read-only”和“Changes are made with pure functions”，用于描述在redux整个生命周期内怎样去管理和维护store树。
 
-* 单一数据源：State被存储在一颗唯一的`object tree`上，即store。
-* State只读：State树内所有`key->value`只读，惟一改变state的方法就是触发action。
-* Reducer函数：State树内的state只能依靠纯函数reducer对它进行更新。
+* Single source of truth：唯一数据源。State被存储在一颗唯一的`object tree`上，即store对象树。
+* State is read-only：State只读。在每个组件（Component）或者reducer等内部，State树内所有`key->value`只读。
+* Changes are made with pure functions：这里的纯函数（pure functions）特指reducer函数。State树内的state只能依靠纯函数reducer对store进行更新。
 
 ### 单向数据流
 
-单向数据流（Unidirectional data flow），即从模型到视图的数据流动，它区别于`双向数据绑定`的方式，用react中的术语解释的话就是，当某个组件的数据`prop`需要变化并且通过相关方法操作更新state之后，store会从父节点传递到子节点，依次向下遍历整棵组件树，以组件为单位寻找使用了变化的`prop`的组件进行渲染。假定一个react渲染的页面，组件包含关系为`A ⊇ {B, C} && C ⊇ D`，其中`B`和`C`子组件都引用了store树上的`props.test`属性，这是一个非常典型的从上到下单向流动的阶梯式模型。
+姑且先讲reducer函数怎样更新store放下，先讨论store变更为什么会引起state变化。这里就要引申到单向数据流（Unidirectional data flow）的理论，单向数据流动即从模型到视图的数据流动，它区别于`双向数据绑定`的方式，用react中的术语解释的话就是，当某个组件的数据`prop`需要变化并且通过相关方法操作更新store对象树内某个碎片state之后，redux会返回一个新的store会从父节点传递到子节点，依次向下遍历整棵组件树，以组件为单位寻找使用了变化的`prop`的组件进行渲染。
+
+假定一个react渲染的页面，黄色部分代表页面`DOM`结构树，蓝色是各个组件，组件之间的包含关系为`A ⊇ {B, C} && C ⊇ D`，其中`B`和`C`子组件都引用了store树上的`props.test`属性，这是一个非常典型的从上到下单向流动的阶梯式模型。
 
 ![svg][redux-stroe-up-down.png]
 
-当在`B`组件内某个操作（UI交互、API调用等）更新了state值（即`props.test`属性值），这个操作本身并不会对`B`组件进行干扰和操作，`B`组件和`D`组件会在store树内的相应state值变化后触发组件使view发生改变。
+现在发生变化，当在`B`组件内某个操作（UI交互、API调用等）更新了state值（即`props.test`属性值），这个操作本身并不会对`B`组件的视图和渲染进行干扰和操作，但是`B`组件和`D`组件会在store树内的相应state值变化后触发组件使view发生改变。如果是在传统页面中，这是事件和DOM结构之间的一对一，在数据双向绑定概念中是事件与DOM结构的多对多，在react开发中应该是事件与VDOM一对一，但是在redux接管数据源后就变成了事件与VDOM之间没有直接关系，VDOM的渲染间接由store对象树决定。
 
 ![svg][redux-stroe-up-down_2.png]
 
@@ -42,7 +44,27 @@ Redux在文档中规定了三条原则（[Three Principles][ThreePrinciples]）�
 
 ## Store
 
-Store是一个由`createStore(reducer, preloadedState, enhancer)`方法创建的javascript对象，用于存储状态树。
+Store作为状态容器、唯一数据源，由一个`createStore(reducer, preloadedState, enhancer)`函数创建，在项目部署过程中使用createStore函数一般会在项目根目录下单独列一个文件。
+
+<pre class="pre-no-border">
+.
+├── bin
+│   └── ...
+├── ...
+├── src
+│   ├── components
+│   │   └── ...
+│   ├── containers
+│   │   └── ...
+│   ├── routes
+│   │   └── ...
+│   ├── store
+│   │   ├── createStore.js
+│   │   └── reducers.js
+│   └── utils
+│       └── ...
+└── ...
+</pre>
 
 ```js
 import {createStore} from 'redux';
@@ -58,7 +80,7 @@ export default (initialState = {}, history) => {
 }
 ```
 
-阅读redux源码的createStore函数可以看到最后返回四个核心对象和一个[symbol][symbol]对象。
+在__createStore.js__文件中createStore函数传入了__makeRootReducer__和__initialState__两个值，其中makeRootReducer就是通常所说的root reducer，只不过本文所示例的reducer皆为异步加载，所以可能和其它文章写的root reducer方式不一样，详细的内容下文会有叙述。阅读redux源码的[createStore][redux-createStorejs]函数可以看到最后返回四个核心对象和一个[symbol][symbol]对象，也就是说在示例中`makeRootReducer()=reducer`、`initialState=preloadedState`。
 
 ```js
 import $$observable from 'symbol';
@@ -74,18 +96,18 @@ export default function createStore(reducer, preloadedState, enhancer) {
 }
 ```
 
-| 方法 | 定义 | 使用方式 | 描述 |
-|--------|--------|--------|--------|
-|dispatch  		 |执行接口     |store.dispatch(action)           |接受action参数进行store更新，并分发给subscribe过的reducer，执行回调函数|
-|subscribe		 |订阅接口     |store.subscribe(cb)              |在每次执行dispatch的时候，用于执行自定义的回调函数操作|
-|getState      |数据接口     |store.getState()                 |redux对外导出数据|
-|replaceReducer|重置store接口|store.replaceReducer(nextReducer)|重置redux的reducer，重新启动store流程|
+[^->createStore(reducer, preloadedState, enhancer)->currentReducer = reducer->currentState = preloadedState->function ensureCanMutateNextListeners(){}->function getState(){}->function subscribe(listener){}->function dispatch(action){}->function replaceReducer(nextReducer){}->function observable(){}->return {dispatch,subscribe,getState,replaceReducer,[$$observable]: observable}->]
+
+| 方法 | 使用方式 | 描述 |
+|--------|--------|--------|
+|dispatch  		 |store.dispatch(action)           |action参数将参与store更新，并分发给subscribe函数正在监听的reducer|
+|subscribe		 |store.subscribe(listener)        |listener监听者，实际上就是回调函数|
+|getState      |store.getState()                 |获取state|
+|replaceReducer|store.replaceReducer(nextReducer)|刷新reducer并初始化store|
 
 ### Dispatch
 
 Dispatch方法用于更新store状态树，流程是在dispatch接受一个action，由action决定调用reducer转换状态树， 且通知监听者数据已发生变化，从dispatch源码中看到函数`currentReducer(currentState, action)`传递state、action，观察者列表`listeners`直接for循环遍历执行`listeners[i]()`。
-
-
 
 ```js
 function dispatch(action) {
@@ -102,16 +124,16 @@ function dispatch(action) {
  }
  ```
 
-这里以`dispatch(action)`方式图示dispatch函数的执行过程。
-
-![svg][dispatch-desc.png]
+在主流的redux思想里有一种说法叫“redux命令行模式”，其中dispatch比作分发器，这个形容很贴切。Dispatch方法就是接收action并将action里的信息分发给store和reducer，这里画了一个简单的图示以`dispatch(action)`方式展现dispatch函数的执行过程。
 
 ```js
 const action = { type: 'ADD', payload: '***'};
 dispatch(action);
 ```
 
-另外还有`bindActionCreators(action)`函数方式。
+![svg][dispatch-desc.png]
+
+除此之外dispatch函数的执行方法两种形式，其一是`bindActionCreators(action)`方式，bindActionCreators函数在本文的后面也有说到。
 
 ```js
 const action = { type: 'ADD', payload: '***'};
@@ -119,7 +141,7 @@ const bindActionCreators = require('redux').bindActionCreators;
 bindActionCreators(action);
 ```
 
-`dispatch action creator`函数方式
+其二是`dispatch action creator`方式，大多数项目中应用的都是这种方式。
 
 ```js
 function addTodo(text) {
@@ -144,6 +166,7 @@ const dispatch = store.dispatch;
 
 更全面具体一些的扩展就要说到redux中间件的概念，如果熟悉expressjs[^^redux_expressjs_middleware_list_desc]或者koajs[^^redux_koa_middleware_list_desc]，应该会对[Middleware][Middleware]很熟悉，在redux中的中间件是一个高阶函数，通俗讲更多的是对现有dispatch函数进行扩展，其逻辑倾向于AOP[^^aspect_oriented_programming_desc]，意在将散布在各处的横切代码（cross-cutting code）以及一些被重复使用的功能性组件被重复使用。
 
+![svg][redux-middleware.png]
 
 ```js
 import {applyMiddleware, compose, createStore} from 'redux';
@@ -176,7 +199,6 @@ export default (initialState = {}, history) => {
 
 ```
 
-![svg][redux-middleware.png]
 
 
 ### Subscribe
@@ -307,16 +329,14 @@ export default createRoutes
 
 #### State扁平化
 
-在redux开发过程中，为避免不同数据之间相互引用或返回相互嵌套的值，可以使用[normalizr][normalizr]对state扁平化、范式化处理。
-
 ```bash
 npm install --save normalizr
 ```
-store树对象或者组件自身state树对象实质上是[JSON][JSON]对象
+
+Store树对象或者组件自身state树对象实质上是[JSON][JSON]对象，所以在redux开发过程中，为避免不同数据之间相互引用或返回相互嵌套的值，可以使用[normalizr][normalizr]对state扁平化、范式化处理。
 
 ##### 可变对象
-lodash 的 cloneDeep
-但是复杂数据的深度拷贝损耗性能，这个时候就需要引用不可变对象解决问题。
+可变对象可以用`Object.assign`或者lodash的`cloneDeep`函数。
 
 ```js
 const assign = Object.assign || require('object.assign');
@@ -336,11 +356,7 @@ immutablejs通过结构共享来解决的数据拷贝时的性能问题，即当
 
 #### Reselect
 
-缓存的概念。
-
-[reselect][reselect]
-
-带 cache 功能的 selector，使用Resselect避免不必要的selector计算
+Selector扩展组件，由于[reselect][reselect]带有缓存功能，所以使用它可以避免不必要的selector计算
 
 ## Action
 
@@ -518,10 +534,10 @@ Connect是由[react-redux][react-redux]提供的一个高阶函数。源码中co
 
 | 参数    | 描述 |
 | :------------- | :------------- |
-|mapStateToProps    |在store发生改变的时候才会调用，然后把返回的结果作为组件的props|
-|mapDispatchToProps |主要作用是弱化Redux在React组件中存在感，让在组件内部改变store的操作感觉就像是调用一个通过props传递进来的函数一样。一般会配合Redux的bindActionCreators使用。如果不指定这个函数，dispatch会注入到你的组件props中|
-|mergeProps         |用来指定mapStateToProps、mapDispatchToProps、ownProps(组件自身属性)的合并规则，合并的结果作为组件的props。如果要指定这个函数，建议不要太复杂|
-|options            |里面主要关注pure，如果你的组件仅依赖props和Redux的state，pure一定要为true，这样能够避免不必要的更新|
+|mapStateToProps    |将state作为返回结果绑定到组件的props对象上|
+|mapDispatchToProps | |
+|mergeProps         | |
+|options            |&nbsp;|
 
 ```js
 export default function connect(mapStateToProps, mapDispatchToProps, mergeProps, options = {}) {
@@ -597,7 +613,6 @@ constructor(){
 [martyjs]:https://github.com/martyjs/marty
 [javascript-state-machine]:https://github.com/jakesgordon/javascript-state-machine
 [vuex]:https://github.com/vuejs/vuex
-[javascript]:https://en.wikipedia.org/wiki/JavaScript
 [elm]:http://elm-lang.org/
 [architecture]:http://guide.elm-lang.org/architecture/
 [functional-javascript-workshop]:https://github.com/timoxley/functional-javascript-workshop
@@ -633,7 +648,7 @@ constructor(){
 [react-redux-tutorial]:https://github.com/lewis617/react-redux-tutorial
 [cn-reduxjs-org]:http://cn.redux.js.org/
 [alloyteam-react-redux]:http://www.alloyteam.com/2015/09/react-redux/
-
+[redux-createStorejs]:https://github.com/reactjs/redux/blob/master/src/createStore.js
 
 [logo_1.png]:../../../static/img/redux/logo_1.png
 [redux-middleware.png]:../../../static/img/redux/redux-middleware.png

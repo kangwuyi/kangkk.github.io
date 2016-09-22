@@ -376,8 +376,8 @@ function tocReplace(mdFile, mdFileToc) {
     var footnoteStart = new RegExp("\\[\\^\\^+[a-zA-Z0-9_\u4e00-\u9fa5]+\\](?!:)", "igm");
     var footnoteEnd = new RegExp("\\[\\^\\^+[a-zA-Z0-9_\u4e00-\u9fa5]+\\]:.+", "ig");
 
-    var tableTreeStart = new RegExp("\\[\\^\\-\\>+[a-zA-Z0-9_\u4e00-\u9fa5\\s\\-\\>\"\\.\\/\\;\\[\\]\\(\\)\\（\\）\\=\\'\\{\\}\\,\\:\\`\\“\\‘]+\\-\\>]", "igm");
-    var tableTreeItem=  new RegExp("\\-\\>+[a-zA-Z0-9_\u4e00-\u9fa5\\s\\-\"\\.\\/\\;\\[\\]\\(\\)\\（\\）\\=\\'\\{\\}\\,\\:\\`\\“\\‘]+(?!(\\>|\\>\\]))+", "igm");
+    var tableTreeStart = new RegExp("\\[\\^\\-\\>+[a-zA-Z0-9_\u4e00-\u9fa5\\s\\-\\>\"\\.\\/\\;\\[\\]\\$\\%\\^\\&\\#\\@\\!\\+\\(\\)\\（\\）\\=\\'\\{\\}\\,\\:\\`\\“\\‘]+\\-\\>]", "igm");
+    var tableTreeItem=  new RegExp("\\-\\>+[a-zA-Z0-9_\u4e00-\u9fa5\\s\\-\"\\.\\/\\;\\[\\]\\$\\%\\^\\&\\#\\@\\!\\+\\(\\)\\（\\）\\=\\'\\{\\}\\,\\:\\`\\“\\‘]+(?!(\\>|\\>\\]))+", "igm");
 
 
     var start = '<!-- toc -->';
