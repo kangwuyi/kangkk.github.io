@@ -237,7 +237,7 @@ function creatMdToHtml(op, folder, evnParam) {
                         folder: folder,
                         kcFileId: fileNameUuid,
                         kcFileName: fileName,
-                        kcFileAddr: 'http://kangcafe.com/' + path.relative(__dirname, creatFilePath),
+                        kcFileAddr: 'http://kangkk.com/' + path.relative(__dirname, creatFilePath),
                         keyWorlds: keyWorlds,
                         description: description,
                         content: mdToHtml,
