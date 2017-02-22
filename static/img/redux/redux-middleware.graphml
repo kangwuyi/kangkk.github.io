@@ -209,7 +209,7 @@ End<y:LabelModel>
           <y:Geometry height="28.0" width="116.25" x="388.86329120000005" y="423.25"/>
           <y:Fill color="#FFFFFF00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="20.376953125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="71.9580078125" x="22.14599609375" y="3.0">@kangcafe<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="20.376953125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="56.787109375" x="29.7314453125" y="3.0">#kangkk<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -224,7 +224,6 @@ End<y:LabelModel>
       </data>
     </node>
     <node id="n12">
-      <data key="d5"/>
       <data key="d6">
         <y:ImageNode>
           <y:Geometry height="98.0" width="90.0" x="-159.01170879999998" y="323.5"/>
@@ -369,7 +368,6 @@ End<y:LabelModel>
       </data>
     </edge>
     <edge id="e10" source="n12" target="n4">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>

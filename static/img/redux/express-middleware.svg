@@ -41,6 +41,9 @@
         <path d="M13 392 L13 420 L129 420 L129 392 Z"/>
       </clipPath>
     </defs>
+    <g fill="white" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="translate(101,-85)" stroke="white">
+      <rect x="-101" width="595" height="350" y="85" clip-path="url(#clipPath2)" stroke="none"/>
+    </g>
     <g fill="url(#linearGradient1)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,101,-85)" stroke="url(#linearGradient1)">
       <rect x="170" width="309" height="320" y="100" clip-path="url(#clipPath2)" stroke="none"/>
     </g>
@@ -101,7 +104,7 @@
       <rect x="128" y="392" clip-path="url(#clipPath2)" fill="rgb(178,178,178)" width="1" height="27" stroke="none"/>
     </g>
     <g font-size="13px" stroke-linecap="butt" transform="matrix(1,0,0,1,101,-85)" text-rendering="geometricPrecision" font-family="sans-serif" shape-rendering="geometricPrecision" font-weight="bold" stroke-miterlimit="1.45">
-      <text x="37.196" xml:space="preserve" y="410.1016" clip-path="url(#clipPath3)" stroke="none">@kangcafe</text>
+      <text x="44.7814" xml:space="preserve" y="410.1016" clip-path="url(#clipPath3)" stroke="none">#kangkk</text>
       <path fill="none" d="M34.7352 150 L215.2309 150" clip-path="url(#clipPath2)"/>
       <path d="M223.2309 150 L211.2309 145 L214.2309 150 L211.2309 155 Z" stroke="none" clip-path="url(#clipPath2)"/>
       <path fill="none" d="M324.5 169.9951 L324.5 192.0273" clip-path="url(#clipPath2)"/>
