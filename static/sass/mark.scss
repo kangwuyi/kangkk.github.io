@@ -151,6 +151,7 @@ pre {
         /* color: #fff; */
         padding: 0;
         border-radius: 0;
+        white-space:pre-wrap;
     }
 }
 code {
@@ -159,7 +160,6 @@ code {
     background-color: #f9f2f4;
     padding: 0 4px;
     border-radius: 3px;
-    white-space:pre-wrap;
 }
 blockquote {
     display: table;

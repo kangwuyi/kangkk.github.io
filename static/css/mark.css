@@ -146,15 +146,15 @@ pre {
     background: transparent;
     /* color: #fff; */
     padding: 0;
-    border-radius: 0; }
+    border-radius: 0;
+    white-space: pre-wrap; }
 
 code {
   overflow-y: auto;
   color: #c7254e;
   background-color: #f9f2f4;
   padding: 0 4px;
-  border-radius: 3px;
-  white-space: pre-wrap; }
+  border-radius: 3px; }
 
 blockquote {
   display: table;
