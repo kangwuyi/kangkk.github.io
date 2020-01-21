@@ -153,7 +153,8 @@ code {
   color: #c7254e;
   background-color: #f9f2f4;
   padding: 0 4px;
-  border-radius: 3px; }
+  border-radius: 3px;
+  white-space: pre-wrap; }
 
 blockquote {
   display: table;
