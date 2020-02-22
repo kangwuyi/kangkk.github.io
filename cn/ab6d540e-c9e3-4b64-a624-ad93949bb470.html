@@ -13,7 +13,7 @@
       <meta http-equiv="Pragma" content="no-cache">
       <meta http-equiv="Cache-control" content="no-cache">
       <meta http-equiv="Cache" content="no-cache"> -->
-    <title>KC.</title>
+    <title>KK.</title>
     <link rel="stylesheet" href="../static/font/iconfont.css">
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link rel="stylesheet" media="all" href="../static/css/scoure.css">
@@ -164,11 +164,11 @@
           <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'Expected the reducer to be a function.'</span>);
         }
 </code></pre>
-<pre><code class="lang-js"><span class="hljs-attribute">        var currentReducer</span>   = reducer;
-<span class="hljs-attribute">        var currentState</span>     = initialState;
-<span class="hljs-attribute">        var currentListeners</span> = [];
-<span class="hljs-attribute">        var nextListeners</span>    = currentListeners;
-<span class="hljs-attribute">        var isDispatching</span>    = false;
+<pre><code class="lang-js">        <span class="hljs-keyword">var</span> currentReducer   = reducer;
+        <span class="hljs-keyword">var</span> currentState     = initialState;
+        <span class="hljs-keyword">var</span> currentListeners = [];
+        <span class="hljs-keyword">var</span> nextListeners    = currentListeners;
+        <span class="hljs-keyword">var</span> isDispatching    = <span class="hljs-literal">false</span>;
 </code></pre>
 <p>这些都是闭包变量</p>
 <pre><code class="lang-js">        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ensureCanMutateNextListeners</span><span class="hljs-params">()</span> </span>{
@@ -635,46 +635,33 @@
         <i class="footer__backToTop-btn--icon iconfont icon-chevronup"></i>
     </a>
     <a class="footer__github-btn" href="https://github.com/kangkk" target="_blank">Kangkk on GitHub</a>
-    <div class="ds-thread" data-thread-key="ab6d540e-c9e3-4b64-a624-ad93949bb470" data-title="reduxjs" data-url="http://kangkk.com/cn/ab6d540e-c9e3-4b64-a624-ad93949bb470.html"></div>
-    <script type="text/javascript">
-        var duoshuoQuery = {
-            short_name: "kangkk"
-        };
-        (function() {
-            var ds = document.createElement('script');
-            ds.type = 'text/javascript';
-            ds.async = true;
-            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-            ds.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0] ||
-                document.getElementsByTagName('body')[0]).appendChild(ds);
-        })();
-    </script>
+    <div class="ds-thread" data-thread-key="ab6d540e-c9e3-4b64-a624-ad93949bb470" data-title="reduxjs" data-url="http://kangkk.com/cn\ab6d540e-c9e3-4b64-a624-ad93949bb470.html"></div>
     <section class="content__section">
         <p class="content__a-btn">
             <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
                 <img alt="Creative Commons License" style="border-width:0" src="../static/bgimg/licensebuttons.png" />
             </a>
         </p>
-        <p class="content__p--word">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
-        </a>. Reprint the 《<sub>reduxjs</sub>》 need signature "<sub>kangkk</sub>", and the url is <sub>http://kangkk.com/cn/ab6d540e-c9e3-4b64-a624-ad93949bb470.html</sub>.
+        <p class="content__p--word">This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0/cn/" target="_blank"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+        </a>. Reprint the 《<sub>reduxjs</sub>》 need signature "<sub>kangkk</sub>", and the url is <sub>http://kangkk.com/cn\ab6d540e-c9e3-4b64-a624-ad93949bb470.html</sub>.
         </p>
         <p class="content__text-p--desc">
-            <em>这里的大多数文章都写于很多年以前，十年历程，多于怀旧（@2006-2016）</em>
-            <br>Copyright (C) 2016 Kangkk.com, All Rights Reserved
-            <br>Made in China.
+            <em>这里的大多数文章都写于很多年以前，十余年历程，多于怀旧（@2006-2020）</em>
+            <br>Copyright (C) 2006-2020 Kangkk.com, All Rights Reserved
+            <br>Living in China.
             <span class="text__span--link">
             ✎
             <a href="../index.html">Home</a> –
             <a href="./mood.html">Mood</a> –
             <a href="./source.html">Source</a> –
-            <a href="./note.html">Note</a>.
+            <a href="./note.html">Note</a> - 
+            <a href="https://kangkk.cn/">KangKK.CN</a>.
           </span>
         </p>
     </section>
 </footer>
 <script type="text/javascript">
-    ! function($) {
+    !function($) {
         $(window).scroll(function() {
             $(this).scrollTop() > 100 ? $("#back-to-top").fadeIn() : $("#back-to-top").fadeOut()
         }), $("#back-to-top").on("click", function(b) {
@@ -683,26 +670,6 @@
             }, 100), !1
         });
     }(jQuery);
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "//hm.baidu.com/hm.js?95e6652d7f50f8def7540e687f338f60";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-<script type="text/javascript">
-    (function() {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
 </script>
 </body>
 

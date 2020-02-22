@@ -41,9 +41,9 @@
 </code></pre>
 <p>找到 <code>bind-address = 127.0.0.1</code>，注释掉这行或者改为<code>bind-address = 0.0.0.0</code>允许任意IP访问，或者自己指定一个IP地址。</p>
 <p>重启<code>MySQL</code>。</p>
-<pre><code class="lang-bash">sudo <span class="hljs-regexp">/etc/i</span>nit.d<span class="hljs-regexp">/mysql restart</span>
+<pre><code class="lang-bash">sudo <span class="hljs-meta-keyword">/etc/</span>init.d/mysql restart
 </code></pre>
-<h3><span class="header-link" id="授权用户能进行远程连接">授权用户能进行远程连接</span></h3><pre><code class="lang-bash"><span class="hljs-attribute">mysql -uroot -p</span>
+<h3><span class="header-link" id="授权用户能进行远程连接">授权用户能进行远程连接</span></h3><pre><code class="lang-bash"><span class="hljs-attribute">mysql</span> -uroot -p
 </code></pre>
 <pre><code>mysql&gt; grant all privileges <span class="hljs-keyword">on</span> *.* <span class="hljs-keyword">to</span> root@<span class="hljs-string">"%"</span> identified <span class="hljs-keyword">by</span> <span class="hljs-string">"password"</span> <span class="hljs-keyword">with</span> grant option;
 mysql&gt; flush privileges;
@@ -79,46 +79,33 @@ $(function(){
         <i class="footer__backToTop-btn--icon iconfont icon-chevronup"></i>
     </a>
     <a class="footer__github-btn" href="https://github.com/kangkk" target="_blank">Kangkk on GitHub</a>
-    <div class="ds-thread" data-thread-key="9794b99f-c504-4baf-93ce-0e79e475ab43" data-title="mysql" data-url="http://kangkk.com/cn/9794b99f-c504-4baf-93ce-0e79e475ab43.html"></div>
-    <script type="text/javascript">
-        var duoshuoQuery = {
-            short_name: "kangkk"
-        };
-        (function() {
-            var ds = document.createElement('script');
-            ds.type = 'text/javascript';
-            ds.async = true;
-            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-            ds.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0] ||
-                document.getElementsByTagName('body')[0]).appendChild(ds);
-        })();
-    </script>
+    <div class="ds-thread" data-thread-key="9794b99f-c504-4baf-93ce-0e79e475ab43" data-title="mysql" data-url="http://kangkk.com/cn\9794b99f-c504-4baf-93ce-0e79e475ab43.html"></div>
     <section class="content__section">
         <p class="content__a-btn">
             <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
                 <img alt="Creative Commons License" style="border-width:0" src="../static/bgimg/licensebuttons.png" />
             </a>
         </p>
-        <p class="content__p--word">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
-        </a>. Reprint the 《<sub>mysql</sub>》 need signature "<sub>kangkk</sub>", and the url is <sub>http://kangkk.com/cn/9794b99f-c504-4baf-93ce-0e79e475ab43.html</sub>.
+        <p class="content__p--word">This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0/cn/" target="_blank"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+        </a>. Reprint the 《<sub>mysql</sub>》 need signature "<sub>kangkk</sub>", and the url is <sub>http://kangkk.com/cn\9794b99f-c504-4baf-93ce-0e79e475ab43.html</sub>.
         </p>
         <p class="content__text-p--desc">
-            <em>这里的大多数文章都写于很多年以前，十年历程，多于怀旧（@2006-2016）</em>
-            <br>Copyright (C) 2016 Kangkk.com, All Rights Reserved
-            <br>Made in China.
+            <em>这里的大多数文章都写于很多年以前，十余年历程，多于怀旧（@2006-2020）</em>
+            <br>Copyright (C) 2006-2020 Kangkk.com, All Rights Reserved
+            <br>Living in China.
             <span class="text__span--link">
             ✎
             <a href="../index.html">Home</a> –
             <a href="./mood.html">Mood</a> –
             <a href="./source.html">Source</a> –
-            <a href="./note.html">Note</a>.
+            <a href="./note.html">Note</a> - 
+            <a href="https://kangkk.cn/">KangKK.CN</a>.
           </span>
         </p>
     </section>
 </footer>
 <script type="text/javascript">
-    ! function($) {
+    !function($) {
         $(window).scroll(function() {
             $(this).scrollTop() > 100 ? $("#back-to-top").fadeIn() : $("#back-to-top").fadeOut()
         }), $("#back-to-top").on("click", function(b) {
@@ -127,26 +114,6 @@ $(function(){
             }, 100), !1
         });
     }(jQuery);
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "//hm.baidu.com/hm.js?95e6652d7f50f8def7540e687f338f60";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-<script type="text/javascript">
-    (function() {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
 </script>
 </body>
 

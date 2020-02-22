@@ -319,22 +319,22 @@ store<span class="hljs-selector-class">.dispatch</span>(addTodo(<span class="hlj
 </code></pre>
 <p>InjectReducer函数内用replaceReducer方法将store重新计算，这里这样做的缘由是第一部分的子路由是异步加载的，并不是在服务器开始时直接加载完毕，而是随着用户在客户端不断操作页面异步更新reducer以及加载组件等信息。</p>
 <pre><code class="lang-js"><span class="hljs-keyword">import</span> {applyMiddleware, compose, createStore} from <span class="hljs-string">'redux'</span>;
-<span class="hljs-params">...</span>
+<span class="hljs-attr">...</span>
 <span class="hljs-keyword">import</span> makeRootReducer from <span class="hljs-string">'./reducers'</span>;
 
 export default (initialState = {}, history) =&gt; {
-  <span class="hljs-params">...</span>
+  <span class="hljs-attr">...</span>
   const store         = createStore(
     makeRootReducer(),
     initialState,
     compose(
-      applyMiddleware(<span class="hljs-params">...</span>middleware),
-      <span class="hljs-params">...</span>enhancers
+      applyMiddleware(<span class="hljs-attr">...</span>middleware),
+      <span class="hljs-attr">...</span>enhancers
     )
   );
-  <span class="hljs-params">...</span>
+  <span class="hljs-attr">...</span>
     store.replaceReducer(reducers(store.asyncReducers))
-  <span class="hljs-params">...</span>
+  <span class="hljs-attr">...</span>
   <span class="hljs-keyword">return</span> store
 }
 </code></pre>
@@ -428,12 +428,12 @@ export <span class="hljs-keyword">default</span> function (<span class="hljs-key
 </code></pre>
 <h3><span class="header-link" id="combinereducers">combineReducers</span></h3><p><code>combineReducers()</code>将调用一系列 reducer，并根据对应的 key 来筛选出 state 中的一部分数据给相应的 reducer，这样也意味着每一个小的 reducer 将只能处理 state 的一部分数据，如：filterReducer 将只能处理及返回 state.filter 的数据，如果需要使用到其他 state 数据，那还是需要为这类 reducer 传入整个 state。</p>
 <pre><code class="lang-js"><span class="hljs-keyword">import</span> { combineReducers } from <span class="hljs-string">'redux'</span>
-<span class="hljs-params">...</span>
+<span class="hljs-attr">...</span>
   combineReducers({
     router,
-    <span class="hljs-params">...</span>asyncReducers
+    <span class="hljs-attr">...</span>asyncReducers
   })
-<span class="hljs-params">...</span>
+<span class="hljs-attr">...</span>
 </code></pre>
 <h2><span class="header-link" id="react-redux">React-redux</span></h2><p>React通过Context属性，可以将属性props直接给子component，无须通过props层层传递, Provider获得store然后将其传递给子元素。</p>
 <pre><code class="lang-js">export <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Provider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
@@ -663,46 +663,33 @@ $(function(){
         <i class="footer__backToTop-btn--icon iconfont icon-chevronup"></i>
     </a>
     <a class="footer__github-btn" href="https://github.com/kangkk" target="_blank">Kangkk on GitHub</a>
-    <div class="ds-thread" data-thread-key="32d7c641-e67d-410b-a659-7d0e414b5c1d" data-title="Redux浅论" data-url="http://kangkk.com/cn/32d7c641-e67d-410b-a659-7d0e414b5c1d.html"></div>
-    <script type="text/javascript">
-        var duoshuoQuery = {
-            short_name: "kangkk"
-        };
-        (function() {
-            var ds = document.createElement('script');
-            ds.type = 'text/javascript';
-            ds.async = true;
-            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-            ds.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0] ||
-                document.getElementsByTagName('body')[0]).appendChild(ds);
-        })();
-    </script>
+    <div class="ds-thread" data-thread-key="32d7c641-e67d-410b-a659-7d0e414b5c1d" data-title="Redux浅论" data-url="http://kangkk.com/cn\32d7c641-e67d-410b-a659-7d0e414b5c1d.html"></div>
     <section class="content__section">
         <p class="content__a-btn">
             <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
                 <img alt="Creative Commons License" style="border-width:0" src="../static/bgimg/licensebuttons.png" />
             </a>
         </p>
-        <p class="content__p--word">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
-        </a>. Reprint the 《<sub>Redux浅论</sub>》 need signature "<sub>kangkk</sub>", and the url is <sub>http://kangkk.com/cn/32d7c641-e67d-410b-a659-7d0e414b5c1d.html</sub>.
+        <p class="content__p--word">This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0/cn/" target="_blank"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+        </a>. Reprint the 《<sub>Redux浅论</sub>》 need signature "<sub>kangkk</sub>", and the url is <sub>http://kangkk.com/cn\32d7c641-e67d-410b-a659-7d0e414b5c1d.html</sub>.
         </p>
         <p class="content__text-p--desc">
-            <em>这里的大多数文章都写于很多年以前，十年历程，多于怀旧（@2006-2016）</em>
-            <br>Copyright (C) 2016 Kangkk.com, All Rights Reserved
-            <br>Made in China.
+            <em>这里的大多数文章都写于很多年以前，十余年历程，多于怀旧（@2006-2020）</em>
+            <br>Copyright (C) 2006-2020 Kangkk.com, All Rights Reserved
+            <br>Living in China.
             <span class="text__span--link">
             ✎
             <a href="../index.html">Home</a> –
             <a href="./mood.html">Mood</a> –
             <a href="./source.html">Source</a> –
-            <a href="./note.html">Note</a>.
+            <a href="./note.html">Note</a> - 
+            <a href="https://kangkk.cn/">KangKK.CN</a>.
           </span>
         </p>
     </section>
 </footer>
 <script type="text/javascript">
-    ! function($) {
+    !function($) {
         $(window).scroll(function() {
             $(this).scrollTop() > 100 ? $("#back-to-top").fadeIn() : $("#back-to-top").fadeOut()
         }), $("#back-to-top").on("click", function(b) {
@@ -711,26 +698,6 @@ $(function(){
             }, 100), !1
         });
     }(jQuery);
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "//hm.baidu.com/hm.js?95e6652d7f50f8def7540e687f338f60";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-<script type="text/javascript">
-    (function() {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
 </script>
 </body>
 

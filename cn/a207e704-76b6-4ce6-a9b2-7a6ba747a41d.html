@@ -47,8 +47,8 @@ console.log(<span class="hljs-keyword">b);
 <p><img src="../static/img/深拷贝浅拷贝/1.png" alt=""></p>
 <p>这种简单的操作对象赋值引用的方式我们可以称之为浅复制，浅复制故名思义它是对整个对象体复制的，没有开辟新内存。</p>
 <h2><span class="header-link" id="深拷贝">深拷贝</span></h2><p>深度复制是对对象枚举，通过查找最末一层值不为对象的属性，然后将该值赋值给新的对象的同名属性上去，由于字符串或者数字的赋值是开辟新内存的。</p>
-<pre><code class="lang-js"><span class="hljs-attribute">var a</span> = {n:1};  
-<span class="hljs-attribute">var b</span> = new Objec.create(a);
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> a = {n:<span class="hljs-number">1</span>};  
+<span class="hljs-keyword">var</span> b = <span class="hljs-function"><span class="hljs-keyword">new</span> <span class="hljs-title">Objec</span>.<span class="hljs-title">create</span>(a);</span>
 </code></pre>
 <p><img src="../static/img/深拷贝浅拷贝/3.png" alt="">
 <img src="../static/img/深拷贝浅拷贝/4.png" alt="">
@@ -112,46 +112,33 @@ $(function(){
         <i class="footer__backToTop-btn--icon iconfont icon-chevronup"></i>
     </a>
     <a class="footer__github-btn" href="https://github.com/kangkk" target="_blank">Kangkk on GitHub</a>
-    <div class="ds-thread" data-thread-key="a207e704-76b6-4ce6-a9b2-7a6ba747a41d" data-title="深拷贝-浅拷贝" data-url="http://kangkk.com/cn/a207e704-76b6-4ce6-a9b2-7a6ba747a41d.html"></div>
-    <script type="text/javascript">
-        var duoshuoQuery = {
-            short_name: "kangkk"
-        };
-        (function() {
-            var ds = document.createElement('script');
-            ds.type = 'text/javascript';
-            ds.async = true;
-            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-            ds.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0] ||
-                document.getElementsByTagName('body')[0]).appendChild(ds);
-        })();
-    </script>
+    <div class="ds-thread" data-thread-key="a207e704-76b6-4ce6-a9b2-7a6ba747a41d" data-title="深拷贝-浅拷贝" data-url="http://kangkk.com/cn\a207e704-76b6-4ce6-a9b2-7a6ba747a41d.html"></div>
     <section class="content__section">
         <p class="content__a-btn">
             <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
                 <img alt="Creative Commons License" style="border-width:0" src="../static/bgimg/licensebuttons.png" />
             </a>
         </p>
-        <p class="content__p--word">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
-        </a>. Reprint the 《<sub>深拷贝-浅拷贝</sub>》 need signature "<sub>kangkk</sub>", and the url is <sub>http://kangkk.com/cn/a207e704-76b6-4ce6-a9b2-7a6ba747a41d.html</sub>.
+        <p class="content__p--word">This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0/cn/" target="_blank"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+        </a>. Reprint the 《<sub>深拷贝-浅拷贝</sub>》 need signature "<sub>kangkk</sub>", and the url is <sub>http://kangkk.com/cn\a207e704-76b6-4ce6-a9b2-7a6ba747a41d.html</sub>.
         </p>
         <p class="content__text-p--desc">
-            <em>这里的大多数文章都写于很多年以前，十年历程，多于怀旧（@2006-2016）</em>
-            <br>Copyright (C) 2016 Kangkk.com, All Rights Reserved
-            <br>Made in China.
+            <em>这里的大多数文章都写于很多年以前，十余年历程，多于怀旧（@2006-2020）</em>
+            <br>Copyright (C) 2006-2020 Kangkk.com, All Rights Reserved
+            <br>Living in China.
             <span class="text__span--link">
             ✎
             <a href="../index.html">Home</a> –
             <a href="./mood.html">Mood</a> –
             <a href="./source.html">Source</a> –
-            <a href="./note.html">Note</a>.
+            <a href="./note.html">Note</a> - 
+            <a href="https://kangkk.cn/">KangKK.CN</a>.
           </span>
         </p>
     </section>
 </footer>
 <script type="text/javascript">
-    ! function($) {
+    !function($) {
         $(window).scroll(function() {
             $(this).scrollTop() > 100 ? $("#back-to-top").fadeIn() : $("#back-to-top").fadeOut()
         }), $("#back-to-top").on("click", function(b) {
@@ -160,26 +147,6 @@ $(function(){
             }, 100), !1
         });
     }(jQuery);
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "//hm.baidu.com/hm.js?95e6652d7f50f8def7540e687f338f60";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-<script type="text/javascript">
-    (function() {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
 </script>
 </body>
 
