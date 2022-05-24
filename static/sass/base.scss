@@ -12,11 +12,12 @@
         .header {
             margin: 0;
             padding: 0;
-            background: rgba(255, 255, 255, 0.6);
+            background: #fffbd6;
             text-transform: uppercase;
-            box-shadow: rgba(0, 0, 0, .1) 0 1px 5px;
+            // box-shadow: rgba(0, 0, 0, .1) 0 1px 5px;
             .content__title {
-                font-size: 320%;
+                margin: 10px 0 0 0;
+                font-size: 300%;
                 font-family: Baskerville, "Goudy Old Style", "Palatino", "Book Antiqua", serif;
             }
         }
