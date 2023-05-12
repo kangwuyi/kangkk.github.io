@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <title>KK.</title>
@@ -9,58 +11,146 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <%- include('../assets') %>
   <style type="text/css">
-    table tr td:first-of-type {
-      padding: 5px 20px 5px 0;
+    .life tr td:nth-of-type(2) {
+      padding: 5px 10px 5px 5px;
+    }
+    .work tr td:nth-of-type(2) {
+      padding: 5px;
+      min-width: 90px;
+    }
+    body.readme {
+      width: 600px;
+      margin: 40px auto 0;
+    }
+    .readme .iconfont {
+      font-size: 14px;
+    }
+    .readme p {
+      font-size: 12px;
+    }
+    .readme table {
+      margin: 10px 0;
+      font-size: 14px;
+      color: #333333;
+    }
+    .readme table img {
+      width: 14px;
+      height: 14px;
+      padding-top: 3px;
+    }
+    .readme table .icon {
+      font-size: 14px;
+      width: 14px;
+      height: 14px;
+    }
+    .readme table p {
+      margin-bottom: 0;
+      margin-top: 5px;
+    }
+    .readme table p:first-of-type {
+      margin-top: 0;
+    }
+    .readme table td sub {
+      transform: scale(0.8);
+      display: inline-block;
+      transform-origin: left top;
+    }
+    .text .icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
     }
   </style>
-  </head>
-  <body>
-    <header>
-      <h2>KangKK.COM</h2>
-      <small>喜欢闭着眼睛走路，短短四十步心扑扑跳，永远不知道下一步会走到哪里</small>
-    </header>
-    <div>
-      <div>
-        <p>在过去的一段时间里我思考为什么崇尚极简，极简与极繁之间又如何去平衡</p>
-      </div>
-      <table>
-        <tbody>
-          <tr>
-            <td>童年</td>
-            <td>在乡下认真生活，童年是流动的河水，童年是稻田里的蛙声。</td>
-          </tr>
-          <tr>
-            <td>少年</td>
-            <td>普普通通，喜欢玩篮球，喜欢玩网游，阅读书籍，热爱诗篇。</td>
-          </tr>
-          <tr>
-            <td>青年</td>
-            <td>朦朦胧胧，浑浑噩噩，思考大多于行动，探索却又很少结论。</td>
-          </tr>
-        </tbody>
-      </table>
+</head>
 
-      <table>
-        <tbody>
-          <tr>
-            <td>2010 - 2016</td>
-            <td>在很长的一段时间里辗转于域名的圈子。</td>
-          </tr>
-          <tr>
-            <td>2014 - 2015</td>
-            <td>风控。无贼。</td>
-          </tr>
-          <tr>
-            <td>2015 - 2021</td>
-            <td>在自己的自由时间里并没有抉择好自己的事情，疫情又来的突然。</td>
-          </tr>
-          <tr>
-            <td>2021 - 2023</td>
-            <td>qnpm qcdn 75cdn design bingo qfont</td>
-          </tr>
-        </tbody>
-      </table>
+<body class="readme">
+  <header>
+    <%- include('../home/header') %>
+    <div class="text">
+      <small>在中学的时候，会找一些安静的地方，喜欢闭着眼睛走路，短短四十步心扑扑跳，永远不知道下一步会走到哪里。这个时候如果是秋天，又恰好有落叶，那就更开心了，踩着枯叶嘎吱嘎吱响，就很有趣。之后的过去的一段时间里，我开始思考为什么崇尚极简，极简与极繁之间又如何去平衡，涵盖事物与关系。
+        现在想来这些事从开始就大多都是没有什么头绪和缘由的吧。也可以说是一种很特别的无聊。养有一只猫<svg class="icon" aria-hidden="true"><use xlink:href="#kk-mao1"></use></svg>、一只龟<svg class="icon" aria-hidden="true"><use xlink:href="#kk-wugui"></use></svg>、几盆花<svg class="icon" aria-hidden="true"><use xlink:href="#kk-hudielan1"></use></svg>。期望安安静静生活，年年顺心意<svg class="icon" aria-hidden="true"><use xlink:href="#kk-niannianyouyu"></use></svg>。</small>
     </div>
-    <%- include('../home/footer') %>
-  </body>
+  </header>
+  <div>
+    <table class="life">
+      <tbody>
+        <tr>
+          <td><i class="iconfont">&#xe644;</i></td>
+          <td>童年</td>
+          <td>在乡下认真生活，童年是流动的河水，童年是稻田里的蛙声。</td>
+        </tr>
+        <tr>
+          <td><i class="iconfont">&#xe714;</i></td>
+          <td>少年</td>
+          <td>普普通通，喜欢玩篮球，喜欢玩网游，阅读书籍，热爱诗篇。</td>
+        </tr>
+        <tr>
+          <td><i class="iconfont">&#xe6a8;</i></td>
+          <td>青年</td>
+          <td>朦朦胧胧，浑浑噩噩，思考大多于行动，探索却又很少结论。</td>
+        </tr>
+        <tr>
+          <td></td><td>中年</td><td></td>
+        </tr>
+        <tr>
+          <td></td><td>老年</td><td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div><p>岁月悠悠，希望可以活到一百岁，年龄的五个阶段已过小半了，回头看时，自己一直在原地打转发呆打盹。</p></div>
+
+    <table class="work">
+      <tbody>
+        <tr>
+          <td></td>
+          <td>2010 - 2016</td>
+          <td>在很长的一段时间里辗转于域名的圈子。</td>
+        </tr>
+        <tr>
+          <td><img src="https://tongdun.com/static/favicon.ico" alt="https://tongdun.com/"/></td>
+          <td>2014 - 2015</td>
+          <td>风控系统。</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>
+            <p><svg class="icon" aria-hidden="true"><use xlink:href="#kk-jingyu"></use></svg> 风控系统。<sub>2014 - 2015</sub></p>
+            <p><svg class="icon" aria-hidden="true"><use xlink:href="#kk-yugu1"></use></svg> 无贼移动端。<sub>2014 - 2015</sub></p>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>2015 - 2021</td>
+          <td>在自己的自由时间里并没有抉择好自己的事情，疫情又来的突然。</td>
+        </tr>
+        <tr>
+          <td><img src="https://www.360.cn/favicon.ico" alt="https://360.com/"/></td>
+          <td>2021 - 2023</td>
+          <td>333</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>
+            <p><svg class="icon" aria-hidden="true"><use xlink:href="#kk-eyu"></use></svg> 独立维护迭代静床，涵盖上传服务、回源服务、DB、CLI、相关S3存储管理、运维、运营，包括工具链等。<sub>2021 - 2022.10</sub></p>
+            <p><svg class="icon" aria-hidden="true"><use xlink:href="#kk-yugu"></use></svg> 独立维护迭代内部 NPM 包管理系统，前端、后端、CLI，在我不维护后续已经近乎没有用户了，好可惜哦<sub>2021 - 2022.10</sub></p>
+            <p><svg class="icon" aria-hidden="true"><use xlink:href="#kk-konglong1"></use></svg> 独立维护迭代75cdn，维护迭代小版本，扩展策略，落地专利一个。<sub>2021.02 - 2022.10</sub></p>
+            <p><svg class="icon" aria-hidden="true"><use xlink:href="#kk-yu4"></use></svg> 独立维护小图床，涵盖前端、后端、DB、运维<sub>2021.02 - 2022.10</sub></p>
+            <p><svg class="icon" aria-hidden="true"><use xlink:href="#kk-jinyu"></use></svg> 独立负责设计云平台，涵盖前端、后端、SKETCH 插件、PHOYOSHOP 插件、其他多个关联组件和服务、DB、运维等。整体独立重构两次，累计切图类等物料资源 500w+，画板 2w+，申请软著一个，专利6个。<sub>2021.02 - 2022.10</sub></p>
+            <p><svg class="icon" aria-hidden="true"><use xlink:href="#kk-yu"></use></svg> 独立维护图片字体物料平台，涵盖前端、后端、DB、运维。<sub>2021.02 - 2022.10</sub></p>
+            <p><svg class="icon" aria-hidden="true"><use xlink:href="#kk-yugu2"></use></svg> 独立维护字体工具平台，涵盖前端、后端、DB、运维，以及下线处理。<sub>2021.02 - 2022.10</sub></p>
+            <p><svg class="icon" aria-hidden="true"><use xlink:href="#kk-icon-test"></use></svg> 其他工具类以及简介类文档类网页等杂务<sub>2021.02 - 2022.10</sub></p>
+            <p><svg class="icon" aria-hidden="true"><use xlink:href="#kk-meiguihua"></use></svg> 追一个姑娘，追啊追，送给她最美的花<svg class="icon" aria-hidden="true"><use xlink:href="#kk-meiguihuacai"></use></svg>啊，就是追不到呢。<sub>2021.10</sub></p>
+            <p><svg class="icon" aria-hidden="true"><use xlink:href="#kk-shengqi"></use></svg> 生气，不能 All in work 了<i class="iconfont">&#xe6aa;</i>，被动学习职场社会学。<sub>2022.03 - 2022.10</sub></p>
+            <p><svg class="icon" aria-hidden="true"><use xlink:href="#kk-yu1"></use></svg> 哆啦 <i class="iconfont">&#xe650;</i> <sub>2022.10 -</sub></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <%- include('../home/footer') %>
+</body>
+
 </html>
