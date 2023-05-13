@@ -1,0 +1,59 @@
+<style type="text/css">
+  .right {
+    width: 400px;
+    font: 14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+  }
+  .right a {
+    color: #39c;
+    text-decoration: none;
+  }
+  .right table, .right tr {
+    overflow: hidden;
+  }
+  .right table td:first-of-type {
+    width: 50px;
+  }
+  .right table td:nth-of-type(2) {
+    width: 250px;
+  }
+</style>
+<div class="right">
+  <% var nameList = {
+    'candies':{
+      'title':'糖果',
+    },
+    'mood':{
+      'title':'菱角',
+    },
+    'source':{
+      'title':'龙眼',
+    }
+  } %>
+  <h2><%= nameList[folder].title %></h2>
+  <table>
+    <tbody>
+      <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Update</td>
+      </tr>
+      <% content.linkList.forEach(function(item, index){ %>
+        <tr>
+            <td>
+                <%= (index+1) %>
+            </td>
+            <td>
+                <a href="./<%= item.path %>" class="col-xs-12 link -download">
+                    <%= item.fileName %>
+                </a>
+            </td>
+            <td>
+                <%= item.mtime %>
+            </td>
+        </tr>
+        <% }) %>
+    </tbody>
+  </table>
+  <%- include('../home/footer') %>
+</div>
