@@ -15,12 +15,26 @@
   <!--[if lt IE 9]>
         <script crossorigin="anonymous" integrity="sha384-fkm9nLbWSgWvs5dRrT+4CAGQLxkueuCwSOSUV93eD7Pk8j+XnFK76jBBn2fexZd1" src="https://lib.baomitu.com/html5shiv/3.7/html5shiv-printshiv.min.js"></script>
     <![endif]-->
-  <script crossorigin="anonymous"
-    integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
-    src="https://lib.baomitu.com/jquery/3.7.0/jquery.min.js"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+    crossorigin="anonymous"></script>
   <%- include('../assets') %>
+  <style type="text/css">
+    .page__body {
+      width: 900px;
+      margin: 0 auto;
+    }
+  </style>
 </head>
 
-<body>
+<body class="page__body">
   <%- include('../home/header') %>
-    <p>多读书，多运动，多到远处走走，再看看不一样的世界。</p>
+  <style type="text/css">
+    .page__header-title {
+      margin-left: 50px;
+      font-size: 12px;
+    }
+  </style>
+  <p class="page__header-title">多读书，多运动，多到远处走走，再看看不一样的世界。</p>
+  <hr>
