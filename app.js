@@ -52,6 +52,24 @@ function startClean(evnParam) {
 }
 
 function loopMdFolder(evnParam) {
+    // 生成常规页面
+    const staticPageList = [
+        ['index', path.join(__dirname, 'templates/views/home/index.ejs')],
+        ['map', path.join(__dirname, 'templates/views/other/map.ejs')],
+        ['readme', path.join(__dirname, 'templates/views/other/readme.ejs')]
+    ];
+    _.each(staticPageList, function(item) {
+        var generatePathFile = path.join(__dirname, item[0] + '.html');
+        fs.writeFileSync(
+            generatePathFile,
+            ejs.render(
+                fs.readFileSync(item[1], 'utf8'), {
+                    filename: item[1],
+                }
+            ),
+            'utf8');
+    })
+    // 生成内容
     _.each(folderMenu, function(item) {
 
         async.waterfall([

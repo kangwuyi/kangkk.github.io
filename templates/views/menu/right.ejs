@@ -17,6 +17,9 @@
   .right table td:nth-of-type(2) {
     width: 250px;
   }
+  .menu__page-table--content {
+    min-height: 150px;
+  }
 </style>
 <div class="right">
   <% var nameList = {
@@ -34,29 +37,31 @@
     }
   } %>
   <h2><%= nameList[folder].title %></h2>
-  <table>
-    <tbody>
-      <tr>
-        <td>ID</td>
-        <td>Name</td>
-        <td>Update</td>
-      </tr>
-      <% content.linkList.forEach(function(item, index){ %>
+  <div class="menu__page-table--content">
+    <table>
+      <tbody>
         <tr>
-            <td>
-                <%= (index+1) %>
-            </td>
-            <td>
-                <a href="./<%= item.path %>" class="col-xs-12 link -download">
-                    <%= item.fileName %>
-                </a>
-            </td>
-            <td>
-                <%= item.mtime %>
-            </td>
+          <td>ID</td>
+          <td>Name</td>
+          <td>Update</td>
         </tr>
-        <% }) %>
-    </tbody>
-  </table>
+        <% content.linkList.forEach(function(item, index){ %>
+          <tr>
+              <td>
+                  <%= (index+1) %>
+              </td>
+              <td>
+                  <a href="./<%= item.path %>" class="col-xs-12 link -download">
+                      <%= item.fileName %>
+                  </a>
+              </td>
+              <td>
+                  <%= item.mtime %>
+              </td>
+          </tr>
+          <% }) %>
+      </tbody>
+    </table>
+  </div>
   <%- include('../home/footer') %>
 </div>

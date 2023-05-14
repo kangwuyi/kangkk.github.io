@@ -11,9 +11,30 @@
   .left-content {
     color: #777;
   }
+  .menu__page-left--table a {
+    margin-right: 10px;
+    color: #39c;
+  }
+  .menu__page-left--table td:last-of-type a {
+    margin-right: 0;
+  }
+  .menu__page-left--table .iconfont {
+    color: #39c;
+    margin-right: 5px;
+  }
 </style>
 <div class="left">
   <%- include('../home/header') %>
+  <table class="menu__page-left--table">
+    <tbody>
+      <tr>
+        <td><a href="./candies.html"><i class="iconfont">&#xe61b;</i>糖果</a></td>
+        <td><a href="./waterChestnut.html"><i class="iconfont">&#xe601;</i>菱角</a></td>
+        <td><a href="./longan.html"><i class="iconfont">&#xf879;</i>龙眼</a></td>
+        <td><a href="https://kangkk.cn/index.php/康健生活"><i class="iconfont">&#xe607;</i>栗子</a></td>
+      </tr>
+    </tbody>
+  </table>
   <p class="left-content">没啥想说的。</p>
   <p class="left-content">给自己设定一个期望，尽量内容趋近于严谨、合理、措辞正式，排布规整，论点有据，引用无差，数据真实，表达意惬。</p>
 </div>
