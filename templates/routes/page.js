@@ -282,28 +282,7 @@ searchParams.<span class="hljs-keyword">get</span>(<span class="hljs-string">'fo
   Opera ✘ <span class="hljs-number">9</span>+ ✔ <span class="hljs-number">11.5</span>+
 
    ⓘ  Older iOS versions and Android <span class="hljs-number">4.0</span><span class="hljs-number">.4</span> claim support, but implementation is too buggy to be useful.
-</code></pre><h3><span class="header-link" id="移动浏览器">移动浏览器</span></h3><pre><code>Session history management ✔ <span class="hljs-number">83.99</span>% ◒ <span class="hljs-number">7.31</span>% [WHATWG Living Standard]
-  Method of manipulating the user's browser's session history
-
-  IE ✘ <span class="hljs-number">5.5</span>+ ✔ <span class="hljs-number">10</span>+
-  Edge ✔  
-  Firefox ✘ <span class="hljs-number">2</span>+ ✔ <span class="hljs-number">4</span>+
-  Chrome ✘ <span class="hljs-number">4</span>+ ✔ <span class="hljs-number">5</span>+
-  Safari ✘ <span class="hljs-number">3.1</span>+ ◒ <span class="hljs-number">5</span>+ ✔ <span class="hljs-number">6</span>+
-  Opera ✘ <span class="hljs-number">9</span>+ ✔ <span class="hljs-number">11.5</span>+
-  iOS Safari ✘ <span class="hljs-number">3.2</span>+ ◒ <span class="hljs-number">4.2</span><span class="hljs-number">-4.3</span>+ ✔ <span class="hljs-number">5.0</span><span class="hljs-number">-5.1</span>+
-  Opera Mini ✘  
-  Android Browser ✘ <span class="hljs-number">2.1</span>+ ✔ <span class="hljs-number">2.2</span>+ ✘ <span class="hljs-number">3</span>+ ✔ <span class="hljs-number">4.2</span><span class="hljs-number">-4.3</span>+
-  Blackberry Browser ✔  
-  Opera Mobile ✘ <span class="hljs-number">10</span>+ ✔ <span class="hljs-number">11.1</span>+
-  Chrome for Android ✔  
-  Firefox for Android ✔  
-  IE Mobile ✔  
-  UC Browser for Android ◒  
-  Samsung Internet ✔  
-
-   ⓘ  Older iOS versions and Android <span class="hljs-number">4.0</span><span class="hljs-number">.4</span> claim support, but implementation is too buggy to be useful.
-</code></pre><h2><span class="header-link" id="references">References</span></h2><section class="footnote-box"><ul><li id="footnoteDo_1" class="footnoteUp"><span class="backlink" data-desc="windows_histroy_backup"><b><a href="#footnoteUp_1">^</a></b></span><span class="reference-text">返回上一页时，页面通常是从浏览器缓存之中加载，而不是重新要求服务器发送新的网页。</span></li><li id="footnoteDo_2" class="footnoteUp"><span class="backlink" data-desc="windows_histroy_go_ie"><b><a href="#footnoteUp_2">^</a></b></span><span class="reference-text">IE支持向go()方法传URL参数。<code>history.go(0)</code>相当于刷新当前页面。</span></li><li id="footnoteDo_3" class="footnoteUp"><span class="backlink" data-desc="window_onpopstate_desc"><b><a href="#footnoteUp_3">^</a></b></span><span class="reference-text">需要注意的是，仅仅调用pushState方法或replaceState方法 ，并不会触发该事件，只有用户点击浏览器倒退按钮和前进按钮，或者使用JavaScript调用back、forward、go方法时才会触发。另外，该事件只针对同一个文档，如果浏览历史的切换，导致加载不同的文档，该事件也不会触发。页面第一次加载的时候，在load事件发生后，Chrome和Safari浏览器（Webkit核心）会触发popstate事件，而Firefox和IE浏览器不会。</span></li><li id="footnoteDo_4" class="footnoteUp"><span class="backlink" data-desc="URLSearchParams_eericbidelman_desc"><b><a href="#footnoteUp_4">^</a></b></span><span class="reference-text"><a href="https://developers.google.com/web/updates/2016/01/urlsearchparams?hl=en">Eric Bidelman</a></span></li><li id="footnoteDo_5" class="footnoteUp"><span class="backlink" data-desc="URLSearchParams_get_desc"><b><a href="#footnoteUp_5">^</a></b></span><span class="reference-text">如果真值为假返回<code>null</code>,但是Firefox返回空字符串。</span></li></ul></section>`,
+</code></pre>`,
     kcFileId: '123',
     kcFileName: 'abc',
     kcFileAddr: '1234',

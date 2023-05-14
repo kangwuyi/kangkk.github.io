@@ -20,7 +20,7 @@ var fs = require('fs'),
  * 清空环境： clean
  **/
 var setEvnParam = 'publish';
-var folderMenu = ['note', 'mood', 'source'];
+var folderMenu = ['candies', 'waterChestnut', 'longan'];
 
 var mdToHtmlOutPath = path.join(__dirname, 'cn');
 var mdIndexCont = [];
@@ -233,7 +233,7 @@ function creatMdToHtml(op, folder, evnParam) {
                 creatFilePath,
                 ejs.render(
                     getTemplates(folder).pages, {
-                        filename: path.join(__dirname, 'static/templates/' + folder + '.html'),
+                        filename: path.join(__dirname, 'templates/views/page/' + folder + '.ejs'),
                         folder: folder,
                         kcFileId: fileNameUuid,
                         kcFileName: fileName,
@@ -345,12 +345,14 @@ function verificationPath(path) {
  * 生成主页索引
  */
 function creatHtmlIndexFile(folder, fileTitleList) {
+    console.log('准备生成索引目录页面')
     var generatePathFile = path.join(__dirname, 'cn/' + folder + '.html');
 
     fs.writeFileSync(
         generatePathFile,
         ejs.render(
             getTemplates(folder).index, {
+                filename: path.join(__dirname, 'templates/views/menu/index.ejs'),
                 content: {
                     linkList: _.sortBy(fileTitleList, 'mtimeGetTime').reverse()
                 },
@@ -363,8 +365,8 @@ function creatHtmlIndexFile(folder, fileTitleList) {
 
 function getTemplates(folder) {
     return {
-        'pages': fs.readFileSync(path.join(__dirname, 'static/templates/' + folder + '.html'), 'utf8'),
-        'index': fs.readFileSync(path.join(__dirname, 'static/templates/folder.html'), 'utf8')
+        'pages': fs.readFileSync(path.join(__dirname, 'templates/views/page/' + folder + '.ejs'), 'utf8'),
+        'index': fs.readFileSync(path.join(__dirname, 'templates/views/menu/index.ejs'), 'utf8')
     }
 }
 
