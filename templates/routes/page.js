@@ -345,12 +345,135 @@ router.get('/waterChestnut', function(req, res, next) {
     keyWorlds: 'keyWorlds'
   });
 });
+router.get('/longan', function(req, res, next) {
+  res.render('page/longan', {
+    content: `<h1><span class="header-link" id="1625行，解开-underscore.js-的面纱">1625行，解开 underscore.js 的面纱</span></h1><hr>
+    <p>一直想写一篇这样的文章，于是心动不如行动，这里选择的是 Underscore.js 1.8.3 版本，源码注释加在一起1625行。</p>
+    <ul>
+    <li>Underscore.js 1.8.3</li>
+    <li><a href="http://underscorejs.org">http://underscorejs.org</a></li>
+    <li>(c) 2009-2016 Jeremy Ashkenas, DocumentCloud and Investigative Reporters &amp; Editors Underscore may be freely distributed under the MIT license.</li>
+    </ul>
+    <pre><code class="lang-js">(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+    </code></pre>
+    <p>这里我们首先看到的是一个闭包，概念不再熬述，诸君有意详勘闭包的概念，请移步 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures">Closures</a>。源码如下：</p>
+    <p>这里如果这里有 this 那么一定是指向 window，即：</p>
+    <blockquote>
+    <p>Window {external: Object, chrome: Object, document: document, speechSynthesis: SpeechSynthesis, caches: CacheStorage…}</p>
+    </blockquote>
+    <p>window 具有的众多属性中就包含了 self 引用其自身，根据javascript的运算符执行顺序 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators">Expressions and operators</a>：</p>
+    <ul>
+    <li>. [] ()                                字段访问、数组下标、函数调用以及表达式分组</li>
+    <li>++ -- - ~ ! delete new typeof void    一元运算符、返回数据类型、对象创建、未定义值</li>
+    <li>* / %                                乘法、除法、取模</li>
+    <li>+ - +                                加法、减法、字符串连接</li>
+    <li>&lt;&lt; &gt;&gt; &gt;&gt;&gt;                                移位</li>
+    <li>&lt; &lt;= &gt; &gt;= instanceof                    小于、小于等于、大于、大于等于、instanceof</li>
+    <li>== != === !==                            等于、不等于、严格相等、非严格相等</li>
+    <li>&amp;                                        按位与</li>
+    <li>^                                        按位异或</li>
+    <li>|                                        按位或</li>
+    <li>&amp;&amp;                                    逻辑与</li>
+    <li>||                                    逻辑或</li>
+    <li>?:                                    条件</li>
+    <li>=                                        赋值、运算赋值</li>
+    <li>,                                        多重求值</li>
+    </ul>
+    <pre><code class="lang-js">    <span class="hljs-built_in">var</span> root = typeof <span class="hljs-built_in">self</span> == <span class="hljs-string">'object'</span> &amp;&amp; <span class="hljs-built_in">self</span>.<span class="hljs-built_in">self</span> === <span class="hljs-built_in">self</span> &amp;&amp; <span class="hljs-built_in">self</span> || typeof <span class="hljs-built_in">global</span> == <span class="hljs-string">'object'</span>
+        &amp;&amp; <span class="hljs-built_in">global</span>.<span class="hljs-built_in">global</span> === <span class="hljs-built_in">global</span> &amp;&amp; <span class="hljs-built_in">global</span> || this;
+    </code></pre>
+    <p>这里首先判断的是存在 self 或者 node 环境下的全局变量 global，然后复制给 root，作为根对象。</p>
+    <pre><code class="lang-js">    <span class="hljs-built_in">var</span> previousUnderscore = root.<span class="hljs-symbol">_</span>;
+    </code></pre>
+    <p>previousUnderscore，从字面上理解就是“以前的 underscore”，说实话我并没理解这个赋值的用意，最开始以为是用来做判断全局 window是否已经存在 window.<em> 这个对象，然后通过判断 previousUnderscore 用来避免 window.</em> 污染 underscore 引起命名冲突，但是从头到尾只有一个地方用到了 previousUnderscore，即（1352行）：</p>
+    <blockquote>
+    <pre><code>  _.noConflict = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+          root._ = previousUnderscore;
+          <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+        };
+    </code></pre></blockquote>
+    <p>在外部可执行  <code>var underscore_cache = _.noConflict();</code> 用来重新定义 underscore 命名，很简单也很巧妙，noConflict 方法内将 <code>root._</code> 也就是 <code>window._</code> 重新定义为 previousUnderscore （previousUnderscore = undefined），而 noConflict 是<code>_</code>的一个属性方法，所以 this 指向其自身（41行），即将 <code>_</code> 赋值给了 underscore_cache。</p>
+    <blockquote>
+    <pre><code>   <span class="hljs-keyword">var</span> _ = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(obj)</span> </span>{
+          <span class="hljs-keyword">if</span> (obj <span class="hljs-keyword">instanceof</span> _) <span class="hljs-keyword">return</span> obj;
+          <span class="hljs-keyword">if</span> (!(<span class="hljs-keyword">this</span> <span class="hljs-keyword">instanceof</span> _)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> _(obj);
+          <span class="hljs-keyword">this</span>._wrapped = obj;
+        };
+    </code></pre></blockquote>
+    <pre><code class="lang-js">    <span class="hljs-keyword">var</span> ArrayProto = <span class="hljs-keyword">Array</span>.prototype, ObjProto = <span class="hljs-keyword">Object</span>.prototype;
+    </code></pre>
+    <p>这两句很简单，就是将原生 JAVASCRIPT 的 Array 和 Object 对象的 prototype 缓存，这样做的好处是使用 push、slice、toString等方法的代码行数会减少、减少 JAVASCRIPT 遍历等等，更具体的介绍会在下面讲解，不要心急。</p>
+    <pre><code class="lang-js">    <span class="hljs-keyword">var</span> SymbolProto = <span class="hljs-keyword">typeof</span> <span class="hljs-built_in">Symbol</span> !== <span class="hljs-string">'undefined'</span> ? <span class="hljs-built_in">Symbol</span>.prototype : <span class="hljs-literal">null</span>;
+    </code></pre>
+    <p>2009年的 ES5 规定了六种语言类型：Null Undefined Number Boolean  String Object，详见<a href="https://www.w3.org/html/ig/zh/wiki/ES5/%E7%B1%BB%E5%9E%8B">ES5/类型</a> 和 <a href="https://www.w3.org/html/ig/zh/wiki/ES5/conversion">ES5/类型转换与测试</a>。新出台的 ES6 则规定，包括六种原始类型：Null Undefined Number Boolean String 和 Symbol，还有一种 Object，详见<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures">JavaScript 数据类型和数据结构</a>。新增加的 Symbol 很早就已经提出，其具体概念这里不再复述请移步参考 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol">Symbol</a> ，得益于 <a href="https://www.w3.org/html/ig/zh/wiki/ES6">ES6</a> 的渐渐普及，客户端浏览器也有很多已经支持 Symbol，比如 Firefox v36+ 和 Chrome v38+ 等，具体参考 <a href="http://kangax.github.io/compat-table/es6/">ES6 支持情况</a>，如果大家对 ES6 想要深入了解可以看 <a href="https://hacks.mozilla.org/category/es6-in-depth/">ES6 In Depth</a> 这篇文章和 <a href="http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts">ES6草案</a>，说实话我的水平有限这份草案还没有读懂（<em>+﹏+</em>），如果想要进一步为 ES6 普及贡献自己的力量 <a href="https://www.w3.org/html/ig/zh/wiki/ES6#.E7.B1.BB.E5.9E.8B">ES6 WIKI</a> 的编写是一个蛮好的选择。</p>
+    <p>回归正题，上述代码的目的显而易见就是判断客户端是否支持 Symbol，支持则缓存 Symbol.prototype 原型链，不支持则赋值为 Null，三元运算符的灵活运用是判断一个人语言到达一个阶段的标识，这句话有点武断，但是算的上肺腑之言，要熟悉且灵活运用它。</p>
+    <pre><code class="lang-js">    var <span class="hljs-attr">push</span> = ArrayProto.push,
+            <span class="hljs-attr">slice</span> = ArrayProto.slice,
+            <span class="hljs-attr">toString</span> = ObjProto.<span class="hljs-built_in">toString</span>,
+            <span class="hljs-attr">hasOwnProperty</span> = ObjProto.hasOwnProperty;
+    </code></pre>
+    <p>这里是简单缓存了 push、slice、toString、hasOwnProperty 四个方法。</p>
+    <pre><code class="lang-js">    <span class="hljs-keyword">var</span> nativeIsArray = <span class="hljs-keyword">Array</span>.isArray,
+            nativeKeys = <span class="hljs-keyword">Object</span>.keys,
+            nativeCreate = <span class="hljs-keyword">Object</span>.create;
+    </code></pre>
+    <p>这里就比较有意思了，Array.isArray(element) 是 ES5 后来新增的静态函数，用来判断一个对象是不是数组，具体描述可见 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray">Array.isArray()</a> 和 Array.isArray 函数 (JavaScript)：<code>https://msdn.microsoft.com/zh-cn/library/ff848265(v=vs.94).aspx</code>，我一点都不喜欢微软，就比如现在我想粘一个微软的网址，但是它的网址里面居然有<code>()</code>，以至于我必须把网址贴到代码框里才能保证不出现错误ヽ(ˋДˊ)ノ。Object.keys 用于返回一个由给定对象的所有可枚举自身属性的属性名组成的数组，<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/keys">Object.keys()</a>。Object.create 用于创建一个拥有指定原型和若干个指定属性的对象，这一系列的函数方法都可以在 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> 处了解详情。同时这里面有些内容可以参考 <a href="https://es5.github.io/">Annotated ECMAScript 5.1</a>，有兴趣的同学可以看一看，雾里探花，蛮有趣的。</p>
+    <pre><code class="lang-js">      <span class="hljs-keyword">var</span> Ctor = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{};
+    </code></pre>
+    <p>ctor 英文译为男星，或者我的百度翻译打开方式不对，翻译错了？？？，实际上就是一个空的方法，这种写法很常见，一般用于和 call、apply、argument 等配合使用，在 Underscore.js 中作者并没有上述的用法，只是用 Ctor 这个函数扩展了自身的 prototype，将一些函数方法绑定到自身作为一个 return function，具体细节后面接触到再详述。</p>
+    <pre><code class="lang-js">    <span class="hljs-keyword">var</span> _ = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(obj)</span> </span>{
+            <span class="hljs-keyword">if</span> (obj <span class="hljs-keyword">instanceof</span> _) <span class="hljs-keyword">return</span> obj;
+            <span class="hljs-keyword">if</span> (!(<span class="hljs-keyword">this</span> <span class="hljs-keyword">instanceof</span> _)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> _(obj);
+            <span class="hljs-keyword">this</span>._wrapped = obj;
+        };
+    </code></pre>
+    <p>定义 <code>_</code> 对象，作者的备注是”Create a safe reference to the Underscore object for use below.“，这里我们了解到 <code>_</code> 本身是一个函数，而在 JAVASCRIPT 中函数本身就是对象的一种，所以 Underscore.js 的一系列函数都是作为对象函数绑定到 <code>_</code> 这个函数对象上面的，上面这个函数默认传入一个 obj 参数，可以通过 <code>_(obj)</code> 用来校验 <code>_</code> 是否是 obj 的父类型以此判断继承关系，instanceof的用法详见 <a href="http://www.ibm.com/developerworks/cn/web/1306_jiangjj_jsinstanceof/">JavaScript instanceof 运算符深入剖析</a>，至于 <code>_wrapped</code> 涉及到后面的链式操作，在（887行）一起讲。</p>
+    <pre><code class="lang-js">    <span class="hljs-keyword">if</span> (typeof <span class="hljs-keyword">exports</span> != <span class="hljs-string">'undefined'</span> &amp;&amp; !<span class="hljs-keyword">exports</span>.nodeType) {
+            <span class="hljs-keyword">if</span> (typeof <span class="hljs-keyword">module</span> != <span class="hljs-string">'undefined'</span> &amp;&amp; !<span class="hljs-keyword">module</span>.nodeType &amp;&amp; <span class="hljs-keyword">module</span>.<span class="hljs-keyword">exports</span>) {
+                <span class="hljs-keyword">exports</span> = <span class="hljs-keyword">module</span>.<span class="hljs-keyword">exports</span> = _;
+            }
+            <span class="hljs-keyword">exports</span>._ = _;
+        } <span class="hljs-keyword">else</span> {
+            root._ = _;
+        }
+    </code></pre>
+    <p>这是 Node.js 中对通用模块的封装方法，通过对判断 exports 是否存在来决定将局部变量 _ 赋值给exports，顺便说一下 AMD 规范、CMD规范和 UMD规范，Underscore.js 是支持 AMD 的，在源码尾部有定义，这里简单叙述一下：</p>
+    <p>amd：<a href="https://github.com/amdjs/amdjs-api/wiki/AMD">AMDJS</a></p>
+    <blockquote>
+    <pre><code>  define([<span class="hljs-string">'underscore'</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(_)</span> </span>{
+          <span class="hljs-comment">//todo</span>
+      });
+    </code></pre></blockquote>
+    <p>cmd：<a href="https://github.com/cmdjs/specification/blob/master/draft/module.md">Common Module Definition / draft</a>、<a href="https://github.com/seajs/seajs/issues/242">CMD 模块定义规范</a></p>
+    <blockquote>
+    <pre><code>  <span class="hljs-keyword">var</span> _ = <span class="hljs-built_in">require</span>(<span class="hljs-string">'underscore'</span>);
+      <span class="hljs-built_in">module</span>.exports = _;
+    </code></pre></blockquote>
+    <p>另一种常见的写法：</p>
+    <blockquote>
+    <pre><code>  (<span class="hljs-name">function</span> (<span class="hljs-name">root</span>, factory) {
+          if (<span class="hljs-name">typeof</span> define === <span class="hljs-symbol">'function</span>' &amp;&amp; define.amd) {
+              define([<span class="hljs-symbol">'underscore</span>'], factory)<span class="hljs-comment">;</span>
+          } else if (<span class="hljs-name">typeof</span> exports === <span class="hljs-symbol">'object</span>') {
+              module.exports = factory(<span class="hljs-name"><span class="hljs-builtin-name">require</span></span>(<span class="hljs-symbol">'underscore</span>'))<span class="hljs-comment">;</span>
+          } else {
+              root.returnExports = factory(<span class="hljs-name">root._</span>)<span class="hljs-comment">;</span>
+          }
+      }(<span class="hljs-name">this</span>, function (<span class="hljs-name">$</span>) {
+          //todo
+      }))<span class="hljs-comment">;</span>
+    </code></pre></blockquote>`,
+    kcFileId: '123',
+    kcFileName: 'abc',
+    kcFileAddr: '1234',
+    description: 'description',
+    keyWorlds: 'keyWorlds'
+  });
+});
 // router.get('/chestnut', function(req, res, next) {
 //   res.render('page/chestnut', { title: 'Express' });
 // });
-// router.get('/longan', function(req, res, next) {
-//   res.render('page/longan', { title: 'Express' });
-// });
+
 
 
 module.exports = router;
