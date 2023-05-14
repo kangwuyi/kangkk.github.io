@@ -24,10 +24,17 @@ router.get('/footer', function(req, res, next) {
     kcFileAddr: '1234',
   });
 });
-// //
-// router.get('/candies', function(req, res, next) {
-//   res.render('page/candies', { title: 'Express' });
-// });
+//
+router.get('/candies', function(req, res, next) {
+  res.render('page/candies', {
+    content: 'Express',
+    kcFileId: '123',
+    kcFileName: 'abc',
+    kcFileAddr: '1234',
+    description: 'description',
+    keyWorlds: 'keyWorlds'
+  });
+});
 // router.get('/chestnut', function(req, res, next) {
 //   res.render('page/chestnut', { title: 'Express' });
 // });
