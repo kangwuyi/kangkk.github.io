@@ -1,0 +1,620 @@
+<!-- header 模块 -->
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="description" content="react">
+  <meta name="keywords" content="react,react,react">
+  <title>
+    react
+  </title>
+  <link href="https://iframe.kangkk.cn/static/ico/kk_com_favicon.ico" type="image/x-icon" rel="shortcut icon">
+  <!--[if lt IE 9]>
+        <script crossorigin="anonymous" integrity="sha384-fkm9nLbWSgWvs5dRrT+4CAGQLxkueuCwSOSUV93eD7Pk8j+XnFK76jBBn2fexZd1" src="https://lib.baomitu.com/html5shiv/3.7/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <link crossorigin="anonymous" integrity="sha384-9Z9AuAj0Xi0z7WFOSgjjow8EnNY9wPNp925TVLlAyWhvZPsf5Ks23Ex0mxIrWJzJ"
+  href="https://lib.baomitu.com/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+<script src="//at.alicdn.com/t/c/font_4065255_1yvdewucu3p.js" type="text/javascript"></script>
+<style type="text/css">
+@font-face {
+  font-family: 'iconfont';  /* Project id 2193116 */
+  src: url('//at.alicdn.com/t/c/font_2193116_x5p38zrimgm.woff2?t=1684057313326') format('woff2'),
+       url('//at.alicdn.com/t/c/font_2193116_x5p38zrimgm.woff?t=1684057313326') format('woff'),
+       url('//at.alicdn.com/t/c/font_2193116_x5p38zrimgm.ttf?t=1684057313326') format('truetype');
+}
+.iconfont{
+  font-family: "iconfont" !important;
+  font-size: 14px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+  color: #707070;
+}
+</style>
+<style type="text/css">
+  .icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+  }
+</style>
+  <style type="text/css">
+    .page__body {
+      width: 900px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body class="page__body">
+  <style type="text/css">
+  .header {
+    width: 250px;
+  }
+  .header--title {
+    font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: inline-block;
+    color: #11181b;
+    font-size: 28px;
+    transform: rotateX(180deg) rotateY(180deg);
+  }
+  .header--title a {
+    text-decoration: none;
+    color: #11181b;
+  }
+  .hr-link {
+    background-color: #bbb;
+    background-image: -webkit-linear-gradient(0deg,#fff,#bbb,#fff);
+    border: 0;
+    height: 1px;
+    margin: 0 0 20px;
+  }
+  .header--title_sup {
+    vertical-align: super;
+  }
+  .header--title_sub {
+    font-size: 30px;
+    vertical-align: bottom;
+  }
+</style>
+<header class="header">
+  <h1><sub><svg class="icon header--title_sub" aria-hidden="true"><use xlink:href="#kk-hudielan"></use></svg></sub><span class="header--title"><a href="https://kangkk.com/">KangKK</a></span><sup class="iconfont header--title_sup">&#xe606;</sup></h1>
+  <hr class="hr-link">
+</header>
+
+  <style type="text/css">
+    .page__header-title {
+      font-size: 12px;
+    }
+    .page__header-title span {
+      margin-left: 50px;
+    }
+  </style>
+  <p class="page__header-title"><span>多读书，多运动，多到远处走走，再看看不一样的世界。</span></p>
+  <hr>
+<style type="text/css">
+  .page__candies-container {
+    position: relative;
+    margin: 2em auto;
+    padding: 1em 0;
+    box-sizing: border-box;
+    direction: ltr;
+    line-height: 1.3;
+    font-size: 1em;
+  }
+  .page__candies-container h1 {
+    text-align: center;
+    margin: 0 0 0.5em;
+    border-bottom: 1px dashed #aaa;
+    font-size: 3em;
+    overflow: visible;
+    line-height: 1.3;
+    padding: 0;
+    direction: ltr;
+    word-wrap: break-word;
+  }
+  .page__candies-container ol li {
+    color: #363644;
+    padding: 1px 5px;
+  }
+  .page__candies-container a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #ba832c;
+  }
+  .page__candies-container dl,
+  .page__candies-container ol,
+  .page__candies-container p,
+  .page__candies-container pre,
+  .page__candies-container table,
+  .page__candies-container ul {
+    margin-bottom: 1em;
+  }
+  .page__candies-container pre {
+    background: #384047;
+    color: #fff;
+    word-wrap: normal;
+    overflow-x: auto;
+    padding: 5px;
+  }
+  .page__candies-container pre code {
+    font-size: 10pt;
+    background: 0 0;
+    padding: 0;
+    border-radius: 0;
+    white-space: pre-wrap;
+    color: #ccc;
+  }
+  .page__candies-container code {
+    overflow-y: auto;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    padding: 0 4px;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+  .page__candies-container .footnote-box {
+      box-sizing: border-box;
+      border: 1px solid #aaa;
+      width: 100%;
+      clear: both;
+      font-size: 88%;
+      text-align: left;
+      padding: 3px;
+      margin: 0 auto;
+      background: #fdfdfd;
+      display: inline-block;
+  }
+  .page__candies-container .footnote-box ul li {
+    list-style: decimal;
+    transition: none;
+    padding: 0;
+    margin: 0 0 0.1em;
+    position: initial;
+    color: #252525;
+    line-height: 1.6;
+    font-size: .875em;
+  }
+  .page__candies-container .footnote-box .backlink {
+    user-select: none;
+    padding-right: 5px;
+  }
+  .page__candies-container .footnote-box .backlink b a {
+    background-image: none;
+    padding: 0;
+    text-decoration: none;
+    color: #0645ad;
+  }
+  .page__candies-container .footnote-box .reference-text {
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid-column;
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+  .page__candies-container table {
+    color: #f6e6cc;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-left: 1px solid #3B5F9B;
+    border-top: 1px solid #3B5F9B;
+  }
+  .page__candies-container td,
+  .page__candies-container th {
+    max-width: 700px;
+    border-left: 1px dotted #ccc;
+    border-right: 1px dotted #ccc;
+    border-bottom: 1px dotted #ccc;
+    border-top: 1px dotted #ccc;
+    padding: 3px 5px;
+  }
+  .page__candies-container th {
+    background: #3B5F9B;
+    color: #fff;
+  }
+  .page__candies-container tbody, .page__candies-container thead {
+    border: 3px solid #3B5F9B;
+  }
+  .page__candies-container td {
+    background: #fff;
+    color: #777;
+  }
+  .content__section {
+    float: left;
+    margin: 0 30px 20px 0;
+  }
+  .content__section .content-box__markdown--toc {
+    display: table;
+    zoom: 1;
+    padding: 7px 10px;
+    border: 1px solid #aaa;
+    background-color: #f9f9f9;
+    font-size: 95%;
+    direction: ltr;
+    line-height: 1.6;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .content__section .content-box__markdown--toc ol {
+    padding: 0;
+    counter-reset: out;
+    list-style: none;
+    text-align: left;
+    margin: 0 0 0 1em;
+  }
+  .content__section .content-box__markdown--toc ol li {
+    color: #ba832c;
+    padding: 1px 5px;
+  }
+  .content__section .content-box__markdown--toc ol li:before {
+    margin-right: 5px;
+    counter-increment: out;
+    content: counters(out,".")" ";
+  }
+  .content__section .content-box__markdown--toc ol li a {
+    background: 0 0;
+    font-weight: 100;
+  }
+  .page__candies-container .hljs-attribute,.page__candies-container .hljs-keyword,.page__candies-container .hljs-meta-keyword,.page__candies-container .hljs-name,.page__candies-container .hljs-selector-tag {
+    color: #00bcd4
+  }
+
+  .page__candies-container .hljs-number,.page__candies-container .hljs-quote,.page__candies-container .hljs-selector-class,.page__candies-container .hljs-selector-id,.page__candies-container .hljs-string,.page__candies-container .hljs-type {
+      color: #ffeb3b
+  }
+
+  .page__candies-container .hljs-section,.page__candies-container .hljs-title {
+      color: #ff5722
+  }
+
+  .page__candies-container .hljs-built_in,.page__candies-container .hljs-bullet {
+      color: #4caf50
+  }
+
+  .page__candies-container .hljs-regexp,.page__candies-container .hljs-selector-attr,.page__candies-container .hljs-selector-pseudo,.page__candies-container .hljs-symbol,.page__candies-container .hljs-variable {
+      color: #e91e63
+  }
+</style>
+<div class="page__candies-container">
+  <h1><span class="header-link" id="react">React</span></h1><h2><span class="header-link" id="router">router</span></h2><h3><span class="header-link" id="createroutes">createRoutes</span></h3><pre><code class="lang-js">/**
+ * Creates<span class="hljs-built_in"> and </span>returns an<span class="hljs-built_in"> array </span>of routes from the given object which
+ * may be a JSX route, a plain object route,<span class="hljs-built_in"> or </span>an<span class="hljs-built_in"> array </span>of either.
+ */
+function createRoutes(routes) {
+ <span class="hljs-built_in"> if </span>(isReactChildren(routes)) {
+    routes = createRoutesFromReactChildren(routes);
+  } else<span class="hljs-built_in"> if </span>(routes &amp;&amp; !Array.isArray(routes)) {
+    routes = [routes];
+  }
+
+ <span class="hljs-built_in"> return </span>routes;
+}
+</code></pre>
+<h3><span class="header-link" id="react-createclass和component区别">React-createClass和Component区别</span></h3><p>在<code>React.createClass</code>中。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">let</span> app = React.createClass({
+  getInitialState: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+      <span class="hljs-comment">// some thing</span>
+  }
+})
+</code></pre>
+<p>在<code>React.Component</code>中。</p>
+<pre><code class="lang-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TodoApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span></span>{
+  constructor(props) {
+    <span class="hljs-keyword">super</span>(props);
+    <span class="hljs-keyword">this</span>.state = {};
+  }  
+}
+<span class="hljs-comment">// or</span>
+<span class="hljs-type">Class</span> <span class="hljs-type">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-type">React</span>.<span class="hljs-type">Component</span> {
+  constructor(props) {
+      <span class="hljs-keyword">super</span>(props);
+  }
+  state = {}    
+    <span class="hljs-comment">//todo</span>
+}
+</code></pre>
+<h2><span class="header-link" id="error">error</span></h2><pre><code>Uncaught Error: Invariant Violation: Element <span class="hljs-keyword">type</span> is invalid: expected a <span class="hljs-keyword">string</span> (<span class="hljs-keyword">for</span> built-<span class="hljs-keyword">in</span> components) <span class="hljs-keyword">or</span> a <span class="hljs-keyword">class</span>/<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">but</span> <span class="hljs-title">got</span>:</span> <span class="hljs-keyword">object</span>
+</code></pre><p>遇到这种问题可能原因一：没有使用默认<code>default</code>。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> About = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./components/Home'</span>).<span class="hljs-keyword">default</span>
+</code></pre>
+<p>可能原因二。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> {MyComponent} <span class="hljs-keyword">from</span> <span class="hljs-string">'../components/xyz.js'</span>;
+<span class="hljs-comment">// 替换为</span>
+<span class="hljs-keyword">import</span> MyComponent <span class="hljs-keyword">from</span> <span class="hljs-string">'../components/xyz.js'</span>;
+</code></pre>
+<blockquote>
+<p>Googler from the future here, thanks this was my issue! It makes sense in retrospect as the first is destructuring the export, but if you used default, then it&#39;s just trying to destructure a function/class.</p>
+</blockquote>
+<p>React组建内部还具有自己的状态，这些状态只能在组件内修改。React组件本身很简单，你可以把他们堪称是一个函数，它接受props和state作为参数，返回一个虚拟的Dom表现。</p>
+<h2><span class="header-link" id="路由">路由</span></h2><p>代码分割,惰性加载
+只有一小部分 webpack 用户知 App 代码可以分割成多个 JavaScript 块.</p>
+<p>require.ensure([], () =&gt; {<br>  const Profile = require(&#39;./Profile.js&#39;)
+  this.setState({
+    currentComponent: Profile
+  })
+})
+这对于大型应用十分有用,每次部署之后用户浏览器不用下载那些很少会使用到的代码,比如Profile页面. 更多代码块将导致更多 HTTP 请求 - 但是使用 HTTP/2 多路复用就没有问题.
+结合 chunk hashing,可以在代码更新之后优化缓存命中率.
+<a href="https://christianalfoni.github.io/react-webpack-cookbook/Optimizing-caching.html">https://christianalfoni.github.io/react-webpack-cookbook/Optimizing-caching.html</a>
+下个版本的 react-router 将会对代码分隔做更多支持.
+对于 react-router 的未来规划,可以去查看博客 Ryan Florence: Welcome to Future of Web Application Delivery.
+<a href="https://medium.com/@ryanflorence/welcome-to-future-of-web-application-delivery-9750b7564d9f#.vuf3e1nqi">https://medium.com/@ryanflorence/welcome-to-future-of-web-application-delivery-9750b7564d9f#.vuf3e1nqi</a></p>
+<h2><span class="header-link" id="组件">组件</span></h2><p><a href="https://medium.com/javascript-scene/jsx-looks-like-an-abomination-1c1ec351a918#.ca28nvee6">https://medium.com/javascript-scene/jsx-looks-like-an-abomination-1c1ec351a918#.ca28nvee6</a>
+<a href="https://facebook.github.io/react/docs/jsx-in-depth.html">https://facebook.github.io/react/docs/jsx-in-depth.html</a></p>
+<h2><span class="header-link" id="高阶函数">高阶函数</span></h2><p><a href="http://jamesknelson.com/structuring-react-applications-higher-order-components/">http://jamesknelson.com/structuring-react-applications-higher-order-components/</a></p>
+<h2><span class="header-link" id="属性类型">属性类型</span></h2><p><a href="https://www.npmjs.com/package/react-immutable-proptypes">https://www.npmjs.com/package/react-immutable-proptypes</a>
+如果你仍然没有检查 熟悉类型,那么你应该从2016年开始做起,这将为你节省大量的时间,相信我.</p>
+<p>MyComponent.propTypes = {<br>  isLoading: PropTypes.bool.isRequired,
+  items: ImmutablePropTypes.listOf(
+    ImmutablePropTypes.contains({
+      name: PropTypes.string.isRequired,
+    })
+  ).isRequired
+}
+当然,也可以使用 react-immutable-proptypes 验证 Immutable.js 所编写的属性.</p>
+<h2><span class="header-link" id="高阶组件">高阶组件</span></h2><p>什么是高阶组件？
+PassData({ foo: &#39;bar&#39; })(MyComponent)
+简单来讲,从由原始组件创造一个新的组件并且扩展它的行为.你可以在多种场景来使用它,比如鉴权：requireAuth({ role: &#39;admin&#39; })(MyComponent)(检查用户权限,如果未登录就跳转),或者将组件与 Flux/Redux 的 store 连通.
+在 RisingStack,我们也喜欢将数据拉取和控制类的逻辑分离到高阶组件中,以尽可能地保持 view 层的简单.</p>
+<p>测试
+保证测试的高代码覆盖率是开发周期中的重要一环.幸运的是,React.js 社区有很多这样的库来帮助我们.
+<a href="https://github.com/producthunt/chai-enzyme">https://github.com/producthunt/chai-enzyme</a>
+<a href="https://github.com/airbnb/enzyme">https://github.com/airbnb/enzyme</a>
+AirBnb 的 enzyme 是我们最喜爱的组件测试库之一.使用它的浅渲染特性可以对组件的逻辑和渲染结果进行测试,非常神奇.它现在还不能替代selenium测试,但是将前端测试提升到了一个新高度.是</p>
+<p>这本身不是一个 React 相关的问题,但是大多数人都在打包他们的 React 应用,所以我有必要在这里提一下.
+当你打包源代码的时候,要时刻警惕打包后文件的大小.想要将其控制在最小体积,你需要思考如何如何 require/import 依赖.
+查看下面的代码片段,这两种方式可以对输出大小会产生重大影响：</p>
+<p>import { concat, sortBy, map, sample } from &#39;lodash&#39;</p>
+<p>// vs.
+import concat from &#39;lodash/concat&#39;;<br>import sortBy from &#39;lodash/sortBy&#39;;<br>import map from &#39;lodash/map&#39;;<br>import sample from &#39;lodash/sample&#39;;<br>查看Reduce Your bundle.js File Size By Doing This One Thing,以获取更多信息.
+我们也喜欢将代码分离到至少 vendors.js 和 app.js 两个文件,因为 vendors 相对于我们的代码库来说更新频率低很多.
+对输出文件进行 hash 命名(WebPack中的chunk hash),并使用长缓存,我们可以显著地减少访问用户需要下载的代码.结合代码懒加载,优化效果非常显著.
+如果你还不太熟悉 Webpack,可以查看这本优秀的 React webpack cookbook.
+<a href="https://lacke.mn/reduce-your-bundle-js-file-size/">https://lacke.mn/reduce-your-bundle-js-file-size/</a>
+<a href="http://survivejs.com/webpack/introduction/">http://survivejs.com/webpack/introduction/</a></p>
+<p>组件级别的 hot reload</p>
+<p>如果你曾使用过hot reload编写单页面应用,当你在处理某些与状态相关的事情时,可能你就会明白当你在编辑器中点击保存,整个页面就重新加载了是多么令人讨厌.你需要逐步点击操作到刚才的环节,然后在这样的重复中奔溃.
+通过 React,在重载组件的同时保持组件状态已经成为可能,从此不再痛苦!
+关于如何搭建hot reload,可参考 react-transform-boilerplate.<a href="https://github.com/gaearon/react-transform-boilerplate">https://github.com/gaearon/react-transform-boilerplate</a></p>
+<p>代码检查
+<a href="https://www.npmjs.com/package/eslint-plugin-react">https://www.npmjs.com/package/eslint-plugin-react</a>
+或许你已经给你的 JavaScript 代码制定了代码规范,但是你知道也有用于 React 的代码规范了吗？我们建议你选择一个代码规范,然后照着它说的来做.
+在 RisingStack,我们也将 linters 强制运行在 CI 系统上,git push 亦然.可以试试 pre-push 或者 pre-commit.
+我们使用标准的 JavaScript 代码风格,并使用 eslint-plugin-react 来检查React.js代码.
+(是的,我们已经不再使用分号了)</p>
+<h2><span class="header-link" id="graphql-和-relay">GraphQL 和 Relay</span></h2><p>相对而言 GraphQL 和 Relay 还属于新技术,在 RisingStack,我们还没有在产品环境中使用它们,但保持关注.
+我们写过一个 Relay 的 MongoDB ORM 库,叫做 graffiti,可以使用你已有的 mongoose models 来创建 GraphQL server.
+如果你想要学习这些新技术,我们建议你可以找来玩一玩.</p>
+<h4><span class="header-link" id="渲染">渲染</span></h4><p>你的智能组件应该是配置在 Route 中的组件，你的智能组件的 render 方法控制子组件的渲染数据：</p>
+<pre><code class="lang-js">render () {
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.hasData()) {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.renderComponents();
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.renderLoadingScreen();
+  }
+}
+</code></pre>
+<p>智能组件尽可能的做数据预处理，以使你的木偶组件尽可能减少参与运算，当你传递一个处理句柄给木偶组件时，带上它需要的 id，这样木偶组件就不需要自己获取 id 了：</p>
+<pre><code class="lang-js">renderComponents () {
+  <span class="hljs-keyword">return</span> &lt;DumbComponent
+    onSelect={<span class="hljs-keyword">this</span>.itemSelected.bind(<span class="hljs-keyword">this</span>, <span class="hljs-keyword">this</span>.props.item.id)}
+  &gt;;
+}
+</code></pre>
+<!--
+通过使用 onEnter 和 onLeave 方法，你的路由文件同样可以作为数据的关卡。在这里你可以触发 fetch action 来获取组件需要的数据。这在你使用深层路由嵌套的时候很有用，比如，给定路由 /app/project/10/permission，你可以：
+
+在 /app 中获取当前用户的登录信息
+在 /project 中获取该用户可见的项目
+在 /10 中获取项目 10 的详细信息
+在 /permission 中获取该用户的权限列表
+当切换到另外一个路由 /app/project/11，你仅仅需要获取更改的数据（/11 对应的数据），这时你就只需要一次对项目 11 的请求了：
+
+```js
+import Projects from "./containers/projects";
+import ProjectDetailRoute from "routes/project_detail";
+export default class ProjectList {
+  constructor () {
+    this.path = "project";
+    this.projectDetailRoute = new ProjectDetailRoute();
+  }
+  getChildRoutes (state, cb) {
+    cb(null, [this.projectDetailRoute]);
+  }
+  getComponents (cb) {
+    cb(null, ProjectTasks);
+  }
+  onEnter () {
+    this.fetchProjects();
+  }
+  fetchProjects () {
+    ...
+  }
+}
+```
+-->
+<h3><span class="header-link" id="第三方异步数据">第三方异步数据</span></h3><p>第三方异步数据通常来自于WebSocket。不管怎样当从UI层触发一个事件后，木偶组件会把事件传播到智能组件，然后触发action。获取WebSocket数据的“Smart Component”尽可能的独立于其他“Smart Component”之外，所以在路由层进行扩展。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> Login <span class="hljs-keyword">from</span> <span class="hljs-string">"./containers/Login"</span>;
+<span class="hljs-keyword">import</span> LoginWebSocket <span class="hljs-keyword">from</span> <span class="hljs-string">"./containers/LoginWebSocket"</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Login</span> </span>{
+  ...
+  getComponents (cb) {
+    cb(<span class="hljs-literal">null</span>, {view: LoginPage, webSocketData: LoginPageWebSocket});
+  }
+  ...
+}
+</code></pre>
+
+</div>
+<script type="text/javascript">
+  $(function () {
+    $('img').each(function () {
+      var _self = $(this);
+      var altCache = _self.attr('alt');
+      if (altCache === 'svg') {
+        var hrefCache = _self.attr('src');
+        var dataCache = hrefCache.substr(0, (hrefCache.length - 3)) + 'svg';
+        _self.replaceWith('<p class="svgNodePhoto"><object data="' + dataCache + '" type="image/svg+xml"></object></p>')
+      }
+    });
+  });
+</script>
+<style type="text/css">
+  .page__footer-toTop {
+    display: inline-block;
+    position: fixed;
+    padding: 0;
+    right: 10px;
+    bottom: 10px;
+    width: 50px;
+    height: 50px;
+    background: #ddd;
+    color: rgba(39,174,96,.6);
+    text-align: center;
+    border-radius: 2px;
+    z-index: 1;
+  }
+  .page__footer-toTop--icon {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    top: 10px;
+    left: 10px;
+    color: #fff;
+    position: absolute;
+    font-size: 24px;
+    cursor: pointer;
+    text-rendering: auto;
+    display: inline-block;
+    font-style: normal;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .page__footer-content {
+    
+  }
+  .page__footer-content--flex {
+    display: flex;
+  }
+  .page__footer-content--license {
+    margin-right: 20px;
+  }
+  .page__footer-content--thread {
+    color: #666666;
+  }
+  .page__footer-content--thread p {
+    margin: 5px 0 0 0;
+    font-size: 12px;
+  }
+  .page__footer-content--thread p:first-of-type {
+    margin: 0;
+  }
+  .page__footer-section {
+
+  }
+  .page__footer-section--word {
+    padding: 0;
+    margin: 0.5em 0;
+    font-weight: 700;
+    break-inside: avoid-column;
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+  .page__footer-section--word a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #ba832c;
+    font-weight: 700;
+  }
+</style>
+<hr>
+<div class="page__footer-toTop"><i class="page__footer-toTop--icon iconfont">&#xe602;</i></div>
+<div class="page__footer-content">
+  <div class="page__footer-content--flex">
+    <div class="page__footer-content--license">
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+        <img alt="Creative Commons License" style="border-width:0" src="https://iframe.kangkk.cn/static/image/licensebuttons.png" />
+      </a>
+    </div>
+    <div class="page__footer-content--thread">
+      <p><b>ID</b>: 81fdd8f6-3286-4017-8f5b-13c2dee80e39</p>
+      <p><b>TITLE</b>: react</p>
+      <p><b>URL</b>: http://kangkk.com/cn/81fdd8f6-3286-4017-8f5b-13c2dee80e39.html</p>
+    </div>
+  </div>
+  <section class="page__footer-section">
+    <p class="page__footer-section--word">This work is licensed under a <a rel="license"
+        href="https://creativecommons.org/licenses/by-nc-nd/3.0/cn/" target="_blank"> Creative Commons
+        Attribution-NonCommercial-NoDerivatives 4.0 International License
+      </a>. Reprint the 《<sub>
+        react
+      </sub>》 need signature "<sub>kangkk</sub>", and the url is <sub>
+        http://kangkk.com/cn/81fdd8f6-3286-4017-8f5b-13c2dee80e39.html
+      </sub>.
+    </p>
+  </section>
+</div>
+<style type="text/css">
+  footer {
+    margin-top: 10px;
+    margin-bottom: 40px;
+    border-top: 1px solid #e5e5e5;
+    padding-top: 10px;
+    width: 400px;
+    font: 14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+  }
+  footer a {
+    color: #39c;
+    text-decoration: none;
+  }
+  footer .iconfont {
+    color: #39c;
+    font-size: 12px;
+  }
+  footer img {
+    width: 12px;
+  }
+</style>
+<footer>
+  <small>
+    Copyright ©2006-2023 康健生活, All Rights Reserved ➤ 
+    <a href="./workingspace.html">README</a>
+  </small>
+  <br>
+  <small>Living in China. 
+    <a href="http://kangkk.com/" target="_blank">KangKK.COM</a> ➤ 
+    <a href="https://kangkk.cn/" target="_blank">KangKK.CN</a> ➤ 〔♩ 
+    <a href="#"><i class="iconfont">&#xe60b;</i></a> ♪ 
+    <a href="https://KangKK.NOTION.SITE"><i class="iconfont">&#xec37;</i></a> ♫ 
+    <a href="#"><i class="iconfont">&#xf1b5;</i></a> ♬〕
+  </small>
+  <br>
+  <small><a href="https://beian.miit.gov.cn/" target="_blank">京ICP备16020839号-1</a> ➤ <a target="_blank"
+      href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=23128202000134"><img src="https://gw.alicdn.com/tfs/TB1jwakrbH1gK0jSZFwXXc7aXXa-20-20.png" alt="黑公网安备"/> 黑公网安备
+      23128202000134号</a></small>
+</footer>
+  <script type="text/javascript">
+    !function ($) {
+      $(window).scroll(function () {
+        $(this).scrollTop() > 100 ? $(".page__footer-toTop").fadeIn() : $(".page__footer-toTop").fadeOut()
+      }), $(".page__footer-toTop").on("click", function (b) {
+        return b.preventDefault(), $("html, body").animate({
+          scrollTop: 0
+        }, 100), !1
+      });
+    }(jQuery);
+  </script>
+  </body>
+
+  </html>

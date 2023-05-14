@@ -1,0 +1,477 @@
+<!-- header 模块 -->
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="description" content="升级脚本维护">
+  <meta name="keywords" content="Sheng,Ji,Jiao,Ben,Wei,Hu,Sheng Ji Jiao Ben Wei Hu,升级脚本维护">
+  <title>
+    升级脚本维护
+  </title>
+  <link href="https://iframe.kangkk.cn/static/ico/kk_com_favicon.ico" type="image/x-icon" rel="shortcut icon">
+  <!--[if lt IE 9]>
+        <script crossorigin="anonymous" integrity="sha384-fkm9nLbWSgWvs5dRrT+4CAGQLxkueuCwSOSUV93eD7Pk8j+XnFK76jBBn2fexZd1" src="https://lib.baomitu.com/html5shiv/3.7/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <link crossorigin="anonymous" integrity="sha384-9Z9AuAj0Xi0z7WFOSgjjow8EnNY9wPNp925TVLlAyWhvZPsf5Ks23Ex0mxIrWJzJ"
+  href="https://lib.baomitu.com/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+<script src="//at.alicdn.com/t/c/font_4065255_1yvdewucu3p.js" type="text/javascript"></script>
+<style type="text/css">
+@font-face {
+  font-family: 'iconfont';  /* Project id 2193116 */
+  src: url('//at.alicdn.com/t/c/font_2193116_x5p38zrimgm.woff2?t=1684057313326') format('woff2'),
+       url('//at.alicdn.com/t/c/font_2193116_x5p38zrimgm.woff?t=1684057313326') format('woff'),
+       url('//at.alicdn.com/t/c/font_2193116_x5p38zrimgm.ttf?t=1684057313326') format('truetype');
+}
+.iconfont{
+  font-family: "iconfont" !important;
+  font-size: 14px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+  color: #707070;
+}
+</style>
+<style type="text/css">
+  .icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+  }
+</style>
+  <style type="text/css">
+    .page__body {
+      width: 900px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body class="page__body">
+  <style type="text/css">
+  .header {
+    width: 250px;
+  }
+  .header--title {
+    font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: inline-block;
+    color: #11181b;
+    font-size: 28px;
+    transform: rotateX(180deg) rotateY(180deg);
+  }
+  .header--title a {
+    text-decoration: none;
+    color: #11181b;
+  }
+  .hr-link {
+    background-color: #bbb;
+    background-image: -webkit-linear-gradient(0deg,#fff,#bbb,#fff);
+    border: 0;
+    height: 1px;
+    margin: 0 0 20px;
+  }
+  .header--title_sup {
+    vertical-align: super;
+  }
+  .header--title_sub {
+    font-size: 30px;
+    vertical-align: bottom;
+  }
+</style>
+<header class="header">
+  <h1><sub><svg class="icon header--title_sub" aria-hidden="true"><use xlink:href="#kk-hudielan"></use></svg></sub><span class="header--title"><a href="https://kangkk.com/">KangKK</a></span><sup class="iconfont header--title_sup">&#xe606;</sup></h1>
+  <hr class="hr-link">
+</header>
+
+  <style type="text/css">
+    .page__header-title {
+      font-size: 12px;
+    }
+    .page__header-title span {
+      margin-left: 50px;
+    }
+  </style>
+  <p class="page__header-title"><span>多读书，多运动，多到远处走走，再看看不一样的世界。</span></p>
+  <hr>
+<style type="text/css">
+  .page__candies-container {
+    position: relative;
+    margin: 2em auto;
+    padding: 1em 0;
+    box-sizing: border-box;
+    direction: ltr;
+    line-height: 1.3;
+    font-size: 1em;
+  }
+  .page__candies-container h1 {
+    text-align: center;
+    margin: 0 0 0.5em;
+    border-bottom: 1px dashed #aaa;
+    font-size: 3em;
+    overflow: visible;
+    line-height: 1.3;
+    padding: 0;
+    direction: ltr;
+    word-wrap: break-word;
+  }
+  .page__candies-container ol li {
+    color: #363644;
+    padding: 1px 5px;
+  }
+  .page__candies-container a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #ba832c;
+  }
+  .page__candies-container dl,
+  .page__candies-container ol,
+  .page__candies-container p,
+  .page__candies-container pre,
+  .page__candies-container table,
+  .page__candies-container ul {
+    margin-bottom: 1em;
+  }
+  .page__candies-container pre {
+    background: #384047;
+    color: #fff;
+    word-wrap: normal;
+    overflow-x: auto;
+    padding: 5px;
+  }
+  .page__candies-container pre code {
+    font-size: 10pt;
+    background: 0 0;
+    padding: 0;
+    border-radius: 0;
+    white-space: pre-wrap;
+    color: #ccc;
+  }
+  .page__candies-container code {
+    overflow-y: auto;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    padding: 0 4px;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+  .page__candies-container .footnote-box {
+      box-sizing: border-box;
+      border: 1px solid #aaa;
+      width: 100%;
+      clear: both;
+      font-size: 88%;
+      text-align: left;
+      padding: 3px;
+      margin: 0 auto;
+      background: #fdfdfd;
+      display: inline-block;
+  }
+  .page__candies-container .footnote-box ul li {
+    list-style: decimal;
+    transition: none;
+    padding: 0;
+    margin: 0 0 0.1em;
+    position: initial;
+    color: #252525;
+    line-height: 1.6;
+    font-size: .875em;
+  }
+  .page__candies-container .footnote-box .backlink {
+    user-select: none;
+    padding-right: 5px;
+  }
+  .page__candies-container .footnote-box .backlink b a {
+    background-image: none;
+    padding: 0;
+    text-decoration: none;
+    color: #0645ad;
+  }
+  .page__candies-container .footnote-box .reference-text {
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid-column;
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+  .page__candies-container table {
+    color: #f6e6cc;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-left: 1px solid #3B5F9B;
+    border-top: 1px solid #3B5F9B;
+  }
+  .page__candies-container td,
+  .page__candies-container th {
+    max-width: 700px;
+    border-left: 1px dotted #ccc;
+    border-right: 1px dotted #ccc;
+    border-bottom: 1px dotted #ccc;
+    border-top: 1px dotted #ccc;
+    padding: 3px 5px;
+  }
+  .page__candies-container th {
+    background: #3B5F9B;
+    color: #fff;
+  }
+  .page__candies-container tbody, .page__candies-container thead {
+    border: 3px solid #3B5F9B;
+  }
+  .page__candies-container td {
+    background: #fff;
+    color: #777;
+  }
+  .content__section {
+    float: left;
+    margin: 0 30px 20px 0;
+  }
+  .content__section .content-box__markdown--toc {
+    display: table;
+    zoom: 1;
+    padding: 7px 10px;
+    border: 1px solid #aaa;
+    background-color: #f9f9f9;
+    font-size: 95%;
+    direction: ltr;
+    line-height: 1.6;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .content__section .content-box__markdown--toc ol {
+    padding: 0;
+    counter-reset: out;
+    list-style: none;
+    text-align: left;
+    margin: 0 0 0 1em;
+  }
+  .content__section .content-box__markdown--toc ol li {
+    color: #ba832c;
+    padding: 1px 5px;
+  }
+  .content__section .content-box__markdown--toc ol li:before {
+    margin-right: 5px;
+    counter-increment: out;
+    content: counters(out,".")" ";
+  }
+  .content__section .content-box__markdown--toc ol li a {
+    background: 0 0;
+    font-weight: 100;
+  }
+  .page__candies-container .hljs-attribute,.page__candies-container .hljs-keyword,.page__candies-container .hljs-meta-keyword,.page__candies-container .hljs-name,.page__candies-container .hljs-selector-tag {
+    color: #00bcd4
+  }
+
+  .page__candies-container .hljs-number,.page__candies-container .hljs-quote,.page__candies-container .hljs-selector-class,.page__candies-container .hljs-selector-id,.page__candies-container .hljs-string,.page__candies-container .hljs-type {
+      color: #ffeb3b
+  }
+
+  .page__candies-container .hljs-section,.page__candies-container .hljs-title {
+      color: #ff5722
+  }
+
+  .page__candies-container .hljs-built_in,.page__candies-container .hljs-bullet {
+      color: #4caf50
+  }
+
+  .page__candies-container .hljs-regexp,.page__candies-container .hljs-selector-attr,.page__candies-container .hljs-selector-pseudo,.page__candies-container .hljs-symbol,.page__candies-container .hljs-variable {
+      color: #e91e63
+  }
+</style>
+<div class="page__candies-container">
+  <h1><span class="header-link" id="升级脚本维护">升级脚本维护</span></h1><p>让我们先来看看复杂的项目环境中的几个场景：</p>
+<p>场景1：环境升级</p>
+<p>项目A和项目B都依赖于Web容器，公司决定升级Web容器版本，而公司要升级的机器有上百台，依赖人肉升级已不现实，维护团队因此针对各种软件开发了相应的自动化脚本，但当新的软件出现时，必须要开发新的脚本。而且当同时升级若干环境软件时，则难度随之增大，手工调度的方式极易出错，当升级失败时仍需要大量人工处理。由于存在大量升级脚本，有一定的维护成本。</p>
+<p>场景2：依赖于环境的软件升级与回滚</p>
+<p>针对环境升级，公司为项目A和项目B开发了新的版本。但环境的升级和软件的升级不是同步进行，出错的可能性非常大（想一想间接依赖和多重依赖的情况）。当新版本部署到生产系统时，发现问题，需要回滚到之前的版本——所有运行时版本都需要回滚，而且环境也需要同步回滚。几百台机器……</p>
+<p>场景3：运行时依赖</p>
+<p>在第一节的方案中，我们将所有的运行时依赖都打包到一起。当项目依赖关系复杂时，这样产生的包将非常臃肿，潜在地延长了部署的时间（想一想全世有几百台服务器，一个部署计划需要部署几百兆文件的情况），而且产生冲突的可能性非常大，而且对于不同类型的项目（Java和Ruby项目）缺乏通用性。06年左右，Nortel可是拿Excel统计过运行时依赖的，牵涉若干项目组，反复多次，没有个把月真搞不定。</p>
+<p>场景4：泛滥的部署</p>
+<p>每个项目相关的持续集成环境都需要开发自己的部署脚本，重复投入大，而且各个项目的部署过程不一致，并且对于同一个项目无法同时满足不同目的部署要求，例如，环境或系统配置参数改变后，无需安装包，只需做清理和激活的工作。最后，持续集成只是支持了和代码修改有关的部署。</p>
+<p>场景5：不一致的环境</p>
+<p>简单项目中，开发环境和运行环境都由开发人员搭建，当公司变大时，系统的运行环境将由运维人员搭建，而开发环境如果由运维人员搭建则工作量太大，由开发人员自己搭建则操作复杂又容易产生不一致的情况。</p>
+<p>场景6：热切换</p>
+<p>对于某些部署，需要尽量减少服务的停止时间，需要在服务的同时进行部署。</p>
+<p>这些场景只是以持续集成为中心的持续部署在面对大型企业时所遇到的部分问题。大型企业，人多，项目多，机器多，项目环境复杂，部署维护工作繁多。以持续集成为基础的部署可以解决各个项目的集成问题，却无法帮助企业应对复杂的项目环境和各种不同的部署要求。究其更本，大型企业中的部署不再是一个简单的问题，而是一个交付生态圈，基础设施和环境管理必须要纳入考虑之中。要实现真正意义上的持续部署，我们就必须把环境和项目同等对待，通通纳入管理之中。同时，部署本身要得到统一。一个好的部署机制，应该是易于建立，易于使用，易于维护。</p>
+<p>随着脚本数量的增加，这种自动化覆盖的方式的弊端也逐渐暴露：</p>
+<p>执行效率低下
+构建成功率低(误报率高)。
+受前端样式变更影响大
+外部依赖较多，不是所有用例都能自动化
+覆盖能力有限
+虽然我们在测试框架和工具层面通过结合selenium-grid实现了脚本并发执行和失败用例重试机制以提高执行效率和降低误报率，但是这种方式只能缓解问题，并不能从根本解决覆盖不全的问题。</p>
+<p>正好赶上公司的SOA服务化进程，测试这边也开始配合的做自动化方面的转变，从原来的黑盒系统级自动化测试向分层自动化测试转变。</p>
+<p><a href="http://tech.youzan.com/layers_test_automation_practice/">http://tech.youzan.com/layers_test_automation_practice/</a></p>
+<p><a href="https://segmentfault.com/a/1190000006166538">https://segmentfault.com/a/1190000006166538</a></p>
+<p><a href="https://segmentfault.com/a/1190000005085204">https://segmentfault.com/a/1190000005085204</a></p>
+
+</div>
+<script type="text/javascript">
+  $(function () {
+    $('img').each(function () {
+      var _self = $(this);
+      var altCache = _self.attr('alt');
+      if (altCache === 'svg') {
+        var hrefCache = _self.attr('src');
+        var dataCache = hrefCache.substr(0, (hrefCache.length - 3)) + 'svg';
+        _self.replaceWith('<p class="svgNodePhoto"><object data="' + dataCache + '" type="image/svg+xml"></object></p>')
+      }
+    });
+  });
+</script>
+<style type="text/css">
+  .page__footer-toTop {
+    display: inline-block;
+    position: fixed;
+    padding: 0;
+    right: 10px;
+    bottom: 10px;
+    width: 50px;
+    height: 50px;
+    background: #ddd;
+    color: rgba(39,174,96,.6);
+    text-align: center;
+    border-radius: 2px;
+    z-index: 1;
+  }
+  .page__footer-toTop--icon {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    top: 10px;
+    left: 10px;
+    color: #fff;
+    position: absolute;
+    font-size: 24px;
+    cursor: pointer;
+    text-rendering: auto;
+    display: inline-block;
+    font-style: normal;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .page__footer-content {
+    
+  }
+  .page__footer-content--flex {
+    display: flex;
+  }
+  .page__footer-content--license {
+    margin-right: 20px;
+  }
+  .page__footer-content--thread {
+    color: #666666;
+  }
+  .page__footer-content--thread p {
+    margin: 5px 0 0 0;
+    font-size: 12px;
+  }
+  .page__footer-content--thread p:first-of-type {
+    margin: 0;
+  }
+  .page__footer-section {
+
+  }
+  .page__footer-section--word {
+    padding: 0;
+    margin: 0.5em 0;
+    font-weight: 700;
+    break-inside: avoid-column;
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+  .page__footer-section--word a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #ba832c;
+    font-weight: 700;
+  }
+</style>
+<hr>
+<div class="page__footer-toTop"><i class="page__footer-toTop--icon iconfont">&#xe602;</i></div>
+<div class="page__footer-content">
+  <div class="page__footer-content--flex">
+    <div class="page__footer-content--license">
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+        <img alt="Creative Commons License" style="border-width:0" src="https://iframe.kangkk.cn/static/image/licensebuttons.png" />
+      </a>
+    </div>
+    <div class="page__footer-content--thread">
+      <p><b>ID</b>: b3a5f4d2-ee0a-45df-bd41-e3dc214c8f04</p>
+      <p><b>TITLE</b>: 升级脚本维护</p>
+      <p><b>URL</b>: http://kangkk.com/cn/b3a5f4d2-ee0a-45df-bd41-e3dc214c8f04.html</p>
+    </div>
+  </div>
+  <section class="page__footer-section">
+    <p class="page__footer-section--word">This work is licensed under a <a rel="license"
+        href="https://creativecommons.org/licenses/by-nc-nd/3.0/cn/" target="_blank"> Creative Commons
+        Attribution-NonCommercial-NoDerivatives 4.0 International License
+      </a>. Reprint the 《<sub>
+        升级脚本维护
+      </sub>》 need signature "<sub>kangkk</sub>", and the url is <sub>
+        http://kangkk.com/cn/b3a5f4d2-ee0a-45df-bd41-e3dc214c8f04.html
+      </sub>.
+    </p>
+  </section>
+</div>
+<style type="text/css">
+  footer {
+    margin-top: 10px;
+    margin-bottom: 40px;
+    border-top: 1px solid #e5e5e5;
+    padding-top: 10px;
+    width: 400px;
+    font: 14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+  }
+  footer a {
+    color: #39c;
+    text-decoration: none;
+  }
+  footer .iconfont {
+    color: #39c;
+    font-size: 12px;
+  }
+  footer img {
+    width: 12px;
+  }
+</style>
+<footer>
+  <small>
+    Copyright ©2006-2023 康健生活, All Rights Reserved ➤ 
+    <a href="./workingspace.html">README</a>
+  </small>
+  <br>
+  <small>Living in China. 
+    <a href="http://kangkk.com/" target="_blank">KangKK.COM</a> ➤ 
+    <a href="https://kangkk.cn/" target="_blank">KangKK.CN</a> ➤ 〔♩ 
+    <a href="#"><i class="iconfont">&#xe60b;</i></a> ♪ 
+    <a href="https://KangKK.NOTION.SITE"><i class="iconfont">&#xec37;</i></a> ♫ 
+    <a href="#"><i class="iconfont">&#xf1b5;</i></a> ♬〕
+  </small>
+  <br>
+  <small><a href="https://beian.miit.gov.cn/" target="_blank">京ICP备16020839号-1</a> ➤ <a target="_blank"
+      href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=23128202000134"><img src="https://gw.alicdn.com/tfs/TB1jwakrbH1gK0jSZFwXXc7aXXa-20-20.png" alt="黑公网安备"/> 黑公网安备
+      23128202000134号</a></small>
+</footer>
+  <script type="text/javascript">
+    !function ($) {
+      $(window).scroll(function () {
+        $(this).scrollTop() > 100 ? $(".page__footer-toTop").fadeIn() : $(".page__footer-toTop").fadeOut()
+      }), $(".page__footer-toTop").on("click", function (b) {
+        return b.preventDefault(), $("html, body").animate({
+          scrollTop: 0
+        }, 100), !1
+      });
+    }(jQuery);
+  </script>
+  </body>
+
+  </html>

@@ -1,0 +1,885 @@
+<!-- header 模块 -->
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="description" content="complexity">
+  <meta name="keywords" content="complexity,complexity,complexity">
+  <title>
+    complexity
+  </title>
+  <link href="https://iframe.kangkk.cn/static/ico/kk_com_favicon.ico" type="image/x-icon" rel="shortcut icon">
+  <!--[if lt IE 9]>
+        <script crossorigin="anonymous" integrity="sha384-fkm9nLbWSgWvs5dRrT+4CAGQLxkueuCwSOSUV93eD7Pk8j+XnFK76jBBn2fexZd1" src="https://lib.baomitu.com/html5shiv/3.7/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <link crossorigin="anonymous" integrity="sha384-9Z9AuAj0Xi0z7WFOSgjjow8EnNY9wPNp925TVLlAyWhvZPsf5Ks23Ex0mxIrWJzJ"
+  href="https://lib.baomitu.com/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+<script src="//at.alicdn.com/t/c/font_4065255_1yvdewucu3p.js" type="text/javascript"></script>
+<style type="text/css">
+@font-face {
+  font-family: 'iconfont';  /* Project id 2193116 */
+  src: url('//at.alicdn.com/t/c/font_2193116_x5p38zrimgm.woff2?t=1684057313326') format('woff2'),
+       url('//at.alicdn.com/t/c/font_2193116_x5p38zrimgm.woff?t=1684057313326') format('woff'),
+       url('//at.alicdn.com/t/c/font_2193116_x5p38zrimgm.ttf?t=1684057313326') format('truetype');
+}
+.iconfont{
+  font-family: "iconfont" !important;
+  font-size: 14px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+  color: #707070;
+}
+</style>
+<style type="text/css">
+  .icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+  }
+</style>
+  <style type="text/css">
+    .page__body {
+      width: 900px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body class="page__body">
+  <style type="text/css">
+  .header {
+    width: 250px;
+  }
+  .header--title {
+    font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: inline-block;
+    color: #11181b;
+    font-size: 28px;
+    transform: rotateX(180deg) rotateY(180deg);
+  }
+  .header--title a {
+    text-decoration: none;
+    color: #11181b;
+  }
+  .hr-link {
+    background-color: #bbb;
+    background-image: -webkit-linear-gradient(0deg,#fff,#bbb,#fff);
+    border: 0;
+    height: 1px;
+    margin: 0 0 20px;
+  }
+  .header--title_sup {
+    vertical-align: super;
+  }
+  .header--title_sub {
+    font-size: 30px;
+    vertical-align: bottom;
+  }
+</style>
+<header class="header">
+  <h1><sub><svg class="icon header--title_sub" aria-hidden="true"><use xlink:href="#kk-hudielan"></use></svg></sub><span class="header--title"><a href="https://kangkk.com/">KangKK</a></span><sup class="iconfont header--title_sup">&#xe606;</sup></h1>
+  <hr class="hr-link">
+</header>
+
+  <style type="text/css">
+    .page__header-title {
+      font-size: 12px;
+    }
+    .page__header-title span {
+      margin-left: 50px;
+    }
+  </style>
+  <p class="page__header-title"><span>多读书，多运动，多到远处走走，再看看不一样的世界。</span></p>
+  <hr>
+<style type="text/css">
+  .page__candies-container {
+    position: relative;
+    margin: 2em auto;
+    padding: 1em 0;
+    box-sizing: border-box;
+    direction: ltr;
+    line-height: 1.3;
+    font-size: 1em;
+  }
+  .page__candies-container h1 {
+    text-align: center;
+    margin: 0 0 0.5em;
+    border-bottom: 1px dashed #aaa;
+    font-size: 3em;
+    overflow: visible;
+    line-height: 1.3;
+    padding: 0;
+    direction: ltr;
+    word-wrap: break-word;
+  }
+  .page__candies-container ol li {
+    color: #363644;
+    padding: 1px 5px;
+  }
+  .page__candies-container a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #ba832c;
+  }
+  .page__candies-container dl,
+  .page__candies-container ol,
+  .page__candies-container p,
+  .page__candies-container pre,
+  .page__candies-container table,
+  .page__candies-container ul {
+    margin-bottom: 1em;
+  }
+  .page__candies-container pre {
+    background: #384047;
+    color: #fff;
+    word-wrap: normal;
+    overflow-x: auto;
+    padding: 5px;
+  }
+  .page__candies-container pre code {
+    font-size: 10pt;
+    background: 0 0;
+    padding: 0;
+    border-radius: 0;
+    white-space: pre-wrap;
+    color: #ccc;
+  }
+  .page__candies-container code {
+    overflow-y: auto;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    padding: 0 4px;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+  .page__candies-container .footnote-box {
+      box-sizing: border-box;
+      border: 1px solid #aaa;
+      width: 100%;
+      clear: both;
+      font-size: 88%;
+      text-align: left;
+      padding: 3px;
+      margin: 0 auto;
+      background: #fdfdfd;
+      display: inline-block;
+  }
+  .page__candies-container .footnote-box ul li {
+    list-style: decimal;
+    transition: none;
+    padding: 0;
+    margin: 0 0 0.1em;
+    position: initial;
+    color: #252525;
+    line-height: 1.6;
+    font-size: .875em;
+  }
+  .page__candies-container .footnote-box .backlink {
+    user-select: none;
+    padding-right: 5px;
+  }
+  .page__candies-container .footnote-box .backlink b a {
+    background-image: none;
+    padding: 0;
+    text-decoration: none;
+    color: #0645ad;
+  }
+  .page__candies-container .footnote-box .reference-text {
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid-column;
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+  .page__candies-container table {
+    color: #f6e6cc;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-left: 1px solid #3B5F9B;
+    border-top: 1px solid #3B5F9B;
+  }
+  .page__candies-container td,
+  .page__candies-container th {
+    max-width: 700px;
+    border-left: 1px dotted #ccc;
+    border-right: 1px dotted #ccc;
+    border-bottom: 1px dotted #ccc;
+    border-top: 1px dotted #ccc;
+    padding: 3px 5px;
+  }
+  .page__candies-container th {
+    background: #3B5F9B;
+    color: #fff;
+  }
+  .page__candies-container tbody, .page__candies-container thead {
+    border: 3px solid #3B5F9B;
+  }
+  .page__candies-container td {
+    background: #fff;
+    color: #777;
+  }
+  .content__section {
+    float: left;
+    margin: 0 30px 20px 0;
+  }
+  .content__section .content-box__markdown--toc {
+    display: table;
+    zoom: 1;
+    padding: 7px 10px;
+    border: 1px solid #aaa;
+    background-color: #f9f9f9;
+    font-size: 95%;
+    direction: ltr;
+    line-height: 1.6;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .content__section .content-box__markdown--toc ol {
+    padding: 0;
+    counter-reset: out;
+    list-style: none;
+    text-align: left;
+    margin: 0 0 0 1em;
+  }
+  .content__section .content-box__markdown--toc ol li {
+    color: #ba832c;
+    padding: 1px 5px;
+  }
+  .content__section .content-box__markdown--toc ol li:before {
+    margin-right: 5px;
+    counter-increment: out;
+    content: counters(out,".")" ";
+  }
+  .content__section .content-box__markdown--toc ol li a {
+    background: 0 0;
+    font-weight: 100;
+  }
+  .page__candies-container .hljs-attribute,.page__candies-container .hljs-keyword,.page__candies-container .hljs-meta-keyword,.page__candies-container .hljs-name,.page__candies-container .hljs-selector-tag {
+    color: #00bcd4
+  }
+
+  .page__candies-container .hljs-number,.page__candies-container .hljs-quote,.page__candies-container .hljs-selector-class,.page__candies-container .hljs-selector-id,.page__candies-container .hljs-string,.page__candies-container .hljs-type {
+      color: #ffeb3b
+  }
+
+  .page__candies-container .hljs-section,.page__candies-container .hljs-title {
+      color: #ff5722
+  }
+
+  .page__candies-container .hljs-built_in,.page__candies-container .hljs-bullet {
+      color: #4caf50
+  }
+
+  .page__candies-container .hljs-regexp,.page__candies-container .hljs-selector-attr,.page__candies-container .hljs-selector-pseudo,.page__candies-container .hljs-symbol,.page__candies-container .hljs-variable {
+      color: #e91e63
+  }
+</style>
+<div class="page__candies-container">
+  <h1><span class="header-link" id="complexity">complexity</span></h1><style type="text/css">
+thead {
+background : #928f8d;
+color : #000;
+}
+
+tbody td:nth-child(1) {
+background : #eee;
+}
+
+td {
+text-align : center;
+color : #000;
+}
+
+td.t_1 {
+background : #00ff00;
+}
+
+td.t_2 {
+background : #b3ff3a;
+}
+
+td.t_3 {
+background : #fff50f;
+}
+
+td.t_4 {
+background : #ff882b;
+}
+
+td.t_5 {
+background : red;
+}
+
+td.white {
+background : white;
+}
+</style>
+
+<p><h1><a href="./index.html">back home</a></h1>
+<br></p>
+<p><h2>数据结构操作</h2></p>
+<table width=”450″ border=”1″ cellspacing=”0″ cellpadding=”2″ bordercolor=”#009900″>
+  <thead>
+  <tr>
+  <th>数据结构</th>
+  <th colspan="8">时间复杂度</th>
+  <th>空间复杂度</th>
+  </tr>
+  <tr>
+  <th></th>
+  <th colspan="4">平均</th>
+  <th colspan="4">最差</th>
+  <th>最差</th>
+  </tr>
+  <tr>
+  <th></th>
+  <th>访问</th>
+  <th>搜索</th>
+  <th>插入</th>
+  <th>删除</th>
+  <th>访问</th>
+  <th>搜索</th>
+  <th>插入</th>
+  <th>删除</th>
+  <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Array_data_structure">array</a></td>
+  <td class="t_1">O(1)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Stack_(abstract_data_type)">stack</a></td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_3">O(n)</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Linked_list#Singly_linked_lists">singly-linked list</a></td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_3">O(n)</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Doubly_linked_list">doubly-linked list</a></td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_3">O(n)</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Skip_list">skip list</a></td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_4">O(n log(n))</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Hash_table">hash table</a></td>
+  <td>-</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_1">O(1)</td>
+  <td>-</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Binary_search_tree">binary search tree</a></td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Cartesian_tree">cartesian tree</a></td>
+  <td>-</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td>-</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/B-tree">b-tree</a></td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_3">O(n)</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Red%E2%80%93black_tree">red-black tree</a></td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_3">O(n)</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Splay_tree">splay tree</a></td>
+  <td>-</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td>-</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_3">O(n)</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/AVL_tree">avl tree</a></td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_3">O(n)</td>
+  </tr>
+  </tbody>
+</table>
+
+<p><h2>数组排序算法</h2></p>
+<table width=”450″ border=”1″ cellspacing=”0″ cellpadding=”2″ bordercolor=”#009900″>
+  <thead>
+  <tr>
+  <th>算法</th>
+  <th colspan="3">时间复杂度</th>
+  <th>空间复杂度</th>
+  </tr>
+  <tr>
+  <th></th>
+  <th>最佳</th>
+  <th>平均</th>
+  <th>最差</th>
+  <th>最差</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Quicksort">quicksort</a></td>
+  <td class="t_4">O(n log(n))</td>
+  <td class="t_4">O(n log(n))</td>
+  <td class="t_5">O(n^2)</td>
+  <td class="t_2">O(log(n))</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Merge_sort">mergesort</a></td>
+  <td class="t_4">O(n log(n))</td>
+  <td class="t_4">O(n log(n))</td>
+  <td class="t_4">O(n log(n))</td>
+  <td class="t_3">O(n)</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Timsort">timsort</a></td>
+  <td class="t_3">O(n)</td>
+  <td class="t_4">O(n log(n))</td>
+  <td class="t_4">O(n log(n))</td>
+  <td class="t_3">O(n)</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Heapsort">heapsort</a></td>
+  <td class="t_4">O(n log(n))</td>
+  <td class="t_4">O(n log(n))</td>
+  <td class="t_4">O(n log(n))</td>
+  <td class="t_1">O(1)</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Bubble_sort">bubblesort</a></td>
+  <td class="t_3">O(n)</td>
+  <td class="t_5">O(n^2)</td>
+  <td class="t_5">O(n^2)</td>
+  <td class="t_1">O(1)</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Insertion_sort">insertionsort</a></td>
+  <td class="t_3">O(n)</td>
+  <td class="t_5">O(n^2)</td>
+  <td class="t_5">O(n^2)</td>
+  <td class="t_1">O(1)</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Selection_sort">selectionsort</a></td>
+  <td class="t_5">O(n^2)</td>
+  <td class="t_5">O(n^2)</td>
+  <td class="t_5">O(n^2)</td>
+  <td class="t_1">O(1)</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Shellsort">shellsort</a></td>
+  <td class="t_3">O(n)</td>
+  <td class="t_5">O((n log(n))^2)</td>
+  <td class="t_5">O((n log(n))^2)</td>
+  <td class="t_1">O(1)</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Bucket_sort">bucketsort</a></td>
+  <td class="t_3">O(n+k)</td>
+  <td class="t_3">O(n+k)</td>
+  <td class="t_5">O(n^2)</td>
+  <td class="t_3">O(n)</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Radix_sort">radixsort</a></td>
+  <td class="t_3">O(nk)</td>
+  <td class="t_3">O(nk)</td>
+  <td class="t_3">O(nk)</td>
+  <td class="t_3">O(n+k)</td>
+  </tr>
+  </tbody>
+</table>
+
+<p><h2>图操作</h2></p>
+<table width=”450″ border=”1″ cellspacing=”0″ cellpadding=”2″ bordercolor=”#009900″>
+  <thead>
+  <tr>
+  <th>节点/边界管理</th>
+  <th>存储</th>
+  <th>增加顶点</th>
+  <th>增加边界</th>
+  <th>移除顶点</th>
+  <th>移除边界</th>
+  <th>查询</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Adjacency_list">adjacencylist</a></td>
+  <td class="t_3">O(|V|+|E|)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_3">O(|V|+|E|)</td>
+  <td class="t_3">O(|E|)</td>
+  <td class="t_3">O(|V|)</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Adjacency_list">incidencelist</a></td>
+  <td class="t_3">O(|V|+|E|)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_3">O(|E|)</td>
+  <td class="t_3">O(|E|)</td>
+  <td class="t_3">O(|E|)</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Adjacency_matrix">adjacencymatrix</a></td>
+  <td class="t_5">O(|V|^2)</td>
+  <td class="t_5">O(|V|^2)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_5">O(|V|^2)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_1">O(1)</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Incidence_matrix">incidencematrix</a></td>
+  <td class="t_5">O(|V|<em>|E|)</td>
+  <td class="t_5">O(|V|</em>|E|)</td>
+  <td class="t_5">O(|V|<em>|E|)</td>
+  <td class="t_5">O(|V|</em>|E|)</td>
+  <td class="t_5">O(|V|*|E|)</td>
+  <td class="t_3">O(|E|)</td>
+  </tr>
+  </tbody>
+</table>
+
+<p><h2>堆操作</h2></p>
+<table width=”450″ border=”1″ cellspacing=”0″ cellpadding=”2″ bordercolor=”#009900″>
+  <thead>
+  <tr>
+  <th>类型</th>
+  <th colspan="7">时间复杂度</th>
+  </tr>
+  <tr>
+  <th></th>
+  <th>heapify</th>
+  <th>查找最大值</th>
+  <th>分离最大值</th>
+  <th>提升键</th>
+  <th>插入</th>
+  <th>删除</th>
+  <th>合并</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Linked_list">linkedlist (sorted)</a></td>
+  <td>-</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_3">O(n+m)</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Linked_list">linkedlist (unsorted)</a></td>
+  <td>-</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_3">O(n)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_1">O(1)</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Binary_heap">binaryheap</a></td>
+  <td class="t_3">O(n)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_5">O(m+n)</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Binomial_heap">binomialheap</a></td>
+  <td>-</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_2">O(log(n))</td>
+  </tr>
+  <tr>
+  <td><a href="https://en.wikipedia.org/wiki/Fibonacci_heap">fibonacciheap</a></td>
+  <td>-</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_1">O(1)</td>
+  <td class="t_2">O(log(n))</td>
+  <td class="t_1">O(1)</td>
+  </tr>
+  </tbody>
+</table>
+
+
+
+</div>
+<script type="text/javascript">
+  $(function () {
+    $('img').each(function () {
+      var _self = $(this);
+      var altCache = _self.attr('alt');
+      if (altCache === 'svg') {
+        var hrefCache = _self.attr('src');
+        var dataCache = hrefCache.substr(0, (hrefCache.length - 3)) + 'svg';
+        _self.replaceWith('<p class="svgNodePhoto"><object data="' + dataCache + '" type="image/svg+xml"></object></p>')
+      }
+    });
+  });
+</script>
+<style type="text/css">
+  .page__footer-toTop {
+    display: inline-block;
+    position: fixed;
+    padding: 0;
+    right: 10px;
+    bottom: 10px;
+    width: 50px;
+    height: 50px;
+    background: #ddd;
+    color: rgba(39,174,96,.6);
+    text-align: center;
+    border-radius: 2px;
+    z-index: 1;
+  }
+  .page__footer-toTop--icon {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    top: 10px;
+    left: 10px;
+    color: #fff;
+    position: absolute;
+    font-size: 24px;
+    cursor: pointer;
+    text-rendering: auto;
+    display: inline-block;
+    font-style: normal;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .page__footer-content {
+    
+  }
+  .page__footer-content--flex {
+    display: flex;
+  }
+  .page__footer-content--license {
+    margin-right: 20px;
+  }
+  .page__footer-content--thread {
+    color: #666666;
+  }
+  .page__footer-content--thread p {
+    margin: 5px 0 0 0;
+    font-size: 12px;
+  }
+  .page__footer-content--thread p:first-of-type {
+    margin: 0;
+  }
+  .page__footer-section {
+
+  }
+  .page__footer-section--word {
+    padding: 0;
+    margin: 0.5em 0;
+    font-weight: 700;
+    break-inside: avoid-column;
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+  .page__footer-section--word a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #ba832c;
+    font-weight: 700;
+  }
+</style>
+<hr>
+<div class="page__footer-toTop"><i class="page__footer-toTop--icon iconfont">&#xe602;</i></div>
+<div class="page__footer-content">
+  <div class="page__footer-content--flex">
+    <div class="page__footer-content--license">
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+        <img alt="Creative Commons License" style="border-width:0" src="https://iframe.kangkk.cn/static/image/licensebuttons.png" />
+      </a>
+    </div>
+    <div class="page__footer-content--thread">
+      <p><b>ID</b>: b0c5ff27-0265-47e6-badb-b9a94baf1836</p>
+      <p><b>TITLE</b>: complexity</p>
+      <p><b>URL</b>: http://kangkk.com/cn/b0c5ff27-0265-47e6-badb-b9a94baf1836.html</p>
+    </div>
+  </div>
+  <section class="page__footer-section">
+    <p class="page__footer-section--word">This work is licensed under a <a rel="license"
+        href="https://creativecommons.org/licenses/by-nc-nd/3.0/cn/" target="_blank"> Creative Commons
+        Attribution-NonCommercial-NoDerivatives 4.0 International License
+      </a>. Reprint the 《<sub>
+        complexity
+      </sub>》 need signature "<sub>kangkk</sub>", and the url is <sub>
+        http://kangkk.com/cn/b0c5ff27-0265-47e6-badb-b9a94baf1836.html
+      </sub>.
+    </p>
+  </section>
+</div>
+<style type="text/css">
+  footer {
+    margin-top: 10px;
+    margin-bottom: 40px;
+    border-top: 1px solid #e5e5e5;
+    padding-top: 10px;
+    width: 400px;
+    font: 14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+  }
+  footer a {
+    color: #39c;
+    text-decoration: none;
+  }
+  footer .iconfont {
+    color: #39c;
+    font-size: 12px;
+  }
+  footer img {
+    width: 12px;
+  }
+</style>
+<footer>
+  <small>
+    Copyright ©2006-2023 康健生活, All Rights Reserved ➤ 
+    <a href="./workingspace.html">README</a>
+  </small>
+  <br>
+  <small>Living in China. 
+    <a href="http://kangkk.com/" target="_blank">KangKK.COM</a> ➤ 
+    <a href="https://kangkk.cn/" target="_blank">KangKK.CN</a> ➤ 〔♩ 
+    <a href="#"><i class="iconfont">&#xe60b;</i></a> ♪ 
+    <a href="https://KangKK.NOTION.SITE"><i class="iconfont">&#xec37;</i></a> ♫ 
+    <a href="#"><i class="iconfont">&#xf1b5;</i></a> ♬〕
+  </small>
+  <br>
+  <small><a href="https://beian.miit.gov.cn/" target="_blank">京ICP备16020839号-1</a> ➤ <a target="_blank"
+      href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=23128202000134"><img src="https://gw.alicdn.com/tfs/TB1jwakrbH1gK0jSZFwXXc7aXXa-20-20.png" alt="黑公网安备"/> 黑公网安备
+      23128202000134号</a></small>
+</footer>
+  <script type="text/javascript">
+    !function ($) {
+      $(window).scroll(function () {
+        $(this).scrollTop() > 100 ? $(".page__footer-toTop").fadeIn() : $(".page__footer-toTop").fadeOut()
+      }), $(".page__footer-toTop").on("click", function (b) {
+        return b.preventDefault(), $("html, body").animate({
+          scrollTop: 0
+        }, 100), !1
+      });
+    }(jQuery);
+  </script>
+  </body>
+
+  </html>
