@@ -99,7 +99,7 @@
       const WOF_IDs = [102027921, 102027745, 102027611, 102027107, 102027571, 102027241, 102027875];
   
           // geo.path geoPath
-      d3.json("../map/cn.json").then(function(data, error) {
+      d3.json("./static/map/cn.json").then(function(data, error) {
         const subunits = topojson.feature(data, data.objects.subunits);
         const places = topojson.feature(data, data.objects.places);
         const placePoints = {...places, features: places.features.filter(_ => (

@@ -1,2 +1,0 @@
-.header{margin:0;padding:0;background:#fff}.header__content{text-align:center}.header .content__title{display:inline-block;width:100%;text-align:left}.header .content__btn{font-size:12px;display:inline-block}@media print,screen and (max-width:720px){pre{max-width:370px}}@media print,screen and (max-width:800px){pre{max-width:370px}}@media print,screen and (max-width:480px){.header .content__title{font-size:2em!important}.header .content__btn .content__btn-a{font-size:1em!important}}
-/*# sourceMappingURL=header.css.map */
