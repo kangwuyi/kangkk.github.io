@@ -7,9 +7,9 @@ try {
   //
   writePageAction(ToolPageList);
   WordPageList.map($ => {
-    replacMdAction($);
+    const info = replacMdAction($);
+    console.log('info', info)
   });
-  console.log('WordPageList', WordPageList)
 } catch (e) {
   console.log('e=>', e)
 }

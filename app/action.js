@@ -30,7 +30,7 @@ const writePageAction = _list => {
 };
 // 提取日期等信息
 const readMdHideInfoAction = _md => {
-  const mtimeStrip = /<!-- kk-mtime -->([\s\S]+)<!-- kk-mtime stop -->/;
+  const mtimeStrip = /<!-- kk-mtime ([\s\S]+) kk-mtime stop -->/;
   const mtime = _md.match(mtimeStrip);
   return {
     mtime: mtime && mtime[1]
@@ -70,7 +70,7 @@ const replacMdAction = $ => {
     lowercase: false,
     separator: ' '
   });
-  const template = '<%= depth %><%= bullet %>[<%= heading %>](#<%= url %>)\n';
+  // const template = '<%= depth %><%= bullet %>[<%= heading %>](#<%= url %>)\n';
   // const tocMd = toc(content, {
   //   template: template,
   //   bullet: "1. ",
@@ -80,6 +80,8 @@ const replacMdAction = $ => {
   // mtimeGetTime = moment(fileFsTimeObject.mtime).unix(),
   const mdToHtml = markdown(renderMd2Md(content)._c);
   const keyWorlds = fileNameEn.split(' ').join(',') + ',' + fileNameEn + ',' + fileName;
+  //
+  const otherInfo = readMdHideInfoAction(mdToHtml);
   //
   if (fs.existsSync($._t)) fs.unlinkSync($._t);
   //
@@ -108,9 +110,8 @@ const replacMdAction = $ => {
   return {
     path: path.relative(process.cwd(), $._t),
     fileName: fileName,
-    // birthtime: birthtime,
-    //   mtime: mtime,
-    //   mtimeGetTime: mtimeGetTime
+    folder: $._templ._n,
+    ...otherInfo
   }
 };
 //
