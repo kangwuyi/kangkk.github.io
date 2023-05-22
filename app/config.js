@@ -46,10 +46,11 @@ const WordPageList = FolderList.map(__ => {
   const cup = [];
   readFolderPath(path.join(process.cwd(), SourceFolder, __), cup);
   return cup.map($ => {
-    $._temp = {
+    $._templ = {
       _t: path.join(process.cwd(), 'templates/views/page', __, '.ejs'),
       _n: __
-    }
+    };
+    return $;
   });
 }).flat(Infinity);
 //

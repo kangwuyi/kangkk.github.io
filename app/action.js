@@ -1,5 +1,6 @@
 'use strict';
 
+const path = require('path');
 const fs = require('fs');
 const _ = require('underscore');
 const ejs = require('ejs');
@@ -46,7 +47,7 @@ const replacMdAction = $ => {
   };
   renderer.image = function (href, title, text) {
     const xhtml = false;
-    const out = '<img src="../' + href.replace(/^\.\.\/\.\.\/\.\.\//g, '') + '" alt="' + text + '"';
+    let out = '<img src="../' + href.replace(/^\.\.\/\.\.\/\.\.\//g, '') + '" alt="' + text + '"';
     if (title) {
       out += ' title="' + title + '"';
     }
@@ -63,20 +64,21 @@ const replacMdAction = $ => {
   //
   const content = fs.readFileSync($._s, 'utf8');
   const fileNameMd5 = path.basename($._t, '.html')
-  const fileName = description = path.basename($._s).replace(/\.[a-zA-Z]+$/, '');
+  const fileName = path.basename($._s).replace(/\.[a-zA-Z]+$/, '');
+  const description = fileName;
   const fileNameEn = transliteration.slugify(fileName, {
     lowercase: false,
     separator: ' '
   });
   const template = '<%= depth %><%= bullet %>[<%= heading %>](#<%= url %>)\n';
-  const tocMd = toc(content, {
-    template: template,
-    bullet: "1. ",
-    maxDepth: 5
-  });
+  // const tocMd = toc(content, {
+  //   template: template,
+  //   bullet: "1. ",
+  //   maxDepth: 5
+  // });
   // birthtime = moment(fileFsTimeObject.birthtime).format("YYYY-MM-DD"),
   // mtimeGetTime = moment(fileFsTimeObject.mtime).unix(),
-  const mdToHtml = markdown(renderMd2Md(content));
+  const mdToHtml = markdown(renderMd2Md(content)._c);
   const keyWorlds = fileNameEn.split(' ').join(',') + ',' + fileNameEn + ',' + fileName;
   //
   if (fs.existsSync($._t)) fs.unlinkSync($._t);
@@ -114,7 +116,7 @@ const replacMdAction = $ => {
 //
 function renderMd2Md (_c) {
   let content = matter(_c).content;
-  const front = matter.extend(_c);
+  // const front = matter.extend(_c);
   content = mdReplaceFootnote(content);
   return {
     _c: content

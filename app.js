@@ -2,10 +2,13 @@
 
 //
 try {
-  const { writePageAction } = require('./app/action');
+  const { writePageAction, replacMdAction } = require('./app/action');
   const { ToolPageList, WordPageList } = require('./app/config');
   //
   writePageAction(ToolPageList);
+  WordPageList.map($ => {
+    replacMdAction($);
+  });
   console.log('WordPageList', WordPageList)
 } catch (e) {
   console.log('e=>', e)
