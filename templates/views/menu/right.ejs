@@ -8,6 +8,10 @@
     color: #39c;
     text-decoration: none;
   }
+  .right table {
+    display: none;
+    min-height: 277px;
+  }
   .right table, .right tr {
     overflow: hidden;
   }
@@ -20,6 +24,34 @@
   .menu__page-table--content {
     min-height: 150px;
   }
+  .menu__page-pagination {
+    height: 22px;
+    margin-top: 20px;
+    overflow: hidden;
+  }
+  .menu__page-pagination--label[for^="indicator"] {
+    display: inline-block;
+    width: 20px;
+    border: 1px dashed #666666;
+    border-radius: 5px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  .menu__page-pagination--label:active, .menu__page-pagination--label:hover {
+    background: #666666;
+    color: #ffffff
+  }
+  <% for (let i = 0; i < list.length; i = i + 10) { %>
+    #indicator<%= i %>:checked ~ label[for="indicator<%= i %>"] {
+      background: #666666;
+      color: #ffffff
+    }
+  <% } %>
+  /* 选中指示器设置 */
+
 </style>
 <div class="right">
   <% var nameList = {
@@ -38,30 +70,41 @@
   } %>
   <h2><%= nameList[folder].title %></h2>
   <div class="menu__page-table--content">
-    <table>
-      <tbody>
-        <tr>
-          <td>ID</td>
-          <td>Name</td>
-          <td>Update</td>
-        </tr>
-        <% content.linkList.forEach(function(item, index){ %>
+    <% for (let i = 0; i < list.length; i = i + 10) { %>
+      <table class="menu__page-table" id="table<%= i %>" style="display: <%= i || 'block' %>">
+        <tbody>
           <tr>
-              <td>
-                  <%= (index+1) %>
-              </td>
-              <td>
-                  <a href="./<%= item.path %>" class="col-xs-12 link -download">
-                      <%= item.fileName %>
-                  </a>
-              </td>
-              <td>
-                  <%= item.mtime %>
-              </td>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Mtime</td>
           </tr>
-          <% }) %>
-      </tbody>
-    </table>
+          <% list.slice(i, i + 10).forEach(function(item, index){ %>
+            <tr>
+                <td>
+                    <%= (i + index + 1) %>
+                </td>
+                <td>
+                    <a href="./<%= item.path %>" class="col-xs-12 link -download">
+                        <%= item.fileName %>
+                    </a>
+                </td>
+                <td>
+                    <%= item.mtime %>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+      </table>
+    <% } %>
+    <div class="menu__page-pagination">
+      <% for (let i = 0; i < list.length; i = i + 10) { %>
+        <input type="radio" name="indicator" class="indicator" id="indicator<%= i %>" hidden <%= i || 'checked' %>>
+        <label for="indicator<%= i %>" class="menu__page-pagination--label" onclick="javascript:(() => {
+          document.querySelectorAll('.menu__page-table').forEach(_ => _.style.display = 'none');
+          document.getElementById('table<%= i %>').style.display = 'block'
+        })()"><%= i / 10 + 1 %></label>
+      <% } %>
+    </div>
   </div>
   <%- include('../home/footer') %>
 </div>

@@ -56,5 +56,6 @@ const WordPageList = FolderList.map(__ => {
 //
 module.exports = {
   ToolPageList,
-  WordPageList
+  WordPageList,
+  TargetFolder
 };

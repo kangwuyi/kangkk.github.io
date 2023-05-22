@@ -8,6 +8,7 @@ const markdown = require('marked');
 const highlight = require('highlight.js');
 const transliteration = require('transliteration');
 const matter = require('gray-matter');
+const { TargetFolder } = require('./config');
 
 /**
  * 
@@ -27,6 +28,21 @@ const writePageAction = _list => {
       'utf8'
     );
   })
+};
+//
+const writeIndexPageAction = params => {
+  const rela = path.join(process.cwd(), 'templates/views/menu/index.ejs');
+  fs.writeFileSync(
+    path.join(process.cwd(), TargetFolder, params.folder + '.html'),
+    ejs.render(
+      fs.readFileSync(rela, 'utf8'),
+      {
+        filename: rela,
+        ...params
+      }
+    ),
+    'utf8'
+  );
 };
 // 提取日期等信息
 const readMdHideInfoAction = _md => {
@@ -108,7 +124,7 @@ const replacMdAction = $ => {
   // console.log('creat [' + htmlFileName + ']');
   //
   return {
-    path: path.relative(process.cwd(), $._t),
+    path: path.relative(path.join(process.cwd(), TargetFolder), $._t),
     fileName: fileName,
     folder: $._templ._n,
     ...otherInfo
@@ -152,5 +168,6 @@ function mdReplaceFootnote (_c) {
 module.exports = {
   writePageAction,
   readMdHideInfoAction,
-  replacMdAction
+  replacMdAction,
+  writeIndexPageAction
 };

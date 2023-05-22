@@ -1,14 +1,28 @@
 'use strict';
-
+const { writePageAction, replacMdAction, writeIndexPageAction } = require('./app/action');
+const { ToolPageList, WordPageList } = require('./app/config');
 //
 try {
-  const { writePageAction, replacMdAction } = require('./app/action');
-  const { ToolPageList, WordPageList } = require('./app/config');
+  const menu = {};
   //
   writePageAction(ToolPageList);
   WordPageList.map($ => {
-    const info = replacMdAction($);
-    console.log('info', info)
+    const $$ = replacMdAction($);
+    const params = {
+      fileName: $$.fileName,
+      mtime: $$.mtime,
+      folder: $$.folder,
+      path: $$.path,
+    };
+    if (menu[$$.folder]) menu[$$.folder].push(params);
+    else menu[$$.folder] = [params];
+  });
+  //
+  Object.keys(menu).map($ => {
+    writeIndexPageAction({
+      folder: $,
+      list: menu[$]
+    });
   });
 } catch (e) {
   console.log('e=>', e)
