@@ -1,8 +1,28 @@
 <%- include('header') %>
 <style type="text/css">
+  .page__candies-header {
+    border-bottom: 1px dashed #aaa;
+  }
+  .page__candies-header h1 {
+    margin: 10px 0;
+    background: #000000;
+    color: #ffffff;
+    height: 80px;
+    text-align: center;
+    font-size: 35px;
+    overflow: visible;
+    line-height: 80px;
+    padding: 0;
+    direction: ltr;
+    word-wrap: break-word;
+  }
+  .page__candies-header h1 sub {
+    font-size: 12px;
+    margin-left: 10px;
+  }
   .page__candies-container {
     position: relative;
-    margin: 2em auto;
+    margin: 0 auto 2em auto;
     padding: 1em 0;
     box-sizing: border-box;
     direction: ltr;
@@ -10,10 +30,8 @@
     font-size: 1em;
   }
   .page__candies-container h1 {
-    text-align: center;
+    text-align: left;
     margin: 0 0 0.5em;
-    border-bottom: 1px dashed #aaa;
-    font-size: 3em;
     overflow: visible;
     line-height: 1.3;
     padding: 0;
@@ -183,6 +201,9 @@
       color: #e91e63
   }
 </style>
+<div class="page__candies-header">
+  <h1><%= kcFileName %><sub><%= mtime %></sub></h1>
+</div>
 <div class="page__candies-container">
   <%- content %>
 </div>

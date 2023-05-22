@@ -101,9 +101,29 @@
   <p class="page__header-title"><span>多读书，多运动，多到远处走走，再看看不一样的世界。</span></p>
   <hr>
 <style type="text/css">
+  .page__candies-header {
+    border-bottom: 1px dashed #aaa;
+  }
+  .page__candies-header h1 {
+    margin: 10px 0;
+    background: #000000;
+    color: #ffffff;
+    height: 80px;
+    text-align: center;
+    font-size: 35px;
+    overflow: visible;
+    line-height: 80px;
+    padding: 0;
+    direction: ltr;
+    word-wrap: break-word;
+  }
+  .page__candies-header h1 sub {
+    font-size: 12px;
+    margin-left: 10px;
+  }
   .page__candies-container {
     position: relative;
-    margin: 2em auto;
+    margin: 0 auto 2em auto;
     padding: 1em 0;
     box-sizing: border-box;
     direction: ltr;
@@ -111,10 +131,8 @@
     font-size: 1em;
   }
   .page__candies-container h1 {
-    text-align: center;
+    text-align: left;
     margin: 0 0 0.5em;
-    border-bottom: 1px dashed #aaa;
-    font-size: 3em;
     overflow: visible;
     line-height: 1.3;
     padding: 0;
@@ -284,6 +302,9 @@
       color: #e91e63
   }
 </style>
+<div class="page__candies-header">
+  <h1>phantomjs<sub>mtime</sub></h1>
+</div>
 <div class="page__candies-container">
   <h1><span class="header-link" id="phantomjs">phantomjs</span></h1><p>PhantomJS 是一个基于 WebKit 的服务器端 JavaScript API。它全面支持web而不需浏览器支持，其快速，原生支持各种Web标准： DOM 处理, CSS 选择器, JSON, Canvas, 和 SVG。 PhantomJS 可以用于 页面自动化 ， 网络监测 ， 网页截屏 ，以及 无界面测试 等。</p>
 <h2><span class="header-link" id="安装">安装</span></h2><p><a href="http://phantomjs.org/">phantomjs</a>下载对应操作系统的文件，比如LINUX，按照步骤安装并设置环境变量。</p>

@@ -101,9 +101,29 @@
   <p class="page__header-title"><span>多读书，多运动，多到远处走走，再看看不一样的世界。</span></p>
   <hr>
 <style type="text/css">
+  .page__candies-header {
+    border-bottom: 1px dashed #aaa;
+  }
+  .page__candies-header h1 {
+    margin: 10px 0;
+    background: #000000;
+    color: #ffffff;
+    height: 80px;
+    text-align: center;
+    font-size: 35px;
+    overflow: visible;
+    line-height: 80px;
+    padding: 0;
+    direction: ltr;
+    word-wrap: break-word;
+  }
+  .page__candies-header h1 sub {
+    font-size: 12px;
+    margin-left: 10px;
+  }
   .page__candies-container {
     position: relative;
-    margin: 2em auto;
+    margin: 0 auto 2em auto;
     padding: 1em 0;
     box-sizing: border-box;
     direction: ltr;
@@ -111,10 +131,8 @@
     font-size: 1em;
   }
   .page__candies-container h1 {
-    text-align: center;
+    text-align: left;
     margin: 0 0 0.5em;
-    border-bottom: 1px dashed #aaa;
-    font-size: 3em;
     overflow: visible;
     line-height: 1.3;
     padding: 0;
@@ -284,6 +302,9 @@
       color: #e91e63
   }
 </style>
+<div class="page__candies-header">
+  <h1>数据传输<sub>mtime</sub></h1>
+</div>
 <div class="page__candies-container">
   <h1><span class="header-link" id="数据传输">数据传输</span></h1><h2><span class="header-link" id="单向数据传输">单向数据传输</span></h2><p>现在主流的状态与数据管理框架便数Redux与MobX，其中MobX并非Flux的实现。</p>
 <p>Relay与Falcor也是很流行的可以用于状态管理的工具，不过不同于Redux或者MobX，它们对于后端有特定的需求，只能基于GraphQL或者Falcor Server，并且Relay中的状态也与服务端持久化存储的某些数据相匹配。换言之，Relay与Falcor并没有提供了可以独立运行在客户端并且支持暂时态的状态管理功能，不过如果你需要同时维护Client-Only与Server-Persisted的状态，那么混用Redux与Relay也是个不错的选择。没有最好的工具，只有最合适的工具。
