@@ -8,6 +8,7 @@ try {
   writePageAction(ToolPageList);
   WordPageList.map($ => {
     const $$ = replacMdAction($);
+    if (!$$) return;
     const params = {
       fileName: $$.fileName,
       mtime: $$.mtime,

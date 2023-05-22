@@ -17,6 +17,7 @@ const { TargetFolder } = require('./config');
  */
 const writePageAction = _list => {
   _.each(_list, $ => {
+    if (fs.existsSync($._t)) fs.unlinkSync($._t);
     fs.writeFileSync(
       $._t,
       ejs.render(
@@ -32,8 +33,10 @@ const writePageAction = _list => {
 //
 const writeIndexPageAction = params => {
   const rela = path.join(process.cwd(), 'templates/views/menu/index.ejs');
+  const targetPath = path.join(process.cwd(), TargetFolder, params.folder + '.html')
+  if (fs.existsSync(targetPath)) fs.unlinkSync(targetPath);
   fs.writeFileSync(
-    path.join(process.cwd(), TargetFolder, params.folder + '.html'),
+    targetPath,
     ejs.render(
       fs.readFileSync(rela, 'utf8'),
       {
@@ -48,8 +51,11 @@ const writeIndexPageAction = params => {
 const readMdHideInfoAction = _md => {
   const mtimeStrip = /<!-- kk-mtime ([\s\S]+) kk-mtime stop -->/;
   const mtime = _md.match(mtimeStrip);
+  const showStrip = /<!-- kk-show ([\s\S]+) kk-show stop -->/;
+  const show = _md.match(showStrip);
   return {
-    mtime: mtime && mtime[1]
+    mtime: mtime ? mtime[1] : void 0,
+    show: show ? show[1] : void 0
   }
 }
 //
@@ -98,6 +104,7 @@ const replacMdAction = $ => {
   const keyWorlds = fileNameEn.split(' ').join(',') + ',' + fileNameEn + ',' + fileName;
   //
   const otherInfo = readMdHideInfoAction(mdToHtml);
+  if (!otherInfo.show) return;
   //
   if (fs.existsSync($._t)) fs.unlinkSync($._t);
   //
