@@ -1,25 +1,5 @@
 <%- include('header') %>
 <style type="text/css">
-  .page__waterChestnut-header {
-    border-bottom: 1px dashed #aaa;
-  }
-  .page__waterChestnut-header h1 {
-    margin: 10px 0;
-    background: #000000;
-    color: #ffffff;
-    height: 80px;
-    text-align: center;
-    font-size: 35px;
-    overflow: visible;
-    line-height: 80px;
-    padding: 0;
-    direction: ltr;
-    word-wrap: break-word;
-  }
-  .page__waterChestnut-header h1 sub {
-    font-size: 12px;
-    margin-left: 10px;
-  }
   .page__waterChestnut-container {
     font-family: Baskerville, "Goudy Old Style", "Palatino", "Book Antiqua", serif;
     padding: 50px;
@@ -95,11 +75,10 @@
     background-color: #f9f2f4;
     padding: 0 4px;
     border-radius: 3px;
+    white-space: normal;
+    word-break: break-all;
   }
 </style>
-<div class="page__waterChestnut-header">
-  <h1><%= kcFileName %><sub><%= mtime %></sub></h1>
-</div>
 <div class="page__waterChestnut-container">
   <%- content %>
 </div>
