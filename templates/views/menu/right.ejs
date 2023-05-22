@@ -21,6 +21,9 @@
   .right table td:nth-of-type(2) {
     width: 250px;
   }
+  .right table tbody td:nth-of-type(3) {
+    font-size: 12px;
+  }
   .menu__page-table--content {
     min-height: 150px;
   }
@@ -72,12 +75,14 @@
   <div class="menu__page-table--content">
     <% for (let i = 0; i < list.length; i = i + 10) { %>
       <table class="menu__page-table" id="table<%= i %>" style="display: <%= i || 'block' %>">
-        <tbody>
+        <thead>
           <tr>
             <td>ID</td>
             <td>Name</td>
             <td>Mtime</td>
           </tr>
+        </thead>
+        <tbody>
           <% list.slice(i, i + 10).forEach(function(item, index){ %>
             <tr>
                 <td>

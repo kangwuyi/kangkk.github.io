@@ -123,7 +123,7 @@ const replacMdAction = $ => {
         content: mdToHtml,
         relativePath: path.relative(process.cwd(), $._t),
         birthtime: 'birthtime',
-        mtime: 'mtime'
+        mtime: otherInfo.mtime
       }
     ),
     'utf8'
