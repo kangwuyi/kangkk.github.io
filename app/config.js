@@ -47,7 +47,7 @@ const WordPageList = FolderList.map(__ => {
   readFolderPath(path.join(process.cwd(), SourceFolder, __), cup);
   return cup.map($ => {
     $._templ = {
-      _t: path.join(process.cwd(), 'templates/views/page', __, '.ejs'),
+      _s: path.join(process.cwd(), 'templates/views/page', __ + '.ejs'),
       _n: __
     };
     return $;

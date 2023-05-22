@@ -84,11 +84,11 @@ const replacMdAction = $ => {
   if (fs.existsSync($._t)) fs.unlinkSync($._t);
   //
   fs.writeFileSync(
-    $._s,
+    $._t,
     ejs.render(
-      $._templ._t,
+      fs.readFileSync($._templ._s, 'utf8'),
       {
-        filename: $._templ._t,
+        filename: $._templ._s,
         folder: $._templ._n,
         kcFileId: fileNameMd5,
         kcFileName: fileName,

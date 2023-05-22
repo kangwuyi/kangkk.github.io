@@ -1,0 +1,1003 @@
+<!-- header 模块 -->
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="description" content="Redux浅论">
+  <meta name="keywords" content="ReduxQian,Lun,ReduxQian Lun,Redux浅论">
+  <title>
+    Redux浅论
+  </title>
+  <link href="https://iframe.kangkk.cn/static/ico/kk_com_favicon.ico" type="image/x-icon" rel="shortcut icon">
+  <!--[if lt IE 9]>
+        <script crossorigin="anonymous" integrity="sha384-fkm9nLbWSgWvs5dRrT+4CAGQLxkueuCwSOSUV93eD7Pk8j+XnFK76jBBn2fexZd1" src="https://lib.baomitu.com/html5shiv/3.7/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <link crossorigin="anonymous" integrity="sha384-9Z9AuAj0Xi0z7WFOSgjjow8EnNY9wPNp925TVLlAyWhvZPsf5Ks23Ex0mxIrWJzJ"
+  href="https://lib.baomitu.com/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+<script src="https://at.alicdn.com/t/c/font_4065255_1yvdewucu3p.js" type="text/javascript"></script>
+<style type="text/css">
+@font-face {
+  font-family: 'iconfont';  /* Project id 2193116 */
+  src: url('https://at.alicdn.com/t/c/font_2193116_x5p38zrimgm.woff2?t=1684057313326') format('woff2'),
+       url('https://at.alicdn.com/t/c/font_2193116_x5p38zrimgm.woff?t=1684057313326') format('woff'),
+       url('https://at.alicdn.com/t/c/font_2193116_x5p38zrimgm.ttf?t=1684057313326') format('truetype');
+}
+.iconfont{
+  font-family: "iconfont" !important;
+  font-size: 14px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+  color: #707070;
+}
+</style>
+<style type="text/css">
+  .icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+  }
+</style>
+  <style type="text/css">
+    .page__body {
+      width: 900px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body class="page__body">
+  <style type="text/css">
+  .header {
+    width: 250px;
+  }
+  .header--title {
+    font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: inline-block;
+    color: #11181b;
+    font-size: 28px;
+    transform: rotateX(180deg) rotateY(180deg);
+  }
+  .header--title a {
+    text-decoration: none;
+    color: #11181b;
+  }
+  .hr-link {
+    background-color: #bbb;
+    background-image: -webkit-linear-gradient(0deg,#fff,#bbb,#fff);
+    border: 0;
+    height: 1px;
+    margin: 0 0 20px;
+  }
+  .header--title_sup {
+    vertical-align: super;
+  }
+  .header--title_sub {
+    font-size: 30px;
+    vertical-align: bottom;
+  }
+</style>
+<header class="header">
+  <h1><sub><svg class="icon header--title_sub" aria-hidden="true"><use xlink:href="#kk-hudielan"></use></svg></sub><span class="header--title"><a href="https://kangkk.com/">KangKK</a></span><sup class="iconfont header--title_sup">&#xe606;</sup></h1>
+  <hr class="hr-link">
+</header>
+
+  <style type="text/css">
+    .page__header-title {
+      font-size: 12px;
+    }
+    .page__header-title span {
+      margin-left: 50px;
+    }
+  </style>
+  <p class="page__header-title"><span>多读书，多运动，多到远处走走，再看看不一样的世界。</span></p>
+  <hr>
+<style type="text/css">
+  .page__candies-container {
+    position: relative;
+    margin: 2em auto;
+    padding: 1em 0;
+    box-sizing: border-box;
+    direction: ltr;
+    line-height: 1.3;
+    font-size: 1em;
+  }
+  .page__candies-container h1 {
+    text-align: center;
+    margin: 0 0 0.5em;
+    border-bottom: 1px dashed #aaa;
+    font-size: 3em;
+    overflow: visible;
+    line-height: 1.3;
+    padding: 0;
+    direction: ltr;
+    word-wrap: break-word;
+  }
+  .page__candies-container ol li {
+    color: #363644;
+    padding: 1px 5px;
+  }
+  .page__candies-container a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #ba832c;
+  }
+  .page__candies-container dl,
+  .page__candies-container ol,
+  .page__candies-container p,
+  .page__candies-container pre,
+  .page__candies-container table,
+  .page__candies-container ul {
+    margin-bottom: 1em;
+  }
+  .page__candies-container pre {
+    background: #384047;
+    color: #fff;
+    word-wrap: normal;
+    overflow-x: auto;
+    padding: 5px;
+  }
+  .page__candies-container pre code {
+    font-size: 10pt;
+    background: 0 0;
+    padding: 0;
+    border-radius: 0;
+    white-space: pre-wrap;
+    color: #ccc;
+  }
+  .page__candies-container code {
+    overflow-y: auto;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    padding: 0 4px;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+  .page__candies-container .footnote-box {
+      box-sizing: border-box;
+      border: 1px solid #aaa;
+      width: 100%;
+      clear: both;
+      font-size: 88%;
+      text-align: left;
+      padding: 3px;
+      margin: 0 auto;
+      background: #fdfdfd;
+      display: inline-block;
+  }
+  .page__candies-container .footnote-box ul li {
+    list-style: decimal;
+    transition: none;
+    padding: 0;
+    margin: 0 0 0.1em;
+    position: initial;
+    color: #252525;
+    line-height: 1.6;
+    font-size: .875em;
+  }
+  .page__candies-container .footnote-box .backlink {
+    user-select: none;
+    padding-right: 5px;
+  }
+  .page__candies-container .footnote-box .backlink b a {
+    background-image: none;
+    padding: 0;
+    text-decoration: none;
+    color: #0645ad;
+  }
+  .page__candies-container .footnote-box .reference-text {
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid-column;
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+  .page__candies-container table {
+    color: #f6e6cc;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-left: 1px solid #3B5F9B;
+    border-top: 1px solid #3B5F9B;
+  }
+  .page__candies-container td,
+  .page__candies-container th {
+    max-width: 700px;
+    border-left: 1px dotted #ccc;
+    border-right: 1px dotted #ccc;
+    border-bottom: 1px dotted #ccc;
+    border-top: 1px dotted #ccc;
+    padding: 3px 5px;
+  }
+  .page__candies-container th {
+    background: #3B5F9B;
+    color: #fff;
+  }
+  .page__candies-container tbody, .page__candies-container thead {
+    border: 3px solid #3B5F9B;
+  }
+  .page__candies-container td {
+    background: #fff;
+    color: #777;
+  }
+  .content__section {
+    float: left;
+    margin: 0 30px 20px 0;
+  }
+  .content__section .content-box__markdown--toc {
+    display: table;
+    zoom: 1;
+    padding: 7px 10px;
+    border: 1px solid #aaa;
+    background-color: #f9f9f9;
+    font-size: 95%;
+    direction: ltr;
+    line-height: 1.6;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .content__section .content-box__markdown--toc ol {
+    padding: 0;
+    counter-reset: out;
+    list-style: none;
+    text-align: left;
+    margin: 0 0 0 1em;
+  }
+  .content__section .content-box__markdown--toc ol li {
+    color: #ba832c;
+    padding: 1px 5px;
+  }
+  .content__section .content-box__markdown--toc ol li:before {
+    margin-right: 5px;
+    counter-increment: out;
+    content: counters(out,".")" ";
+  }
+  .content__section .content-box__markdown--toc ol li a {
+    background: 0 0;
+    font-weight: 100;
+  }
+  .page__candies-container .hljs-attribute,.page__candies-container .hljs-keyword,.page__candies-container .hljs-meta-keyword,.page__candies-container .hljs-name,.page__candies-container .hljs-selector-tag {
+    color: #00bcd4
+  }
+
+  .page__candies-container .hljs-number,.page__candies-container .hljs-quote,.page__candies-container .hljs-selector-class,.page__candies-container .hljs-selector-id,.page__candies-container .hljs-string,.page__candies-container .hljs-type {
+      color: #ffeb3b
+  }
+
+  .page__candies-container .hljs-section,.page__candies-container .hljs-title {
+      color: #ff5722
+  }
+
+  .page__candies-container .hljs-built_in,.page__candies-container .hljs-bullet {
+      color: #4caf50
+  }
+
+  .page__candies-container .hljs-regexp,.page__candies-container .hljs-selector-attr,.page__candies-container .hljs-selector-pseudo,.page__candies-container .hljs-symbol,.page__candies-container .hljs-variable {
+      color: #e91e63
+  }
+</style>
+<div class="page__candies-container">
+  <h1><span class="header-link" id="redux">redux</span></h1><!-- toc -->
+<p><img src="../static/img/redux/logo_1.png" alt="ReduxLogo"></p>
+<blockquote>
+<p>Redux is a predictable state container for JavaScript apps<sup id="footnoteUp_1" data-desc="redux_website_title_desc" class="reference"><a class="footnoteUp" href="#footnoteDo_1">[1]</a></sup>.</p>
+</blockquote>
+<h2><span class="header-link" id="redux特性">Redux特性</span></h2><p>在过去的十几年里<a href="https://en.wikipedia.org/wiki/Web_page">web page</a>一直都以指数递增的方式发展，无论是概念上还是编程上想要彻底读懂这门设计的艺术已经变得不可为，如今在许多大型网站中的一个页面从<code>DOM</code>与<code>Event</code>的微观角度往往聚集着一系列复杂并琐碎的行为功能<sup id="footnoteUp_2" data-desc="behavioral_functionality_desc" class="reference"><a class="footnoteUp" href="#footnoteDo_2">[2]</a></sup>，它们聚合在一起构成了我们今天可以在浏览器端可操作的视图，正是如此，怎样管理这些行为功能被提上日程，诸多才华横溢的工程师们引申出状态管理的概念，制作出许多优秀的作品，如<a href="https://github.com/reactjs/redux">Redux</a>、<a href="https://github.com/facebook/flux">flux</a>、<a href="https://github.com/acdlite/flummox">flummox</a>、<a href="https://github.com/mobxjs/mobx">mobxjs</a>、<a href="https://github.com/reflux/refluxjs">refluxjs</a>、<a href="https://github.com/martyjs/marty">martyjs</a>、<a href="https://github.com/jakesgordon/javascript-state-machine">javascript-state-machine</a>、<a href="https://github.com/vuejs/vuex">vuex</a>等，其中又以<code>redux</code>和<code>flux</code>最为流行。</p>
+<p><img src="../static/img/redux/action-store-view.png" alt="svg"></p>
+<p>Redux诞生的出发点是作为一个javascript应用状态（state）容器，借鉴flux的数据单向流动、<a href="http://elm-lang.org/">elm</a>的<a href="http://guide.elm-lang.org/architecture/">The Elm Architecture</a>、<a href="https://github.com/timoxley/functional-javascript-workshop">函数式编程</a>、<a href="https://en.wikipedia.org/wiki/Currying">柯里化（Currying）</a>函数、<a href="https://en.wikipedia.org/wiki/Composite_pattern">组合模式（Composite pattern）</a>的等思想。将视图（view）中可操作的这些行为类比为动作（action），每个动作传递都附带状态（state）信息，状态引导动作对redux状态容器<a href="http://redux.js.org/docs/basics/Store.html">store</a>更新进而对视图更新，store对状态（state）进行同一管理，可以说store可预测状态容器是redux的骨架也不为过。</p>
+<h3><span class="header-link" id="redux原则">Redux原则</span></h3><p>无论什么框架都会设定一些属于它的规则，规则恒定，附者云起进而形成生态，react如是redux也是如此，在redux中所以规定了三条原则（<a href="http://redux.js.org/docs/introduction/ThreePrinciples.html">Three Principles</a>），即“Single source of truth”、“State is read-only”和“Changes are made with pure functions”，用于描述在redux整个生命周期内怎样去管理和维护store树。</p>
+<ul>
+<li>Single source of truth：唯一数据源。State被存储在一颗唯一的<code>object tree</code>上，即store对象树。</li>
+<li>State is read-only：State只读。在每个组件（Component）或者reducer等内部，State树内所有<code>key-&gt;value</code>只读。</li>
+<li>Changes are made with pure functions：这里的纯函数（pure functions）特指reducer函数。State树内的state只能依靠纯函数reducer对store进行更新。</li>
+</ul>
+<h3><span class="header-link" id="单向数据流">单向数据流</span></h3><p>姑且先讲reducer函数怎样更新store放下，先讨论store变更为什么会引起state变化。这里就要引申到单向数据流（Unidirectional data flow）的理论，单向数据流动即从模型到视图的数据流动，它区别于<code>双向数据绑定</code>的方式，用react中的术语解释的话就是，当某个组件的数据<code>prop</code>需要变化并且通过相关方法操作更新store对象树内某个碎片state之后，redux会返回一个新的store会从父节点传递到子节点，依次向下遍历整棵组件树，以组件为单位寻找使用了变化的<code>prop</code>的组件进行渲染。</p>
+<p>假定一个react渲染的页面，黄色部分代表页面<code>DOM</code>结构树，蓝色是各个组件，组件之间的包含关系为<code>A ⊇ {B, C} &amp;&amp; C ⊇ D</code>，其中<code>B</code>和<code>C</code>子组件都引用了store树上的<code>props.test</code>属性，这是一个非常典型的从上到下单向流动的阶梯式模型。</p>
+<p><img src="../static/img/redux/redux-stroe-up-down.png" alt="svg"></p>
+<p>现在发生变化，当在<code>B</code>组件内某个操作（UI交互、API调用等）更新了state值（即<code>props.test</code>属性值），这个操作本身并不会对<code>B</code>组件的视图和渲染进行干扰和操作，但是<code>B</code>组件和<code>D</code>组件会在store树内的相应state值变化后触发组件使view发生改变。如果是在传统页面中，这是事件和DOM结构之间的一对一，在数据双向绑定概念中是事件与DOM结构的多对多，在react开发中应该是事件与VDOM一对一，但是在redux接管数据源后就变成了事件与VDOM之间没有直接关系，VDOM的渲染间接由store对象树决定。</p>
+<p><img src="../static/img/redux/redux-stroe-up-down_2.png" alt="svg"></p>
+<p>紫色线条是数据流向，紫色方框是触发渲染的子组件，数据从顶层store开始向下流淌，store顶层数据发生改变后会分别触发存在<code>props.test</code>属性的子组件进行重新渲染更新<code>DOM</code>，以达到视图渲染可控、状态重现可控的目的。</p>
+<!--
+### 反向数据流
+### 同步数据流
+### 异步数据流
+-->
+<h2><span class="header-link" id="store">Store</span></h2><p>Store作为状态容器、唯一数据源，由一个<code>createStore(reducer, preloadedState, enhancer)</code>函数创建，在项目部署过程中使用createStore函数一般会在项目根目录下单独列一个文件。</p>
+<pre class="pre-no-border">
+.
+├── bin
+│   └── ...
+├── ...
+├── src
+│   ├── components
+│   │   └── ...
+│   ├── containers
+│   │   └── ...
+│   ├── routes
+│   │   └── ...
+│   ├── store
+│   │   ├── createStore.js
+│   │   └── reducers.js
+│   └── utils
+│       └── ...
+└── ...
+</pre>
+
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> {createStore} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;redux&#x27;</span>;
+<span class="hljs-keyword">import</span> makeRootReducer <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./reducers&#x27;</span>;
+...
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (initialState = {}, history) =&gt; {
+  <span class="hljs-keyword">const</span> store         = createStore(
+    makeRootReducer(),
+    initialState,
+  );
+
+  <span class="hljs-keyword">return</span> store
+}
+</code></pre>
+<p>在<strong>createStore.js</strong>文件中createStore函数传入了<strong>makeRootReducer</strong>和<strong>initialState</strong>两个值，其中makeRootReducer就是通常所说的root reducer，只不过本文所示例的reducer皆为异步加载，所以可能和其它文章写的root reducer方式不一样，详细的内容下文会有叙述。阅读redux源码的<a href="https://github.com/reactjs/redux/blob/master/src/createStore.js">createStore</a>函数可以看到最后返回四个核心对象和一个<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol">symbol</a>对象，也就是说在示例中<code>makeRootReducer()=reducer</code>、<code>initialState=preloadedState</code>。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> $$observable <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;symbol&#x27;</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">createStore</span>(<span class="hljs-params">reducer, preloadedState, enhancer</span>) {
+  ...
+  <span class="hljs-keyword">return</span> {
+    dispatch,
+    subscribe,
+    getState,
+    replaceReducer,
+    [$$observable]: observable
+  }
+}
+</code></pre>
+<p>[^-&gt;createStore(reducer, preloadedState, enhancer)-&gt;currentReducer = reducer-&gt;currentState = preloadedState-&gt;function ensureCanMutateNextListeners(){}-&gt;function getState(){}-&gt;function subscribe(listener){}-&gt;function dispatch(action){}-&gt;function replaceReducer(nextReducer){}-&gt;function observable(){}-&gt;return {dispatch,subscribe,getState,replaceReducer,[$$observable]: observable}-&gt;]</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>使用方式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dispatch</td>
+<td>store.dispatch(action)</td>
+<td>action参数将参与store更新，并分发给subscribe函数正在监听的reducer</td>
+</tr>
+<tr>
+<td>subscribe</td>
+<td>store.subscribe(listener)</td>
+<td>listener监听者，实际上就是回调函数</td>
+</tr>
+<tr>
+<td>getState</td>
+<td>store.getState()</td>
+<td>获取state</td>
+</tr>
+<tr>
+<td>replaceReducer</td>
+<td>store.replaceReducer(nextReducer)</td>
+<td>刷新reducer并初始化store</td>
+</tr>
+</tbody>
+</table>
+<h3><span class="header-link" id="dispatch">Dispatch</span></h3><p>Dispatch方法用于更新store状态树，流程是在dispatch接受一个action，由action决定调用reducer转换状态树， 且通知监听者数据已发生变化，从dispatch源码中看到函数<code>currentReducer(currentState, action)</code>传递state、action，观察者列表<code>listeners</code>直接for循环遍历执行<code>listeners[i]()</code>。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">dispatch</span>(<span class="hljs-params">action</span>) {
+   ...
+     currentState = currentReducer(currentState, action)
+   ...
+
+   <span class="hljs-keyword">var</span> listeners = currentListeners = nextListeners
+   <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; listeners.<span class="hljs-built_in">length</span>; i++) {
+     listeners[i]()
+   }
+
+   <span class="hljs-keyword">return</span> action
+ }
+</code></pre>
+<p>在主流的redux思想里有一种说法叫“redux命令行模式”，其中dispatch比作分发器，这个形容很贴切。Dispatch方法就是接收action并将action里的信息分发给store和reducer，这里画了一个简单的图示以<code>dispatch(action)</code>方式展现dispatch函数的执行过程。</p>
+<pre><code class="lang-js">const <span class="hljs-built_in">action</span> = { <span class="hljs-built_in">type</span>: <span class="hljs-string">&#x27;ADD&#x27;</span>, payload: <span class="hljs-string">&#x27;***&#x27;</span>};
+dispatch(<span class="hljs-built_in">action</span>);
+</code></pre>
+<p><img src="../static/img/redux/dispatch-desc.png" alt="svg"></p>
+<p>除此之外dispatch函数的执行方法两种形式，其一是<code>bindActionCreators(action)</code>方式，bindActionCreators函数在本文的后面也有说到。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> action = { <span class="hljs-keyword">type</span>: <span class="hljs-string">&#x27;ADD&#x27;</span>, payload: <span class="hljs-string">&#x27;***&#x27;</span>};
+<span class="hljs-keyword">const</span> bindActionCreators = require(<span class="hljs-string">&#x27;redux&#x27;</span>).bindActionCreators;
+bindActionCreators(action);
+</code></pre>
+<p>其二是<code>dispatch action creator</code>方式，大多数项目中应用的都是这种方式。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">function</span> addTodo(<span class="hljs-type">text</span>) {
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-keyword">type</span>: <span class="hljs-keyword">ADD</span>,
+    payload: <span class="hljs-type">text</span>,
+  }
+}
+store.dispatch(addTodo(<span class="hljs-string">&#x27;***&#x27;</span>));
+</code></pre>
+<p>每次执行dispatch，通过subscribe注册的listener都会被执行，当listener列表较多时<code>listeners[i]()</code>都会被执行由此产生性能损耗，从工程师的角度更难定位到哪个具体的reducer内的监听者被触发，这个时候需要一些辅助工具借助<code>applyMiddleware</code>函数扩展中间件来帮助开发者。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> {applyMiddleware} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;redux&#x27;</span>;
+<span class="hljs-keyword">import</span> thunk <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;redux-thunk&#x27;</span>;
+<span class="hljs-keyword">const</span> store = <span class="hljs-title function_">applyMiddleware</span>([thunk])(createStore);
+<span class="hljs-keyword">const</span> dispatch = store.<span class="hljs-property">dispatch</span>;
+</code></pre>
+<blockquote>
+<p>Middleware is the suggested way to extend Redux with custom functionality<sup id="footnoteUp_3" data-desc="redux_middleware_wedsite_desc" class="reference"><a class="footnoteUp" href="#footnoteDo_3">[3]</a></sup>.</p>
+</blockquote>
+<p>更全面具体一些的扩展就要说到redux中间件的概念，如果熟悉expressjs<sup id="footnoteUp_4" data-desc="redux_expressjs_middleware_list_desc" class="reference"><a class="footnoteUp" href="#footnoteDo_4">[4]</a></sup>或者koajs<sup id="footnoteUp_5" data-desc="redux_koa_middleware_list_desc" class="reference"><a class="footnoteUp" href="#footnoteDo_5">[5]</a></sup>，应该会对<a href="https://github.com/alsotang/node-lessons/tree/master/lesson18">Middleware</a>很熟悉，在redux中的中间件是一个高阶函数，通俗讲更多的是对现有dispatch函数进行扩展，其逻辑倾向于AOP<sup id="footnoteUp_6" data-desc="aspect_oriented_programming_desc" class="reference"><a class="footnoteUp" href="#footnoteDo_6">[6]</a></sup>，意在将散布在各处的横切代码（cross-cutting code）以及一些被重复使用的功能性组件被重复使用。</p>
+<p><img src="../static/img/redux/redux-middleware.png" alt="svg"></p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> {applyMiddleware, compose, createStore} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;redux&#x27;</span>;
+<span class="hljs-keyword">import</span> {routerMiddleware} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react-router-redux&#x27;</span>;
+<span class="hljs-keyword">import</span> thunkMiddleware <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;redux-thunk&#x27;</span>;
+<span class="hljs-keyword">import</span> {persistState} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;redux-devtools&#x27;</span>;
+<span class="hljs-keyword">import</span> makeRootReducer <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./reducers&#x27;</span>;
+<span class="hljs-keyword">import</span> DevTools <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../containers/DevTools&#x27;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (initialState = {}, history) =&gt; {
+  ...
+  <span class="hljs-keyword">const</span> middleware = [thunkMiddleware, routerMiddleware(history), ...debugware];
+  <span class="hljs-keyword">const</span> enhancers = [];
+  ...
+      enhancers.push(devToolsExtension())
+  ...
+  <span class="hljs-keyword">const</span> store         = createStore(
+    makeRootReducer(),
+    initialState,
+    compose(
+      applyMiddleware(...middleware),
+      ...enhancers
+    )
+  );
+  ...
+      store.replaceReducer(reducers(store.asyncReducers))
+  ...
+  <span class="hljs-keyword">return</span> store
+}
+
+</code></pre>
+<h3><span class="header-link" id="subscribe">Subscribe</span></h3><p>Subscribe从设计的角度来说是一个订阅者，监听事件变化。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">subscribe</span>(<span class="hljs-params">listener</span>) {
+  ...
+  ensureCanMutateNextListeners()
+  nextListeners.<span class="hljs-built_in">push</span>(listener)
+
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">unsubscribe</span>(<span class="hljs-params"></span>) {
+    ...
+    ensureCanMutateNextListeners()
+    <span class="hljs-keyword">var</span> index = nextListeners.<span class="hljs-built_in">indexOf</span>(listener)
+    nextListeners.<span class="hljs-built_in">splice</span>(index, <span class="hljs-number">1</span>)
+  }
+}
+</code></pre>
+<h3><span class="header-link" id="getstate">GetState</span></h3><p>getState是获取当前store的state(currentState)；</p>
+<pre><code class="lang-js"><span class="hljs-keyword">function</span> <span class="hljs-title">getState</span>() {
+    <span class="hljs-keyword">return</span> <span class="hljs-type">currentState</span>
+  }
+</code></pre>
+<h3><span class="header-link" id="replacereducer">ReplaceReducer</span></h3><p>动态替换reducer函数</p>
+<pre><code class="lang-js"><span class="hljs-keyword">function</span> replace<span class="hljs-constructor">Reducer(<span class="hljs-params">nextReducer</span>)</span> {<span class="hljs-operator">
+   ...
+   </span>currentReducer = nextReducer
+   dispatch({ <span class="hljs-keyword">type</span>: ActionTypes.INIT })
+ }
+</code></pre>
+<h3><span class="header-link" id="state">State</span></h3><p>State对象存储在store状态树中，state只能通过<code>dispatch(action)</code>来触发更新，更新逻辑由reducer来执行，需要注意的是当state变化时会返回全新的对象，而不是修改传入的参数。</p>
+<p><img src="../static/img/redux/store-state-view.png" alt="svg"></p>
+<p>这里示例的逻辑由四步分组成，第一部分是定义子路由，在子路由中引入用于收集reducer的回调函数，我命名为injectReducer，当然也可以命名其它的名字，如collectReducer、pushReducer等等都可以</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> { injectReducer } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../../store/reducers&#x27;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (store) =&gt; ({
+  path: <span class="hljs-string">&#x27;login&#x27;</span>,
+  getComponent (nextState, cb) {
+    <span class="hljs-built_in">require</span>.ensure([], (<span class="hljs-built_in">require</span>) =&gt; {
+      <span class="hljs-keyword">const</span> LoginPage = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./components/Login&#x27;</span>).<span class="hljs-keyword">default</span>;
+      <span class="hljs-keyword">const</span> reducer = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./extend/reducer&#x27;</span>).<span class="hljs-keyword">default</span>;
+      injectReducer(store, { key: <span class="hljs-string">&#x27;login_reducer&#x27;</span>, reducer });
+      cb(<span class="hljs-literal">null</span>, LoginPage);
+    }, <span class="hljs-string">&#x27;login&#x27;</span>)
+  }
+})
+</code></pre>
+<p>在第一部分中store和reducer已经被传入injectReducer中，第二部分就是injectReducer函数的内部逻辑。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> { combineReducers } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;redux&#x27;</span>
+<span class="hljs-keyword">import</span> { routerReducer <span class="hljs-keyword">as</span> router } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react-router-redux&#x27;</span>
+
+<span class="hljs-keyword">export</span> const makeRootReducer = <span class="hljs-function"><span class="hljs-params">(asyncReducers)</span> =&gt;</span> {
+  <span class="hljs-keyword">return</span> combineReducers({
+    router,
+    ...asyncReducers
+  })
+};
+
+<span class="hljs-keyword">export</span> const injectReducer = <span class="hljs-function"><span class="hljs-params">(store, { key, reducer })</span> =&gt;</span> {
+  store.asyncReducers[key] = reducer;
+  store.replaceReducer(makeRootReducer(store.asyncReducers))
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> makeRootReducer
+</code></pre>
+<p>InjectReducer函数内用replaceReducer方法将store重新计算，这里这样做的缘由是第一部分的子路由是异步加载的，并不是在服务器开始时直接加载完毕，而是随着用户在客户端不断操作页面异步更新reducer以及加载组件等信息。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> {applyMiddleware, compose, createStore} from <span class="hljs-string">&#x27;redux&#x27;</span>;
+<span class="hljs-params">...</span>
+<span class="hljs-keyword">import</span> makeRootReducer from <span class="hljs-string">&#x27;./reducers&#x27;</span>;
+
+export default (initialState = {}, history) =&gt; {
+  <span class="hljs-params">...</span>
+  const store         = createStore(
+    makeRootReducer(),
+    initialState,
+    compose(
+      applyMiddleware(<span class="hljs-params">...</span>middleware),
+      <span class="hljs-params">...</span>enhancers
+    )
+  );
+  <span class="hljs-params">...</span>
+    store.replaceReducer(reducers(store.asyncReducers))
+  <span class="hljs-params">...</span>
+  <span class="hljs-keyword">return</span> store
+}
+</code></pre>
+<p>第三部分是初始化store。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> <span class="hljs-title class_">CoreLayout</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../layouts/CoreLayout/components/CoreLayout&#x27;</span>;
+<span class="hljs-keyword">import</span> {<span class="hljs-title class_">Dashboard</span>} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./module&#x27;</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">createRoutes</span> = (<span class="hljs-params">store</span>) =&gt; ({
+  path      : <span class="hljs-string">&#x27;/&#x27;</span>,
+  component : <span class="hljs-title class_">CoreLayout</span>,
+  <span class="hljs-attr">indexRoute</span>: <span class="hljs-title class_">Home</span>,
+  <span class="hljs-title function_">getChildRoutes</span>(<span class="hljs-params">location, cb</span>) {
+    <span class="hljs-title function_">cb</span>(<span class="hljs-literal">null</span>, [
+      <span class="hljs-title class_">Dashboard</span>(store)
+    ])
+  }
+});
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> createRoutes
+</code></pre>
+<p>第四部分是初始化路由，按道理顺序应该是第四部分=&gt;第三部分=&gt;第一部分=&gt;第二部分，但是如果考虑异步等信息的话，我个人认为按逻辑优先级应该是这样排比较好。</p>
+<h4><span class="header-link" id="state扁平化">State扁平化</span></h4><pre><code class="lang-bash">npm install <span class="hljs-comment">--save normalizr</span>
+</code></pre>
+<p>Store树对象或者组件自身state树对象实质上是<a href="https://en.wikipedia.org/wiki/JSON">JSON</a>对象，所以在redux开发过程中，为避免不同数据之间相互引用或返回相互嵌套的值，可以使用<a href="https://github.com/paularmstrong/normalizr">normalizr</a>对state扁平化、范式化处理。</p>
+<h5><span class="header-link" id="可变对象">可变对象</span></h5><p>可变对象可以用<code>Object.assign</code>或者lodash的<code>cloneDeep</code>函数。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> assign = Object.assign || require(&#x27;object.assign&#x27;);
+assign({}, <span class="hljs-keyword">state</span>, {
+    ADD: action.newState
+  })
+</code></pre>
+<h5><span class="header-link" id="不可变对象">不可变对象</span></h5><p><a href="https://en.wikipedia.org/wiki/Immutable_object">不可变对象（immutable state）</a>是指在创建后不可再被修改的对象，它可以通过引用级的比对检查来提升渲染性能，在redux开发中一般会使用<a href="https://facebook.github.io/immutable-js/">immutablejs</a>实现不可变对象，需要注意的是immutablejs每次操作之后总是返回一个新的数据，原有的数据不会改变。</p>
+<p>immutablejs通过结构共享来解决的数据拷贝时的性能问题，即当数据对象<code>key-&gt;value</code>键值对被改变时，immutablejs会只<code>clone</code>数据对象被改变对象节点的父节点以上的部分，其他保持不变，由此达到旧对象与immutablejs返回的新对象共享部分数据并提高性能。</p>
+<p><img src="../static/img/redux/immutablejs-node-expample.png" alt="svg">
+测试：</p>
+<ul>
+<li><a href="https://www.npmjs.com/package/deep-freeze-node">deep-freeze-node</a></li>
+</ul>
+<h4><span class="header-link" id="reselect">Reselect</span></h4><p>Selector扩展组件，由于<a href="https://github.com/reactjs/reselect">reselect</a>带有缓存功能，所以使用它可以避免不必要的selector计算</p>
+<h2><span class="header-link" id="action">Action</span></h2><p>Action同样是一个javascript对象，通常包含<code>type</code>等一些字段。</p>
+<h3><span class="header-link" id="action-creator">Action Creator</span></h3><p>“Action Creator”是action的创造者，本质上就是一个函数，返回值是一个action，“Action Creator”可以是同步也可以是异步。</p>
+<h4><span class="header-link" id="同步action-creator">同步Action Creator</span></h4><pre><code class="lang-js"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>() {
+    <span class="hljs-keyword">return</span> <span class="hljs-type">{</span> tyle: <span class="hljs-symbol">&#x27;ADD</span>&#x27; }
+}
+dispatch(add());
+</code></pre>
+<h4><span class="header-link" id="异步action-creator">异步Action Creator</span></h4><p>redux-thunks 和 redux-promise 分别是使用异步回调和 Promise 来解决异步 action 问题的。</p>
+<p>如果直接用<a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a>，可能一些浏览器并不支持，所以还是需要添加垫片<a href="https://www.npmjs.com/package/isomorphic-fetch">isomorphic-fetch</a></p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fetchDataAsync</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">dispatch</span>) </span>{
+      <span class="hljs-title function_ invoke__">fetch</span>(<span class="hljs-string">&#x27;/posttest&#x27;</span>, {
+        method : <span class="hljs-string">&#x27;POST&#x27;</span>,
+        <span class="hljs-attr">headers</span>: {
+          <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&quot;application/json&quot;</span>,
+          <span class="hljs-string">&#x27;Accept&#x27;</span>      : <span class="hljs-string">&quot;application/json&quot;</span>
+        },
+        body   : JSON.<span class="hljs-title function_ invoke__">stringify</span>({<span class="hljs-attr">item</span>: <span class="hljs-string">&#x27;text&#x27;</span>})
+      }).<span class="hljs-title function_ invoke__">then</span>(res =&gt; {
+        <span class="hljs-keyword">if</span> (res.ok) {
+          <span class="hljs-title function_ invoke__">dispatch</span>({<span class="hljs-attr">type</span>: LOGIN_REQUEST, <span class="hljs-attr">loginRequest</span>: <span class="hljs-literal">true</span>});
+          ...
+        }
+      }, e =&gt; {
+        ...
+      });
+    }
+}
+</code></pre>
+<h3><span class="header-link" id="bindactioncreators">bindActionCreators</span></h3><p><code>bindActionCreators()</code>可以自动把多个action创建函数绑定到<code>dispatch()</code>方法上。</p>
+<p>借鉴store对reducer的封装（减少传入 state 参数）。可以对dispatch进行再一层封装，将多参数转化为单参数的形式，经 bindActionCreators包装过后的“Action Creator”形成了具有改变全局state数据的多个函数，将这些函数分发到各个地方，即能通过调用这些函数来改变全局的state。</p>
+<pre><code class="lang-js">var actionCreators = <span class="hljs-keyword">bindActionCreators </span>( actionCreators , store.<span class="hljs-keyword">dispatch </span>) ;
+</code></pre>
+<h2><span class="header-link" id="reducer">Reducer</span></h2><p>Reducer是一个javaScript函数，命名上也与<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce">Array.prototype.reduce()</a>相像，函数签名为<code>(previousState, action) =&gt; newState</code>，接受previousState和action两个参数，根据<code>action.type</code>中携带的信息对previousState做出相应的处理，并返回一个新的state。另外在redux中一个action可以触发多个reducer，一个reducer中也可以包含多种“action.type”的处理，所以二者关系为多对多。。</p>
+<pre><code class="lang-js">import {SET_AUTH} <span class="hljs-keyword">from</span> &#x27;./actionType&#x27;;
+<span class="hljs-keyword">const</span> assign = Object.assign || require(&#x27;object.assign&#x27;);
+
+<span class="hljs-keyword">const</span> initialState = {
+  loggedIn    : require(&#x27;./action&#x27;).<span class="hljs-keyword">default</span>()(),
+};
+
+<span class="hljs-keyword">const</span> ACTION_HANDLERS = {
+  [SET_AUTH]     : (<span class="hljs-keyword">state</span>, action) =&gt; assign({}, <span class="hljs-keyword">state</span>, {
+    loggedIn: action.newState
+  })
+};
+
+export <span class="hljs-keyword">default</span> function (<span class="hljs-keyword">state</span> = initialState, action) {
+  <span class="hljs-keyword">const</span> handler = ACTION_HANDLERS[action.type];
+
+  return handler ? handler(<span class="hljs-keyword">state</span>, action) : <span class="hljs-keyword">state</span>
+}
+</code></pre>
+<h3><span class="header-link" id="combinereducers">combineReducers</span></h3><p><code>combineReducers()</code>将调用一系列 reducer，并根据对应的 key 来筛选出 state 中的一部分数据给相应的 reducer，这样也意味着每一个小的 reducer 将只能处理 state 的一部分数据，如：filterReducer 将只能处理及返回 state.filter 的数据，如果需要使用到其他 state 数据，那还是需要为这类 reducer 传入整个 state。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> { combineReducers } from <span class="hljs-string">&#x27;redux&#x27;</span>
+<span class="hljs-params">...</span>
+  combineReducers({
+    router,
+    <span class="hljs-params">...</span>asyncReducers
+  })
+<span class="hljs-params">...</span>
+</code></pre>
+<h2><span class="header-link" id="react-redux">React-redux</span></h2><p>React通过Context属性，可以将属性props直接给子component，无须通过props层层传递, Provider获得store然后将其传递给子元素。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Provider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">Component</span> {
+  <span class="hljs-title function_">getChildContext</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> { <span class="hljs-attr">store</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">store</span> }
+  }
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">props, context</span>) {
+    <span class="hljs-variable language_">super</span>(props, context)
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">store</span> = props.<span class="hljs-property">store</span>
+  }
+  <span class="hljs-title function_">componentWillReceiveProps</span>(<span class="hljs-params">nextProps</span>) {
+    <span class="hljs-keyword">const</span> { store } = <span class="hljs-variable language_">this</span>
+    <span class="hljs-keyword">const</span> { <span class="hljs-attr">store</span>: nextStore } = nextProps
+
+    <span class="hljs-keyword">if</span> (store !== nextStore) {
+      <span class="hljs-title function_">warnAboutReceivingStore</span>()
+    }
+  }
+  <span class="hljs-title function_">render</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">let</span> { children } = <span class="hljs-variable language_">this</span>.<span class="hljs-property">props</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Children</span>.<span class="hljs-title function_">only</span>(children)
+  }
+}
+<span class="hljs-title class_">Provider</span>.<span class="hljs-property">childContextTypes</span> = {
+   <span class="hljs-attr">store</span>: storeShape.<span class="hljs-property">isRequired</span>
+}
+</code></pre>
+<p>Provider中的store可以在子组件中用contextTypes获取。</p>
+<pre><code class="lang-js">childrenComponent.contextT<span class="hljs-attr">ypes</span> <span class="hljs-operator">=</span> <span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">    store:</span> storeShape
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>需要注意的是由于react-redux，我们一般对绑定的组件称为<code>Smart and Dumb Components</code>。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">Location</th>
+<th style="text-align:left">Use React-Redux</th>
+<th style="text-align:left">To read data, they</th>
+<th style="text-align:left">To change data, they</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">“Smart” Components</td>
+<td style="text-align:left">Top level, route handlers</td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">Subscribe to Redux state</td>
+<td style="text-align:left">Dispatch Redux actions</td>
+</tr>
+<tr>
+<td style="text-align:left">“Dumb” Components</td>
+<td style="text-align:left">Middle and leaf components</td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">Read data from props</td>
+<td style="text-align:left">Invoke callbacks from props</td>
+</tr>
+</tbody>
+</table>
+<h3><span class="header-link" id="provider">Provider</span></h3><p>Provider将store放到context中，connect就可以获取store，使用store的方法，比如dispatch。其实没有被connect的组件通过声明contextTypes属性也是可以获取store，使用store的方法的，但是这个时候，如果使用dispatch修改了store的state，React-Redux并不能把修改后的state作为props给React组件，可能会导致UI和数据不同步，所以这个时候一定要清楚自己在做什么。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span>, { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">PropTypes</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Router</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react-router&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Provider</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react-redux&#x27;</span>;
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">AppContainer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">Component</span> {
+  <span class="hljs-keyword">static</span> propTypes = {
+    <span class="hljs-attr">history</span>: <span class="hljs-title class_">PropTypes</span>.<span class="hljs-property">object</span>.<span class="hljs-property">isRequired</span>,
+    <span class="hljs-attr">routes</span>: <span class="hljs-title class_">PropTypes</span>.<span class="hljs-property">object</span>.<span class="hljs-property">isRequired</span>,
+    <span class="hljs-attr">store</span>: <span class="hljs-title class_">PropTypes</span>.<span class="hljs-property">object</span>.<span class="hljs-property">isRequired</span>
+  };
+  render () {
+    <span class="hljs-keyword">const</span> { history, routes, store } = <span class="hljs-variable language_">this</span>.<span class="hljs-property">props</span>;
+    <span class="hljs-keyword">return</span> (
+      <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">store</span>=<span class="hljs-string">{store}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">height:</span> &#x27;<span class="hljs-attr">100</span>%&#x27; }}&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">Router</span> <span class="hljs-attr">history</span>=<span class="hljs-string">{history}</span> <span class="hljs-attr">children</span>=<span class="hljs-string">{routes}</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span></span>
+    )
+  }
+}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">AppContainer</span>
+</code></pre>
+<h3><span class="header-link" id="connect">Connect</span></h3><pre><code class="lang-bash">npm <span class="hljs-selector-tag">i</span> <span class="hljs-attr">--save</span> react-redux
+</code></pre>
+<p>Connect是由<a href="https://github.com/reactjs/react-redux">react-redux</a>提供的一个高阶函数。源码中connect函数接收<code>mapStateToProps、mapDispatchToProps、mergeProps、options</code>四个参数返回一个用于生产Component的函数wrapWithConnect，然后再将组件Component作为参数注入<code>wrapWithConnect(WrappedComponent)</code>函数。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">mapStateToProps</td>
+<td style="text-align:left">将state作为返回结果绑定到组件的props对象上</td>
+</tr>
+<tr>
+<td style="text-align:left">mapDispatchToProps</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">mergeProps</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">options</td>
+<td style="text-align:left">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">connect</span>(<span class="hljs-params">mapStateToProps, mapDispatchToProps, mergeProps, options = {}</span>) {
+  ...
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">wrapWithConnect</span>(<span class="hljs-params">WrappedComponent</span>) {
+    ...
+  }
+}
+</code></pre>
+<p>[^-&gt;connect(mapStateToProps, mapDispatchToProps, mergeProps, options = {})-&gt;wrapWithConnect(WrappedComponent)-&gt;class Connect extends Component{}-&gt;Connect.contextTypes = {store: storeShape};Connect.propTypes = {store: storeShape}-&gt;return hoistStatics(Connect, WrappedComponent)-&gt;]</p>
+<p>值得一说的是hoistStatics函数源于<code>hoist-non-react-statics</code>第三方，作用是将原来组件中的元素拷贝到目标组件。在使用connect函数的时候直接在已声明的component后面引用connect。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> <span class="hljs-type">React</span>, {<span class="hljs-type">Component</span>} from &#x27;react&#x27;;
+...
+<span class="hljs-keyword">import</span> {connect} from &#x27;react-redux&#x27;;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Login</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  ...
+  render() {
+    ...
+  }
+}
+...
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> connect(mapStateToProps, mapDispatchToProps)(<span class="hljs-type">Login</span>)
+</code></pre>
+<p>Connect不只为react组件提供store中的state数据及扩展dispatch方法，它还为定义的组件添加了一系列事件操作，这些事件的核心点就是store，然后可以在自己定义的组件内获得store。</p>
+<pre><code class="lang-js">constructor(){
+  //获取store
+  this.store = props.store || context.store
+  <span class="hljs-keyword">const</span> storeState = this.store.getState()
+  //把store的<span class="hljs-keyword">state</span>作为组件的<span class="hljs-keyword">state</span>，后面通过更新<span class="hljs-keyword">state</span>更新组件
+  this.<span class="hljs-keyword">state</span> = { storeState }
+  //清除组件的状态，内部是一系列的标示还原
+  this.clearCache()
+}
+</code></pre>
+<h2><span class="header-link" id="附录">附录</span></h2><table>
+<thead>
+<tr>
+<th style="text-align:left">Github源码</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="https://github.com/erikras/ducks-modular-redux">ducks-modular-redux</a></td>
+<td style="text-align:left">{ctionTypes, actions, reducer}规则解决方案</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://github.com/coryhouse/react-slingshot">react-slingshot</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://github.com/sotojuan/saga-login-flow">saga-login-flow</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://github.com/mxstbr/login-flow">login-flow</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://github.com/yelouafi/redux-saga">redux-saga</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://github.com/mjrussell/redux-auth-wrapper">redux-auth-wrapper</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://github.com/dvajs/dva">dva</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://github.com/lewis617/react-redux-tutorial">react-redux-tutorial</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://cn.redux.js.org/">reduxjs doc</a></td>
+<td style="text-align:left">reduxjs中文档案</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://www.alloyteam.com/2015/09/react-redux/">alloyteam:react-redux</a></td>
+<td style="text-align:left">React 数据流管理架构之 Redux 介绍</td>
+</tr>
+</tbody>
+</table>
+<h2><span class="header-link" id="references">References</span></h2><section class="footnote-box"><ul><li id="footnoteDo_1" class="footnoteUp"><span class="backlink" data-desc="redux_website_title_desc"><b><a  href="#footnoteUp_1">^</a></b></span><span class="reference-text"><a href="http://redux.js.org/">redux.js文档</a>，源自<code>redux.js</code>文档中首页的一段话，对<code>redux</code>特性的官方描述。</span></li><li id="footnoteDo_2" class="footnoteUp"><span class="backlink" data-desc="behavioral_functionality_desc"><b><a  href="#footnoteUp_2">^</a></b></span><span class="reference-text">行为功能是对目的功能和有用行为的一种抽象。这里特指在&quot;web&nbsp;page&quot;中对视图的按钮等<code>DOM</code>元素点击、页面路由切换等功能的操作行为，在redux中被称为<a href="http://redux.js.org/docs/basics/Actions.html">action</a>。</span></li><li id="footnoteDo_3" class="footnoteUp"><span class="backlink" data-desc="redux_middleware_wedsite_desc"><b><a  href="#footnoteUp_3">^</a></b></span><span class="reference-text"><a href="http://redux.js.org/docs/api/applyMiddleware.html">applyMiddleware(...middlewares)</a>:Middleware is the suggested way to extend Redux with custom functionality. Middleware lets you wrap the store&#39;s dispatch method for fun and profit. The key feature of middleware is that it is composable. Multiple middleware can be combined together, where each middleware requires no knowledge of what comes before or after it in the chain.</span></li><li id="footnoteDo_4" class="footnoteUp"><span class="backlink" data-desc="redux_expressjs_middleware_list_desc"><b><a  href="#footnoteUp_4">^</a></b></span><span class="reference-text"><a href="http://expressjs.com/">expressjs</a>，中间件的介绍为<a href="http://expressjs.com/en/4x/api.html#express.methods">expressjs-middleware</a>，概括来说中间件<code>middleware</code>函数能够访问请求对象 <code>req</code>、响应对象 <code>res</code> 以及应用程序的请求/响应循环中的下一个中间件<code>middleware</code>函数。下一个中间件函数通常由名为<code>next</code>的变量来表示。</span></li><li id="footnoteDo_5" class="footnoteUp"><span class="backlink" data-desc="redux_koa_middleware_list_desc"><b><a  href="#footnoteUp_5">^</a></b></span><span class="reference-text"><a href="http://koajs.com/">koajs</a>，中间件的介绍为<a href="https://github.com/koajs/koa/wiki">koajs-middleware</a>。</span></li><li id="footnoteDo_6" class="footnoteUp"><span class="backlink" data-desc="aspect_oriented_programming_desc"><b><a  href="#footnoteUp_6">^</a></b></span><span class="reference-text"><a href="https://en.wikipedia.org/wiki/Aspect-oriented_programming">AOP（Aspect-Oriented Programming）</a>，面向切面编程，通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术，被认为是<a href="https://en.wikipedia.org/wiki/Object-oriented_programming">OOP</a>的一种延续（补充和完善<code>OOP</code>）。</span></li></ul></section>
+
+
+</div>
+<script type="text/javascript">
+  $(function () {
+    $('img').each(function () {
+      var _self = $(this);
+      var altCache = _self.attr('alt');
+      if (altCache === 'svg') {
+        var hrefCache = _self.attr('src');
+        var dataCache = hrefCache.substr(0, (hrefCache.length - 3)) + 'svg';
+        _self.replaceWith('<p class="svgNodePhoto"><object data="' + dataCache + '" type="image/svg+xml"></object></p>')
+      }
+    });
+  });
+</script>
+<style type="text/css">
+  .page__footer-toTop {
+    display: inline-block;
+    position: fixed;
+    padding: 0;
+    right: 10px;
+    bottom: 10px;
+    width: 50px;
+    height: 50px;
+    background: #ddd;
+    color: rgba(39,174,96,.6);
+    text-align: center;
+    border-radius: 2px;
+    z-index: 1;
+  }
+  .page__footer-toTop--icon {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    top: 10px;
+    left: 10px;
+    color: #fff;
+    position: absolute;
+    font-size: 24px;
+    cursor: pointer;
+    text-rendering: auto;
+    display: inline-block;
+    font-style: normal;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .page__footer-content {
+    
+  }
+  .page__footer-content--flex {
+    display: flex;
+  }
+  .page__footer-content--license {
+    margin-right: 20px;
+  }
+  .page__footer-content--thread {
+    color: #666666;
+  }
+  .page__footer-content--thread p {
+    margin: 5px 0 0 0;
+    font-size: 12px;
+  }
+  .page__footer-content--thread p:first-of-type {
+    margin: 0;
+  }
+  .page__footer-section {
+
+  }
+  .page__footer-section--word {
+    padding: 0;
+    margin: 0.5em 0;
+    font-weight: 700;
+    break-inside: avoid-column;
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+  .page__footer-section--word a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #ba832c;
+    font-weight: 700;
+  }
+</style>
+<hr>
+<div class="page__footer-toTop"><i class="page__footer-toTop--icon iconfont">&#xe602;</i></div>
+<div class="page__footer-content">
+  <div class="page__footer-content--flex">
+    <div class="page__footer-content--license">
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+        <img alt="Creative Commons License" style="border-width:0" src="https://iframe.kangkk.cn/static/image/licensebuttons.png" />
+      </a>
+    </div>
+    <div class="page__footer-content--thread">
+      <p><b>ID</b>: 1522180058f379e748066ed476dc6b50</p>
+      <p><b>TITLE</b>: Redux浅论</p>
+      <p><b>URL</b>: http://kangkk.com/cn/1522180058f379e748066ed476dc6b50.html</p>
+    </div>
+  </div>
+  <section class="page__footer-section">
+    <p class="page__footer-section--word">This work is licensed under a <a rel="license"
+        href="https://creativecommons.org/licenses/by-nc-nd/3.0/cn/" target="_blank"> Creative Commons
+        Attribution-NonCommercial-NoDerivatives 4.0 International License
+      </a>. Reprint the 《<sub>
+        Redux浅论
+      </sub>》 need signature "<sub>KangKK</sub>", and the url is <sub>
+        http://kangkk.com/cn/1522180058f379e748066ed476dc6b50.html
+      </sub>.
+    </p>
+  </section>
+</div>
+<style type="text/css">
+  footer {
+    margin-top: 10px;
+    margin-bottom: 40px;
+    border-top: 1px solid #e5e5e5;
+    padding-top: 10px;
+    width: 400px;
+    font: 14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+  }
+  footer a {
+    color: #39c;
+    text-decoration: none;
+  }
+  footer .iconfont {
+    color: #39c;
+    font-size: 12px;
+  }
+  footer img {
+    width: 12px;
+  }
+</style>
+<footer>
+  <small>
+    Copyright ©2006-2023 康健生活, All Rights Reserved ➤ 
+    <a href="./readme.html">README</a>
+  </small>
+  <br>
+  <small>Living in China. 
+    <a href="http://kangkk.com/" target="_blank">KangKK.COM</a> ➤ 
+    <a href="https://kangkk.cn/" target="_blank">KangKK.CN</a> ➤ 〔♩ 
+    <a href="./map.html"><i class="iconfont">&#xe60b;</i></a> ♪ 
+    <a href="https://KangKK.NOTION.SITE"><i class="iconfont">&#xec37;</i></a> ♫ 
+    <a href="#"><i class="iconfont">&#xf1b5;</i></a> ♬〕
+  </small>
+  <br>
+  <small><a href="https://beian.miit.gov.cn/" target="_blank">京ICP备16020839号-1</a> ➤ <a target="_blank"
+      href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=23128202000134"><img src="https://gw.alicdn.com/tfs/TB1jwakrbH1gK0jSZFwXXc7aXXa-20-20.png" alt="黑公网安备"/> 黑公网安备
+      23128202000134号</a></small>
+</footer>
+  <script type="text/javascript">
+    !function ($) {
+      $(window).scroll(function () {
+        $(this).scrollTop() > 100 ? $(".page__footer-toTop").fadeIn() : $(".page__footer-toTop").fadeOut()
+      }), $(".page__footer-toTop").on("click", function (b) {
+        return b.preventDefault(), $("html, body").animate({
+          scrollTop: 0
+        }, 100), !1
+      });
+    }(jQuery);
+  </script>
+  </body>
+
+  </html>
