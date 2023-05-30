@@ -55,7 +55,7 @@ const readMdHideInfoAction = _md => {
   const show = _md.match(showStrip);
   return {
     mtime: mtime ? mtime[1] : void 0,
-    show: show ? show[1] : void 0
+    show: show ? eval(show[1]) : void 0
   }
 }
 //
@@ -104,9 +104,9 @@ const replacMdAction = $ => {
   const keyWorlds = fileNameEn.split(' ').join(',') + ',' + fileNameEn + ',' + fileName;
   //
   const otherInfo = readMdHideInfoAction(mdToHtml);
-  if (!otherInfo.show) return;
   //
   if (fs.existsSync($._t)) fs.unlinkSync($._t);
+  if (!otherInfo.show) return;
   //
   fs.writeFileSync(
     $._t,
