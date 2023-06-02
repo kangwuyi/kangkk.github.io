@@ -33,7 +33,6 @@
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
-  color: #707070;
 }
 </style>
 <style type="text/css">
@@ -44,6 +43,32 @@
     fill: currentColor;
     overflow: hidden;
   }
+</style>
+  <style type="text/css">
+html {
+  color: #777777;
+}
+a {
+  color: #39c;
+  text-decoration: none;
+}
+/*  */
+.iconfont {
+  color: #777777;
+}
+/*  */
+.icon--color {
+  color: #39c;
+}
+.home--left_text-china {
+  color: #c00;
+}
+.home--left_text-hlg {
+  color: #EA760A;
+}
+.home--left_text-td {
+  color: #2fb2ab;
+}
 </style>
 </head>
 
@@ -99,13 +124,13 @@
   <hr class="hr-link">
 </header>
 
-  <p class="left-content">My name is JIAN KANG from <a
+  <p class="left-content">My name is JIAN KANG from <a class="home--left_text-china"
       href="http://map.baidu.com/?newmap=1&amp;ie=utf-8&amp;s=s%26wd%3D%E9%BB%91%E9%BE%99%E6%B1%9F%E7%9C%81"
-      style="color: #c00;" target="_blank">the north of China</a>, and I usually use the name that it's Kang Kang(KK.)
+      target="_blank">the north of China</a>, and I usually use the name that it's Kang Kang(KK.)
     on the Internet. I
-    graduated from <a href="http://www.hrbust.edu.cn/" style="color: #EA760A;" target="_blank">Harbin
-      University of Science and Technology</a>. I used to work on <a href="https://www.tongdun.cn/"
-      style="color: #2fb2ab;" target="_blank">TongDun
+    graduated from <a class="home--left_text-hlg" href="http://www.hrbust.edu.cn/" target="_blank">Harbin
+      University of Science and Technology</a>. I used to work on <a class="home--left_text-td" href="https://www.tongdun.cn/"
+      target="_blank">TongDun
       Technology</a> and I'm a freelancer now.
   </p>
 </div>
@@ -123,9 +148,6 @@
     }
     .right table, .right tr {
       overflow: hidden;
-    }
-    .right tr:first-of-type * {
-      color: #39c;
     }
     .right .fig-ansi {
       display: inline-block;
@@ -189,12 +211,7 @@
     font: 14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
   }
-  footer a {
-    color: #39c;
-    text-decoration: none;
-  }
   footer .iconfont {
-    color: #39c;
     font-size: 12px;
   }
   footer img {
@@ -209,10 +226,12 @@
   <br>
   <small>Living in China. 
     <a href="http://kangkk.com/" target="_blank">KangKK.COM</a> ➤ 
-    <a href="https://kangkk.cn/" target="_blank">KangKK.CN</a> ➤ 〔♪ 
-    <a href="./map.html"><i class="iconfont">&#xe60b;</i></a> ♫ 
+    <a href="https://kangkk.cn/" target="_blank">KangKK.CN</a> ➤ 
+    <a href="./map.html"><i class="iconfont icon--color">&#xe60b;</i></a>
+    <!-- 〔♪  -->
+    <!--  ♫  -->
     <!-- <a href="https://KangKK.NOTION.SITE"><i class="iconfont">&#xec37;</i></a> ♫  -->
-    <a href="#"><i class="iconfont">&#xf1b5;</i></a> ♬〕
+    <!-- <a href="#"><i class="iconfont icon--color">&#xf1b5;</i></a> ♬〕 -->
   </small>
   <br>
   <small><a href="https://beian.miit.gov.cn/" target="_blank">京ICP备16020839号-1</a> ➤ <a target="_blank"
