@@ -87,6 +87,15 @@ a {
   .left-content {
     color: #777;
   }
+  .menu__page-left--table a {
+    margin-right: 10px;
+  }
+  .menu__page-left--table td:last-of-type a {
+    margin-right: 0;
+  }
+  .menu__page-left--table .iconfont {
+    margin-right: 5px;
+  }
 </style>
 <div class="left">
   <style type="text/css">
@@ -124,89 +133,124 @@ a {
   <hr class="hr-link">
 </header>
 
-  <p class="left-content">My name is JIAN KANG from <a class="home--left_text-china"
-      href="http://map.baidu.com/?newmap=1&amp;ie=utf-8&amp;s=s%26wd%3D%E9%BB%91%E9%BE%99%E6%B1%9F%E7%9C%81"
-      target="_blank">the north of China</a>, and I usually use the name that it's Kang Kang(KK.)
-    on the Internet. I
-    graduated from <a class="home--left_text-hlg" href="http://www.hrbust.edu.cn/" target="_blank">Harbin
-      University of Science and Technology</a>. I used to work on <a class="home--left_text-td" href="https://www.tongdun.cn/"
-      target="_blank">TongDun
-      Technology</a> and I'm a freelancer now.
-  </p>
+  <table class="menu__page-left--table">
+    <tbody>
+      <tr>
+        <td><a href="./candies.html"><i class="iconfont icon--color">&#xe61b;</i>糖果</a></td>
+        <td><a href="./waterChestnut.html"><i class="iconfont icon--color">&#xe601;</i>菱角</a></td>
+        <td><a href="./longan.html"><i class="iconfont icon--color">&#xf879;</i>龙眼</a></td>
+        <td><a href="https://kangkk.cn/index.php/康健生活"><i class="iconfont icon--color">&#xe607;</i>栗子</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="left-content">没啥想说的。</p>
+  <p class="left-content">给自己设定一个期望，尽量内容趋近于严谨、合理、措辞正式，排布规整，论点有据，引用无差，数据真实，表达意惬。</p>
 </div>
-      <style type="text/css">
-    .right {
-      width: 400px;
-      font: 14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-weight: 400;
-    }
-    .right a {
-      text-decoration: none;
-    }
-    .right i {
-      margin-right: 5px;
-    }
-    .right table, .right tr {
-      width: 100%;
-      overflow: hidden;
-    }
-    .right .fig-ansi {
-      display: inline-block;
-      width: 100%;
-      overflow: hidden;
-      padding: 5px;
-      line-height: 1;
-      font-size: 12px;
-      color: #fff;
-      border: 0;
-      background: #333333;
-      font-family: "Courier New", Monospace;
-      white-space: pre;
-      height: 80px;
-      margin: 0;
-    }
-    .github--ghchart {
-      width: 100%;
-      height: auto;
-      padding: 10px 0;
-      box-sizing: border-box;
-      position: relative;
-      left: -20px;
-    }
-  </style>
-  <div class="right">
-    <table>
-      <thead>
-        <tr>
-          <td><a href="./cn/candies.html"><i class="iconfont">&#xe61b;</i>糖果</a></td>
-          <td><a href="./cn/waterChestnut.html"><i class="iconfont">&#xe601;</i>菱角</a></td>
-          <td><a href="./cn/longan.html"><i class="iconfont">&#xf879;</i>龙眼</a></td>
-          <td><a href="./cn/chestnut.html"><i class="iconfont">&#xe607;</i>栗子</a></td>
-        </tr>
-      </thead>
-    </table>
-    <table>
-      <tbody>
-        <tr>
-          <td colspan="4" style="position: relative;">
-            <img class="github--ghchart" src="https://ghchart.rshah.org/kangkk" alt="kangkk's Github chart" />
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2"><i class="iconfont">&#xe641;</i>122-478-499</td>
-          <td colspan="2"><i class="iconfont">&#xe600;</i>KangKK.CN</td>
-        </tr>
-        <tr>
-          <td colspan="2"><i class="iconfont">&#xe8c6;</i>756-8996-705</td>
-          <td colspan="2"><i class="iconfont">&#xe62a;</i>KangKK.COM</td>
-        </tr>
-        <tr>
-          <td colspan="2"><i class="iconfont">&#xe8c6;</i>213-6828-069</td>
-          <td colspan="2"><i class="iconfont">&#xe63b;</i>Kang@KangKK.COM</td>
-        </tr>
-      </tbody>
-    </table>
     <style type="text/css">
+  .right {
+    width: 400px;
+    font: 14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+  }
+  .right table {
+    display: none;
+    min-height: 277px;
+  }
+  .right table, .right tr {
+    overflow: hidden;
+  }
+  .right table td:first-of-type {
+    width: 50px;
+  }
+  .right table td:nth-of-type(2) {
+    width: 250px;
+  }
+  .right table td:nth-of-type(2) a {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 250px;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+  }
+  .right table tbody td:nth-of-type(3) {
+    font-size: 12px;
+  }
+  .menu__page-table--content {
+    min-height: 150px;
+  }
+  .menu__page-pagination {
+    height: 22px;
+    margin-top: 20px;
+    overflow: hidden;
+  }
+  .menu__page-pagination--label[for^="indicator"] {
+    display: inline-block;
+    width: 20px;
+    border: 1px dashed #666666;
+    border-radius: 5px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  .menu__page-pagination--label:active, .menu__page-pagination--label:hover {
+    background: #666666;
+    color: #ffffff
+  }
+  
+    #indicator0:checked ~ label[for="indicator0"] {
+      background: #666666;
+      color: #ffffff
+    }
+  
+  /* 选中指示器设置 */
+
+</style>
+<div class="right">
+  
+  <h2>栗子</h2>
+  <div class="menu__page-table--content">
+    
+      <table class="menu__page-table" id="table0" style="display: block">
+        <thead>
+          <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Mtime</td>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+                <td>
+                    1
+                </td>
+                <td>
+                    <a href="./b57df960090fefd8e2ad899f08285416.html" class="col-xs-12 link -download">
+                        2023年度
+                    </a>
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+            
+        </tbody>
+      </table>
+    
+    <div class="menu__page-pagination">
+      
+        <input type="radio" name="indicator" class="indicator" id="indicator0" hidden checked>
+        <label for="indicator0" class="menu__page-pagination--label" onclick="javascript:(() => {
+          document.querySelectorAll('.menu__page-table').forEach(_ => _.style.display = 'none');
+          document.getElementById('table0').style.display = 'block'
+        })()">1</label>
+      
+    </div>
+  </div>
+  <style type="text/css">
   footer {
     margin-top: 10px;
     margin-bottom: 40px;
@@ -243,7 +287,7 @@ a {
       href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=23128202000134"><img src="https://gw.alicdn.com/tfs/TB1jwakrbH1gK0jSZFwXXc7aXXa-20-20.png" alt="黑公网安备"/> 黑公网安备
       23128202000134号</a></small>
 </footer>
-  </div>
+</div>
   </div>
 </body>
 

@@ -41,7 +41,7 @@ const readFolderPath = (dir, _cup = []) => {
   });
   return _cup;
 }
-const FolderList = ['candies', 'waterChestnut', 'longan'];
+const FolderList = ['candies', 'waterChestnut', 'chestnut', 'longan'];
 const WordPageList = FolderList.map(__ => {
   const cup = [];
   readFolderPath(path.join(process.cwd(), SourceFolder, __), cup);
