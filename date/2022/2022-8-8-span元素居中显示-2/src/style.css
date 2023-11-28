@@ -1,0 +1,12 @@
+.box {
+  width: 100%;
+  height: 80px;
+  background: yellow;
+}
+.sp {
+  background: #fff;
+}
+.box {
+  display: table-cell;
+  vertical-align: middle;
+}

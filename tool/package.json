@@ -1,0 +1,14 @@
+{
+  "name": "kangkk",
+  "version": "0.1.0",
+  "devDependencies": {},
+  "dependencies": {
+    "async": "^3.2.0",
+    "ejs": "^3.1.5",
+    "highlight.js": "^10.4.0",
+    "mkdirp": "^1.0.4",
+    "moment": "^2.29.1",
+    "path": "^0.12.7",
+    "underscore": "^1.12.0"
+  }
+}

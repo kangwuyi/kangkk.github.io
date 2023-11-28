@@ -1,0 +1,66 @@
+:root {
+  --circle-box-length: 100px;
+  --circle-border-length: 5px;
+}
+.box {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  width: var(--circle-box-length);
+  height: var(--circle-box-length);
+  box-sizing: border-box;
+}
+.left, .right {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  width: calc(var(--circle-box-length) / 2);
+  height: calc(var(--circle-box-length));
+}
+.leftCircle, .rightCircle {
+  position: absolute;
+  border-radius: 50%;
+  box-sizing: content-box;
+  width: calc(var(--circle-box-length) - var(--circle-border-length) * 2);
+  height: calc(var(--circle-box-length) - var(--circle-border-length) * 2);
+}
+.leftCircle {
+  left: 0px;
+  top: 0px;
+  border: var(--circle-border-length) solid #a1c1f6;
+  border-bottom: var(--circle-border-length) solid #2a77fe;
+  border-left: var(--circle-border-length) solid #2a77fe;
+  transform: rotate(45deg);
+  animation-name: circle_left;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.rightCircle {
+  right: 0px;
+  top: 0px;
+  border: var(--circle-border-length) solid #a1c1f6;
+  border-top: var(--circle-border-length) solid #2a77fe;
+  border-right: var(--circle-border-length) solid #2a77fe;
+  animation-name: circle_right;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  transform: rotate(-135deg);
+}
+@keyframes circle_right {
+  0% {
+    transform: rotate(-135deg);
+  }
+  50%, 100% {
+    transform: rotate(45deg);
+  }
+}
+@keyframes circle_left {
+  0%, 50% {
+    transform: rotate(-135deg);
+  }
+  100% {
+    transform: rotate(45deg);
+  }
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html><html><head>  <meta charset="utf-8">  <meta http-equiv="X-UA-Compatible" content="IE=edge">  <title>康健生活</title>  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/a11y-light.min.css" integrity="sha512-PW96n2amVglidqEDLPUdjJ0zByhT20poSqWJYZRutR6CP2QH58k96WmorqNnC4QXnosNeqMJM8FR/93isIifDQ==" crossorigin="anonymous" />  <link rel="stylesheet" href="https://iframe.kangkk.cn/lib/embed/embed-light.css"/>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js" integrity="sha512-av6ZR84Ldk6j29DMhf6v0cssEhow1VROFLoKbX7wrvzZB++/nV8m0jXbYeWcHPEzSNONImx6zwBskCUT9AQidA==" crossorigin="anonymous"></script>  <script src="https://iframe.kangkk.cn/lib/embed/embed.js"></script><script type="text/javascript">var height;var force_height = null;var slug = "02e64ndr";var show_src = "dist/index.html";var resize_element_counter = 0;var shell_edit_url = "/02e64ndr/light/"</script></head><body><div id="full-embed"><header>  <h1><a href="https://iframe.kangkk.cn/" target="_blank">康健生活</a></h1>  <div id="actions">     <ul class="normalRes"><li class="active"><a data-trigger-type="haml" href="#index.haml">index.haml</a></li><li class=""><a data-trigger-type="less" href="#style.less">style.less</a></li>   </ul>   <div class="hl animated" style="left: 0px; width: 81.0875px;"></div>  </div></header><div class="content"><div class="left"><div id="tabs"><pre class="tCont haml hljs active"><span class="hljs-string">.loader</span>
+  <span class="hljs-string">.circle</span>
+  <span class="hljs-string">.circle</span>
+  <span class="hljs-string">.circle</span>
+  <span class="hljs-string">.circle</span>
+  <span class="hljs-string">.circle</span></pre><pre class="tCont less hljs "><span class="hljs-variable">@width:</span> <span class="hljs-number">100px</span>;
+<span class="hljs-selector-class">.loader</span> {
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">width</span>: <span class="hljs-variable">@width</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-variable">@width</span>;
+  <span class="hljs-attribute">background</span>: yellow;
+  <span class="hljs-selector-class">.circle</span> {
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">top</span>: <span class="hljs-number">50%</span>;
+    <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;
+    <span class="hljs-attribute">width</span>: <span class="hljs-variable">@width</span> / sqrt(<span class="hljs-number">2</span>);
+    <span class="hljs-attribute">height</span>: <span class="hljs-variable">@width</span> / sqrt(<span class="hljs-number">2</span>);
+    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">background</span>: pink;
+    <span class="hljs-attribute">transform</span>: translate(-<span class="hljs-number">50%</span>, -<span class="hljs-number">50%</span>) rotate(<span class="hljs-number">225deg</span>);
+    <span class="hljs-attribute">animation-iteration-count</span>: infinite;
+    <span class="hljs-attribute">animation-name</span>: orbit;
+    <span class="hljs-attribute">animation-duration</span>: <span class="hljs-number">5.5s</span>;
+    <span class="hljs-selector-tag">&amp;</span>:<span class="hljs-selector-tag">after</span> {
+      <span class="hljs-attribute">content</span>: <span class="hljs-string">&#x27;&#x27;</span>;
+      <span class="hljs-attribute">position</span>: absolute;
+      <span class="hljs-attribute">width</span>: <span class="hljs-number">5px</span>;
+      <span class="hljs-attribute">height</span>: <span class="hljs-number">5px</span>;
+      <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;
+      <span class="hljs-attribute">background</span>: black;
+    }
+    <span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-pseudo">:nth-child</span>(<span class="hljs-number">1</span>) {
+      <span class="hljs-attribute">background</span>: rgba(<span class="hljs-number">66</span>,<span class="hljs-number">166</span>,<span class="hljs-number">116</span>,<span class="hljs-number">0.7</span>);
+    }
+    <span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-pseudo">:nth-child</span>(<span class="hljs-number">2</span>) {
+      <span class="hljs-attribute">background</span>: rgba(<span class="hljs-number">108</span>,<span class="hljs-number">168</span>,<span class="hljs-number">55</span>,<span class="hljs-number">0.7</span>);
+      <span class="hljs-attribute">animation-delay</span>: <span class="hljs-number">240ms</span>;
+    }
+    <span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-pseudo">:nth-child</span>(<span class="hljs-number">3</span>) {
+      <span class="hljs-attribute">background</span>: rgba(<span class="hljs-number">90</span>,<span class="hljs-number">237</span>,<span class="hljs-number">175</span>,<span class="hljs-number">0.7</span>);
+      <span class="hljs-attribute">animation-delay</span>: <span class="hljs-number">480ms</span>;
+    }
+    <span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-pseudo">:nth-child</span>(<span class="hljs-number">4</span>) {
+      <span class="hljs-attribute">background</span>: rgba(<span class="hljs-number">67</span>,<span class="hljs-number">50</span>,<span class="hljs-number">190</span>,<span class="hljs-number">0.7</span>);
+      <span class="hljs-attribute">animation-delay</span>: <span class="hljs-number">720ms</span>;
+    }
+    <span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-pseudo">:nth-child</span>(<span class="hljs-number">5</span>) {
+      <span class="hljs-attribute">background</span>: rgba(<span class="hljs-number">145</span>,<span class="hljs-number">200</span>,<span class="hljs-number">191</span>,<span class="hljs-number">0.7</span>);
+      <span class="hljs-attribute">animation-delay</span>: <span class="hljs-number">960ms</span>;
+    }
+  }
+}
+<span class="hljs-keyword">@keyframes</span> orbit { 
+  <span class="hljs-selector-tag">0%</span> {
+    <span class="hljs-attribute">transform</span>: translate(-<span class="hljs-number">50%</span>, -<span class="hljs-number">50%</span>) rotate(<span class="hljs-number">225deg</span>);
+    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+    <span class="hljs-attribute">animation-timing-function</span>: ease-out;
+  } 
+  <span class="hljs-selector-tag">7%</span> {
+    <span class="hljs-attribute">transform</span>:  translate(-<span class="hljs-number">50%</span>, -<span class="hljs-number">50%</span>)rotate(<span class="hljs-number">345deg</span>);
+    <span class="hljs-attribute">animation-timing-function</span>: linear;
+  }
+  <span class="hljs-selector-tag">30%</span> {
+    <span class="hljs-attribute">transform</span>:  translate(-<span class="hljs-number">50%</span>, -<span class="hljs-number">50%</span>)rotate(<span class="hljs-number">455deg</span>);
+    <span class="hljs-attribute">animation-timing-function</span>: ease-in-out;
+  }
+  <span class="hljs-selector-tag">39%</span> {
+    <span class="hljs-attribute">transform</span>:  translate(-<span class="hljs-number">50%</span>, -<span class="hljs-number">50%</span>)rotate(<span class="hljs-number">690deg</span>);
+    <span class="hljs-attribute">animation-timing-function</span>: linear;
+  }
+  <span class="hljs-selector-tag">70%</span> {
+    <span class="hljs-attribute">transform</span>:  translate(-<span class="hljs-number">50%</span>, -<span class="hljs-number">50%</span>)rotate(<span class="hljs-number">815deg</span>);
+    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+    <span class="hljs-attribute">animation-timing-function</span>: ease-out;
+  }
+  <span class="hljs-selector-tag">75%</span> {
+    <span class="hljs-attribute">transform</span>:  translate(-<span class="hljs-number">50%</span>, -<span class="hljs-number">50%</span>)rotate(<span class="hljs-number">945deg</span>); 
+    <span class="hljs-attribute">animation-timing-function</span>: ease-out;
+  }
+  <span class="hljs-selector-tag">76%</span> {
+    <span class="hljs-attribute">transform</span>:  translate(-<span class="hljs-number">50%</span>, -<span class="hljs-number">50%</span>)rotate(<span class="hljs-number">945deg</span>);
+    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+  }
+  <span class="hljs-selector-tag">100%</span> {
+    <span class="hljs-attribute">transform</span>:  translate(-<span class="hljs-number">50%</span>, -<span class="hljs-number">50%</span>)rotate(<span class="hljs-number">945deg</span>);
+    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+  } 
+}</pre></div></div><div class="right"><div class="tCont result" id="result"><iframe src="dist/index.html" frameborder="0" sandbox="allow-forms allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-downloads allow-modals allow-popups" allow="midi; geolocation; microphone; camera; display-capture; encrypted-media;"></iframe></div></div></div></body></html>

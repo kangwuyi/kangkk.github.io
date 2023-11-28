@@ -1,0 +1,45 @@
+:root {
+  --x: 100px;
+  --y: 100px;
+  --w: 100px;
+  --h: 100px;
+  --r: 50%;
+}
+.box {
+  width: 100vw;
+  height: 100vw;
+}
+
+.card {
+  width: 100px;
+  height: 100px;
+}
+
+.card ~ .card {
+  position: absolute;
+  top: calc(var(--y) + 50px);
+  left: calc(var(--x) + 50px);
+}
+
+.card:hover {
+  background: #35b0ab;
+}
+
+.border {
+  position: fixed;
+  top: 0; left: 0;
+  width: var(--w);
+  height: var(--h);
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.5);
+  border-top-width: var(--y);
+  border-right-width: calc(100vw - var(--x) - var(--w));
+  border-bottom-width: calc(100vh - var(--y));
+  border-left-width: var(--x);
+}
+.green {
+  background: green;
+}
+.yellow {
+  background: yellow;
+}

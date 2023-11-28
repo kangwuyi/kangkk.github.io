@@ -1,0 +1,42 @@
+.box {
+  width: 100px;
+  height: 100px;
+}
+.box__circle {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+}
+.box__circle:first-child {
+  transform: skew(30deg, 20deg);
+}
+.box__circle:last-child {
+  transform: skew(-30deg, -20deg) scale(-1, 1);
+}
+.box__circle:last-child .circle {
+  -webkit-animation-delay: -0.5s;
+          animation-delay: -0.5s;
+}
+.box__circle .circle {
+  -webkit-animation: rotate 1s linear infinite;
+          animation: rotate 1s linear infinite;
+  fill: rgba(0, 0, 0, 0.2);
+}
+.box .circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border-top: 2px solid red;
+}
+
+@-webkit-keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
