@@ -1,0 +1,58 @@
+<!DOCTYPE html><html><head>  <meta charset="utf-8">  <meta http-equiv="X-UA-Compatible" content="IE=edge">  <title>康健生活</title>  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/a11y-light.min.css" integrity="sha512-PW96n2amVglidqEDLPUdjJ0zByhT20poSqWJYZRutR6CP2QH58k96WmorqNnC4QXnosNeqMJM8FR/93isIifDQ==" crossorigin="anonymous" />  <link rel="stylesheet" href="https://iframe.kangkk.cn/lib/embed/embed-light.css"/>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js" integrity="sha512-av6ZR84Ldk6j29DMhf6v0cssEhow1VROFLoKbX7wrvzZB++/nV8m0jXbYeWcHPEzSNONImx6zwBskCUT9AQidA==" crossorigin="anonymous"></script>  <script src="https://iframe.kangkk.cn/lib/embed/embed.js"></script><script type="text/javascript">var height;var force_height = null;var slug = "02e64ndr";var show_src = "dist/index.html";var resize_element_counter = 0;var shell_edit_url = "/02e64ndr/light/"</script></head><body><div id="full-embed"><header>  <h1><a href="https://iframe.kangkk.cn/" target="_blank">康健生活</a></h1>  <div id="actions">     <ul class="normalRes"><li class="active"><a data-trigger-type="html" href="#index.html">index.html</a></li><li class=""><a data-trigger-type="js" href="#script.js">script.js</a></li><li class=""><a data-trigger-type="css" href="#style.css">style.css</a></li>   </ul>   <div class="hl animated" style="left: 0px; width: 81.0875px;"></div>  </div></header><div class="content"><div class="left"><div id="tabs"><pre class="tCont html hljs active">&lt;div <span class="hljs-keyword">class</span>=&quot;<span class="hljs-symbol">box</span>&quot;&gt;
+  &lt;<span class="hljs-symbol">div</span> <span class="hljs-symbol">class</span>=&quot;<span class="hljs-symbol">content</span>&quot;&gt;
+    &lt;<span class="hljs-symbol">textarea</span> <span class="hljs-symbol">class</span>=&quot;<span class="hljs-symbol">card</span> <span class="hljs-symbol">green</span>&quot;&gt;&lt;/<span class="hljs-symbol">textarea</span>&gt;
+    &lt;<span class="hljs-symbol">textarea</span> <span class="hljs-symbol">class</span>=&quot;<span class="hljs-symbol">card</span> <span class="hljs-symbol">yellow</span>&quot;&gt;&lt;/<span class="hljs-symbol">textarea</span>&gt;
+  &lt;/<span class="hljs-symbol">div</span>&gt;
+  &lt;<span class="hljs-symbol">div</span> <span class="hljs-symbol">class</span>=&quot;<span class="hljs-symbol">overlay</span>&quot;&gt;
+    &lt;<span class="hljs-symbol">div</span> <span class="hljs-symbol">tabindex</span>=&quot;<span class="hljs-symbol">0</span>&quot; <span class="hljs-symbol">class</span>=&quot;<span class="hljs-symbol">spoltlight</span>&quot;&gt;
+    &lt;/<span class="hljs-symbol">div</span>&gt;
+  &lt;/<span class="hljs-symbol">div</span>&gt;
+&lt;/<span class="hljs-symbol">div</span>&gt;</pre><pre class="tCont js hljs "><span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">&#x27;.card&#x27;</span>).forEach(<span class="hljs-function"><span class="hljs-params">(card, index)</span> =&gt;</span> {
+  card.onclick = alert.bind(<span class="hljs-built_in">window</span>, index)
+})</pre><pre class="tCont css hljs "><span class="hljs-selector-pseudo">:root</span> {
+  <span class="hljs-attribute">--x</span>: <span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">--y</span>: <span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">--w</span>: <span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">--h</span>: <span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">--r</span>: <span class="hljs-number">50%</span>;
+}
+<span class="hljs-selector-class">.box</span> {
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">300px</span>;
+  <span class="hljs-attribute">overflow</span>: hidden;
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#fff</span>;
+}
+<span class="hljs-selector-class">.card</span> ~ <span class="hljs-selector-class">.card</span> {
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">left</span>: <span class="hljs-built_in">calc</span>(var(--x) + <span class="hljs-number">50px</span>);
+  <span class="hljs-attribute">top</span>: <span class="hljs-built_in">calc</span>(var(--y) + <span class="hljs-number">50px</span>);
+}
+<span class="hljs-selector-class">.overlay</span> {
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">999</span>;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.5</span>);
+  <span class="hljs-attribute">mix-blend-mode</span>: hard-light;
+  <span class="hljs-attribute">pointer-events</span>: auto;
+}
+<span class="hljs-selector-class">.spoltlight</span> {
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">left</span>: <span class="hljs-built_in">var</span>(--x);
+  <span class="hljs-attribute">top</span>: <span class="hljs-built_in">var</span>(--y);
+  <span class="hljs-attribute">width</span>: <span class="hljs-built_in">var</span>(--w);
+  <span class="hljs-attribute">height</span>: <span class="hljs-built_in">var</span>(--h);
+  <span class="hljs-attribute">background-color</span>: gray;
+}
+<span class="hljs-selector-class">.overlay</span><span class="hljs-selector-pseudo">:focus-within</span> {
+  <span class="hljs-attribute">pointer-events</span>: none;
+}
+<span class="hljs-selector-class">.green</span> {
+  <span class="hljs-attribute">background</span>: green;
+}
+<span class="hljs-selector-class">.yellow</span> {
+  <span class="hljs-attribute">background</span>: yellow;
+}</pre></div></div><div class="right"><div class="tCont result" id="result"><iframe src="dist/index.html" frameborder="0" sandbox="allow-forms allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-downloads allow-modals allow-popups" allow="midi; geolocation; microphone; camera; display-capture; encrypted-media;"></iframe></div></div></div></body></html>

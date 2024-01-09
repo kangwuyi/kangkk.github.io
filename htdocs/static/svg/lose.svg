@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="425px" height="238px" viewBox="0 0 425 238" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>画板</title>
+    <g id="画板" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="矩形" stroke="#979797" fill="#FCF9F9" x="0.5" y="0.5" width="424" height="237"></rect>
+        <text id="资源丢失" font-family="STSongti-SC-Regular, Songti SC" font-size="60" font-weight="normal" fill="#000000">
+            <tspan x="92" y="141">资源丢失</tspan>
+        </text>
+    </g>
+</svg>

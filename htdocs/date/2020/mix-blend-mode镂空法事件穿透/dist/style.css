@@ -1,0 +1,47 @@
+:root {
+  --x: 100px;
+  --y: 100px;
+  --w: 100px;
+  --h: 100px;
+  --r: 50%;
+}
+.box {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  background: #fff;
+}
+.card ~ .card {
+  position: absolute;
+  left: calc(var(--x) + 50px);
+  top: calc(var(--y) + 50px);
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5);
+  mix-blend-mode: hard-light;
+  pointer-events: auto;
+}
+.spoltlight {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  height: var(--h);
+  background-color: gray;
+}
+.overlay:focus-within {
+  pointer-events: none;
+}
+.green {
+  background: green;
+}
+.yellow {
+  background: yellow;
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html><html><head>  <meta charset="utf-8">  <meta http-equiv="X-UA-Compatible" content="IE=edge">  <title>康健生活</title>  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/a11y-light.min.css" integrity="sha512-PW96n2amVglidqEDLPUdjJ0zByhT20poSqWJYZRutR6CP2QH58k96WmorqNnC4QXnosNeqMJM8FR/93isIifDQ==" crossorigin="anonymous" />  <link rel="stylesheet" href="https://iframe.kangkk.cn/lib/embed/embed-light.css"/>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js" integrity="sha512-av6ZR84Ldk6j29DMhf6v0cssEhow1VROFLoKbX7wrvzZB++/nV8m0jXbYeWcHPEzSNONImx6zwBskCUT9AQidA==" crossorigin="anonymous"></script>  <script src="https://iframe.kangkk.cn/lib/embed/embed.js"></script><script type="text/javascript">var height;var force_height = null;var slug = "02e64ndr";var show_src = "dist/index.html";var resize_element_counter = 0;var shell_edit_url = "/02e64ndr/light/"</script></head><body><div id="full-embed"><header>  <h1><a href="https://iframe.kangkk.cn/" target="_blank">康健生活</a></h1>  <div id="actions">     <ul class="normalRes"><li class="active"><a data-trigger-type="haml" href="#index.haml">index.haml</a></li><li class=""><a data-trigger-type="less" href="#style.less">style.less</a></li>   </ul>   <div class="hl animated" style="left: 0px; width: 81.0875px;"></div>  </div></header><div class="content"><div class="left"><div id="tabs"><pre class="tCont haml hljs active">.<span class="hljs-built_in">box</span>
+  .<span class="hljs-built_in">dot</span>
+  .<span class="hljs-built_in">dot</span>
+  .<span class="hljs-built_in">dot</span>
+  .<span class="hljs-built_in">dot</span>
+  .<span class="hljs-built_in">dot</span>
+  .<span class="hljs-built_in">dot</span>
+  .<span class="hljs-built_in">dot</span>
+  .<span class="hljs-built_in">dot</span>
+  .<span class="hljs-built_in">dot</span>
+  .<span class="hljs-built_in">dot</span>
+  .<span class="hljs-built_in">dot</span>
+  .<span class="hljs-built_in">dot</span></pre><pre class="tCont less hljs "><span class="hljs-variable">@width:</span> <span class="hljs-number">100px</span>;
+<span class="hljs-selector-class">.box</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-variable">@width</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-variable">@width</span>;
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-selector-class">.dot</span> {
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">width</span>: <span class="hljs-variable">@width</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-variable">@width</span>;
+    <span class="hljs-selector-tag">&amp;</span>:<span class="hljs-selector-tag">before</span> {
+			<span class="hljs-attribute">content</span>: <span class="hljs-string">&#x27;&#x27;</span>;
+			<span class="hljs-attribute">display</span>: block;
+			<span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
+			<span class="hljs-attribute">width</span>: <span class="hljs-number">15%</span>;
+			<span class="hljs-attribute">height</span>: <span class="hljs-number">15%</span>;
+			<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#00BFFF</span>;
+			<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;
+			<span class="hljs-attribute">animation</span>: animate <span class="hljs-number">1.2s</span> infinite ease-in-out both;
+		}
+    <span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-pseudo">:nth-of-type</span>(<span class="hljs-number">1</span>) {
+			<span class="hljs-attribute">transform</span>: rotate(<span class="hljs-number">30deg</span>);
+    }
+    <span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-pseudo">:nth-of-type</span>(<span class="hljs-number">2</span>) {
+			<span class="hljs-attribute">transform</span>: rotate(<span class="hljs-number">60deg</span>);
+      <span class="hljs-selector-tag">&amp;</span>:<span class="hljs-selector-tag">before</span> {
+        <span class="hljs-attribute">animation-delay</span>: -<span class="hljs-number">1.1s</span>;
+      }
+    }
+    <span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-pseudo">:nth-of-type</span>(<span class="hljs-number">3</span>) {
+			<span class="hljs-attribute">transform</span>: rotate(<span class="hljs-number">90deg</span>);
+      <span class="hljs-selector-tag">&amp;</span>:<span class="hljs-selector-tag">before</span> {
+        <span class="hljs-attribute">animation-delay</span>: -<span class="hljs-number">1.0s</span>;
+      }
+    }
+    <span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-pseudo">:nth-of-type</span>(<span class="hljs-number">4</span>) {
+			<span class="hljs-attribute">transform</span>: rotate(<span class="hljs-number">120deg</span>);
+      <span class="hljs-selector-tag">&amp;</span>:<span class="hljs-selector-tag">before</span> {
+        <span class="hljs-attribute">animation-delay</span>: -<span class="hljs-number">0.9s</span>;
+      }
+    }
+    <span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-pseudo">:nth-of-type</span>(<span class="hljs-number">5</span>) {
+			<span class="hljs-attribute">transform</span>: rotate(<span class="hljs-number">150deg</span>);
+      <span class="hljs-selector-tag">&amp;</span>:<span class="hljs-selector-tag">before</span> {
+        <span class="hljs-attribute">animation-delay</span>: -<span class="hljs-number">0.8s</span>;
+      }
+    }
+    <span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-pseudo">:nth-of-type</span>(<span class="hljs-number">6</span>) {
+			<span class="hljs-attribute">transform</span>: rotate(<span class="hljs-number">180deg</span>);
+      <span class="hljs-selector-tag">&amp;</span>:<span class="hljs-selector-tag">before</span> {
+        <span class="hljs-attribute">animation-delay</span>: -<span class="hljs-number">0.7s</span>;
+      }
+    }
+    <span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-pseudo">:nth-of-type</span>(<span class="hljs-number">7</span>) {
+			<span class="hljs-attribute">transform</span>: rotate(<span class="hljs-number">210deg</span>);
+      <span class="hljs-selector-tag">&amp;</span>:<span class="hljs-selector-tag">before</span> {
+        <span class="hljs-attribute">animation-delay</span>: -<span class="hljs-number">0.6s</span>;
+      }
+    }
+    <span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-pseudo">:nth-of-type</span>(<span class="hljs-number">8</span>) {
+			<span class="hljs-attribute">transform</span>: rotate(<span class="hljs-number">240deg</span>);
+      <span class="hljs-selector-tag">&amp;</span>:<span class="hljs-selector-tag">before</span> {
+        <span class="hljs-attribute">animation-delay</span>: -<span class="hljs-number">0.5s</span>;
+      }
+    }
+    <span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-pseudo">:nth-of-type</span>(<span class="hljs-number">9</span>) {
+			<span class="hljs-attribute">transform</span>: rotate(<span class="hljs-number">270deg</span>);
+      <span class="hljs-selector-tag">&amp;</span>:<span class="hljs-selector-tag">before</span> {
+        <span class="hljs-attribute">animation-delay</span>: -<span class="hljs-number">0.4s</span>;
+      }
+    }
+    <span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-pseudo">:nth-of-type</span>(<span class="hljs-number">10</span>) {
+			<span class="hljs-attribute">transform</span>: rotate(<span class="hljs-number">300deg</span>);
+      <span class="hljs-selector-tag">&amp;</span>:<span class="hljs-selector-tag">before</span> {
+        <span class="hljs-attribute">animation-delay</span>: -<span class="hljs-number">0.3s</span>;
+      }
+    }
+    <span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-pseudo">:nth-of-type</span>(<span class="hljs-number">11</span>) {
+			<span class="hljs-attribute">transform</span>: rotate(<span class="hljs-number">330deg</span>);
+      <span class="hljs-selector-tag">&amp;</span>:<span class="hljs-selector-tag">before</span> {
+        <span class="hljs-attribute">animation-delay</span>: -<span class="hljs-number">0.2s</span>;
+      }
+    }
+    <span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-pseudo">:nth-of-type</span>(<span class="hljs-number">12</span>) {
+      <span class="hljs-selector-tag">&amp;</span>:<span class="hljs-selector-tag">before</span> {
+        <span class="hljs-attribute">animation-delay</span>: -<span class="hljs-number">0.1s</span>;
+      }
+    }
+	}
+}
+<span class="hljs-keyword">@-webkit-keyframes</span> animate {
+  <span class="hljs-selector-tag">0%</span>,
+  <span class="hljs-selector-tag">80%</span>,
+  <span class="hljs-selector-tag">100%</span> {
+    <span class="hljs-attribute">transform</span>: scale(<span class="hljs-number">0</span>);
+  }
+  <span class="hljs-selector-tag">40%</span> {
+    <span class="hljs-attribute">transform</span>: scale(<span class="hljs-number">1</span>);
+  }
+}
+<span class="hljs-keyword">@keyframes</span> animate {
+  <span class="hljs-selector-tag">0%</span>,
+  <span class="hljs-selector-tag">80%</span>,
+  <span class="hljs-selector-tag">100%</span> {
+    <span class="hljs-attribute">transform</span>: scale(<span class="hljs-number">0</span>);
+  }
+  <span class="hljs-selector-tag">40%</span> {
+    <span class="hljs-attribute">transform</span>: scale(<span class="hljs-number">1</span>);
+  }
+}</pre></div></div><div class="right"><div class="tCont result" id="result"><iframe src="dist/index.html" frameborder="0" sandbox="allow-forms allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-downloads allow-modals allow-popups" allow="midi; geolocation; microphone; camera; display-capture; encrypted-media;"></iframe></div></div></div></body></html>

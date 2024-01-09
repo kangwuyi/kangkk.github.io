@@ -1,0 +1,44 @@
+:root {
+  --width: 100px;
+  --light-shadow: 0 4px 0 #00abf2 inset;
+  --track-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.3) inset;
+  --circle-width: 100px;
+}
+.ring {
+  position: relative;
+  width: var(--width);
+  height: var(--width);
+}
+
+.light {
+  width: var(--width);
+  height: var(--width);
+  border-radius: 50%;
+  box-shadow: var(--light-shadow);
+  animation: rotate-360 2s linear infinite;
+}
+
+.track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--width);
+  height: var(--width);
+  border-radius: 50%;
+  box-shadow: var(--track-shadow);
+}
+
+@keyframes rotate-360 {
+  from {
+    -moz-transform: rotate(0);
+    -ms-transform: rotate(0);
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

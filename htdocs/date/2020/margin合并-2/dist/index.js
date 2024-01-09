@@ -1,0 +1,1 @@
+console.log('getBoundingClientRect.height',document.getElementsByClassName('test')[0].getBoundingClientRect().height)
