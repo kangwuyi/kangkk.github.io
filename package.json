@@ -1,0 +1,14 @@
+{
+  "name": "kangkk.github.io",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kangwuyi/kangkk.github.io.git"
+  },
+  "author": "365@kangwuyi.com",
+  "license": "ISC",
+  "homepage": "https://github.com/kangwuyi/kangkk.github.io#readme",
+  "devDependencies": {
+    "prettier": "^3.5.3"
+  }
+}
